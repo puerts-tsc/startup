@@ -2,20 +2,22 @@
 using UnityEngine;
 using Puerts;
 
-public class UIEvent : MonoBehaviour
+namespace PuertsTest
 {
-    static JsEnv jsEnv;
-
-    void Start()
+    public class UIEvent : MonoBehaviour
     {
-        if (jsEnv == null)
+        static JsEnv jsEnv;
+
+        void Start()
         {
-            jsEnv = new JsEnv();
-            jsEnv.UsingAction<bool>();//toggle.onValueChanged用到
+            if ( jsEnv == null ) {
+                jsEnv = new JsEnv();
+                jsEnv.UsingAction<bool>(); //toggle.onValueChanged用到
+            }
+
+            var init = jsEnv.Eval<Action<MonoBehaviour>>( "require('UIEvent').init" );
+
+            if ( init != null ) init( this );
         }
-
-        var init = jsEnv.Eval<Action<MonoBehaviour>>("const m = require('UIEvent'); m.init;");
-
-        if (init != null) init(this);
     }
 }
