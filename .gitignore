@@ -16,4 +16,5 @@
 /node_modules
 .idea/
 /package-lock.json
+/ProjectSettings/ProjectVersion.txt
 
