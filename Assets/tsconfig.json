@@ -23,6 +23,12 @@
             "node-tsc/*": [
                 "Scripts/Node-tsc/src/*"
             ],
+            "csharp": [
+                "Gen/Typing/csharp"
+            ],
+            "puerts": [
+                "Plugins/Puerts/Typing/puerts"
+            ],
             "examples/*": [
                 "Examples/src/*"
             ]
@@ -36,6 +42,8 @@
         "outDir": "Gen/dist~"
     },
     "include": [
+        "Gen/Typing/**/*",
+        "Plugins/Puerts/Typing/**/*",
         "**/src/**/*",
         "**/Typing/**/*"
     ],

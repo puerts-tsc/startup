@@ -72,12 +72,14 @@ function typeNameWithOutGenericType(type, name) {
     return name;
 }
 }}
-declare module 'csharp' {
+
+//@ts-nocheck
+//declare module 'csharp' {
     interface $Ref<T> {
         value: T
     }
     
-    namespace System {
+    export namespace System {
         interface Array$1<T> extends System.Array {
             get_Item(index: number):T;
             
@@ -87,9 +89,9 @@ declare module 'csharp' {
     
     {{=it.TaskDef}}
     
-    {{~it.NamespaceInfos :ns}}{{?ns.Name}}namespace {{=ns.Name}} {{{?}}
+    {{~it.NamespaceInfos :ns}}{{?ns.Name}}export namespace {{=ns.Name}} {{{?}}
         {{~ns.Types :type}}{{=indent(type.Document, 8)}}
-        {{=typeKeyword(type)}} {{=typeDeclaration(type, true)}}{{
+        export {{=typeKeyword(type)}} {{=typeDeclaration(type, true)}}{{
             `==condition start======================`;
             if(type.IsDelegate){        `//type is delegate`;
         }} = {{=type.DelegateDef}};{{?!type.IsGenericTypeDefinition}}
@@ -123,4 +125,4 @@ declare module 'csharp' {
         {{~}}
     {{?ns.Name}}}{{?}}
     {{~}}
-}
+//}

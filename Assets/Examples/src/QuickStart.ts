@@ -3,6 +3,7 @@
 import { UnityEngine, PuertsTest, System } from 'csharp'
 import { $ref, $unref, $generic, $promise, $typeof } from 'puerts'
 import './ExtensionDecl'
+import GameObject = UnityEngine.GameObject;
 
 export default function() {
     

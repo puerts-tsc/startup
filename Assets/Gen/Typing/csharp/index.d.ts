@@ -1,10 +1,12 @@
 ﻿
-declare module 'csharp' {
+
+//@ts-nocheck
+//declare module 'csharp' {
     interface $Ref<T> {
         value: T
     }
     
-    namespace System {
+    export namespace System {
         interface Array$1<T> extends System.Array {
             get_Item(index: number):T;
             
@@ -14,9 +16,9 @@ declare module 'csharp' {
     
     type $Task<T> = System.Threading.Tasks.Task$1<T>
     
-    namespace UnityEngine {
+    export namespace UnityEngine {
         /** Class containing methods to ease debugging while developing a game. */
-        class Debug extends System.Object{ 
+        export class Debug extends System.Object{ 
             /** Get default debug logger. */
             public static get unityLogger(): UnityEngine.ILogger;
             
@@ -221,7 +223,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILogger extends UnityEngine.ILogHandler{ 
+        export interface ILogger extends UnityEngine.ILogHandler{ 
             /** Set Logger.ILogHandler. */
             logHandler: UnityEngine.ILogHandler;
             /** To runtime toggle debug logging [ON/OFF]. */
@@ -272,7 +274,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILogHandler{ 
+        export interface ILogHandler{ 
             /** Logs a formatted message. * @param logType The type of the log message.
              * @param context Object to which the message applies.
              * @param format A composite format string.
@@ -287,7 +289,7 @@ declare module 'csharp' {
         }
         
         /** Representation of 3D vectors and points. */
-        class Vector3 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector3>, System.IFormattable{ 
+        export class Vector3 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector3>, System.IFormattable{ 
             
             public static kEpsilon: number;
             
@@ -490,7 +492,7 @@ declare module 'csharp' {
         }
         
         /** Representation of RGBA colors. */
-        class Color extends System.ValueType implements System.IEquatable$1<UnityEngine.Color>, System.IFormattable{ 
+        export class Color extends System.ValueType implements System.IEquatable$1<UnityEngine.Color>, System.IFormattable{ 
             /** Red component of the color. */
             public r: number;
             /** Green component of the color. */
@@ -625,7 +627,7 @@ declare module 'csharp' {
         }
         
         /** Base class for all objects Unity can reference. */
-        class Object extends System.Object{ 
+        export class Object extends System.Object{ 
             /** The name of the object. */
             public get name(): string;
             public set name(value: string);
@@ -742,13 +744,13 @@ declare module 'csharp' {
         }
         
         /** The type of the log message in Debug.unityLogger.Log or delegate registered with Application.RegisterLogCallback. */
-        enum LogType{ Error = 0, Assert = 1, Warning = 2, Log = 3, Exception = 4 }
+        export enum LogType{ Error = 0, Assert = 1, Warning = 2, Log = 3, Exception = 4 }
         
         /** Option flags for specifying special treatment of a log message. */
-        enum LogOption{ None = 0, NoStacktrace = 1 }
+        export enum LogOption{ None = 0, NoStacktrace = 1 }
         
         /** Base class for all entities in Unity Scenes. */
-        class GameObject extends UnityEngine.Object{ 
+        export class GameObject extends UnityEngine.Object{ 
             /** The Transform attached to this GameObject. */
             public get transform(): UnityEngine.Transform;
             
@@ -900,7 +902,7 @@ declare module 'csharp' {
         }
         
         /** Base class for everything attached to GameObjects. */
-        class Component extends UnityEngine.Object{ 
+        export class Component extends UnityEngine.Object{ 
             /** The Transform attached to this GameObject. */
             public get transform(): UnityEngine.Transform;
             
@@ -1019,7 +1021,7 @@ declare module 'csharp' {
         }
         
         /** Provides an interface to get time information from Unity. */
-        class Time extends System.Object{ 
+        export class Time extends System.Object{ 
             /** The time at the beginning of this frame (Read Only). */
             public static get time(): number;
             
@@ -1101,7 +1103,7 @@ declare module 'csharp' {
         }
         
         /** Position, rotation and scale of an object. */
-        class Transform extends UnityEngine.Component implements System.Collections.IEnumerable{ 
+        export class Transform extends UnityEngine.Component implements System.Collections.IEnumerable{ 
             /** The world space position of the Transform. */
             public get position(): UnityEngine.Vector3;
             public set position(value: UnityEngine.Vector3);
@@ -1279,7 +1281,7 @@ declare module 'csharp' {
         }
         
         /** Quaternions are used to represent rotations. */
-        class Quaternion extends System.ValueType implements System.IEquatable$1<UnityEngine.Quaternion>, System.IFormattable{ 
+        export class Quaternion extends System.ValueType implements System.IEquatable$1<UnityEngine.Quaternion>, System.IFormattable{ 
             /** X component of the Quaternion. Don't modify this directly unless you know quaternions inside out. */
             public x: number;
             /** Y component of the Quaternion. Don't modify this directly unless you know quaternions inside out. */
@@ -1392,7 +1394,7 @@ declare module 'csharp' {
         }
         
         /** A standard 4x4 transformation matrix. */
-        class Matrix4x4 extends System.ValueType implements System.IEquatable$1<UnityEngine.Matrix4x4>, System.IFormattable{ 
+        export class Matrix4x4 extends System.ValueType implements System.IEquatable$1<UnityEngine.Matrix4x4>, System.IFormattable{ 
             
             public m00: number;
             
@@ -1577,19 +1579,19 @@ declare module 'csharp' {
         }
         
         /** The coordinate space in which to operate. */
-        enum Space{ World = 0, Self = 1 }
+        export enum Space{ World = 0, Self = 1 }
         
         /** Options for how to send a message. */
-        enum SendMessageOptions{ RequireReceiver = 0, DontRequireReceiver = 1 }
+        export enum SendMessageOptions{ RequireReceiver = 0, DontRequireReceiver = 1 }
         
         /** The various primitives that can be created using the GameObject.CreatePrimitive function. */
-        enum PrimitiveType{ Sphere = 0, Capsule = 1, Cylinder = 2, Cube = 3, Plane = 4, Quad = 5 }
+        export enum PrimitiveType{ Sphere = 0, Capsule = 1, Cylinder = 2, Cube = 3, Plane = 4, Quad = 5 }
         
         /** Bit mask that controls object destruction, saving and visibility in inspectors. */
-        enum HideFlags{ None = 0, HideInHierarchy = 1, HideInInspector = 2, DontSaveInEditor = 4, NotEditable = 8, DontSaveInBuild = 16, DontUnloadUnusedAsset = 32, DontSave = 52, HideAndDontSave = 61 }
+        export enum HideFlags{ None = 0, HideInHierarchy = 1, HideInInspector = 2, DontSaveInEditor = 4, NotEditable = 8, DontSaveInBuild = 16, DontUnloadUnusedAsset = 32, DontSave = 52, HideAndDontSave = 61 }
         
         /** Script interface for ParticleSystem. Unity's powerful and versatile particle system implementation. */
-        class ParticleSystem extends UnityEngine.Component{ 
+        export class ParticleSystem extends UnityEngine.Component{ 
             /** Determines whether the Particle System is playing. */
             public get isPlaying(): boolean;
             
@@ -1836,7 +1838,7 @@ declare module 'csharp' {
         }
         
         /** Representation of RGBA colors in 32 bit format. */
-        class Color32 extends System.ValueType implements System.IFormattable{ 
+        export class Color32 extends System.ValueType implements System.IFormattable{ 
             /** Red component of the color. */
             public r: number;
             /** Green component of the color. */
@@ -1875,13 +1877,13 @@ declare module 'csharp' {
         }
         
         /** The space to simulate particles in. */
-        enum ParticleSystemSimulationSpace{ Local = 0, World = 1, Custom = 2 }
+        export enum ParticleSystemSimulationSpace{ Local = 0, World = 1, Custom = 2 }
         
         /** Control how particle systems apply transform scale. */
-        enum ParticleSystemScalingMode{ Hierarchy = 0, Local = 1, Shape = 2 }
+        export enum ParticleSystemScalingMode{ Hierarchy = 0, Local = 1, Shape = 2 }
         
         /** Representation of four-dimensional vectors. */
-        class Vector4 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector4>, System.IFormattable{ 
+        export class Vector4 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector4>, System.IFormattable{ 
             
             public static kEpsilon: number;
             /** X component of the vector. */
@@ -2003,13 +2005,13 @@ declare module 'csharp' {
         }
         
         /** Which stream of custom particle data to set. */
-        enum ParticleSystemCustomData{ Custom1 = 0, Custom2 = 1 }
+        export enum ParticleSystemCustomData{ Custom1 = 0, Custom2 = 1 }
         
         /** The behavior to apply when calling ParticleSystem.Stop|Stop. */
-        enum ParticleSystemStopBehavior{ StopEmittingAndClear = 0, StopEmitting = 1 }
+        export enum ParticleSystemStopBehavior{ StopEmittingAndClear = 0, StopEmitting = 1 }
         
         /** Element that can be used for screen rendering. */
-        class Canvas extends UnityEngine.Behaviour{ 
+        export class Canvas extends UnityEngine.Behaviour{ 
             /** Is the Canvas in World or Overlay mode? */
             public get renderMode(): UnityEngine.RenderMode;
             public set renderMode(value: UnityEngine.RenderMode);
@@ -2090,7 +2092,7 @@ declare module 'csharp' {
         }
         
         /** Behaviours are Components that can be enabled or disabled. */
-        class Behaviour extends UnityEngine.Component{ 
+        export class Behaviour extends UnityEngine.Component{ 
             /** Enabled Behaviours are Updated, disabled Behaviours are not. */
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -2103,10 +2105,10 @@ declare module 'csharp' {
         }
         
         /** RenderMode for the Canvas. */
-        enum RenderMode{ ScreenSpaceOverlay = 0, ScreenSpaceCamera = 1, WorldSpace = 2 }
+        export enum RenderMode{ ScreenSpaceOverlay = 0, ScreenSpaceCamera = 1, WorldSpace = 2 }
         
         /** A 2D Rectangle defined by X and Y position, width and height. */
-        class Rect extends System.ValueType implements System.IEquatable$1<UnityEngine.Rect>, System.IFormattable{ 
+        export class Rect extends System.ValueType implements System.IEquatable$1<UnityEngine.Rect>, System.IFormattable{ 
             /** Shorthand for writing new Rect(0,0,0,0). */
             public static get zero(): UnityEngine.Rect;
             
@@ -2227,10 +2229,10 @@ declare module 'csharp' {
         }
         
         /** Enum mask of possible shader channel properties that can also be included when the Canvas mesh is created. */
-        enum AdditionalCanvasShaderChannels{ None = 0, TexCoord1 = 1, TexCoord2 = 2, TexCoord3 = 4, Normal = 8, Tangent = 16 }
+        export enum AdditionalCanvasShaderChannels{ None = 0, TexCoord1 = 1, TexCoord2 = 2, TexCoord3 = 4, Normal = 8, Tangent = 16 }
         
         /** Representation of 2D vectors and points. */
-        class Vector2 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector2>, System.IFormattable{ 
+        export class Vector2 extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector2>, System.IFormattable{ 
             /** X component of the vector. */
             public x: number;
             /** Y component of the vector. */
@@ -2397,7 +2399,7 @@ declare module 'csharp' {
         }
         
         /** A Camera is a device through which the player views the world. */
-        class Camera extends UnityEngine.Behaviour{ 
+        export class Camera extends UnityEngine.Behaviour{ 
             /** Delegate that you can use to execute custom code before a Camera culls the scene. */
             public static onPreCull: UnityEngine.Camera.CameraCallback;
             /** Delegate that you can use to execute custom code before a Camera renders the scene. */
@@ -2778,7 +2780,7 @@ declare module 'csharp' {
         }
         
         /** The material class. */
-        class Material extends UnityEngine.Object{ 
+        export class Material extends UnityEngine.Object{ 
             /** The shader used by the material. */
             public get shader(): UnityEngine.Shader;
             public set shader(value: UnityEngine.Shader);
@@ -3316,7 +3318,7 @@ declare module 'csharp' {
         }
         
         /** MonoBehaviour is the base class from which every Unity script derives. */
-        class MonoBehaviour extends UnityEngine.Behaviour{ 
+        export class MonoBehaviour extends UnityEngine.Behaviour{ 
             /** Disabling this lets you skip the GUI layout phase. */
             public get useGUILayout(): boolean;
             public set useGUILayout(value: boolean);
@@ -3360,19 +3362,19 @@ declare module 'csharp' {
         }
         
         /** MonoBehaviour.StartCoroutine returns a Coroutine. Instances of this class are only used to reference these coroutines, and do not hold any exposed properties or functions. */
-        class Coroutine extends UnityEngine.YieldInstruction{ 
+        export class Coroutine extends UnityEngine.YieldInstruction{ 
             
         }
         
         /** Base class for all yield instructions. */
-        class YieldInstruction extends System.Object{ 
+        export class YieldInstruction extends System.Object{ 
             
             public constructor();
             
         }
         
         
-        interface ICanvasRaycastFilter{ 
+        export interface ICanvasRaycastFilter{ 
             /** Given a point and a camera is the raycast valid.
              * @param sp Screen position.
              * @param eventCamera Raycast camera.
@@ -3383,7 +3385,7 @@ declare module 'csharp' {
         }
         
         
-        interface ISerializationCallbackReceiver{ 
+        export interface ISerializationCallbackReceiver{ 
             
             OnBeforeSerialize():void;
             
@@ -3392,7 +3394,7 @@ declare module 'csharp' {
         }
         
         /** Interface to control the Mecanim animation system. */
-        class Animator extends UnityEngine.Behaviour{ 
+        export class Animator extends UnityEngine.Behaviour{ 
             /** Returns true if the current rig is optimizable with AnimatorUtility.OptimizeTransformHierarchy. */
             public get isOptimizable(): boolean;
             
@@ -3944,7 +3946,7 @@ declare module 'csharp' {
         }
         
         /** Interface for on-screen keyboards. Only native iPhone, Android, and Windows Store Apps are supported. */
-        class TouchScreenKeyboard extends System.Object{ 
+        export class TouchScreenKeyboard extends System.Object{ 
             /** Is touch screen keyboard supported. */
             public static get isSupported(): boolean;
             
@@ -4077,10 +4079,10 @@ declare module 'csharp' {
         }
         
         /** Enumeration of the different types of supported touchscreen keyboards. */
-        enum TouchScreenKeyboardType{ Default = 0, ASCIICapable = 1, NumbersAndPunctuation = 2, URL = 3, NumberPad = 4, PhonePad = 5, NamePhonePad = 6, EmailAddress = 7, NintendoNetworkAccount = 8, Social = 9, Search = 10, DecimalPad = 11, OneTimeCode = 12 }
+        export enum TouchScreenKeyboardType{ Default = 0, ASCIICapable = 1, NumbersAndPunctuation = 2, URL = 3, NumberPad = 4, PhonePad = 5, NamePhonePad = 6, EmailAddress = 7, NintendoNetworkAccount = 8, Social = 9, Search = 10, DecimalPad = 11, OneTimeCode = 12 }
         
         /** A UnityGUI event. */
-        class Event extends System.Object{ 
+        export class Event extends System.Object{ 
             
             public get rawType(): UnityEngine.EventType;
             
@@ -4175,11 +4177,11 @@ declare module 'csharp' {
         }
         
         /** AndroidJavaRunnable is the Unity representation of a java.lang.Runnable object. */
-        type AndroidJavaRunnable = () => void;
+        export type AndroidJavaRunnable = () => void;
         var AndroidJavaRunnable: {new (func: () => void): AndroidJavaRunnable;}
         
         
-        class AndroidJavaException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class AndroidJavaException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public get StackTrace(): string;
             
@@ -4187,7 +4189,7 @@ declare module 'csharp' {
         }
         
         /** AndroidJavaObject is the Unity representation of a generic instance of java.lang.Object. */
-        class AndroidJavaObject extends System.Object implements System.IDisposable{ 
+        export class AndroidJavaObject extends System.Object implements System.IDisposable{ 
             
             public Dispose():void;
             /** Call a Java method on an object. * @param methodName Specifies which method to call.
@@ -4220,7 +4222,7 @@ declare module 'csharp' {
         }
         
         /** AndroidJavaClass is the Unity representation of a generic instance of java.lang.Class. */
-        class AndroidJavaClass extends UnityEngine.AndroidJavaObject implements System.IDisposable{ 
+        export class AndroidJavaClass extends UnityEngine.AndroidJavaObject implements System.IDisposable{ 
             
             public constructor($className: string);
             
@@ -4241,12 +4243,12 @@ declare module 'csharp' {
         }
         
         /** This class can be used to implement any java interface. Any java vm method invocation matching the interface on the proxy object will automatically be passed to the c# implementation. */
-        class AndroidJavaProxy extends System.Object{ 
+        export class AndroidJavaProxy extends System.Object{ 
             
         }
         
         
-        class jvalue extends System.ValueType{ 
+        export class jvalue extends System.ValueType{ 
             
             public z: boolean;
             
@@ -4270,7 +4272,7 @@ declare module 'csharp' {
         
         /** Helper interface for JNI interaction; signature creation and method lookups.
         Note: Using raw JNI functions requires advanced knowledge of the Android Java Native Interface (JNI). Please take note. */
-        class AndroidJNIHelper extends System.Object{ 
+        export class AndroidJNIHelper extends System.Object{ 
             /** Set debug to true to log calls through the AndroidJNIHelper. */
             public static get debug(): boolean;
             public static set debug(value: boolean);
@@ -4355,7 +4357,7 @@ declare module 'csharp' {
         
         /** 'Raw' JNI interface to Android Java VM from Unity scripting (C#).
         Note: Using raw JNI functions requires advanced knowledge of the Android Java Native Interface (JNI). Please take note. */
-        class AndroidJNI extends System.Object{ 
+        export class AndroidJNI extends System.Object{ 
             
             public static AttachCurrentThread():number;
             
@@ -4663,24 +4665,24 @@ declare module 'csharp' {
         }
         
         /** Information about what animation clips is played and its weight. */
-        class AnimationInfo extends System.ValueType{ 
+        export class AnimationInfo extends System.ValueType{ 
             
         }
         
         /** The update mode of the Animator. */
-        enum AnimatorUpdateMode{ Normal = 0, AnimatePhysics = 1, UnscaledTime = 2 }
+        export enum AnimatorUpdateMode{ Normal = 0, AnimatePhysics = 1, UnscaledTime = 2 }
         
         /** IK Goal. */
-        enum AvatarIKGoal{ LeftFoot = 0, RightFoot = 1, LeftHand = 2, RightHand = 3 }
+        export enum AvatarIKGoal{ LeftFoot = 0, RightFoot = 1, LeftHand = 2, RightHand = 3 }
         
         /** IK Hint. */
-        enum AvatarIKHint{ LeftKnee = 0, RightKnee = 1, LeftElbow = 2, RightElbow = 3 }
+        export enum AvatarIKHint{ LeftKnee = 0, RightKnee = 1, LeftElbow = 2, RightElbow = 3 }
         
         /** Human Body Bones. */
-        enum HumanBodyBones{ Hips = 0, LeftUpperLeg = 1, RightUpperLeg = 2, LeftLowerLeg = 3, RightLowerLeg = 4, LeftFoot = 5, RightFoot = 6, Spine = 7, Chest = 8, UpperChest = 54, Neck = 9, Head = 10, LeftShoulder = 11, RightShoulder = 12, LeftUpperArm = 13, RightUpperArm = 14, LeftLowerArm = 15, RightLowerArm = 16, LeftHand = 17, RightHand = 18, LeftToes = 19, RightToes = 20, LeftEye = 21, RightEye = 22, Jaw = 23, LeftThumbProximal = 24, LeftThumbIntermediate = 25, LeftThumbDistal = 26, LeftIndexProximal = 27, LeftIndexIntermediate = 28, LeftIndexDistal = 29, LeftMiddleProximal = 30, LeftMiddleIntermediate = 31, LeftMiddleDistal = 32, LeftRingProximal = 33, LeftRingIntermediate = 34, LeftRingDistal = 35, LeftLittleProximal = 36, LeftLittleIntermediate = 37, LeftLittleDistal = 38, RightThumbProximal = 39, RightThumbIntermediate = 40, RightThumbDistal = 41, RightIndexProximal = 42, RightIndexIntermediate = 43, RightIndexDistal = 44, RightMiddleProximal = 45, RightMiddleIntermediate = 46, RightMiddleDistal = 47, RightRingProximal = 48, RightRingIntermediate = 49, RightRingDistal = 50, RightLittleProximal = 51, RightLittleIntermediate = 52, RightLittleDistal = 53, LastBone = 55 }
+        export enum HumanBodyBones{ Hips = 0, LeftUpperLeg = 1, RightUpperLeg = 2, LeftLowerLeg = 3, RightLowerLeg = 4, LeftFoot = 5, RightFoot = 6, Spine = 7, Chest = 8, UpperChest = 54, Neck = 9, Head = 10, LeftShoulder = 11, RightShoulder = 12, LeftUpperArm = 13, RightUpperArm = 14, LeftLowerArm = 15, RightLowerArm = 16, LeftHand = 17, RightHand = 18, LeftToes = 19, RightToes = 20, LeftEye = 21, RightEye = 22, Jaw = 23, LeftThumbProximal = 24, LeftThumbIntermediate = 25, LeftThumbDistal = 26, LeftIndexProximal = 27, LeftIndexIntermediate = 28, LeftIndexDistal = 29, LeftMiddleProximal = 30, LeftMiddleIntermediate = 31, LeftMiddleDistal = 32, LeftRingProximal = 33, LeftRingIntermediate = 34, LeftRingDistal = 35, LeftLittleProximal = 36, LeftLittleIntermediate = 37, LeftLittleDistal = 38, RightThumbProximal = 39, RightThumbIntermediate = 40, RightThumbDistal = 41, RightIndexProximal = 42, RightIndexIntermediate = 43, RightIndexDistal = 44, RightMiddleProximal = 45, RightMiddleIntermediate = 46, RightMiddleDistal = 47, RightRingProximal = 48, RightRingIntermediate = 49, RightRingDistal = 50, RightLittleProximal = 51, RightLittleIntermediate = 52, RightLittleDistal = 53, LastBone = 55 }
         
         /** StateMachineBehaviour is a component that can be added to a state machine state. It's the base class every script on a state derives from. */
-        class StateMachineBehaviour extends UnityEngine.ScriptableObject{ 
+        export class StateMachineBehaviour extends UnityEngine.ScriptableObject{ 
             
             public OnStateEnter($animator: UnityEngine.Animator, $stateInfo: UnityEngine.AnimatorStateInfo, $layerIndex: number):void;
             
@@ -4717,7 +4719,7 @@ declare module 'csharp' {
         }
         
         /** A class you can derive from if you want to create objects that don't need to be attached to game objects. */
-        class ScriptableObject extends UnityEngine.Object{ 
+        export class ScriptableObject extends UnityEngine.Object{ 
             /** Creates an instance of a scriptable object.
              * @param className The type of the ScriptableObject to create, as the name of the type.
              * @param type The type of the ScriptableObject to create, as a System.Type instance.
@@ -4736,7 +4738,7 @@ declare module 'csharp' {
         }
         
         /** Information about the current or next state. */
-        class AnimatorStateInfo extends System.ValueType{ 
+        export class AnimatorStateInfo extends System.ValueType{ 
             /** The full path hash for this state. */
             public get fullPathHash(): number;
             
@@ -4769,7 +4771,7 @@ declare module 'csharp' {
         }
         
         /** Information about the current transition. */
-        class AnimatorTransitionInfo extends System.ValueType{ 
+        export class AnimatorTransitionInfo extends System.ValueType{ 
             /** The hash name of the Transition. */
             public get fullPathHash(): number;
             
@@ -4799,7 +4801,7 @@ declare module 'csharp' {
         }
         
         /** Information about clip being played and blended by the Animator. */
-        class AnimatorClipInfo extends System.ValueType{ 
+        export class AnimatorClipInfo extends System.ValueType{ 
             /** Returns the animation clip played by the Animator. */
             public get clip(): UnityEngine.AnimationClip;
             
@@ -4810,7 +4812,7 @@ declare module 'csharp' {
         }
         
         /** Used to communicate between scripting and the controller. Some parameters can be set in scripting and used by the controller, while other parameters are based on Custom Curves in Animation Clips and can be sampled using the scripting API. */
-        class AnimatorControllerParameter extends System.Object{ 
+        export class AnimatorControllerParameter extends System.Object{ 
             /** Returns the hash of the parameter based on its name. */
             public get nameHash(): number;
             
@@ -4832,10 +4834,10 @@ declare module 'csharp' {
         }
         
         /** Target. */
-        enum AvatarTarget{ Root = 0, Body = 1, LeftFoot = 2, RightFoot = 3, LeftHand = 4, RightHand = 5 }
+        export enum AvatarTarget{ Root = 0, Body = 1, LeftFoot = 2, RightFoot = 3, LeftHand = 4, RightHand = 5 }
         
         /** Use this struct to specify the position and rotation weight mask for Animator.MatchTarget. */
-        class MatchTargetWeightMask extends System.ValueType{ 
+        export class MatchTargetWeightMask extends System.ValueType{ 
             /** Position XYZ weight. */
             public get positionXYZWeight(): UnityEngine.Vector3;
             public set positionXYZWeight(value: UnityEngine.Vector3);
@@ -4850,13 +4852,13 @@ declare module 'csharp' {
         }
         
         /** Culling mode for the Animator. */
-        enum AnimatorCullingMode{ AlwaysAnimate = 0, CullUpdateTransforms = 1, CullCompletely = 2, BasedOnRenderers = 1 }
+        export enum AnimatorCullingMode{ AlwaysAnimate = 0, CullUpdateTransforms = 1, CullCompletely = 2, BasedOnRenderers = 1 }
         
         /** The mode of the Animator's recorder. */
-        enum AnimatorRecorderMode{ Offline = 0, Playback = 1, Record = 2 }
+        export enum AnimatorRecorderMode{ Offline = 0, Playback = 1, Record = 2 }
         
         /** The runtime representation of the AnimatorController. Use this representation to change the Animator Controller during runtime. */
-        class RuntimeAnimatorController extends UnityEngine.Object{ 
+        export class RuntimeAnimatorController extends UnityEngine.Object{ 
             /** Retrieves all AnimationClip used by the controller. */
             public get animationClips(): System.Array$1<UnityEngine.AnimationClip>;
             
@@ -4864,7 +4866,7 @@ declare module 'csharp' {
         }
         
         /** Avatar definition. */
-        class Avatar extends UnityEngine.Object{ 
+        export class Avatar extends UnityEngine.Object{ 
             /** Return true if this avatar is a valid mecanim avatar. It can be a generic avatar or a human avatar. */
             public get isValid(): boolean;
             
@@ -4878,14 +4880,14 @@ declare module 'csharp' {
         }
         
         
-        interface IAnimationClipSource{ 
+        export interface IAnimationClipSource{ 
             
             GetAnimationClips($results: System.Collections.Generic.List$1<UnityEngine.AnimationClip>):void;
             
         }
         
         /** Stores keyframe based animations. */
-        class AnimationClip extends UnityEngine.Motion{ 
+        export class AnimationClip extends UnityEngine.Motion{ 
             /** Animation length in seconds. (Read Only) */
             public get length(): number;
             
@@ -4947,7 +4949,7 @@ declare module 'csharp' {
         }
         
         /** Base class for AnimationClips and BlendTrees. */
-        class Motion extends UnityEngine.Object{ 
+        export class Motion extends UnityEngine.Object{ 
             
             public get averageDuration(): number;
             
@@ -4973,29 +4975,29 @@ declare module 'csharp' {
         }
         
         /** SharedBetweenAnimatorsAttribute is an attribute that specify that this StateMachineBehaviour should be instantiate only once and shared among all Animator instance. This attribute reduce the memory footprint for each controller instance. */
-        class SharedBetweenAnimatorsAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class SharedBetweenAnimatorsAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Used by Animation.Play function. */
-        enum PlayMode{ StopSameLayer = 0, StopAll = 4 }
+        export enum PlayMode{ StopSameLayer = 0, StopAll = 4 }
         
         /** Used by Animation.Play function. */
-        enum QueueMode{ CompleteOthers = 0, PlayNow = 2 }
+        export enum QueueMode{ CompleteOthers = 0, PlayNow = 2 }
         
         /** Used by Animation.Play function. */
-        enum AnimationBlendMode{ Blend = 0, Additive = 1 }
+        export enum AnimationBlendMode{ Blend = 0, Additive = 1 }
         
         
-        enum AnimationPlayMode{ Stop = 0, Queue = 1, Mix = 2 }
+        export enum AnimationPlayMode{ Stop = 0, Queue = 1, Mix = 2 }
         
         /** This enum controlls culling of Animation component. */
-        enum AnimationCullingType{ AlwaysAnimate = 0, BasedOnRenderers = 1, BasedOnClipBounds = 2, BasedOnUserBounds = 3 }
+        export enum AnimationCullingType{ AlwaysAnimate = 0, BasedOnRenderers = 1, BasedOnClipBounds = 2, BasedOnUserBounds = 3 }
         
         /** The animation component is used to play back animations. */
-        class Animation extends UnityEngine.Behaviour implements System.Collections.IEnumerable{ 
+        export class Animation extends UnityEngine.Behaviour implements System.Collections.IEnumerable{ 
             /** The default animation. */
             public get clip(): UnityEngine.AnimationClip;
             public set clip(value: UnityEngine.AnimationClip);
@@ -5091,10 +5093,10 @@ declare module 'csharp' {
         }
         
         /** Determines how time is treated outside of the keyframed range of an AnimationClip or AnimationCurve. */
-        enum WrapMode{ Once = 1, Loop = 2, PingPong = 4, Default = 0, ClampForever = 8, Clamp = 1 }
+        export enum WrapMode{ Once = 1, Loop = 2, PingPong = 4, Default = 0, ClampForever = 8, Clamp = 1 }
         
         /** The AnimationState gives full control over animation blending. */
-        class AnimationState extends UnityEngine.TrackedReference{ 
+        export class AnimationState extends UnityEngine.TrackedReference{ 
             /** Enables / disables the animation. */
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -5147,7 +5149,7 @@ declare module 'csharp' {
         }
         
         
-        class TrackedReference extends System.Object{ 
+        export class TrackedReference extends System.Object{ 
             
             public static op_Equality($x: UnityEngine.TrackedReference, $y: UnityEngine.TrackedReference):boolean;
             
@@ -5158,7 +5160,7 @@ declare module 'csharp' {
         }
         
         /** Represents an axis aligned bounding box. */
-        class Bounds extends System.ValueType implements System.IEquatable$1<UnityEngine.Bounds>, System.IFormattable{ 
+        export class Bounds extends System.ValueType implements System.IEquatable$1<UnityEngine.Bounds>, System.IFormattable{ 
             /** The center of the bounding box. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -5229,7 +5231,7 @@ declare module 'csharp' {
         }
         
         /** AnimationEvent lets you call a script function similar to SendMessage as part of playing back an animation. */
-        class AnimationEvent extends System.Object{ 
+        export class AnimationEvent extends System.Object{ 
             /** String parameter that is stored in the event and will be sent to the function. */
             public get stringParameter(): string;
             public set stringParameter(value: string);
@@ -5272,7 +5274,7 @@ declare module 'csharp' {
         }
         
         /** Store a collection of Keyframes that can be evaluated over time. */
-        class AnimationCurve extends System.Object implements System.IEquatable$1<UnityEngine.AnimationCurve>{ 
+        export class AnimationCurve extends System.Object implements System.IEquatable$1<UnityEngine.AnimationCurve>{ 
             /** All keys defined in the animation curve. */
             public get keys(): System.Array$1<UnityEngine.Keyframe>;
             public set keys(value: System.Array$1<UnityEngine.Keyframe>);
@@ -5355,13 +5357,13 @@ declare module 'csharp' {
         }
         
         /** The type of the parameter. */
-        enum AnimatorControllerParameterType{ Float = 1, Int = 3, Bool = 4, Trigger = 9 }
+        export enum AnimatorControllerParameterType{ Float = 1, Int = 3, Bool = 4, Trigger = 9 }
         
         /** Describe the unit of a duration. */
-        enum DurationUnit{ Fixed = 0, Normalized = 1 }
+        export enum DurationUnit{ Fixed = 0, Normalized = 1 }
         
         /** Interface to control Animator Override Controller. */
-        class AnimatorOverrideController extends UnityEngine.RuntimeAnimatorController{ 
+        export class AnimatorOverrideController extends UnityEngine.RuntimeAnimatorController{ 
             /** The Runtime Animator Controller that the Animator Override Controller overrides. */
             public get runtimeAnimatorController(): UnityEngine.RuntimeAnimatorController;
             public set runtimeAnimatorController(value: UnityEngine.RuntimeAnimatorController);
@@ -5388,12 +5390,12 @@ declare module 'csharp' {
         }
         
         /** This class defines a pair of clips used by AnimatorOverrideController. */
-        class AnimationClipPair extends System.Object{ 
+        export class AnimationClipPair extends System.Object{ 
             
         }
         
         /** Various utilities for animator manipulation. */
-        class AnimatorUtility extends System.Object{ 
+        export class AnimatorUtility extends System.Object{ 
             /** This function will remove all transform hierarchy under GameObject, the animator will write directly transform matrices into the skin mesh matrices saving alot of CPU cycles. * @param go GameObject to Optimize.
              * @param exposedTransforms List of transform name to expose.
              */
@@ -5407,25 +5409,25 @@ declare module 'csharp' {
         }
         
         /** Enumeration of all the muscles in the body. */
-        enum BodyDof{ SpineFrontBack = 0, SpineLeftRight = 1, SpineRollLeftRight = 2, ChestFrontBack = 3, ChestLeftRight = 4, ChestRollLeftRight = 5, UpperChestFrontBack = 6, UpperChestLeftRight = 7, UpperChestRollLeftRight = 8, LastBodyDof = 9 }
+        export enum BodyDof{ SpineFrontBack = 0, SpineLeftRight = 1, SpineRollLeftRight = 2, ChestFrontBack = 3, ChestLeftRight = 4, ChestRollLeftRight = 5, UpperChestFrontBack = 6, UpperChestLeftRight = 7, UpperChestRollLeftRight = 8, LastBodyDof = 9 }
         
         /** Enumeration of all the muscles in the head. */
-        enum HeadDof{ NeckFrontBack = 0, NeckLeftRight = 1, NeckRollLeftRight = 2, HeadFrontBack = 3, HeadLeftRight = 4, HeadRollLeftRight = 5, LeftEyeDownUp = 6, LeftEyeInOut = 7, RightEyeDownUp = 8, RightEyeInOut = 9, JawDownUp = 10, JawLeftRight = 11, LastHeadDof = 12 }
+        export enum HeadDof{ NeckFrontBack = 0, NeckLeftRight = 1, NeckRollLeftRight = 2, HeadFrontBack = 3, HeadLeftRight = 4, HeadRollLeftRight = 5, LeftEyeDownUp = 6, LeftEyeInOut = 7, RightEyeDownUp = 8, RightEyeInOut = 9, JawDownUp = 10, JawLeftRight = 11, LastHeadDof = 12 }
         
         /** Enumeration of all the muscles in a leg. */
-        enum LegDof{ UpperLegFrontBack = 0, UpperLegInOut = 1, UpperLegRollInOut = 2, LegCloseOpen = 3, LegRollInOut = 4, FootCloseOpen = 5, FootInOut = 6, ToesUpDown = 7, LastLegDof = 8 }
+        export enum LegDof{ UpperLegFrontBack = 0, UpperLegInOut = 1, UpperLegRollInOut = 2, LegCloseOpen = 3, LegRollInOut = 4, FootCloseOpen = 5, FootInOut = 6, ToesUpDown = 7, LastLegDof = 8 }
         
         /** Enumeration of all the muscles in an arm. */
-        enum ArmDof{ ShoulderDownUp = 0, ShoulderFrontBack = 1, ArmDownUp = 2, ArmFrontBack = 3, ArmRollInOut = 4, ForeArmCloseOpen = 5, ForeArmRollInOut = 6, HandDownUp = 7, HandInOut = 8, LastArmDof = 9 }
+        export enum ArmDof{ ShoulderDownUp = 0, ShoulderFrontBack = 1, ArmDownUp = 2, ArmFrontBack = 3, ArmRollInOut = 4, ForeArmCloseOpen = 5, ForeArmRollInOut = 6, HandDownUp = 7, HandInOut = 8, LastArmDof = 9 }
         
         /** Enumeration of all the muscles in a finger. */
-        enum FingerDof{ ProximalDownUp = 0, ProximalInOut = 1, IntermediateCloseOpen = 2, DistalCloseOpen = 3, LastFingerDof = 4 }
+        export enum FingerDof{ ProximalDownUp = 0, ProximalInOut = 1, IntermediateCloseOpen = 2, DistalCloseOpen = 3, LastFingerDof = 4 }
         
         /** Enumeration of all the parts in a human. */
-        enum HumanPartDof{ Body = 0, Head = 1, LeftLeg = 2, RightLeg = 3, LeftArm = 4, RightArm = 5, LeftThumb = 6, LeftIndex = 7, LeftMiddle = 8, LeftRing = 9, LeftLittle = 10, RightThumb = 11, RightIndex = 12, RightMiddle = 13, RightRing = 14, RightLittle = 15, LastHumanPartDof = 16 }
+        export enum HumanPartDof{ Body = 0, Head = 1, LeftLeg = 2, RightLeg = 3, LeftArm = 4, RightArm = 5, LeftThumb = 6, LeftIndex = 7, LeftMiddle = 8, LeftRing = 9, LeftLittle = 10, RightThumb = 11, RightIndex = 12, RightMiddle = 13, RightRing = 14, RightLittle = 15, LastHumanPartDof = 16 }
         
         /** Class that holds humanoid avatar parameters to pass to the AvatarBuilder.BuildHumanAvatar function. */
-        class HumanDescription extends System.ValueType{ 
+        export class HumanDescription extends System.ValueType{ 
             /** Mapping between Mecanim bone names and bone names in the rig. */
             public human: System.Array$1<UnityEngine.HumanBone>;
             /** List of bone Transforms to include in the model. */
@@ -5458,7 +5460,7 @@ declare module 'csharp' {
         }
         
         /** Details of the Transform name mapped to the skeleton bone of a model and its default position and rotation in the T-pose. */
-        class SkeletonBone extends System.ValueType{ 
+        export class SkeletonBone extends System.ValueType{ 
             /** The name of the Transform mapped to the bone. */
             public name: string;
             /** The T-pose position of the bone in local space. */
@@ -5471,7 +5473,7 @@ declare module 'csharp' {
         }
         
         /** This class stores the rotation limits that define the muscle for a single human bone. */
-        class HumanLimit extends System.ValueType{ 
+        export class HumanLimit extends System.ValueType{ 
             /** Should this limit use the default values? */
             public get useDefaultValues(): boolean;
             public set useDefaultValues(value: boolean);
@@ -5491,7 +5493,7 @@ declare module 'csharp' {
         }
         
         /** The mapping between a bone in the model and the conceptual bone in the Mecanim human anatomy. */
-        class HumanBone extends System.ValueType{ 
+        export class HumanBone extends System.ValueType{ 
             /** The rotation limits that define the muscle for this bone. */
             public limit: UnityEngine.HumanLimit;
             /** The name of the bone to which the Mecanim human bone is mapped. */
@@ -5504,7 +5506,7 @@ declare module 'csharp' {
         }
         
         /** Class to build avatars from user scripts. */
-        class AvatarBuilder extends System.Object{ 
+        export class AvatarBuilder extends System.Object{ 
             /** Create a humanoid avatar.
              * @param go Root object of your transform hierachy. It must be the top most gameobject when you create the avatar.
              * @param humanDescription Humanoid description of the avatar.
@@ -5521,10 +5523,10 @@ declare module 'csharp' {
         }
         
         /** Avatar body part. */
-        enum AvatarMaskBodyPart{ Root = 0, Body = 1, Head = 2, LeftLeg = 3, RightLeg = 4, LeftArm = 5, RightArm = 6, LeftFingers = 7, RightFingers = 8, LeftFootIK = 9, RightFootIK = 10, LeftHandIK = 11, RightHandIK = 12, LastBodyPart = 13 }
+        export enum AvatarMaskBodyPart{ Root = 0, Body = 1, Head = 2, LeftLeg = 3, RightLeg = 4, LeftArm = 5, RightArm = 6, LeftFingers = 7, RightFingers = 8, LeftFootIK = 9, RightFootIK = 10, LeftHandIK = 11, RightHandIK = 12, LastBodyPart = 13 }
         
         /** AvatarMask is used to mask out humanoid body parts and transforms. */
-        class AvatarMask extends UnityEngine.Object{ 
+        export class AvatarMask extends UnityEngine.Object{ 
             /** Number of transforms. */
             public get transformCount(): number;
             public set transformCount(value: number);
@@ -5567,7 +5569,7 @@ declare module 'csharp' {
         }
         
         /** Retargetable humanoid pose. */
-        class HumanPose extends System.ValueType{ 
+        export class HumanPose extends System.ValueType{ 
             /** The human body position for that pose. */
             public bodyPosition: UnityEngine.Vector3;
             /** The human body orientation for that pose. */
@@ -5578,7 +5580,7 @@ declare module 'csharp' {
         }
         
         /** Use this class to create, read, and write the HumanPose for a humanoid avatar skeleton hierarchy or an avatar pose. */
-        class HumanPoseHandler extends System.Object implements System.IDisposable{ 
+        export class HumanPoseHandler extends System.Object implements System.IDisposable{ 
             
             public Dispose():void;
             /** Computes a human pose from the avatar skeleton, stores the pose in the human pose handler, and returns the human pose. * @param humanPose The output human pose. In the human pose, the bodyPosition and bodyRotation are the position and rotation of the approximate center of mass of the humanoid in world space. bodyPosition is normalized: the position is divided by avatar human scale.
@@ -5607,7 +5609,7 @@ declare module 'csharp' {
         }
         
         /** Details of all the human bone and muscle types defined by Mecanim. */
-        class HumanTrait extends System.Object{ 
+        export class HumanTrait extends System.Object{ 
             /** The number of human muscle types defined by Mecanim. */
             public static get MuscleCount(): number;
             
@@ -5655,10 +5657,10 @@ declare module 'csharp' {
         }
         
         /** The result of an Asset Bundle Load or Recompress Operation. */
-        enum AssetBundleLoadResult{ Success = 0, Cancelled = 1, NotMatchingCrc = 2, FailedCache = 3, NotValidAssetBundle = 4, NoSerializedData = 5, NotCompatible = 6, AlreadyLoaded = 7, FailedRead = 8, FailedDecompression = 9, FailedWrite = 10, FailedDeleteRecompressionTarget = 11, RecompressionTargetIsLoaded = 12, RecompressionTargetExistsButNotArchive = 13 }
+        export enum AssetBundleLoadResult{ Success = 0, Cancelled = 1, NotMatchingCrc = 2, FailedCache = 3, NotValidAssetBundle = 4, NoSerializedData = 5, NotCompatible = 6, AlreadyLoaded = 7, FailedRead = 8, FailedDecompression = 9, FailedWrite = 10, FailedDeleteRecompressionTarget = 11, RecompressionTargetIsLoaded = 12, RecompressionTargetExistsButNotArchive = 13 }
         
         /** AssetBundles let you stream additional assets via the UnityWebRequest class and instantiate them at runtime. AssetBundles are created via BuildPipeline.BuildAssetBundle. */
-        class AssetBundle extends UnityEngine.Object{ 
+        export class AssetBundle extends UnityEngine.Object{ 
             /** Return true if the AssetBundle is a streamed Scene AssetBundle. */
             public get isStreamedSceneAssetBundle(): boolean;
             
@@ -5778,7 +5780,7 @@ declare module 'csharp' {
         }
         
         /** Asynchronous create request for an AssetBundle. */
-        class AssetBundleCreateRequest extends UnityEngine.AsyncOperation{ 
+        export class AssetBundleCreateRequest extends UnityEngine.AsyncOperation{ 
             /** Asset object being loaded (Read Only). */
             public get assetBundle(): UnityEngine.AssetBundle;
             
@@ -5788,7 +5790,7 @@ declare module 'csharp' {
         }
         
         /** Asynchronous operation coroutine. */
-        class AsyncOperation extends UnityEngine.YieldInstruction{ 
+        export class AsyncOperation extends UnityEngine.YieldInstruction{ 
             /** Has the operation finished? (Read Only) */
             public get isDone(): boolean;
             
@@ -5811,7 +5813,7 @@ declare module 'csharp' {
         }
         
         /** Asynchronous load request from an AssetBundle. */
-        class AssetBundleRequest extends UnityEngine.ResourceRequest{ 
+        export class AssetBundleRequest extends UnityEngine.ResourceRequest{ 
             /** Asset object being loaded (Read Only). */
             public get asset(): UnityEngine.Object;
             
@@ -5824,7 +5826,7 @@ declare module 'csharp' {
         }
         
         /** Asynchronous load request from the Resources bundle. */
-        class ResourceRequest extends UnityEngine.AsyncOperation{ 
+        export class ResourceRequest extends UnityEngine.AsyncOperation{ 
             /** Asset object being loaded (Read Only). */
             public get asset(): UnityEngine.Object;
             
@@ -5834,7 +5836,7 @@ declare module 'csharp' {
         }
         
         /** Asynchronous AssetBundle recompression from one compression method and level to another. */
-        class AssetBundleRecompressOperation extends UnityEngine.AsyncOperation{ 
+        export class AssetBundleRecompressOperation extends UnityEngine.AsyncOperation{ 
             /** A string describing the recompression operation result (Read Only). */
             public get humanReadableResult(): string;
             
@@ -5856,7 +5858,7 @@ declare module 'csharp' {
         }
         
         /** Contains information about compression methods, compression levels and block sizes that are supported by Asset Bundle compression at build time and recompression at runtime. */
-        class BuildCompression extends System.ValueType{ 
+        export class BuildCompression extends System.ValueType{ 
             /** Uncompressed Asset Bundle. */
             public static Uncompressed: UnityEngine.BuildCompression;
             /** LZ4HC "Chunk Based" Compression. */
@@ -5880,10 +5882,10 @@ declare module 'csharp' {
         }
         
         /** Priority of a thread. */
-        enum ThreadPriority{ Low = 0, BelowNormal = 1, Normal = 2, High = 4 }
+        export enum ThreadPriority{ Low = 0, BelowNormal = 1, Normal = 2, High = 4 }
         
         /** Manifest for all the AssetBundles in the build. */
-        class AssetBundleManifest extends UnityEngine.Object{ 
+        export class AssetBundleManifest extends UnityEngine.Object{ 
             
             public GetAllAssetBundles():System.Array$1<string>;
             
@@ -5905,7 +5907,7 @@ declare module 'csharp' {
         }
         
         /** Represents  a 128-bit hash value. */
-        class Hash128 extends System.ValueType implements System.IComparable, System.IComparable$1<UnityEngine.Hash128>, System.IEquatable$1<UnityEngine.Hash128>{ 
+        export class Hash128 extends System.ValueType implements System.IComparable, System.IComparable$1<UnityEngine.Hash128>, System.IEquatable$1<UnityEngine.Hash128>{ 
             /** Returns true is the hash value is valid. (Read Only) */
             public get isValid(): boolean;
             
@@ -5968,13 +5970,13 @@ declare module 'csharp' {
         }
         
         /** Compression Method for Asset Bundles. */
-        enum CompressionType{ None = 0, Lzma = 1, Lz4 = 2, Lz4HC = 3 }
+        export enum CompressionType{ None = 0, Lzma = 1, Lz4 = 2, Lz4HC = 3 }
         
         /** Compression Levels relate to how much time should be spent compressing Assets into an Asset Bundle. */
-        enum CompressionLevel{ None = 0, Fastest = 1, Fast = 2, Normal = 3, High = 4, Maximum = 5 }
+        export enum CompressionLevel{ None = 0, Fastest = 1, Fast = 2, Normal = 3, High = 4, Maximum = 5 }
         
         /** Controls the global audio settings from script. */
-        class AudioSettings extends System.Object{ 
+        export class AudioSettings extends System.Object{ 
             /** Returns the speaker mode capability of the current audio driver. (Read Only) */
             public static get driverCapabilities(): UnityEngine.AudioSpeakerMode;
             
@@ -6010,10 +6012,10 @@ declare module 'csharp' {
         }
         
         /** These are speaker types defined for use with AudioSettings.speakerMode. */
-        enum AudioSpeakerMode{ Raw = 0, Mono = 1, Stereo = 2, Quad = 3, Surround = 4, Mode5point1 = 5, Mode7point1 = 6, Prologic = 7 }
+        export enum AudioSpeakerMode{ Raw = 0, Mono = 1, Stereo = 2, Quad = 3, Surround = 4, Mode5point1 = 5, Mode7point1 = 6, Prologic = 7 }
         
         /** Specifies the current properties or desired properties to be set for the audio system. */
-        class AudioConfiguration extends System.ValueType{ 
+        export class AudioConfiguration extends System.ValueType{ 
             /** The current speaker mode used by the audio output device. */
             public speakerMode: UnityEngine.AudioSpeakerMode;
             /** The length of the DSP buffer in samples determining the latency of sounds by the audio output device. */
@@ -6028,7 +6030,7 @@ declare module 'csharp' {
         }
         
         /** A representation of audio sources in 3D. */
-        class AudioSource extends UnityEngine.AudioBehaviour{ 
+        export class AudioSource extends UnityEngine.AudioBehaviour{ 
             /** The volume of the audio source (0.0 to 1.0). */
             public get volume(): number;
             public set volume(value: number);
@@ -6203,14 +6205,14 @@ declare module 'csharp' {
         }
         
         
-        class AudioBehaviour extends UnityEngine.Behaviour{ 
+        export class AudioBehaviour extends UnityEngine.Behaviour{ 
             
             public constructor();
             
         }
         
         /** A container for audio data. */
-        class AudioClip extends UnityEngine.Object{ 
+        export class AudioClip extends UnityEngine.Object{ 
             /** The length of the audio clip in seconds. (Read Only) */
             public get length(): number;
             
@@ -6266,19 +6268,19 @@ declare module 'csharp' {
         }
         
         /** Describes when an AudioSource or AudioListener is updated. */
-        enum AudioVelocityUpdateMode{ Auto = 0, Fixed = 1, Dynamic = 2 }
+        export enum AudioVelocityUpdateMode{ Auto = 0, Fixed = 1, Dynamic = 2 }
         
         /** This defines the curve type of the different custom curves that can be queried and set within the AudioSource. */
-        enum AudioSourceCurveType{ CustomRolloff = 0, SpatialBlend = 1, ReverbZoneMix = 2, Spread = 3 }
+        export enum AudioSourceCurveType{ CustomRolloff = 0, SpatialBlend = 1, ReverbZoneMix = 2, Spread = 3 }
         
         /** Rolloff modes that a 3D sound can have in an audio source. */
-        enum AudioRolloffMode{ Logarithmic = 0, Linear = 1, Custom = 2 }
+        export enum AudioRolloffMode{ Logarithmic = 0, Linear = 1, Custom = 2 }
         
         /** Spectrum analysis windowing types. */
-        enum FFTWindow{ Rectangular = 0, Triangle = 1, Hamming = 2, Hanning = 3, Blackman = 4, BlackmanHarris = 5 }
+        export enum FFTWindow{ Rectangular = 0, Triangle = 1, Hamming = 2, Hanning = 3, Blackman = 4, BlackmanHarris = 5 }
         
         /** The Audio Low Pass Filter passes low frequencies of an AudioSource or all sounds reaching an AudioListener, while removing frequencies higher than the Cutoff Frequency. */
-        class AudioLowPassFilter extends UnityEngine.Behaviour{ 
+        export class AudioLowPassFilter extends UnityEngine.Behaviour{ 
             /** Returns or sets the current custom frequency cutoff curve. */
             public get customCutoffCurve(): UnityEngine.AnimationCurve;
             public set customCutoffCurve(value: UnityEngine.AnimationCurve);
@@ -6294,7 +6296,7 @@ declare module 'csharp' {
         }
         
         /** The Audio High Pass Filter passes high frequencies of an AudioSource, and cuts off signals with frequencies lower than the Cutoff Frequency. */
-        class AudioHighPassFilter extends UnityEngine.Behaviour{ 
+        export class AudioHighPassFilter extends UnityEngine.Behaviour{ 
             /** Highpass cutoff frequency in hz. 10.0 to 22000.0. Default = 5000.0. */
             public get cutoffFrequency(): number;
             public set cutoffFrequency(value: number);
@@ -6307,7 +6309,7 @@ declare module 'csharp' {
         }
         
         /** The Audio Reverb Filter takes an Audio Clip and distorts it to create a custom reverb effect. */
-        class AudioReverbFilter extends UnityEngine.Behaviour{ 
+        export class AudioReverbFilter extends UnityEngine.Behaviour{ 
             /** Set/Get reverb preset properties. */
             public get reverbPreset(): UnityEngine.AudioReverbPreset;
             public set reverbPreset(value: UnityEngine.AudioReverbPreset);
@@ -6359,19 +6361,19 @@ declare module 'csharp' {
         }
         
         /** Reverb presets used by the Reverb Zone class and the audio reverb filter. */
-        enum AudioReverbPreset{ Off = 0, Generic = 1, PaddedCell = 2, Room = 3, Bathroom = 4, Livingroom = 5, Stoneroom = 6, Auditorium = 7, Concerthall = 8, Cave = 9, Arena = 10, Hangar = 11, CarpetedHallway = 12, Hallway = 13, StoneCorridor = 14, Alley = 15, Forest = 16, City = 17, Mountains = 18, Quarry = 19, Plain = 20, ParkingLot = 21, SewerPipe = 22, Underwater = 23, Drugged = 24, Dizzy = 25, Psychotic = 26, User = 27 }
+        export enum AudioReverbPreset{ Off = 0, Generic = 1, PaddedCell = 2, Room = 3, Bathroom = 4, Livingroom = 5, Stoneroom = 6, Auditorium = 7, Concerthall = 8, Cave = 9, Arena = 10, Hangar = 11, CarpetedHallway = 12, Hallway = 13, StoneCorridor = 14, Alley = 15, Forest = 16, City = 17, Mountains = 18, Quarry = 19, Plain = 20, ParkingLot = 21, SewerPipe = 22, Underwater = 23, Drugged = 24, Dizzy = 25, Psychotic = 26, User = 27 }
         
         /** Value describing the current load state of the audio data associated with an AudioClip. */
-        enum AudioDataLoadState{ Unloaded = 0, Loading = 1, Loaded = 2, Failed = 3 }
+        export enum AudioDataLoadState{ Unloaded = 0, Loading = 1, Loaded = 2, Failed = 3 }
         
         /** An enum containing different compression types. */
-        enum AudioCompressionFormat{ PCM = 0, Vorbis = 1, ADPCM = 2, MP3 = 3, VAG = 4, HEVAG = 5, XMA = 6, AAC = 7, GCADPCM = 8, ATRAC9 = 9 }
+        export enum AudioCompressionFormat{ PCM = 0, Vorbis = 1, ADPCM = 2, MP3 = 3, VAG = 4, HEVAG = 5, XMA = 6, AAC = 7, GCADPCM = 8, ATRAC9 = 9 }
         
         /** Determines how the audio clip is loaded in. */
-        enum AudioClipLoadType{ DecompressOnLoad = 0, CompressedInMemory = 1, Streaming = 2 }
+        export enum AudioClipLoadType{ DecompressOnLoad = 0, CompressedInMemory = 1, Streaming = 2 }
         
         /** Representation of a listener in 3D space. */
-        class AudioListener extends UnityEngine.AudioBehaviour{ 
+        export class AudioListener extends UnityEngine.AudioBehaviour{ 
             /** Controls the game sound volume (0.0 to 1.0). */
             public static get volume(): number;
             public static set volume(value: number);
@@ -6396,7 +6398,7 @@ declare module 'csharp' {
         }
         
         /** Reverb Zones are used when you want to create location based ambient effects in the Scene. */
-        class AudioReverbZone extends UnityEngine.Behaviour{ 
+        export class AudioReverbZone extends UnityEngine.Behaviour{ 
             /** The distance from the centerpoint that the reverb will have full effect at. Default = 10.0. */
             public get minDistance(): number;
             public set minDistance(value: number);
@@ -6451,7 +6453,7 @@ declare module 'csharp' {
         }
         
         /** The Audio Distortion Filter distorts the sound from an AudioSource or sounds reaching the AudioListener. */
-        class AudioDistortionFilter extends UnityEngine.Behaviour{ 
+        export class AudioDistortionFilter extends UnityEngine.Behaviour{ 
             /** Distortion value. 0.0 to 1.0. Default = 0.5. */
             public get distortionLevel(): number;
             public set distortionLevel(value: number);
@@ -6461,7 +6463,7 @@ declare module 'csharp' {
         }
         
         /** The Audio Echo Filter repeats a sound after a given Delay, attenuating the repetitions based on the Decay Ratio. */
-        class AudioEchoFilter extends UnityEngine.Behaviour{ 
+        export class AudioEchoFilter extends UnityEngine.Behaviour{ 
             /** Echo delay in ms. 10 to 5000. Default = 500. */
             public get delay(): number;
             public set delay(value: number);
@@ -6480,7 +6482,7 @@ declare module 'csharp' {
         }
         
         /** The Audio Chorus Filter takes an Audio Clip and processes it creating a chorus effect. */
-        class AudioChorusFilter extends UnityEngine.Behaviour{ 
+        export class AudioChorusFilter extends UnityEngine.Behaviour{ 
             /** Volume of original signal to pass to output. 0.0 to 1.0. Default = 0.5. */
             public get dryMix(): number;
             public set dryMix(value: number);
@@ -6508,7 +6510,7 @@ declare module 'csharp' {
         }
         
         /** Use this class to record to an AudioClip using a connected microphone. */
-        class Microphone extends System.Object{ 
+        export class Microphone extends System.Object{ 
             /** A list of available microphone devices, identified by name. */
             public static get devices(): System.Array$1<string>;
             
@@ -6540,7 +6542,7 @@ declare module 'csharp' {
         }
         
         /** Allow recording the main output of the game or specific groups in the AudioMixer. */
-        class AudioRenderer extends System.Object{ 
+        export class AudioRenderer extends System.Object{ 
             
             public static Start():boolean;
             
@@ -6555,13 +6557,13 @@ declare module 'csharp' {
         }
         
         
-        enum WebCamFlags{ FrontFacing = 1, AutoFocusPointSupported = 2 }
+        export enum WebCamFlags{ FrontFacing = 1, AutoFocusPointSupported = 2 }
         
         /** Enum representing the different types of web camera device. */
-        enum WebCamKind{ WideAngle = 1, Telephoto = 2, ColorAndDepth = 3, UltraWideAngle = 4 }
+        export enum WebCamKind{ WideAngle = 1, Telephoto = 2, ColorAndDepth = 3, UltraWideAngle = 4 }
         
         /** A structure describing the webcam device. */
-        class WebCamDevice extends System.ValueType{ 
+        export class WebCamDevice extends System.ValueType{ 
             /** A human-readable name of the device. Varies across different systems. */
             public get name(): string;
             
@@ -6584,7 +6586,7 @@ declare module 'csharp' {
         }
         
         /** Represents a display resolution. */
-        class Resolution extends System.ValueType{ 
+        export class Resolution extends System.ValueType{ 
             /** Resolution width in pixels. */
             public get width(): number;
             public set width(value: number);
@@ -6598,7 +6600,7 @@ declare module 'csharp' {
         }
         
         /** WebCam Textures are textures onto which the live video input is rendered. */
-        class WebCamTexture extends UnityEngine.Texture{ 
+        export class WebCamTexture extends UnityEngine.Texture{ 
             /** Return a list of available devices. */
             public static get devices(): System.Array$1<UnityEngine.WebCamDevice>;
             
@@ -6666,7 +6668,7 @@ declare module 'csharp' {
         }
         
         /** Base class for Texture handling. */
-        class Texture extends UnityEngine.Object{ 
+        export class Texture extends UnityEngine.Object{ 
             /** Can be used with Texture constructors that take a mip count to indicate that all mips should be generated.  The value of this field is -1. */
             public static GenerateAllMips: number;
             
@@ -6780,7 +6782,7 @@ declare module 'csharp' {
         }
         
         /** A pair of SphereColliders used to define shapes for Cloth objects to collide against. */
-        class ClothSphereColliderPair extends System.ValueType{ 
+        export class ClothSphereColliderPair extends System.ValueType{ 
             /** The first SphereCollider of a ClothSphereColliderPair. */
             public get first(): UnityEngine.SphereCollider;
             public set first(value: UnityEngine.SphereCollider);
@@ -6797,7 +6799,7 @@ declare module 'csharp' {
         }
         
         /** A sphere-shaped primitive collider. */
-        class SphereCollider extends UnityEngine.Collider{ 
+        export class SphereCollider extends UnityEngine.Collider{ 
             /** The center of the sphere in the object's local space. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -6810,7 +6812,7 @@ declare module 'csharp' {
         }
         
         /** A base class of all colliders. */
-        class Collider extends UnityEngine.Component{ 
+        export class Collider extends UnityEngine.Component{ 
             /** Enabled Colliders will collide with other Colliders, disabled Colliders won't. */
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -6855,7 +6857,7 @@ declare module 'csharp' {
         }
         
         /** The ClothSkinningCoefficient struct is used to set up how a Cloth component is allowed to move with respect to the SkinnedMeshRenderer it is attached to. */
-        class ClothSkinningCoefficient extends System.ValueType{ 
+        export class ClothSkinningCoefficient extends System.ValueType{ 
             /** Distance a vertex is allowed to travel from the skinned mesh vertex position. */
             public maxDistance: number;
             /** Definition of a sphere a vertex is not allowed to enter. This allows collision against the animated cloth. */
@@ -6864,7 +6866,7 @@ declare module 'csharp' {
         }
         
         /** The Cloth class provides an interface to cloth simulation physics. */
-        class Cloth extends UnityEngine.Component{ 
+        export class Cloth extends UnityEngine.Component{ 
             /** The current vertex positions of the cloth object. */
             public get vertices(): System.Array$1<UnityEngine.Vector3>;
             
@@ -6962,7 +6964,7 @@ declare module 'csharp' {
         }
         
         /** A capsule-shaped primitive collider. */
-        class CapsuleCollider extends UnityEngine.Collider{ 
+        export class CapsuleCollider extends UnityEngine.Collider{ 
             /** The center of the capsule, measured in the object's local space. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -6981,10 +6983,10 @@ declare module 'csharp' {
         }
         
         /** Values to determine the type of input value to be expect from one entry of ClusterInput. */
-        enum ClusterInputType{ Button = 0, Axis = 1, Tracker = 2, CustomProvidedInput = 3 }
+        export enum ClusterInputType{ Button = 0, Axis = 1, Tracker = 2, CustomProvidedInput = 3 }
         
         
-        class ClusterSerialization extends System.Object{ 
+        export class ClusterSerialization extends System.Object{ 
             
             public static SaveTimeManagerState($buffer: Unity.Collections.NativeArray$1<number>):number;
             
@@ -7001,13 +7003,13 @@ declare module 'csharp' {
         }
         
         /** The platform application is running. Returned by Application.platform. */
-        enum RuntimePlatform{ OSXEditor = 0, OSXPlayer = 1, WindowsPlayer = 2, OSXWebPlayer = 3, OSXDashboardPlayer = 4, WindowsWebPlayer = 5, WindowsEditor = 7, IPhonePlayer = 8, XBOX360 = 10, PS3 = 9, Android = 11, NaCl = 12, FlashPlayer = 15, LinuxPlayer = 13, LinuxEditor = 16, WebGLPlayer = 17, MetroPlayerX86 = 18, WSAPlayerX86 = 18, MetroPlayerX64 = 19, WSAPlayerX64 = 19, MetroPlayerARM = 20, WSAPlayerARM = 20, WP8Player = 21, BB10Player = 22, BlackBerryPlayer = 22, TizenPlayer = 23, PSP2 = 24, PS4 = 25, PSM = 26, XboxOne = 27, SamsungTVPlayer = 28, WiiU = 30, tvOS = 31, Switch = 32, Lumin = 33, Stadia = 34, CloudRendering = 35, GameCoreScarlett = 36, GameCoreXboxSeries = 36, GameCoreXboxOne = 37, PS5 = 38 }
+        export enum RuntimePlatform{ OSXEditor = 0, OSXPlayer = 1, WindowsPlayer = 2, OSXWebPlayer = 3, OSXDashboardPlayer = 4, WindowsWebPlayer = 5, WindowsEditor = 7, IPhonePlayer = 8, XBOX360 = 10, PS3 = 9, Android = 11, NaCl = 12, FlashPlayer = 15, LinuxPlayer = 13, LinuxEditor = 16, WebGLPlayer = 17, MetroPlayerX86 = 18, WSAPlayerX86 = 18, MetroPlayerX64 = 19, WSAPlayerX64 = 19, MetroPlayerARM = 20, WSAPlayerARM = 20, WP8Player = 21, BB10Player = 22, BlackBerryPlayer = 22, TizenPlayer = 23, PSP2 = 24, PS4 = 25, PSM = 26, XboxOne = 27, SamsungTVPlayer = 28, WiiU = 30, tvOS = 31, Switch = 32, Lumin = 33, Stadia = 34, CloudRendering = 35, GameCoreScarlett = 36, GameCoreXboxSeries = 36, GameCoreXboxOne = 37, PS5 = 38 }
         
         /** The language the user's operating system is running in. Returned by Application.systemLanguage. */
-        enum SystemLanguage{ Afrikaans = 0, Arabic = 1, Basque = 2, Belarusian = 3, Bulgarian = 4, Catalan = 5, Chinese = 6, Czech = 7, Danish = 8, Dutch = 9, English = 10, Estonian = 11, Faroese = 12, Finnish = 13, French = 14, German = 15, Greek = 16, Hebrew = 17, Hugarian = 18, Icelandic = 19, Indonesian = 20, Italian = 21, Japanese = 22, Korean = 23, Latvian = 24, Lithuanian = 25, Norwegian = 26, Polish = 27, Portuguese = 28, Romanian = 29, Russian = 30, SerboCroatian = 31, Slovak = 32, Slovenian = 33, Spanish = 34, Swedish = 35, Thai = 36, Turkish = 37, Ukrainian = 38, Vietnamese = 39, ChineseSimplified = 40, ChineseTraditional = 41, Unknown = 42, Hungarian = 18 }
+        export enum SystemLanguage{ Afrikaans = 0, Arabic = 1, Basque = 2, Belarusian = 3, Bulgarian = 4, Catalan = 5, Chinese = 6, Czech = 7, Danish = 8, Dutch = 9, English = 10, Estonian = 11, Faroese = 12, Finnish = 13, French = 14, German = 15, Greek = 16, Hebrew = 17, Hugarian = 18, Icelandic = 19, Indonesian = 20, Italian = 21, Japanese = 22, Korean = 23, Latvian = 24, Lithuanian = 25, Norwegian = 26, Polish = 27, Portuguese = 28, Romanian = 29, Russian = 30, SerboCroatian = 31, Slovak = 32, Slovenian = 33, Spanish = 34, Swedish = 35, Thai = 36, Turkish = 37, Ukrainian = 38, Vietnamese = 39, ChineseSimplified = 40, ChineseTraditional = 41, Unknown = 42, Hungarian = 18 }
         
         /** SortingLayer allows you to set the render order of multiple sprites easily. There is always a default SortingLayer named "Default" which all sprites are added to initially. Added more SortingLayers to easily control the order of rendering of groups of sprites. Layers can be ordered before or after the default layer. */
-        class SortingLayer extends System.ValueType{ 
+        export class SortingLayer extends System.ValueType{ 
             /** This is the unique id assigned to the layer. It is not an ordered running value and it should not be used to compare with other layers to determine the sorting order. */
             public get id(): number;
             
@@ -7049,10 +7051,10 @@ declare module 'csharp' {
         }
         
         /** Sets which weights to use when calculating curve segments. */
-        enum WeightedMode{ None = 0, In = 1, Out = 2, Both = 3 }
+        export enum WeightedMode{ None = 0, In = 1, Out = 2, Both = 3 }
         
         /** A single keyframe that can be injected into an animation curve. */
-        class Keyframe extends System.ValueType{ 
+        export class Keyframe extends System.ValueType{ 
             /** The time of the keyframe. */
             public get time(): number;
             public set time(value: number);
@@ -7086,7 +7088,7 @@ declare module 'csharp' {
         }
         
         /** Access to application run-time data. */
-        class Application extends System.Object{ 
+        export class Application extends System.Object{ 
             /** Returns true when called in any kind of built Player, or when called in the Editor in Play Mode (Read Only). */
             public static get isPlaying(): boolean;
             
@@ -7253,25 +7255,25 @@ declare module 'csharp' {
         }
         
         /** Application installation mode (Read Only). */
-        enum ApplicationInstallMode{ Unknown = 0, Store = 1, DeveloperBuild = 2, Adhoc = 3, Enterprise = 4, Editor = 5 }
+        export enum ApplicationInstallMode{ Unknown = 0, Store = 1, DeveloperBuild = 2, Adhoc = 3, Enterprise = 4, Editor = 5 }
         
         /** Application sandbox type. */
-        enum ApplicationSandboxType{ Unknown = 0, NotSandboxed = 1, Sandboxed = 2, SandboxBroken = 3 }
+        export enum ApplicationSandboxType{ Unknown = 0, NotSandboxed = 1, Sandboxed = 2, SandboxBroken = 3 }
         
         /** Stack trace logging options. */
-        enum StackTraceLogType{ None = 0, ScriptOnly = 1, Full = 2 }
+        export enum StackTraceLogType{ None = 0, ScriptOnly = 1, Full = 2 }
         
         /** Constants to pass to Application.RequestUserAuthorization. */
-        enum UserAuthorization{ WebCam = 1, Microphone = 2 }
+        export enum UserAuthorization{ WebCam = 1, Microphone = 2 }
         
         /** Describes network reachability options. */
-        enum NetworkReachability{ NotReachable = 0, ReachableViaCarrierDataNetwork = 1, ReachableViaLocalAreaNetwork = 2 }
+        export enum NetworkReachability{ NotReachable = 0, ReachableViaCarrierDataNetwork = 1, ReachableViaLocalAreaNetwork = 2 }
         
         /** Type of the imported(native) data. */
-        enum AudioType{ UNKNOWN = 0, ACC = 1, AIFF = 2, IT = 10, MOD = 12, MPEG = 13, OGGVORBIS = 14, S3M = 17, WAV = 20, XM = 21, XMA = 22, VAG = 23, AUDIOQUEUE = 24 }
+        export enum AudioType{ UNKNOWN = 0, ACC = 1, AIFF = 2, IT = 10, MOD = 12, MPEG = 13, OGGVORBIS = 14, S3M = 17, WAV = 20, XM = 21, XMA = 22, VAG = 23, AUDIOQUEUE = 24 }
         
         /** Data structure for downloading AssetBundles to a customized cache path. See Also:UnityWebRequestAssetBundle.GetAssetBundle for more information. */
-        class CachedAssetBundle extends System.ValueType{ 
+        export class CachedAssetBundle extends System.ValueType{ 
             /** AssetBundle name which is used as the customized cache path. */
             public get name(): string;
             public set name(value: string);
@@ -7286,7 +7288,7 @@ declare module 'csharp' {
         }
         
         /** Data structure for cache. Please refer to See Also:Caching.AddCache for more information. */
-        class Cache extends System.ValueType implements System.IEquatable$1<UnityEngine.Cache>{ 
+        export class Cache extends System.ValueType implements System.IEquatable$1<UnityEngine.Cache>{ 
             /** Returns true if the cache is valid. */
             public get valid(): boolean;
             
@@ -7337,22 +7339,22 @@ declare module 'csharp' {
         }
         
         /** Rendering path of a Camera. */
-        enum RenderingPath{ UsePlayerSettings = -1, VertexLit = 0, Forward = 1, DeferredLighting = 2, DeferredShading = 3 }
+        export enum RenderingPath{ UsePlayerSettings = -1, VertexLit = 0, Forward = 1, DeferredLighting = 2, DeferredShading = 3 }
         
         /** Transparent object sorting mode of a Camera. */
-        enum TransparencySortMode{ Default = 0, Perspective = 1, Orthographic = 2, CustomAxis = 3 }
+        export enum TransparencySortMode{ Default = 0, Perspective = 1, Orthographic = 2, CustomAxis = 3 }
         
         /** Describes different types of camera. */
-        enum CameraType{ Game = 1, SceneView = 2, Preview = 4, VR = 8, Reflection = 16 }
+        export enum CameraType{ Game = 1, SceneView = 2, Preview = 4, VR = 8, Reflection = 16 }
         
         /** Values for Camera.clearFlags, determining what to clear when rendering a Camera. */
-        enum CameraClearFlags{ Skybox = 1, Color = 2, SolidColor = 2, Depth = 3, Nothing = 4 }
+        export enum CameraClearFlags{ Skybox = 1, Color = 2, SolidColor = 2, Depth = 3, Nothing = 4 }
         
         /** Depth texture generation mode for Camera. */
-        enum DepthTextureMode{ None = 0, Depth = 1, DepthNormals = 2, MotionVectors = 4 }
+        export enum DepthTextureMode{ None = 0, Depth = 1, DepthNormals = 2, MotionVectors = 4 }
         
         /** Shader scripts used for all rendering. */
-        class Shader extends UnityEngine.Object{ 
+        export class Shader extends UnityEngine.Object{ 
             /** Shader LOD level for this shader. */
             public get maximumLOD(): number;
             public set maximumLOD(value: number);
@@ -7690,7 +7692,7 @@ declare module 'csharp' {
         }
         
         /** Render textures are textures that can be rendered to. */
-        class RenderTexture extends UnityEngine.Texture{ 
+        export class RenderTexture extends UnityEngine.Texture{ 
             /** The width of the render texture in pixels. */
             public get width(): number;
             public set width(value: number);
@@ -7859,14 +7861,14 @@ declare module 'csharp' {
         }
         
         /** Color or depth buffer part of a RenderTexture. */
-        class RenderBuffer extends System.ValueType{ 
+        export class RenderBuffer extends System.ValueType{ 
             
             public GetNativeRenderBufferPtr():System.IntPtr;
             
         }
         
         /** Representation of rays. */
-        class Ray extends System.ValueType implements System.IFormattable{ 
+        export class Ray extends System.ValueType implements System.IFormattable{ 
             /** The origin point of the ray. */
             public get origin(): UnityEngine.Vector3;
             public set origin(value: UnityEngine.Vector3);
@@ -7893,10 +7895,10 @@ declare module 'csharp' {
         }
         
         /** Enum values for the Camera's targetEye property. */
-        enum StereoTargetEyeMask{ None = 0, Left = 1, Right = 2, Both = 3 }
+        export enum StereoTargetEyeMask{ None = 0, Left = 1, Right = 2, Both = 3 }
         
         /** Class for handling cube maps, Use this to create or modify existing. */
-        class Cubemap extends UnityEngine.Texture{ 
+        export class Cubemap extends UnityEngine.Texture{ 
             /** The format of the pixel data in the texture (Read Only). */
             public get format(): UnityEngine.TextureFormat;
             
@@ -7980,7 +7982,7 @@ declare module 'csharp' {
         }
         
         /** Describes a single bounding sphere for use by a CullingGroup. */
-        class BoundingSphere extends System.ValueType{ 
+        export class BoundingSphere extends System.ValueType{ 
             /** The position of the center of the BoundingSphere. */
             public position: UnityEngine.Vector3;
             /** The radius of the BoundingSphere. */
@@ -7995,7 +7997,7 @@ declare module 'csharp' {
         }
         
         /** Provides information about the current and previous states of one sphere in a CullingGroup. */
-        class CullingGroupEvent extends System.ValueType{ 
+        export class CullingGroupEvent extends System.ValueType{ 
             /** The index of the sphere that has changed. */
             public get index(): number;
             
@@ -8021,7 +8023,7 @@ declare module 'csharp' {
         }
         
         /** Describes a set of bounding spheres that should have their visibility and distances maintained. */
-        class CullingGroup extends System.Object implements System.IDisposable{ 
+        export class CullingGroup extends System.Object implements System.IDisposable{ 
             /** Sets the callback that will be called when a sphere's visibility and/or distance state has changed. */
             public get onStateChanged(): UnityEngine.CullingGroup.StateChanged;
             public set onStateChanged(value: UnityEngine.CullingGroup.StateChanged);
@@ -8093,12 +8095,12 @@ declare module 'csharp' {
         }
         
         /** FlareLayer component. */
-        class FlareLayer extends UnityEngine.Behaviour{ 
+        export class FlareLayer extends UnityEngine.Behaviour{ 
             
         }
         
         /** The reflection probe is used to capture the surroundings into a texture which is passed to the shaders and used for reflections. */
-        class ReflectionProbe extends UnityEngine.Behaviour{ 
+        export class ReflectionProbe extends UnityEngine.Behaviour{ 
             /** The size of the box area in which reflections will be applied to the objects. Measured in the probes's local space. */
             public get size(): UnityEngine.Vector3;
             public set size(value: UnityEngine.Vector3);
@@ -8228,7 +8230,7 @@ declare module 'csharp' {
         }
         
         /** Holds data for a single application crash event and provides access to all gathered crash reports. */
-        class CrashReport extends System.Object{ 
+        export class CrashReport extends System.Object{ 
             /** Time, when the crash occured. */
             public time: Date;
             /** Crash report data as formatted text. */
@@ -8247,12 +8249,12 @@ declare module 'csharp' {
         }
         
         /** Object that is used to resolve references to an ExposedReference field. */
-        class ExposedPropertyResolver extends System.ValueType{ 
+        export class ExposedPropertyResolver extends System.ValueType{ 
             
         }
         
         
-        interface IExposedPropertyTable{ 
+        export interface IExposedPropertyTable{ 
             /** Assigns a value for an ExposedReference. * @param id Identifier of the ExposedReference.
              * @param value The value to assigned to the ExposedReference.
              */
@@ -8273,7 +8275,7 @@ declare module 'csharp' {
         Internally stores just an int to represent the string. A PropertyName can be created from a string but can not be converted back to a string. The same string always results in the same int representing that string. Thus this is a very efficient string representation in both memory and speed when all you need is comparison.
         PropertyName is serializable.
         ToString() is only implemented for debugging purposes in the editor it returns "theName:3737" in the player it returns "Unknown:3737". */
-        class PropertyName extends System.ValueType implements System.IEquatable$1<UnityEngine.PropertyName>{ 
+        export class PropertyName extends System.ValueType implements System.IEquatable$1<UnityEngine.PropertyName>{ 
             /** Indicates whether the specified PropertyName is an Empty string. */
             public static IsNullOrEmpty($prop: UnityEngine.PropertyName):boolean;
             
@@ -8304,7 +8306,7 @@ declare module 'csharp' {
         }
         
         /** Represents an axis aligned bounding box with all values as integers. */
-        class BoundsInt extends System.ValueType implements System.IEquatable$1<UnityEngine.BoundsInt>, System.IFormattable{ 
+        export class BoundsInt extends System.ValueType implements System.IEquatable$1<UnityEngine.BoundsInt>, System.IFormattable{ 
             /** X value of the minimal point of the box. */
             public get x(): number;
             public set x(value: number);
@@ -8392,7 +8394,7 @@ declare module 'csharp' {
         }
         
         /** Representation of 3D vectors and points using integers. */
-        class Vector3Int extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector3Int>, System.IFormattable{ 
+        export class Vector3Int extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector3Int>, System.IFormattable{ 
             /** X component of the vector. */
             public get x(): number;
             public set x(value: number);
@@ -8504,7 +8506,7 @@ declare module 'csharp' {
         }
         
         /** Utility class for common geometric functions. */
-        class GeometryUtility extends System.Object{ 
+        export class GeometryUtility extends System.Object{ 
             /** Calculates frustum planes.
              * @param camera The camera with the view frustum that you want to calculate planes from.
              * @returns The planes that form the camera's view frustum. 
@@ -8543,7 +8545,7 @@ declare module 'csharp' {
         }
         
         /** Representation of a plane in 3D space. */
-        class Plane extends System.ValueType implements System.IFormattable{ 
+        export class Plane extends System.ValueType implements System.IFormattable{ 
             /** Normal vector of the plane. */
             public get normal(): UnityEngine.Vector3;
             public set normal(value: UnityEngine.Vector3);
@@ -8604,7 +8606,7 @@ declare module 'csharp' {
         }
         
         /** A ray in 2D space. */
-        class Ray2D extends System.ValueType implements System.IFormattable{ 
+        export class Ray2D extends System.ValueType implements System.IFormattable{ 
             /** The starting point of the ray in world space. */
             public get origin(): UnityEngine.Vector2;
             public set origin(value: UnityEngine.Vector2);
@@ -8632,7 +8634,7 @@ declare module 'csharp' {
         }
         
         /** A 2D Rectangle defined by x, y, width, height with integers. */
-        class RectInt extends System.ValueType implements System.IEquatable$1<UnityEngine.RectInt>, System.IFormattable{ 
+        export class RectInt extends System.ValueType implements System.IEquatable$1<UnityEngine.RectInt>, System.IFormattable{ 
             /** Left coordinate of the rectangle. */
             public get x(): number;
             public set x(value: number);
@@ -8716,7 +8718,7 @@ declare module 'csharp' {
         }
         
         /** Representation of 2D vectors and points using integers. */
-        class Vector2Int extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector2Int>, System.IFormattable{ 
+        export class Vector2Int extends System.ValueType implements System.IEquatable$1<UnityEngine.Vector2Int>, System.IFormattable{ 
             /** X component of the vector. */
             public get x(): number;
             public set x(value: number);
@@ -8819,7 +8821,7 @@ declare module 'csharp' {
         }
         
         /** Offsets for rectangles, borders, etc. */
-        class RectOffset extends System.Object implements System.IFormattable{ 
+        export class RectOffset extends System.Object implements System.IFormattable{ 
             /** Left edge size. */
             public get left(): number;
             public set left(value: number);
@@ -8860,7 +8862,7 @@ declare module 'csharp' {
         }
         
         /** Allows to control the dynamic Global Illumination. */
-        class DynamicGI extends System.Object{ 
+        export class DynamicGI extends System.Object{ 
             /** Allows for scaling the contribution coming from realtime & baked lightmaps.
             Note: this value can be set in the Lighting Window UI and it is serialized, that is not the case for other properties in this class. */
             public static get indirectScale(): number;
@@ -8892,7 +8894,7 @@ declare module 'csharp' {
         }
         
         /** General functionality for all renderers. */
-        class Renderer extends UnityEngine.Component{ 
+        export class Renderer extends UnityEngine.Component{ 
             /** The bounding volume of the renderer (Read Only). */
             public get bounds(): UnityEngine.Bounds;
             
@@ -9020,7 +9022,7 @@ declare module 'csharp' {
         }
         
         /** An object containing settings for precomputing lighting data, that Unity can serialize as a. */
-        class LightingSettings extends UnityEngine.Object{ 
+        export class LightingSettings extends UnityEngine.Object{ 
             /** Whether to enable the Baked Global Illumination system for this Scene. */
             public get bakedGI(): boolean;
             public set bakedGI(value: boolean);
@@ -9162,13 +9164,13 @@ declare module 'csharp' {
         }
         
         /** Enum describing what lighting mode to be used with Mixed lights. */
-        enum MixedLightingMode{ IndirectOnly = 0, Shadowmask = 2, Subtractive = 1 }
+        export enum MixedLightingMode{ IndirectOnly = 0, Shadowmask = 2, Subtractive = 1 }
         
         /** Lightmap (and lighting) configuration mode, controls how lightmaps interact with lighting and what kind of information they store. */
-        enum LightmapsMode{ NonDirectional = 0, CombinedDirectional = 1, SeparateDirectional = 2, Single = 0, Dual = 1, Directional = 2 }
+        export enum LightmapsMode{ NonDirectional = 0, CombinedDirectional = 1, SeparateDirectional = 2, Single = 0, Dual = 1, Directional = 2 }
         
         /** Gizmos are used to give visual debugging or setup aids in the Scene view. */
-        class Gizmos extends System.Object{ 
+        export class Gizmos extends System.Object{ 
             /** Sets the color for the gizmos that will be drawn next. */
             public static get color(): UnityEngine.Color;
             public static set color(value: UnityEngine.Color);
@@ -9302,7 +9304,7 @@ declare module 'csharp' {
         }
         
         /** A class that allows you to create or modify meshes. */
-        class Mesh extends UnityEngine.Object{ 
+        export class Mesh extends UnityEngine.Object{ 
             /** Format of the mesh index buffer data. */
             public get indexFormat(): UnityEngine.Rendering.IndexFormat;
             public set indexFormat(value: UnityEngine.Rendering.IndexFormat);
@@ -9940,7 +9942,7 @@ declare module 'csharp' {
         }
         
         /** Use this BeforeRenderOrderAttribute when you need to specify a custom callback order for Application.onBeforeRender. */
-        class BeforeRenderOrderAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class BeforeRenderOrderAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             /** The order, lowest to highest, that the Application.onBeforeRender event recievers will be called in. */
             public get order(): number;
             
@@ -9952,7 +9954,7 @@ declare module 'csharp' {
         }
         
         /** BillboardAsset describes how a billboard is rendered. */
-        class BillboardAsset extends UnityEngine.Object{ 
+        export class BillboardAsset extends UnityEngine.Object{ 
             /** Width of the billboard. */
             public get width(): number;
             public set width(value: number);
@@ -10007,7 +10009,7 @@ declare module 'csharp' {
         }
         
         /** Renders a billboard from a BillboardAsset. */
-        class BillboardRenderer extends UnityEngine.Renderer{ 
+        export class BillboardRenderer extends UnityEngine.Renderer{ 
             /** The BillboardAsset to render. */
             public get billboard(): UnityEngine.BillboardAsset;
             public set billboard(value: UnityEngine.BillboardAsset);
@@ -10017,7 +10019,7 @@ declare module 'csharp' {
         }
         
         /** Custom Render Texture Manager. */
-        class CustomRenderTextureManager extends System.Object{ 
+        export class CustomRenderTextureManager extends System.Object{ 
             
             public static add_textureLoaded($value: System.Action$1<UnityEngine.CustomRenderTexture>):void;
             
@@ -10040,7 +10042,7 @@ declare module 'csharp' {
         }
         
         /** Custom Render Textures are an extension to Render Textures, enabling you to render directly to the Texture using a Shader. */
-        class CustomRenderTexture extends UnityEngine.RenderTexture{ 
+        export class CustomRenderTexture extends UnityEngine.RenderTexture{ 
             /** Material with which the content of the Custom Render Texture is updated. */
             public get material(): UnityEngine.Material;
             public set material(value: UnityEngine.Material);
@@ -10131,7 +10133,7 @@ declare module 'csharp' {
         }
         
         /** Provides access to a display / screen for rendering operations. */
-        class Display extends System.Object{ 
+        export class Display extends System.Object{ 
             /** The list of currently connected displays. */
             public static displays: System.Array$1<UnityEngine.Display>;
             /** Horizontal resolution that the display is rendering at. */
@@ -10192,10 +10194,10 @@ declare module 'csharp' {
         }
         
         /** Platform agnostic fullscreen mode. Not all platforms support all modes. */
-        enum FullScreenMode{ ExclusiveFullScreen = 0, FullScreenWindow = 1, MaximizedWindow = 2, Windowed = 3 }
+        export enum FullScreenMode{ ExclusiveFullScreen = 0, FullScreenWindow = 1, MaximizedWindow = 2, Windowed = 3 }
         
         /** Constants for special values of Screen.sleepTimeout. */
-        class SleepTimeout extends System.Object{ 
+        export class SleepTimeout extends System.Object{ 
             /** Prevent screen dimming. */
             public static NeverSleep: number;
             /** Set the sleep timeout to whatever the user has specified in the system settings. */
@@ -10206,7 +10208,7 @@ declare module 'csharp' {
         }
         
         /** Access to display information. */
-        class Screen extends System.Object{ 
+        export class Screen extends System.Object{ 
             /** The current width of the screen window in pixels (Read Only). */
             public static get width(): number;
             
@@ -10269,13 +10271,13 @@ declare module 'csharp' {
         }
         
         /** Describes screen orientation. */
-        enum ScreenOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, AutoRotation = 5, Landscape = 3 }
+        export enum ScreenOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, AutoRotation = 5, Landscape = 3 }
         
         /** Intended usage of the buffer. */
-        enum ComputeBufferMode{ Immutable = 0, Dynamic = 1, Circular = 2, StreamOut = 3, SubUpdates = 4 }
+        export enum ComputeBufferMode{ Immutable = 0, Dynamic = 1, Circular = 2, StreamOut = 3, SubUpdates = 4 }
         
         /** Raw interface to Unity's drawing functions. */
-        class Graphics extends System.Object{ 
+        export class Graphics extends System.Object{ 
             /** Returns the currently active color gamut. */
             public static get activeColorGamut(): UnityEngine.ColorGamut;
             
@@ -10988,13 +10990,13 @@ declare module 'csharp' {
         }
         
         /** Represents a color gamut. */
-        enum ColorGamut{ sRGB = 0, Rec709 = 1, Rec2020 = 2, DisplayP3 = 3, HDR10 = 4, DolbyHDR = 5 }
+        export enum ColorGamut{ sRGB = 0, Rec709 = 1, Rec2020 = 2, DisplayP3 = 3, HDR10 = 4, DolbyHDR = 5 }
         
         /** Cubemap face. */
-        enum CubemapFace{ Unknown = -1, PositiveX = 0, NegativeX = 1, PositiveY = 2, NegativeY = 3, PositiveZ = 4, NegativeZ = 5 }
+        export enum CubemapFace{ Unknown = -1, PositiveX = 0, NegativeX = 1, PositiveY = 2, NegativeY = 3, PositiveZ = 4, NegativeZ = 5 }
         
         /** Fully describes setup of RenderTarget. */
-        class RenderTargetSetup extends System.ValueType{ 
+        export class RenderTargetSetup extends System.ValueType{ 
             /** Color Buffers to set. */
             public color: System.Array$1<UnityEngine.RenderBuffer>;
             /** Depth Buffer to set. */
@@ -11035,7 +11037,7 @@ declare module 'csharp' {
         }
         
         /** GPU data buffer, mostly for use with compute shaders. */
-        class ComputeBuffer extends System.Object implements System.IDisposable{ 
+        export class ComputeBuffer extends System.Object implements System.IDisposable{ 
             /** Number of elements in the buffer (Read Only). */
             public get count(): number;
             
@@ -11091,7 +11093,7 @@ declare module 'csharp' {
         }
         
         /** GPU graphics data buffer, for working with data such as vertex and index buffers. */
-        class GraphicsBuffer extends System.Object implements System.IDisposable{ 
+        export class GraphicsBuffer extends System.Object implements System.IDisposable{ 
             /** Number of elements in the buffer (Read Only). */
             public get count(): number;
             
@@ -11146,7 +11148,7 @@ declare module 'csharp' {
         }
         
         /** A block of material values to apply. */
-        class MaterialPropertyBlock extends System.Object{ 
+        export class MaterialPropertyBlock extends System.Object{ 
             /** Is the material property block empty? (Read Only) */
             public get isEmpty(): boolean;
             
@@ -11570,7 +11572,7 @@ declare module 'csharp' {
         }
         
         /** The Light Probe Proxy Volume component offers the possibility to use higher resolution lighting for large non-static GameObjects. */
-        class LightProbeProxyVolume extends UnityEngine.Behaviour{ 
+        export class LightProbeProxyVolume extends UnityEngine.Behaviour{ 
             /** Checks if Light Probe Proxy Volumes are supported. */
             public static get isFeatureSupported(): boolean;
             
@@ -11621,10 +11623,10 @@ declare module 'csharp' {
         }
         
         /** Topology of Mesh faces. */
-        enum MeshTopology{ Triangles = 0, Quads = 2, Lines = 3, LineStrip = 4, Points = 5 }
+        export enum MeshTopology{ Triangles = 0, Quads = 2, Lines = 3, LineStrip = 4, Points = 5 }
         
         /** Low-level graphics library. */
-        class GL extends System.Object{ 
+        export class GL extends System.Object{ 
             /** Mode for Begin: draw triangles. */
             public static TRIANGLES: number;
             /** Mode for Begin: draw triangle strip. */
@@ -11724,7 +11726,7 @@ declare module 'csharp' {
         }
         
         /** Scales render textures to support dynamic resolution if the target platform/graphics API supports it. */
-        class ScalableBufferManager extends System.Object{ 
+        export class ScalableBufferManager extends System.Object{ 
             /** Width scale factor to control dynamic resolution. */
             public static get widthScaleFactor(): number;
             
@@ -11739,7 +11741,7 @@ declare module 'csharp' {
         }
         
         /** Struct containing basic FrameTimings and accompanying relevant data. */
-        class FrameTiming extends System.ValueType{ 
+        export class FrameTiming extends System.ValueType{ 
             /** This is the CPU clock time at the point Present was called for the current frame. */
             public cpuTimePresentCalled: bigint;
             /** The CPU time for a given frame, in ms. */
@@ -11758,7 +11760,7 @@ declare module 'csharp' {
         }
         
         /** The FrameTimingManager allows the user to capture and access FrameTiming data for multple frames. */
-        class FrameTimingManager extends System.Object{ 
+        export class FrameTimingManager extends System.Object{ 
             
             public static CaptureFrameTimings():void;
             /** Allows the user to access the currently captured FrameTimings.
@@ -11777,7 +11779,7 @@ declare module 'csharp' {
         }
         
         /** Data of a lightmap. */
-        class LightmapData extends System.Object{ 
+        export class LightmapData extends System.Object{ 
             /** Lightmap storing color of incoming light. */
             public get lightmapColor(): UnityEngine.Texture2D;
             public set lightmapColor(value: UnityEngine.Texture2D);
@@ -11793,7 +11795,7 @@ declare module 'csharp' {
         }
         
         /** Class that represents textures in C# code. */
-        class Texture2D extends UnityEngine.Texture{ 
+        export class Texture2D extends UnityEngine.Texture{ 
             /** The format of the pixel data in the texture (Read Only). */
             public get format(): UnityEngine.TextureFormat;
             
@@ -12015,7 +12017,7 @@ declare module 'csharp' {
         }
         
         /** Stores lightmaps of the Scene. */
-        class LightmapSettings extends UnityEngine.Object{ 
+        export class LightmapSettings extends UnityEngine.Object{ 
             /** Lightmap array. */
             public static get lightmaps(): System.Array$1<UnityEngine.LightmapData>;
             public static set lightmaps(value: System.Array$1<UnityEngine.LightmapData>);
@@ -12029,7 +12031,7 @@ declare module 'csharp' {
         }
         
         /** Stores light probe data for all currently loaded Scenes. */
-        class LightProbes extends UnityEngine.Object{ 
+        export class LightProbes extends UnityEngine.Object{ 
             /** Positions of the baked light probes (Read Only). */
             public get positions(): System.Array$1<UnityEngine.Vector3>;
             
@@ -12067,16 +12069,16 @@ declare module 'csharp' {
         }
         
         /** Single, dual, or directional lightmaps rendering mode, used only in GIWorkflowMode.Legacy */
-        enum LightmapsModeLegacy{ Single = 0, Dual = 1, Directional = 2 }
+        export enum LightmapsModeLegacy{ Single = 0, Dual = 1, Directional = 2 }
         
         /** Color space for player settings. */
-        enum ColorSpace{ Uninitialized = -1, Gamma = 0, Linear = 1 }
+        export enum ColorSpace{ Uninitialized = -1, Gamma = 0, Linear = 1 }
         
         /** The type for the number of bits to be used when an HDR display is active in each color channel of swap chain buffers. The bit count also defines the method Unity uses to render content to the display. */
-        enum D3DHDRDisplayBitDepth{ D3DHDRDisplayBitDepth10 = 0, D3DHDRDisplayBitDepth16 = 1 }
+        export enum D3DHDRDisplayBitDepth{ D3DHDRDisplayBitDepth10 = 0, D3DHDRDisplayBitDepth16 = 1 }
         
         /** Provides access to HDR display settings and information. */
-        class HDROutputSettings extends System.Object{ 
+        export class HDROutputSettings extends System.Object{ 
             /** The list of currently connected displays with possible HDR availability. */
             public static displays: System.Array$1<UnityEngine.HDROutputSettings>;
             /** The HDROutputSettings for the main display. */
@@ -12122,10 +12124,10 @@ declare module 'csharp' {
         }
         
         /** Format of a RenderTexture. */
-        enum RenderTextureFormat{ ARGB32 = 0, Depth = 1, ARGBHalf = 2, Shadowmap = 3, RGB565 = 4, ARGB4444 = 5, ARGB1555 = 6, Default = 7, ARGB2101010 = 8, DefaultHDR = 9, ARGB64 = 10, ARGBFloat = 11, RGFloat = 12, RGHalf = 13, RFloat = 14, RHalf = 15, R8 = 16, ARGBInt = 17, RGInt = 18, RInt = 19, BGRA32 = 20, RGB111110Float = 22, RG32 = 23, RGBAUShort = 24, RG16 = 25, BGRA10101010_XR = 26, BGR101010_XR = 27, R16 = 28 }
+        export enum RenderTextureFormat{ ARGB32 = 0, Depth = 1, ARGBHalf = 2, Shadowmap = 3, RGB565 = 4, ARGB4444 = 5, ARGB1555 = 6, Default = 7, ARGB2101010 = 8, DefaultHDR = 9, ARGB64 = 10, ARGBFloat = 11, RGFloat = 12, RGHalf = 13, RFloat = 14, RHalf = 15, R8 = 16, ARGBInt = 17, RGInt = 18, RInt = 19, BGRA32 = 20, RGB111110Float = 22, RG32 = 23, RGBAUShort = 24, RG16 = 25, BGRA10101010_XR = 26, BGR101010_XR = 27, R16 = 28 }
         
         /** Script interface for. */
-        class QualitySettings extends UnityEngine.Object{ 
+        export class QualitySettings extends UnityEngine.Object{ 
             /** The maximum number of pixel lights that should affect any object. */
             public static get pixelLightCount(): number;
             public static set pixelLightCount(value: number);
@@ -12272,73 +12274,73 @@ declare module 'csharp' {
         }
         
         
-        enum QualityLevel{ Fastest = 0, Fast = 1, Simple = 2, Good = 3, Beautiful = 4, Fantastic = 5 }
+        export enum QualityLevel{ Fastest = 0, Fast = 1, Simple = 2, Good = 3, Beautiful = 4, Fantastic = 5 }
         
         /** Determines which type of shadows should be used. */
-        enum ShadowQuality{ Disable = 0, HardOnly = 1, All = 2 }
+        export enum ShadowQuality{ Disable = 0, HardOnly = 1, All = 2 }
         
         /** Shadow projection type for. */
-        enum ShadowProjection{ CloseFit = 0, StableFit = 1 }
+        export enum ShadowProjection{ CloseFit = 0, StableFit = 1 }
         
         /** Default shadow resolution. */
-        enum ShadowResolution{ Low = 0, Medium = 1, High = 2, VeryHigh = 3 }
+        export enum ShadowResolution{ Low = 0, Medium = 1, High = 2, VeryHigh = 3 }
         
         /** The rendering mode of Shadowmask. */
-        enum ShadowmaskMode{ Shadowmask = 0, DistanceShadowmask = 1 }
+        export enum ShadowmaskMode{ Shadowmask = 0, DistanceShadowmask = 1 }
         
         /** Anisotropic filtering mode. */
-        enum AnisotropicFiltering{ Disable = 0, Enable = 1, ForceEnable = 2 }
+        export enum AnisotropicFiltering{ Disable = 0, Enable = 1, ForceEnable = 2 }
         
         
-        enum BlendWeights{ OneBone = 1, TwoBones = 2, FourBones = 4 }
+        export enum BlendWeights{ OneBone = 1, TwoBones = 2, FourBones = 4 }
         
         /** Skin weights. */
-        enum SkinWeights{ OneBone = 1, TwoBones = 2, FourBones = 4, Unlimited = 255 }
+        export enum SkinWeights{ OneBone = 1, TwoBones = 2, FourBones = 4, Unlimited = 255 }
         
         /** Extension methods to the Renderer class, used only for the UpdateGIMaterials method used by the Global Illumination System. */
-        class RendererExtensions extends System.Object{ 
+        export class RendererExtensions extends System.Object{ 
             /** Schedules an update of the albedo and emissive Textures of a system that contains the Renderer. */
             public static UpdateGIMaterials($renderer: UnityEngine.Renderer):void;
             
         }
         
         /** When using HDR rendering it can sometime be desirable to switch to LDR rendering during ImageEffect rendering. */
-        class ImageEffectTransformsToLDR extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ImageEffectTransformsToLDR extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Any Image Effect with this attribute can be rendered into the Scene view camera. */
-        class ImageEffectAllowedInSceneView extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ImageEffectAllowedInSceneView extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Any Image Effect with this attribute will be rendered after opaque geometry but before transparent geometry. */
-        class ImageEffectOpaque extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ImageEffectOpaque extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Any Image Effect with this attribute will be rendered after Dynamic Resolution stage. */
-        class ImageEffectAfterScale extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ImageEffectAfterScale extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Use this attribute when image effects are implemented using Command Buffers. */
-        class ImageEffectUsesCommandBuffer extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ImageEffectUsesCommandBuffer extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Describes a bone weight that affects a vertex in a mesh. */
-        class BoneWeight1 extends System.ValueType implements System.IEquatable$1<UnityEngine.BoneWeight1>{ 
+        export class BoneWeight1 extends System.ValueType implements System.IEquatable$1<UnityEngine.BoneWeight1>{ 
             /** Skinning weight for bone. */
             public get weight(): number;
             public set weight(value: number);
@@ -12361,7 +12363,7 @@ declare module 'csharp' {
         }
         
         /** Describes 4 skinning bone weights that affect a vertex in a mesh. */
-        class BoneWeight extends System.ValueType implements System.IEquatable$1<UnityEngine.BoneWeight>{ 
+        export class BoneWeight extends System.ValueType implements System.IEquatable$1<UnityEngine.BoneWeight>{ 
             /** Skinning weight for first bone. */
             public get weight0(): number;
             public set weight0(value: number);
@@ -12402,7 +12404,7 @@ declare module 'csharp' {
         }
         
         /** Struct used to describe meshes to be combined using Mesh.CombineMeshes. */
-        class CombineInstance extends System.ValueType{ 
+        export class CombineInstance extends System.ValueType{ 
             /** Mesh to combine. */
             public get mesh(): UnityEngine.Mesh;
             public set mesh(value: UnityEngine.Mesh);
@@ -12422,10 +12424,10 @@ declare module 'csharp' {
         }
         
         /** The type of motion vectors that should be generated. */
-        enum MotionVectorGenerationMode{ Camera = 0, Object = 1, ForceNoMotion = 2 }
+        export enum MotionVectorGenerationMode{ Camera = 0, Object = 1, ForceNoMotion = 2 }
         
         /** A script interface for a. */
-        class Projector extends UnityEngine.Behaviour{ 
+        export class Projector extends UnityEngine.Behaviour{ 
             /** The near clipping plane distance. */
             public get nearClipPlane(): number;
             public set nearClipPlane(value: number);
@@ -12456,10 +12458,10 @@ declare module 'csharp' {
         }
         
         
-        enum TexGenMode{ None = 0, SphereMap = 1, Object = 2, EyeLinear = 3, CubeReflect = 4, CubeNormal = 5 }
+        export enum TexGenMode{ None = 0, SphereMap = 1, Object = 2, EyeLinear = 3, CubeReflect = 4, CubeNormal = 5 }
         
         /** The trail renderer is used to make trails behind objects in the Scene as they move about. */
-        class TrailRenderer extends UnityEngine.Renderer{ 
+        export class TrailRenderer extends UnityEngine.Renderer{ 
             /** How long does the trail take to fade out. */
             public get time(): number;
             public set time(value: number);
@@ -12567,13 +12569,13 @@ declare module 'csharp' {
         }
         
         /** Choose how textures are applied to Lines and Trails. */
-        enum LineTextureMode{ Stretch = 0, Tile = 1, DistributePerSegment = 2, RepeatPerSegment = 3 }
+        export enum LineTextureMode{ Stretch = 0, Tile = 1, DistributePerSegment = 2, RepeatPerSegment = 3 }
         
         /** Control the direction lines face, when using the LineRenderer or TrailRenderer. */
-        enum LineAlignment{ View = 0, Local = 1, TransformZ = 1 }
+        export enum LineAlignment{ View = 0, Local = 1, TransformZ = 1 }
         
         /** Gradient used for animating colors. */
-        class Gradient extends System.Object implements System.IEquatable$1<UnityEngine.Gradient>{ 
+        export class Gradient extends System.Object implements System.IEquatable$1<UnityEngine.Gradient>{ 
             /** All color keys defined in the gradient. */
             public get colorKeys(): System.Array$1<UnityEngine.GradientColorKey>;
             public set colorKeys(value: System.Array$1<UnityEngine.GradientColorKey>);
@@ -12604,7 +12606,7 @@ declare module 'csharp' {
         }
         
         /** The line renderer is used to draw free-floating lines in 3D space. */
-        class LineRenderer extends UnityEngine.Renderer{ 
+        export class LineRenderer extends UnityEngine.Renderer{ 
             /** Set the width at the start of the line. */
             public get startWidth(): number;
             public set startWidth(value: number);
@@ -12697,7 +12699,7 @@ declare module 'csharp' {
         }
         
         /** The Render Settings contain values for a range of visual elements in your Scene, like fog and ambient light. */
-        class RenderSettings extends UnityEngine.Object{ 
+        export class RenderSettings extends UnityEngine.Object{ 
             /** Is fog enabled? */
             public static get fog(): boolean;
             public static set fog(value: boolean);
@@ -12774,10 +12776,10 @@ declare module 'csharp' {
         }
         
         /** Fog mode to use. */
-        enum FogMode{ Linear = 1, Exponential = 2, ExponentialSquared = 3 }
+        export enum FogMode{ Linear = 1, Exponential = 2, ExponentialSquared = 3 }
         
         /** Script interface for. */
-        class Light extends UnityEngine.Behaviour{ 
+        export class Light extends UnityEngine.Behaviour{ 
             /** The type of the light. */
             public get type(): UnityEngine.LightType;
             public set type(value: UnityEngine.LightType);
@@ -12925,10 +12927,10 @@ declare module 'csharp' {
         }
         
         /** How the material interacts with lightmaps and lightprobes. */
-        enum MaterialGlobalIlluminationFlags{ None = 0, RealtimeEmissive = 1, BakedEmissive = 2, EmissiveIsBlack = 4, AnyEmissive = 3 }
+        export enum MaterialGlobalIlluminationFlags{ None = 0, RealtimeEmissive = 1, BakedEmissive = 2, EmissiveIsBlack = 4, AnyEmissive = 3 }
         
         /** The portal for dynamically changing occlusion at runtime. */
-        class OcclusionPortal extends UnityEngine.Component{ 
+        export class OcclusionPortal extends UnityEngine.Component{ 
             /** Gets / sets the portal's open state. */
             public get open(): boolean;
             public set open(value: boolean);
@@ -12938,7 +12940,7 @@ declare module 'csharp' {
         }
         
         /** OcclusionArea is an area in which occlusion culling is performed. */
-        class OcclusionArea extends UnityEngine.Component{ 
+        export class OcclusionArea extends UnityEngine.Component{ 
             /** Center of the occlusion area relative to the transform. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -12951,14 +12953,14 @@ declare module 'csharp' {
         }
         
         /** A flare asset. Read more about flares in the. */
-        class Flare extends UnityEngine.Object{ 
+        export class Flare extends UnityEngine.Object{ 
             
             public constructor();
             
         }
         
         /** Script interface for a. */
-        class LensFlare extends UnityEngine.Behaviour{ 
+        export class LensFlare extends UnityEngine.Behaviour{ 
             /** The strength of the flare. */
             public get brightness(): number;
             public set brightness(value: number);
@@ -12977,7 +12979,7 @@ declare module 'csharp' {
         }
         
         /** Struct describing the result of a Global Illumination bake for a given light. */
-        class LightBakingOutput extends System.ValueType{ 
+        export class LightBakingOutput extends System.ValueType{ 
             /** In case of a LightmapBakeType.Mixed light, contains the index of the light as seen from the occlusion probes point of view if any, otherwise -1. */
             public probeOcclusionLightIndex: number;
             /** In case of a LightmapBakeType.Mixed light, contains the index of the occlusion mask channel to use if any, otherwise -1. */
@@ -12992,28 +12994,28 @@ declare module 'csharp' {
         }
         
         /** Enum describing what part of a light contribution can be baked. */
-        enum LightmapBakeType{ Realtime = 4, Baked = 2, Mixed = 1 }
+        export enum LightmapBakeType{ Realtime = 4, Baked = 2, Mixed = 1 }
         
         /** Allows mixed lights to control shadow caster culling when Shadowmasks are present. */
-        enum LightShadowCasterMode{ Default = 0, NonLightmappedOnly = 1, Everything = 2 }
+        export enum LightShadowCasterMode{ Default = 0, NonLightmappedOnly = 1, Everything = 2 }
         
         /** The type of a Light. */
-        enum LightType{ Spot = 0, Directional = 1, Point = 2, Area = 3, Rectangle = 3, Disc = 4 }
+        export enum LightType{ Spot = 0, Directional = 1, Point = 2, Area = 3, Rectangle = 3, Disc = 4 }
         
         /** Describes the shape of a spot light. */
-        enum LightShape{ Cone = 0, Pyramid = 1, Box = 2 }
+        export enum LightShape{ Cone = 0, Pyramid = 1, Box = 2 }
         
         /** Shadow casting options for a Light. */
-        enum LightShadows{ None = 0, Hard = 1, Soft = 2 }
+        export enum LightShadows{ None = 0, Hard = 1, Soft = 2 }
         
         /** How the Light is rendered. */
-        enum LightRenderMode{ Auto = 0, ForcePixel = 1, ForceVertex = 2 }
+        export enum LightRenderMode{ Auto = 0, ForcePixel = 1, ForceVertex = 2 }
         
         
-        enum LightmappingMode{ Realtime = 4, Baked = 2, Mixed = 1 }
+        export enum LightmappingMode{ Realtime = 4, Baked = 2, Mixed = 1 }
         
         /** A script interface for the. */
-        class Skybox extends UnityEngine.Behaviour{ 
+        export class Skybox extends UnityEngine.Behaviour{ 
             /** The material used by the skybox. */
             public get material(): UnityEngine.Material;
             public set material(value: UnityEngine.Material);
@@ -13023,7 +13025,7 @@ declare module 'csharp' {
         }
         
         /** A class to access the Mesh of the. */
-        class MeshFilter extends UnityEngine.Component{ 
+        export class MeshFilter extends UnityEngine.Component{ 
             /** Returns the shared mesh of the mesh filter. */
             public get sharedMesh(): UnityEngine.Mesh;
             public set sharedMesh(value: UnityEngine.Mesh);
@@ -13036,55 +13038,55 @@ declare module 'csharp' {
         }
         
         /** ComputeBuffer type. */
-        enum ComputeBufferType{ Default = 0, Raw = 1, Append = 2, Counter = 4, Constant = 8, Structured = 16, DrawIndirect = 256, IndirectArguments = 256, GPUMemory = 512 }
+        export enum ComputeBufferType{ Default = 0, Raw = 1, Append = 2, Counter = 4, Constant = 8, Structured = 16, DrawIndirect = 256, IndirectArguments = 256, GPUMemory = 512 }
         
         /** This property only takes effect if you enable a global illumination setting such as for the GameObject associated with the target Mesh Renderer. Otherwise this property defaults to the Light Probes setting. */
-        enum ReceiveGI{ Lightmaps = 1, LightProbes = 2 }
+        export enum ReceiveGI{ Lightmaps = 1, LightProbes = 2 }
         
         /** The filters that Unity can use when it renders GameObjects in the shadow pass. */
-        enum ShadowObjectsFilter{ AllObjects = 0, DynamicOnly = 1, StaticOnly = 2 }
+        export enum ShadowObjectsFilter{ AllObjects = 0, DynamicOnly = 1, StaticOnly = 2 }
         
         /** The maximum number of bones affecting a single vertex. */
-        enum SkinQuality{ Auto = 0, Bone1 = 1, Bone2 = 2, Bone4 = 4 }
+        export enum SkinQuality{ Auto = 0, Bone1 = 1, Bone2 = 2, Bone4 = 4 }
         
         /** Filtering mode for textures. Corresponds to the settings in a. */
-        enum FilterMode{ Point = 0, Bilinear = 1, Trilinear = 2 }
+        export enum FilterMode{ Point = 0, Bilinear = 1, Trilinear = 2 }
         
         /** Wrap mode for textures. */
-        enum TextureWrapMode{ Repeat = 0, Clamp = 1, Mirror = 2, MirrorOnce = 3 }
+        export enum TextureWrapMode{ Repeat = 0, Clamp = 1, Mirror = 2, MirrorOnce = 3 }
         
         /** NPOT Texture2D|textures support. */
-        enum NPOTSupport{ None = 0, Restricted = 1, Full = 2 }
+        export enum NPOTSupport{ None = 0, Restricted = 1, Full = 2 }
         
         /** Format used when creating textures from scripts. */
-        enum TextureFormat{ Alpha8 = 1, ARGB4444 = 2, RGB24 = 3, RGBA32 = 4, ARGB32 = 5, RGB565 = 7, R16 = 9, DXT1 = 10, DXT5 = 12, RGBA4444 = 13, BGRA32 = 14, RHalf = 15, RGHalf = 16, RGBAHalf = 17, RFloat = 18, RGFloat = 19, RGBAFloat = 20, YUY2 = 21, RGB9e5Float = 22, BC4 = 26, BC5 = 27, BC6H = 24, BC7 = 25, DXT1Crunched = 28, DXT5Crunched = 29, PVRTC_RGB2 = 30, PVRTC_RGBA2 = 31, PVRTC_RGB4 = 32, PVRTC_RGBA4 = 33, ETC_RGB4 = 34, ATC_RGB4 = -127, ATC_RGBA8 = -127, EAC_R = 41, EAC_R_SIGNED = 42, EAC_RG = 43, EAC_RG_SIGNED = 44, ETC2_RGB = 45, ETC2_RGBA1 = 46, ETC2_RGBA8 = 47, ASTC_4x4 = 48, ASTC_5x5 = 49, ASTC_6x6 = 50, ASTC_8x8 = 51, ASTC_10x10 = 52, ASTC_12x12 = 53, ETC_RGB4_3DS = 60, ETC_RGBA8_3DS = 61, RG16 = 62, R8 = 63, ETC_RGB4Crunched = 64, ETC2_RGBA8Crunched = 65, ASTC_HDR_4x4 = 66, ASTC_HDR_5x5 = 67, ASTC_HDR_6x6 = 68, ASTC_HDR_8x8 = 69, ASTC_HDR_10x10 = 70, ASTC_HDR_12x12 = 71, RG32 = 72, RGB48 = 73, RGBA64 = 74, ASTC_RGB_4x4 = 48, ASTC_RGB_5x5 = 49, ASTC_RGB_6x6 = 50, ASTC_RGB_8x8 = 51, ASTC_RGB_10x10 = 52, ASTC_RGB_12x12 = 53, ASTC_RGBA_4x4 = 54, ASTC_RGBA_5x5 = 55, ASTC_RGBA_6x6 = 56, ASTC_RGBA_8x8 = 57, ASTC_RGBA_10x10 = 58, ASTC_RGBA_12x12 = 59, PVRTC_2BPP_RGB = -127, PVRTC_2BPP_RGBA = -127, PVRTC_4BPP_RGB = -127, PVRTC_4BPP_RGBA = -127 }
+        export enum TextureFormat{ Alpha8 = 1, ARGB4444 = 2, RGB24 = 3, RGBA32 = 4, ARGB32 = 5, RGB565 = 7, R16 = 9, DXT1 = 10, DXT5 = 12, RGBA4444 = 13, BGRA32 = 14, RHalf = 15, RGHalf = 16, RGBAHalf = 17, RFloat = 18, RGFloat = 19, RGBAFloat = 20, YUY2 = 21, RGB9e5Float = 22, BC4 = 26, BC5 = 27, BC6H = 24, BC7 = 25, DXT1Crunched = 28, DXT5Crunched = 29, PVRTC_RGB2 = 30, PVRTC_RGBA2 = 31, PVRTC_RGB4 = 32, PVRTC_RGBA4 = 33, ETC_RGB4 = 34, ATC_RGB4 = -127, ATC_RGBA8 = -127, EAC_R = 41, EAC_R_SIGNED = 42, EAC_RG = 43, EAC_RG_SIGNED = 44, ETC2_RGB = 45, ETC2_RGBA1 = 46, ETC2_RGBA8 = 47, ASTC_4x4 = 48, ASTC_5x5 = 49, ASTC_6x6 = 50, ASTC_8x8 = 51, ASTC_10x10 = 52, ASTC_12x12 = 53, ETC_RGB4_3DS = 60, ETC_RGBA8_3DS = 61, RG16 = 62, R8 = 63, ETC_RGB4Crunched = 64, ETC2_RGBA8Crunched = 65, ASTC_HDR_4x4 = 66, ASTC_HDR_5x5 = 67, ASTC_HDR_6x6 = 68, ASTC_HDR_8x8 = 69, ASTC_HDR_10x10 = 70, ASTC_HDR_12x12 = 71, RG32 = 72, RGB48 = 73, RGBA64 = 74, ASTC_RGB_4x4 = 48, ASTC_RGB_5x5 = 49, ASTC_RGB_6x6 = 50, ASTC_RGB_8x8 = 51, ASTC_RGB_10x10 = 52, ASTC_RGB_12x12 = 53, ASTC_RGBA_4x4 = 54, ASTC_RGBA_5x5 = 55, ASTC_RGBA_6x6 = 56, ASTC_RGBA_8x8 = 57, ASTC_RGBA_10x10 = 58, ASTC_RGBA_12x12 = 59, PVRTC_2BPP_RGB = -127, PVRTC_2BPP_RGBA = -127, PVRTC_4BPP_RGB = -127, PVRTC_4BPP_RGBA = -127 }
         
         /** This enum describes how the RenderTexture is used as a VR eye texture. Instead of using the values of this enum manually, use the value returned by XR.XRSettings.eyeTextureDesc|eyeTextureDesc or other VR functions returning a RenderTextureDescriptor. */
-        enum VRTextureUsage{ None = 0, OneEye = 1, TwoEyes = 2, DeviceSpecific = 3 }
+        export enum VRTextureUsage{ None = 0, OneEye = 1, TwoEyes = 2, DeviceSpecific = 3 }
         
         /** Set of flags that control the state of a newly-created RenderTexture. */
-        enum RenderTextureCreationFlags{ MipMap = 1, AutoGenerateMips = 2, SRGB = 4, EyeTexture = 8, EnableRandomWrite = 16, CreatedFromScript = 32, AllowVerticalFlip = 128, NoResolvedColorSurface = 256, DynamicallyScalable = 1024, BindMS = 2048 }
+        export enum RenderTextureCreationFlags{ MipMap = 1, AutoGenerateMips = 2, SRGB = 4, EyeTexture = 8, EnableRandomWrite = 16, CreatedFromScript = 32, AllowVerticalFlip = 128, NoResolvedColorSurface = 256, DynamicallyScalable = 1024, BindMS = 2048 }
         
         /** Color space conversion mode of a RenderTexture. */
-        enum RenderTextureReadWrite{ Default = 0, Linear = 1, sRGB = 2 }
+        export enum RenderTextureReadWrite{ Default = 0, Linear = 1, sRGB = 2 }
         
         /** Flags enumeration of the render texture memoryless modes. */
-        enum RenderTextureMemoryless{ None = 0, Color = 1, Depth = 2, MSAA = 4 }
+        export enum RenderTextureMemoryless{ None = 0, Color = 1, Depth = 2, MSAA = 4 }
         
         /** A set of flags that describe the level of HDR display support available on the system. */
-        enum HDRDisplaySupportFlags{ None = 0, Supported = 1, RuntimeSwitchable = 2, AutomaticTonemapping = 4 }
+        export enum HDRDisplaySupportFlags{ None = 0, Supported = 1, RuntimeSwitchable = 2, AutomaticTonemapping = 4 }
         
         /** Specify the source of a Custom Render Texture initialization. */
-        enum CustomRenderTextureInitializationSource{ TextureAndColor = 0, Material = 1 }
+        export enum CustomRenderTextureInitializationSource{ TextureAndColor = 0, Material = 1 }
         
         /** Frequency of update or initialization of a Custom Render Texture. */
-        enum CustomRenderTextureUpdateMode{ OnLoad = 0, Realtime = 1, OnDemand = 2 }
+        export enum CustomRenderTextureUpdateMode{ OnLoad = 0, Realtime = 1, OnDemand = 2 }
         
         /** Space in which coordinates are provided for Update Zones. */
-        enum CustomRenderTextureUpdateZoneSpace{ Normalized = 0, Pixel = 1 }
+        export enum CustomRenderTextureUpdateZoneSpace{ Normalized = 0, Pixel = 1 }
         
         /** The Skinned Mesh filter. */
-        class SkinnedMeshRenderer extends UnityEngine.Renderer{ 
+        export class SkinnedMeshRenderer extends UnityEngine.Renderer{ 
             /** The maximum number of bones per vertex that are taken into account during skinning. */
             public get quality(): UnityEngine.SkinQuality;
             public set quality(value: UnityEngine.SkinQuality);
@@ -13132,14 +13134,14 @@ declare module 'csharp' {
         }
         
         /** Light Probe Group. */
-        class LightProbeGroup extends UnityEngine.Behaviour{ 
+        export class LightProbeGroup extends UnityEngine.Behaviour{ 
             
             public constructor();
             
         }
         
         /** A collection of common line functions. */
-        class LineUtility extends System.Object{ 
+        export class LineUtility extends System.Object{ 
             
             public static Simplify($points: System.Collections.Generic.List$1<UnityEngine.Vector3>, $tolerance: number, $pointsToKeep: System.Collections.Generic.List$1<number>):void;
             
@@ -13154,10 +13156,10 @@ declare module 'csharp' {
         }
         
         /** The LOD fade modes. Modes other than LODFadeMode.None will result in Unity calculating a blend factor for blending/interpolating between two neighbouring LODs and pass it to your shader. */
-        enum LODFadeMode{ None = 0, CrossFade = 1, SpeedTree = 2 }
+        export enum LODFadeMode{ None = 0, CrossFade = 1, SpeedTree = 2 }
         
         /** Structure for building a LOD for passing to the SetLODs function. */
-        class LOD extends System.ValueType{ 
+        export class LOD extends System.ValueType{ 
             /** The screen relative height to use for the transition [0-1]. */
             public screenRelativeTransitionHeight: number;
             /** Width of the cross-fade transition zone (proportion to the current LOD's whole length) [0-1]. Only used if it's not animated. */
@@ -13172,7 +13174,7 @@ declare module 'csharp' {
         }
         
         /** LODGroup lets you group multiple Renderers into LOD levels. */
-        class LODGroup extends UnityEngine.Component{ 
+        export class LODGroup extends UnityEngine.Component{ 
             /** The local reference point against which the LOD distance is calculated. */
             public get localReferencePoint(): UnityEngine.Vector3;
             public set localReferencePoint(value: UnityEngine.Vector3);
@@ -13210,7 +13212,7 @@ declare module 'csharp' {
         }
         
         /** Class for handling 3D Textures, Use this to create. */
-        class Texture3D extends UnityEngine.Texture{ 
+        export class Texture3D extends UnityEngine.Texture{ 
             /** The depth of the texture (Read Only). */
             public get depth(): number;
             
@@ -13314,7 +13316,7 @@ declare module 'csharp' {
         }
         
         /** Class for handling 2D texture arrays. */
-        class Texture2DArray extends UnityEngine.Texture{ 
+        export class Texture2DArray extends UnityEngine.Texture{ 
             /** Read Only. This property is used as a parameter in some overloads of the CommandBuffer.Blit, Graphics.Blit, CommandBuffer.SetRenderTarget, and Graphics.SetRenderTarget methods to indicate that all texture array slices are bound. The value of this property is -1. */
             public static get allSlices(): number;
             
@@ -13383,7 +13385,7 @@ declare module 'csharp' {
         }
         
         /** Class for handling Cubemap arrays. */
-        class CubemapArray extends UnityEngine.Texture{ 
+        export class CubemapArray extends UnityEngine.Texture{ 
             /** Number of cubemaps in the array (Read Only). */
             public get cubemapCount(): number;
             
@@ -13453,7 +13455,7 @@ declare module 'csharp' {
         }
         
         /** Class for handling Sparse Textures. */
-        class SparseTexture extends UnityEngine.Texture{ 
+        export class SparseTexture extends UnityEngine.Texture{ 
             /** Get sparse texture tile width (Read Only). */
             public get tileWidth(): number;
             
@@ -13494,7 +13496,7 @@ declare module 'csharp' {
         }
         
         /** This struct contains all the information required to create a RenderTexture. It can be copied, cached, and reused to easily create RenderTextures that all share the same properties. Avoid using the default constructor as it does not initialize some flags with the recommended values. */
-        class RenderTextureDescriptor extends System.ValueType{ 
+        export class RenderTextureDescriptor extends System.ValueType{ 
             /** The width of the render texture in pixels. */
             public get width(): number;
             public set width(value: number);
@@ -13584,7 +13586,7 @@ declare module 'csharp' {
         }
         
         /** Structure describing an Update Zone. */
-        class CustomRenderTextureUpdateZone extends System.ValueType{ 
+        export class CustomRenderTextureUpdateZone extends System.ValueType{ 
             /** Position of the center of the Update Zone within the Custom Render Texture. */
             public updateZoneCenter: UnityEngine.Vector3;
             /** Size of the Update Zone. */
@@ -13599,16 +13601,16 @@ declare module 'csharp' {
         }
         
         /** Describes options for displaying movie playback controls. */
-        enum FullScreenMovieControlMode{ Full = 0, Minimal = 1, CancelOnInput = 2, Hidden = 3 }
+        export enum FullScreenMovieControlMode{ Full = 0, Minimal = 1, CancelOnInput = 2, Hidden = 3 }
         
         /** Describes scaling modes for displaying movies. */
-        enum FullScreenMovieScalingMode{ None = 0, AspectFit = 1, AspectFill = 2, Fill = 3 }
+        export enum FullScreenMovieScalingMode{ None = 0, AspectFit = 1, AspectFill = 2, Fill = 3 }
         
         /** ActivityIndicator Style (Android Specific). */
-        enum AndroidActivityIndicatorStyle{ DontShow = -1, Large = 0, InversedLarge = 1, Small = 2, InversedSmall = 3 }
+        export enum AndroidActivityIndicatorStyle{ DontShow = -1, Large = 0, InversedLarge = 1, Small = 2, InversedSmall = 3 }
         
         /** Utilities to compute hashes. */
-        class HashUtilities extends System.Object{ 
+        export class HashUtilities extends System.Object{ 
             /** Append inHash in outHash. * @param inHash Hash to append.
              * @param outHash Hash that will be updated.
              */
@@ -13629,18 +13631,18 @@ declare module 'csharp' {
         }
         
         /** Utilities to compute hashes with unsafe code. */
-        class HashUnsafeUtilities extends System.Object{ 
+        export class HashUnsafeUtilities extends System.Object{ 
             
         }
         
         /** Determines whether the mouse cursor is rendered using software rendering or, on supported platforms, hardware rendering. */
-        enum CursorMode{ Auto = 0, ForceSoftware = 1 }
+        export enum CursorMode{ Auto = 0, ForceSoftware = 1 }
         
         /** How the cursor should behave. */
-        enum CursorLockMode{ None = 0, Locked = 1, Confined = 2 }
+        export enum CursorLockMode{ None = 0, Locked = 1, Confined = 2 }
         
         /** Cursor API for setting the cursor (mouse pointer). */
-        class Cursor extends System.Object{ 
+        export class Cursor extends System.Object{ 
             /** Determines whether the hardware pointer is visible or not. */
             public static get visible(): boolean;
             public static set visible(value: boolean);
@@ -13658,46 +13660,46 @@ declare module 'csharp' {
         }
         
         /** Key codes returned by Event.keyCode. These map directly to a physical key on the keyboard. */
-        enum KeyCode{ None = 0, Backspace = 8, Delete = 127, Tab = 9, Clear = 12, Return = 13, Pause = 19, Escape = 27, Space = 32, Keypad0 = 256, Keypad1 = 257, Keypad2 = 258, Keypad3 = 259, Keypad4 = 260, Keypad5 = 261, Keypad6 = 262, Keypad7 = 263, Keypad8 = 264, Keypad9 = 265, KeypadPeriod = 266, KeypadDivide = 267, KeypadMultiply = 268, KeypadMinus = 269, KeypadPlus = 270, KeypadEnter = 271, KeypadEquals = 272, UpArrow = 273, DownArrow = 274, RightArrow = 275, LeftArrow = 276, Insert = 277, Home = 278, End = 279, PageUp = 280, PageDown = 281, F1 = 282, F2 = 283, F3 = 284, F4 = 285, F5 = 286, F6 = 287, F7 = 288, F8 = 289, F9 = 290, F10 = 291, F11 = 292, F12 = 293, F13 = 294, F14 = 295, F15 = 296, Alpha0 = 48, Alpha1 = 49, Alpha2 = 50, Alpha3 = 51, Alpha4 = 52, Alpha5 = 53, Alpha6 = 54, Alpha7 = 55, Alpha8 = 56, Alpha9 = 57, Exclaim = 33, DoubleQuote = 34, Hash = 35, Dollar = 36, Percent = 37, Ampersand = 38, Quote = 39, LeftParen = 40, RightParen = 41, Asterisk = 42, Plus = 43, Comma = 44, Minus = 45, Period = 46, Slash = 47, Colon = 58, Semicolon = 59, Less = 60, Equals = 61, Greater = 62, Question = 63, At = 64, LeftBracket = 91, Backslash = 92, RightBracket = 93, Caret = 94, Underscore = 95, BackQuote = 96, A = 97, B = 98, C = 99, D = 100, E = 101, F = 102, G = 103, H = 104, I = 105, J = 106, K = 107, L = 108, M = 109, N = 110, O = 111, P = 112, Q = 113, R = 114, S = 115, T = 116, U = 117, V = 118, W = 119, X = 120, Y = 121, Z = 122, LeftCurlyBracket = 123, Pipe = 124, RightCurlyBracket = 125, Tilde = 126, Numlock = 300, CapsLock = 301, ScrollLock = 302, RightShift = 303, LeftShift = 304, RightControl = 305, LeftControl = 306, RightAlt = 307, LeftAlt = 308, LeftCommand = 310, LeftApple = 310, LeftWindows = 311, RightCommand = 309, RightApple = 309, RightWindows = 312, AltGr = 313, Help = 315, Print = 316, SysReq = 317, Break = 318, Menu = 319, Mouse0 = 323, Mouse1 = 324, Mouse2 = 325, Mouse3 = 326, Mouse4 = 327, Mouse5 = 328, Mouse6 = 329, JoystickButton0 = 330, JoystickButton1 = 331, JoystickButton2 = 332, JoystickButton3 = 333, JoystickButton4 = 334, JoystickButton5 = 335, JoystickButton6 = 336, JoystickButton7 = 337, JoystickButton8 = 338, JoystickButton9 = 339, JoystickButton10 = 340, JoystickButton11 = 341, JoystickButton12 = 342, JoystickButton13 = 343, JoystickButton14 = 344, JoystickButton15 = 345, JoystickButton16 = 346, JoystickButton17 = 347, JoystickButton18 = 348, JoystickButton19 = 349, Joystick1Button0 = 350, Joystick1Button1 = 351, Joystick1Button2 = 352, Joystick1Button3 = 353, Joystick1Button4 = 354, Joystick1Button5 = 355, Joystick1Button6 = 356, Joystick1Button7 = 357, Joystick1Button8 = 358, Joystick1Button9 = 359, Joystick1Button10 = 360, Joystick1Button11 = 361, Joystick1Button12 = 362, Joystick1Button13 = 363, Joystick1Button14 = 364, Joystick1Button15 = 365, Joystick1Button16 = 366, Joystick1Button17 = 367, Joystick1Button18 = 368, Joystick1Button19 = 369, Joystick2Button0 = 370, Joystick2Button1 = 371, Joystick2Button2 = 372, Joystick2Button3 = 373, Joystick2Button4 = 374, Joystick2Button5 = 375, Joystick2Button6 = 376, Joystick2Button7 = 377, Joystick2Button8 = 378, Joystick2Button9 = 379, Joystick2Button10 = 380, Joystick2Button11 = 381, Joystick2Button12 = 382, Joystick2Button13 = 383, Joystick2Button14 = 384, Joystick2Button15 = 385, Joystick2Button16 = 386, Joystick2Button17 = 387, Joystick2Button18 = 388, Joystick2Button19 = 389, Joystick3Button0 = 390, Joystick3Button1 = 391, Joystick3Button2 = 392, Joystick3Button3 = 393, Joystick3Button4 = 394, Joystick3Button5 = 395, Joystick3Button6 = 396, Joystick3Button7 = 397, Joystick3Button8 = 398, Joystick3Button9 = 399, Joystick3Button10 = 400, Joystick3Button11 = 401, Joystick3Button12 = 402, Joystick3Button13 = 403, Joystick3Button14 = 404, Joystick3Button15 = 405, Joystick3Button16 = 406, Joystick3Button17 = 407, Joystick3Button18 = 408, Joystick3Button19 = 409, Joystick4Button0 = 410, Joystick4Button1 = 411, Joystick4Button2 = 412, Joystick4Button3 = 413, Joystick4Button4 = 414, Joystick4Button5 = 415, Joystick4Button6 = 416, Joystick4Button7 = 417, Joystick4Button8 = 418, Joystick4Button9 = 419, Joystick4Button10 = 420, Joystick4Button11 = 421, Joystick4Button12 = 422, Joystick4Button13 = 423, Joystick4Button14 = 424, Joystick4Button15 = 425, Joystick4Button16 = 426, Joystick4Button17 = 427, Joystick4Button18 = 428, Joystick4Button19 = 429, Joystick5Button0 = 430, Joystick5Button1 = 431, Joystick5Button2 = 432, Joystick5Button3 = 433, Joystick5Button4 = 434, Joystick5Button5 = 435, Joystick5Button6 = 436, Joystick5Button7 = 437, Joystick5Button8 = 438, Joystick5Button9 = 439, Joystick5Button10 = 440, Joystick5Button11 = 441, Joystick5Button12 = 442, Joystick5Button13 = 443, Joystick5Button14 = 444, Joystick5Button15 = 445, Joystick5Button16 = 446, Joystick5Button17 = 447, Joystick5Button18 = 448, Joystick5Button19 = 449, Joystick6Button0 = 450, Joystick6Button1 = 451, Joystick6Button2 = 452, Joystick6Button3 = 453, Joystick6Button4 = 454, Joystick6Button5 = 455, Joystick6Button6 = 456, Joystick6Button7 = 457, Joystick6Button8 = 458, Joystick6Button9 = 459, Joystick6Button10 = 460, Joystick6Button11 = 461, Joystick6Button12 = 462, Joystick6Button13 = 463, Joystick6Button14 = 464, Joystick6Button15 = 465, Joystick6Button16 = 466, Joystick6Button17 = 467, Joystick6Button18 = 468, Joystick6Button19 = 469, Joystick7Button0 = 470, Joystick7Button1 = 471, Joystick7Button2 = 472, Joystick7Button3 = 473, Joystick7Button4 = 474, Joystick7Button5 = 475, Joystick7Button6 = 476, Joystick7Button7 = 477, Joystick7Button8 = 478, Joystick7Button9 = 479, Joystick7Button10 = 480, Joystick7Button11 = 481, Joystick7Button12 = 482, Joystick7Button13 = 483, Joystick7Button14 = 484, Joystick7Button15 = 485, Joystick7Button16 = 486, Joystick7Button17 = 487, Joystick7Button18 = 488, Joystick7Button19 = 489, Joystick8Button0 = 490, Joystick8Button1 = 491, Joystick8Button2 = 492, Joystick8Button3 = 493, Joystick8Button4 = 494, Joystick8Button5 = 495, Joystick8Button6 = 496, Joystick8Button7 = 497, Joystick8Button8 = 498, Joystick8Button9 = 499, Joystick8Button10 = 500, Joystick8Button11 = 501, Joystick8Button12 = 502, Joystick8Button13 = 503, Joystick8Button14 = 504, Joystick8Button15 = 505, Joystick8Button16 = 506, Joystick8Button17 = 507, Joystick8Button18 = 508, Joystick8Button19 = 509 }
+        export enum KeyCode{ None = 0, Backspace = 8, Delete = 127, Tab = 9, Clear = 12, Return = 13, Pause = 19, Escape = 27, Space = 32, Keypad0 = 256, Keypad1 = 257, Keypad2 = 258, Keypad3 = 259, Keypad4 = 260, Keypad5 = 261, Keypad6 = 262, Keypad7 = 263, Keypad8 = 264, Keypad9 = 265, KeypadPeriod = 266, KeypadDivide = 267, KeypadMultiply = 268, KeypadMinus = 269, KeypadPlus = 270, KeypadEnter = 271, KeypadEquals = 272, UpArrow = 273, DownArrow = 274, RightArrow = 275, LeftArrow = 276, Insert = 277, Home = 278, End = 279, PageUp = 280, PageDown = 281, F1 = 282, F2 = 283, F3 = 284, F4 = 285, F5 = 286, F6 = 287, F7 = 288, F8 = 289, F9 = 290, F10 = 291, F11 = 292, F12 = 293, F13 = 294, F14 = 295, F15 = 296, Alpha0 = 48, Alpha1 = 49, Alpha2 = 50, Alpha3 = 51, Alpha4 = 52, Alpha5 = 53, Alpha6 = 54, Alpha7 = 55, Alpha8 = 56, Alpha9 = 57, Exclaim = 33, DoubleQuote = 34, Hash = 35, Dollar = 36, Percent = 37, Ampersand = 38, Quote = 39, LeftParen = 40, RightParen = 41, Asterisk = 42, Plus = 43, Comma = 44, Minus = 45, Period = 46, Slash = 47, Colon = 58, Semicolon = 59, Less = 60, Equals = 61, Greater = 62, Question = 63, At = 64, LeftBracket = 91, Backslash = 92, RightBracket = 93, Caret = 94, Underscore = 95, BackQuote = 96, A = 97, B = 98, C = 99, D = 100, E = 101, F = 102, G = 103, H = 104, I = 105, J = 106, K = 107, L = 108, M = 109, N = 110, O = 111, P = 112, Q = 113, R = 114, S = 115, T = 116, U = 117, V = 118, W = 119, X = 120, Y = 121, Z = 122, LeftCurlyBracket = 123, Pipe = 124, RightCurlyBracket = 125, Tilde = 126, Numlock = 300, CapsLock = 301, ScrollLock = 302, RightShift = 303, LeftShift = 304, RightControl = 305, LeftControl = 306, RightAlt = 307, LeftAlt = 308, LeftCommand = 310, LeftApple = 310, LeftWindows = 311, RightCommand = 309, RightApple = 309, RightWindows = 312, AltGr = 313, Help = 315, Print = 316, SysReq = 317, Break = 318, Menu = 319, Mouse0 = 323, Mouse1 = 324, Mouse2 = 325, Mouse3 = 326, Mouse4 = 327, Mouse5 = 328, Mouse6 = 329, JoystickButton0 = 330, JoystickButton1 = 331, JoystickButton2 = 332, JoystickButton3 = 333, JoystickButton4 = 334, JoystickButton5 = 335, JoystickButton6 = 336, JoystickButton7 = 337, JoystickButton8 = 338, JoystickButton9 = 339, JoystickButton10 = 340, JoystickButton11 = 341, JoystickButton12 = 342, JoystickButton13 = 343, JoystickButton14 = 344, JoystickButton15 = 345, JoystickButton16 = 346, JoystickButton17 = 347, JoystickButton18 = 348, JoystickButton19 = 349, Joystick1Button0 = 350, Joystick1Button1 = 351, Joystick1Button2 = 352, Joystick1Button3 = 353, Joystick1Button4 = 354, Joystick1Button5 = 355, Joystick1Button6 = 356, Joystick1Button7 = 357, Joystick1Button8 = 358, Joystick1Button9 = 359, Joystick1Button10 = 360, Joystick1Button11 = 361, Joystick1Button12 = 362, Joystick1Button13 = 363, Joystick1Button14 = 364, Joystick1Button15 = 365, Joystick1Button16 = 366, Joystick1Button17 = 367, Joystick1Button18 = 368, Joystick1Button19 = 369, Joystick2Button0 = 370, Joystick2Button1 = 371, Joystick2Button2 = 372, Joystick2Button3 = 373, Joystick2Button4 = 374, Joystick2Button5 = 375, Joystick2Button6 = 376, Joystick2Button7 = 377, Joystick2Button8 = 378, Joystick2Button9 = 379, Joystick2Button10 = 380, Joystick2Button11 = 381, Joystick2Button12 = 382, Joystick2Button13 = 383, Joystick2Button14 = 384, Joystick2Button15 = 385, Joystick2Button16 = 386, Joystick2Button17 = 387, Joystick2Button18 = 388, Joystick2Button19 = 389, Joystick3Button0 = 390, Joystick3Button1 = 391, Joystick3Button2 = 392, Joystick3Button3 = 393, Joystick3Button4 = 394, Joystick3Button5 = 395, Joystick3Button6 = 396, Joystick3Button7 = 397, Joystick3Button8 = 398, Joystick3Button9 = 399, Joystick3Button10 = 400, Joystick3Button11 = 401, Joystick3Button12 = 402, Joystick3Button13 = 403, Joystick3Button14 = 404, Joystick3Button15 = 405, Joystick3Button16 = 406, Joystick3Button17 = 407, Joystick3Button18 = 408, Joystick3Button19 = 409, Joystick4Button0 = 410, Joystick4Button1 = 411, Joystick4Button2 = 412, Joystick4Button3 = 413, Joystick4Button4 = 414, Joystick4Button5 = 415, Joystick4Button6 = 416, Joystick4Button7 = 417, Joystick4Button8 = 418, Joystick4Button9 = 419, Joystick4Button10 = 420, Joystick4Button11 = 421, Joystick4Button12 = 422, Joystick4Button13 = 423, Joystick4Button14 = 424, Joystick4Button15 = 425, Joystick4Button16 = 426, Joystick4Button17 = 427, Joystick4Button18 = 428, Joystick4Button19 = 429, Joystick5Button0 = 430, Joystick5Button1 = 431, Joystick5Button2 = 432, Joystick5Button3 = 433, Joystick5Button4 = 434, Joystick5Button5 = 435, Joystick5Button6 = 436, Joystick5Button7 = 437, Joystick5Button8 = 438, Joystick5Button9 = 439, Joystick5Button10 = 440, Joystick5Button11 = 441, Joystick5Button12 = 442, Joystick5Button13 = 443, Joystick5Button14 = 444, Joystick5Button15 = 445, Joystick5Button16 = 446, Joystick5Button17 = 447, Joystick5Button18 = 448, Joystick5Button19 = 449, Joystick6Button0 = 450, Joystick6Button1 = 451, Joystick6Button2 = 452, Joystick6Button3 = 453, Joystick6Button4 = 454, Joystick6Button5 = 455, Joystick6Button6 = 456, Joystick6Button7 = 457, Joystick6Button8 = 458, Joystick6Button9 = 459, Joystick6Button10 = 460, Joystick6Button11 = 461, Joystick6Button12 = 462, Joystick6Button13 = 463, Joystick6Button14 = 464, Joystick6Button15 = 465, Joystick6Button16 = 466, Joystick6Button17 = 467, Joystick6Button18 = 468, Joystick6Button19 = 469, Joystick7Button0 = 470, Joystick7Button1 = 471, Joystick7Button2 = 472, Joystick7Button3 = 473, Joystick7Button4 = 474, Joystick7Button5 = 475, Joystick7Button6 = 476, Joystick7Button7 = 477, Joystick7Button8 = 478, Joystick7Button9 = 479, Joystick7Button10 = 480, Joystick7Button11 = 481, Joystick7Button12 = 482, Joystick7Button13 = 483, Joystick7Button14 = 484, Joystick7Button15 = 485, Joystick7Button16 = 486, Joystick7Button17 = 487, Joystick7Button18 = 488, Joystick7Button19 = 489, Joystick8Button0 = 490, Joystick8Button1 = 491, Joystick8Button2 = 492, Joystick8Button3 = 493, Joystick8Button4 = 494, Joystick8Button5 = 495, Joystick8Button6 = 496, Joystick8Button7 = 497, Joystick8Button8 = 498, Joystick8Button9 = 499, Joystick8Button10 = 500, Joystick8Button11 = 501, Joystick8Button12 = 502, Joystick8Button13 = 503, Joystick8Button14 = 504, Joystick8Button15 = 505, Joystick8Button16 = 506, Joystick8Button17 = 507, Joystick8Button18 = 508, Joystick8Button19 = 509 }
         
         
-        enum iPhoneScreenOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, AutoRotation = 5, Landscape = 6 }
+        export enum iPhoneScreenOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, AutoRotation = 5, Landscape = 6 }
         
         
-        enum iPhoneNetworkReachability{ NotReachable = 0, ReachableViaCarrierDataNetwork = 1, ReachableViaWiFiNetwork = 2 }
+        export enum iPhoneNetworkReachability{ NotReachable = 0, ReachableViaCarrierDataNetwork = 1, ReachableViaWiFiNetwork = 2 }
         
         
-        enum iPhoneGeneration{ Unknown = 0, iPhone = 1, iPhone3G = 2, iPhone3GS = 3, iPodTouch1Gen = 4, iPodTouch2Gen = 5, iPodTouch3Gen = 6, iPad1Gen = 7, iPhone4 = 8, iPodTouch4Gen = 9, iPad2Gen = 10, iPhone4S = 11, iPad3Gen = 12, iPhone5 = 13, iPodTouch5Gen = 14, iPadMini1Gen = 15, iPad4Gen = 16, iPhone5C = 17, iPhone5S = 18, iPhoneUnknown = 19, iPadUnknown = 20, iPodTouchUnknown = 21 }
+        export enum iPhoneGeneration{ Unknown = 0, iPhone = 1, iPhone3G = 2, iPhone3GS = 3, iPodTouch1Gen = 4, iPodTouch2Gen = 5, iPodTouch3Gen = 6, iPad1Gen = 7, iPhone4 = 8, iPodTouch4Gen = 9, iPad2Gen = 10, iPhone4S = 11, iPad3Gen = 12, iPhone5 = 13, iPodTouch5Gen = 14, iPadMini1Gen = 15, iPad4Gen = 16, iPhone5C = 17, iPhone5S = 18, iPhoneUnknown = 19, iPadUnknown = 20, iPodTouchUnknown = 21 }
         
         
-        enum iPhoneTouchPhase{ Began = 0, Moved = 1, Stationary = 2, Ended = 3, Canceled = 4 }
+        export enum iPhoneTouchPhase{ Began = 0, Moved = 1, Stationary = 2, Ended = 3, Canceled = 4 }
         
         
-        enum iPhoneMovieControlMode{ Full = 0, Minimal = 1, CancelOnTouch = 2, Hidden = 3, VolumeOnly = 4 }
+        export enum iPhoneMovieControlMode{ Full = 0, Minimal = 1, CancelOnTouch = 2, Hidden = 3, VolumeOnly = 4 }
         
         
-        enum iPhoneMovieScalingMode{ None = 0, AspectFit = 1, AspectFill = 2, Fill = 3 }
+        export enum iPhoneMovieScalingMode{ None = 0, AspectFit = 1, AspectFill = 2, Fill = 3 }
         
         
-        enum iPhoneKeyboardType{ Default = 0, ASCIICapable = 1, NumbersAndPunctuation = 2, URL = 3, NumberPad = 4, PhonePad = 5, NamePhonePad = 6, EmailAddress = 7 }
+        export enum iPhoneKeyboardType{ Default = 0, ASCIICapable = 1, NumbersAndPunctuation = 2, URL = 3, NumberPad = 4, PhonePad = 5, NamePhonePad = 6, EmailAddress = 7 }
         
         
-        enum iPhoneOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, FaceUp = 5, FaceDown = 6 }
+        export enum iPhoneOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, FaceUp = 5, FaceDown = 6 }
         
         
-        enum iOSActivityIndicatorStyle{ DontShow = 0, WhiteLarge = 1, White = 2, Gray = 3 }
+        export enum iOSActivityIndicatorStyle{ DontShow = 0, WhiteLarge = 1, White = 2, Gray = 3 }
         
         
-        enum CalendarIdentifier{ GregorianCalendar = 0, BuddhistCalendar = 1, ChineseCalendar = 2, HebrewCalendar = 3, IslamicCalendar = 4, IslamicCivilCalendar = 5, JapaneseCalendar = 6, RepublicOfChinaCalendar = 7, PersianCalendar = 8, IndianCalendar = 9, ISO8601Calendar = 10 }
+        export enum CalendarIdentifier{ GregorianCalendar = 0, BuddhistCalendar = 1, ChineseCalendar = 2, HebrewCalendar = 3, IslamicCalendar = 4, IslamicCivilCalendar = 5, JapaneseCalendar = 6, RepublicOfChinaCalendar = 7, PersianCalendar = 8, IndianCalendar = 9, ISO8601Calendar = 10 }
         
         
-        enum CalendarUnit{ Era = 0, Year = 1, Month = 2, Day = 3, Hour = 4, Minute = 5, Second = 6, Week = 7, Weekday = 8, WeekdayOrdinal = 9, Quarter = 10 }
+        export enum CalendarUnit{ Era = 0, Year = 1, Month = 2, Day = 3, Hour = 4, Minute = 5, Second = 6, Week = 7, Weekday = 8, WeekdayOrdinal = 9, Quarter = 10 }
         
         
-        enum RemoteNotificationType{ None = 0, Badge = 1, Sound = 2, Alert = 3 }
+        export enum RemoteNotificationType{ None = 0, Badge = 1, Sound = 2, Alert = 3 }
         
         /** Initializes a new instance of the Logger. */
-        class Logger extends System.Object implements UnityEngine.ILogger, UnityEngine.ILogHandler{ 
+        export class Logger extends System.Object implements UnityEngine.ILogger, UnityEngine.ILogHandler{ 
             /** Set  Logger.ILogHandler. */
             public get logHandler(): UnityEngine.ILogHandler;
             public set logHandler(value: UnityEngine.ILogHandler);
@@ -13862,7 +13864,7 @@ declare module 'csharp' {
         }
         
         /** A collection of common color functions. */
-        class ColorUtility extends System.Object{ 
+        export class ColorUtility extends System.Object{ 
             /** Attempts to convert a html color string.
              * @param htmlString Case insensitive html string to be converted into a color.
              * @param color The converted color.
@@ -13885,7 +13887,7 @@ declare module 'csharp' {
         }
         
         /** Color key used by Gradient. */
-        class GradientColorKey extends System.ValueType{ 
+        export class GradientColorKey extends System.ValueType{ 
             /** Color of key. */
             public color: UnityEngine.Color;
             /** Time of the key (0 - 1). */
@@ -13898,7 +13900,7 @@ declare module 'csharp' {
         }
         
         /** Alpha key used by Gradient. */
-        class GradientAlphaKey extends System.ValueType{ 
+        export class GradientAlphaKey extends System.ValueType{ 
             /** Alpha channel of key. */
             public alpha: number;
             /** Time of the key (0 - 1). */
@@ -13911,10 +13913,10 @@ declare module 'csharp' {
         }
         
         /** Select how gradients will be evaluated. */
-        enum GradientMode{ Blend = 0, Fixed = 1 }
+        export enum GradientMode{ Blend = 0, Fixed = 1 }
         
         /** This struct contains the view space coordinates of the near projection plane. */
-        class FrustumPlanes extends System.ValueType{ 
+        export class FrustumPlanes extends System.ValueType{ 
             /** Position in view space of the left side of the near projection plane. */
             public left: number;
             /** Position in view space of the right side of the near projection plane. */
@@ -13931,7 +13933,7 @@ declare module 'csharp' {
         }
         
         /** A collection of common math functions. */
-        class Mathf extends System.ValueType{ 
+        export class Mathf extends System.ValueType{ 
             /** The well-known 3.14159265358979... value (Read Only). */
             public static PI: number;
             /** A representation of positive infinity (Read Only). */
@@ -14151,31 +14153,31 @@ declare module 'csharp' {
         }
         
         /** Option for who will receive an RPC, used by NetworkView.RPC. */
-        enum RPCMode{  }
+        export enum RPCMode{  }
         
         /** The various test results the connection tester may return with. */
-        enum ConnectionTesterStatus{  }
+        export enum ConnectionTesterStatus{  }
         
         /** Possible status messages returned by Network.Connect and in MonoBehaviour.OnFailedToConnect|OnFailedToConnect in case the error was not immediate. */
-        enum NetworkConnectionError{  }
+        export enum NetworkConnectionError{  }
         
         /** The reason a disconnect event occured, like in MonoBehaviour.OnDisconnectedFromServer|OnDisconnectedFromServer. */
-        enum NetworkDisconnection{  }
+        export enum NetworkDisconnection{  }
         
         /** Describes status messages from the master server as returned in MonoBehaviour.OnMasterServerEvent|OnMasterServerEvent. */
-        enum MasterServerEvent{  }
+        export enum MasterServerEvent{  }
         
         /** Different types of synchronization for the NetworkView component. */
-        enum NetworkStateSynchronization{  }
+        export enum NetworkStateSynchronization{  }
         
         /** Describes the status of the network interface peer type as returned by Network.peerType. */
-        enum NetworkPeerType{  }
+        export enum NetworkPeerType{  }
         
         /** Describes different levels of log information the network layer supports. */
-        enum NetworkLogLevel{  }
+        export enum NetworkLogLevel{  }
         
         /** Ping any given IP address (given in dot notation). */
-        class Ping extends System.Object{ 
+        export class Ping extends System.Object{ 
             /** Has the ping function completed? */
             public get isDone(): boolean;
             
@@ -14195,7 +14197,7 @@ declare module 'csharp' {
         }
         
         /** An exception thrown by the PlayerPrefs class in a  web player build. */
-        class PlayerPrefsException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class PlayerPrefsException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public constructor($error: string);
             
@@ -14204,7 +14206,7 @@ declare module 'csharp' {
         }
         
         /** `PlayerPrefs` is a class that stores Player preferences between game sessions. It can store string, float and integer values into the user’s platform registry. */
-        class PlayerPrefs extends System.Object{ 
+        export class PlayerPrefs extends System.Object{ 
             /** Sets a single integer value for the preference identified by the given key. You can use PlayerPrefs.GetInt to retrieve this value. */
             public static SetInt($key: string, $value: number):void;
             /** Returns the value corresponding to key in the preference file if it exists. */
@@ -14237,7 +14239,7 @@ declare module 'csharp' {
         }
         
         /** Base class to derive custom property attributes from. Use this to create custom attributes for script variables. */
-        class PropertyAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class PropertyAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             /** Optional field to specify the order that multiple DecorationDrawers should be drawn in. */
             public get order(): number;
             public set order(value: number);
@@ -14245,7 +14247,7 @@ declare module 'csharp' {
         }
         
         /** Use this attribute to add a context menu to a field that calls a  named method. */
-        class ContextMenuItemAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ContextMenuItemAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** The name of the context menu item. */
             public name: string;
             /** The name of the function that should be called. */
@@ -14258,7 +14260,7 @@ declare module 'csharp' {
         }
         
         /** Use this attribute on enum value declarations to change the display name shown in the Inspector. */
-        class InspectorNameAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class InspectorNameAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** Name to display in the Inspector. */
             public displayName: string;
             
@@ -14269,7 +14271,7 @@ declare module 'csharp' {
         }
         
         /** Specify a tooltip for a field in the Inspector window. */
-        class TooltipAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class TooltipAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** The tooltip text. */
             public tooltip: string;
             
@@ -14280,7 +14282,7 @@ declare module 'csharp' {
         }
         
         /** Use this PropertyAttribute to add some spacing in the Inspector. */
-        class SpaceAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class SpaceAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** The spacing in pixels. */
             public height: number;
             
@@ -14291,7 +14293,7 @@ declare module 'csharp' {
         }
         
         /** Use this PropertyAttribute to add a header above some fields in the Inspector. */
-        class HeaderAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class HeaderAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** The header text. */
             public header: string;
             
@@ -14302,7 +14304,7 @@ declare module 'csharp' {
         }
         
         /** Attribute used to make a float or int variable in a script be restricted to a specific range. */
-        class RangeAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class RangeAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             
             public min: number;
             
@@ -14315,7 +14317,7 @@ declare module 'csharp' {
         }
         
         /** Attribute used to make a float or int variable in a script be restricted to a specific minimum value. */
-        class MinAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class MinAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** The minimum allowed value. */
             public min: number;
             
@@ -14326,7 +14328,7 @@ declare module 'csharp' {
         }
         
         /** Attribute to make a string be edited with a multi-line textfield. */
-        class MultilineAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class MultilineAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             
             public lines: number;
             
@@ -14337,7 +14339,7 @@ declare module 'csharp' {
         }
         
         /** Attribute to make a string be edited with a height-flexible and scrollable text area. */
-        class TextAreaAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class TextAreaAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** The minimum amount of lines the text area will use. */
             public minLines: number;
             /** The maximum amount of lines the text area can show before it starts using a scrollbar. */
@@ -14350,7 +14352,7 @@ declare module 'csharp' {
         }
         
         /** Attribute used to configure the usage of the ColorField and Color Picker for a color. */
-        class ColorUsageAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ColorUsageAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** If false then the alpha bar is hidden in the ColorField and the alpha value is not shown in the Color Picker. */
             public showAlpha: boolean;
             /** If set to true the Color is treated as a HDR color. */
@@ -14365,7 +14367,7 @@ declare module 'csharp' {
         }
         
         /** Attribute used to configure the usage of the GradientField and Gradient Editor for a gradient. */
-        class GradientUsageAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class GradientUsageAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** If set to true the Gradient uses HDR colors. */
             public hdr: boolean;
             /** The color space the Gradient uses. */
@@ -14380,21 +14382,21 @@ declare module 'csharp' {
         }
         
         /** Attribute used to make a float, int, or string variable in a script be delayed. */
-        class DelayedAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class DelayedAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Disables reordering of an array or list in the Inspector window. */
-        class NonReorderableAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class NonReorderableAttribute extends UnityEngine.PropertyAttribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Easily generate random data for games. */
-        class Random extends System.Object{ 
+        export class Random extends System.Object{ 
             /** Gets or sets the full internal state of the random number generator. */
             public static get state(): UnityEngine.Random.State;
             public static set state(value: UnityEngine.Random.State);
@@ -14477,7 +14479,7 @@ declare module 'csharp' {
         }
         
         /** Derive from this base class to provide alternative implementations to the C# behavior of specific Resources methods. */
-        class ResourcesAPI extends System.Object{ 
+        export class ResourcesAPI extends System.Object{ 
             /** The specific ResourcesAPI instance to use to handle overridden Resources methods. */
             public static get overrideAPI(): UnityEngine.ResourcesAPI;
             public static set overrideAPI(value: UnityEngine.ResourcesAPI);
@@ -14485,7 +14487,7 @@ declare module 'csharp' {
         }
         
         /** The Resources class allows you to find and access Objects including assets. */
-        class Resources extends System.Object{ 
+        export class Resources extends System.Object{ 
             /** Returns a list of all objects of Type type. */
             public static FindObjectsOfTypeAll($type: System.Type):System.Array$1<UnityEngine.Object>;
             /** Loads an asset stored at path in a Resources folder using an optional systemTypeInstance filter.
@@ -14533,14 +14535,14 @@ declare module 'csharp' {
         }
         
         /** Prevents MonoBehaviour of same type (or subtype) to be added more than once to a GameObject. */
-        class DisallowMultipleComponent extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class DisallowMultipleComponent extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** The RequireComponent attribute automatically adds required components as dependencies. */
-        class RequireComponent extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class RequireComponent extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public m_Type0: System.Type;
             
@@ -14559,7 +14561,7 @@ declare module 'csharp' {
         }
         
         /** The AddComponentMenu attribute allows you to place a script anywhere in the "Component" menu, instead of just the "Component->Scripts" menu. */
-        class AddComponentMenu extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class AddComponentMenu extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public get componentMenu(): string;
             
@@ -14576,7 +14578,7 @@ declare module 'csharp' {
         }
         
         /** Mark a ScriptableObject-derived type to be automatically listed in the Assets/Create submenu, so that instances of the type can be easily created and stored in the project as ".asset" files. */
-        class CreateAssetMenuAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class CreateAssetMenuAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             /** The display name for this type shown in the Assets/Create menu. */
             public get menuName(): string;
             public set menuName(value: string);
@@ -14592,7 +14594,7 @@ declare module 'csharp' {
         }
         
         /** The ContextMenu attribute allows you to add commands to the context menu. */
-        class ContextMenu extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ContextMenu extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public menuItem: string;
             
@@ -14611,28 +14613,28 @@ declare module 'csharp' {
         }
         
         /** Makes all instances of a script execute in Edit Mode. */
-        class ExecuteInEditMode extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ExecuteInEditMode extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Makes instances of a script always execute, both as part of Play Mode and when editing. */
-        class ExecuteAlways extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ExecuteAlways extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Makes a variable not show up in the inspector but be serialized. */
-        class HideInInspector extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class HideInInspector extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Provide a custom documentation URL for a class. */
-        class HelpURLAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class HelpURLAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             /** The documentation URL specified for this class. */
             public get URL(): string;
             
@@ -14644,7 +14646,7 @@ declare module 'csharp' {
         }
         
         
-        class DefaultExecutionOrder extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class DefaultExecutionOrder extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public get order(): number;
             
@@ -14656,21 +14658,21 @@ declare module 'csharp' {
         }
         
         /** Assembly level attribute. Any classes in an assembly with this attribute will be considered to be Editor Classes. */
-        class AssemblyIsEditorAssembly extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class AssemblyIsEditorAssembly extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Add this attribute to a class to prevent creating a Preset from the instances of the class. */
-        class ExcludeFromPresetAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ExcludeFromPresetAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Base class for custom yield instructions to suspend coroutines. */
-        class CustomYieldInstruction extends System.Object implements System.Collections.IEnumerator{ 
+        export class CustomYieldInstruction extends System.Object implements System.Collections.IEnumerator{ 
             /** Indicates if coroutine should be kept suspended. */
             public get keepWaiting(): boolean;
             
@@ -14685,14 +14687,14 @@ declare module 'csharp' {
         }
         
         /** Add this attribute to a class to prevent the class and its inherited classes from being created with ObjectFactory methods. */
-        class ExcludeFromObjectFactoryAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class ExcludeFromObjectFactoryAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Specifies Layers to use in a Physics.Raycast. */
-        class LayerMask extends System.ValueType{ 
+        export class LayerMask extends System.ValueType{ 
             /** Converts a layer mask value to an integer value. */
             public get value(): number;
             public set value(value: number);
@@ -14713,7 +14715,7 @@ declare module 'csharp' {
         }
         
         /** Describes an integer range. */
-        class RangeInt extends System.ValueType{ 
+        export class RangeInt extends System.ValueType{ 
             /** The starting index of the range, where 0 is the first position, 1 is the second, 2 is the third, and so on. */
             public start: number;
             /** The length of the range. */
@@ -14729,11 +14731,11 @@ declare module 'csharp' {
         }
         
         /** Set RuntimeInitializeOnLoadMethod type. */
-        enum RuntimeInitializeLoadType{ AfterSceneLoad = 0, BeforeSceneLoad = 1, AfterAssembliesLoaded = 2, BeforeSplashScreen = 3, SubsystemRegistration = 4 }
+        export enum RuntimeInitializeLoadType{ AfterSceneLoad = 0, BeforeSceneLoad = 1, AfterAssembliesLoaded = 2, BeforeSplashScreen = 3, SubsystemRegistration = 4 }
         
         /** Allow a runtime class method to be initialized when a game is loaded at runtime
               without action from the user. */
-        class RuntimeInitializeOnLoadMethodAttribute extends UnityEngine.Scripting.PreserveAttribute implements System.Runtime.InteropServices._Attribute{ 
+        export class RuntimeInitializeOnLoadMethodAttribute extends UnityEngine.Scripting.PreserveAttribute implements System.Runtime.InteropServices._Attribute{ 
             /** Set RuntimeInitializeOnLoadMethod type. */
             public get loadType(): UnityEngine.RuntimeInitializeLoadType;
             
@@ -14745,14 +14747,14 @@ declare module 'csharp' {
         }
         
         /** Add this attribute to a script class to mark its GameObject as a selection base object for Scene View picking. */
-        class SelectionBaseAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class SelectionBaseAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         
-        class StackTraceUtility extends System.Object{ 
+        export class StackTraceUtility extends System.Object{ 
             
             public static ExtractStackTrace():string;
             
@@ -14761,7 +14763,7 @@ declare module 'csharp' {
         }
         
         
-        class UnityException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class UnityException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public constructor();
             
@@ -14772,7 +14774,7 @@ declare module 'csharp' {
         }
         
         
-        class MissingComponentException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class MissingComponentException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public constructor();
             
@@ -14783,7 +14785,7 @@ declare module 'csharp' {
         }
         
         
-        class UnassignedReferenceException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class UnassignedReferenceException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public constructor();
             
@@ -14794,7 +14796,7 @@ declare module 'csharp' {
         }
         
         
-        class MissingReferenceException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class MissingReferenceException extends System.SystemException implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public constructor();
             
@@ -14805,7 +14807,7 @@ declare module 'csharp' {
         }
         
         /** Text file assets. */
-        class TextAsset extends UnityEngine.Object{ 
+        export class TextAsset extends UnityEngine.Object{ 
             /** The raw bytes of the text asset. (Read Only) */
             public get bytes(): System.Array$1<number>;
             
@@ -14820,7 +14822,7 @@ declare module 'csharp' {
         }
         
         /** Declares an assembly to be compatible (API wise) with a specific Unity API. Used by internal tools to avoid processing the assembly in order to decide whether assemblies may be using old Unity API. */
-        class UnityAPICompatibilityVersionAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class UnityAPICompatibilityVersionAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             /** Version of Unity API. */
             public get version(): string;
             
@@ -14834,21 +14836,21 @@ declare module 'csharp' {
         }
         
         /** Waits until the end of the frame after Unity has rendererd every Camera and GUI, just before displaying the frame on screen. */
-        class WaitForEndOfFrame extends UnityEngine.YieldInstruction{ 
+        export class WaitForEndOfFrame extends UnityEngine.YieldInstruction{ 
             
             public constructor();
             
         }
         
         /** Waits until next fixed frame rate update function. See Also: MonoBehaviour.FixedUpdate. */
-        class WaitForFixedUpdate extends UnityEngine.YieldInstruction{ 
+        export class WaitForFixedUpdate extends UnityEngine.YieldInstruction{ 
             
             public constructor();
             
         }
         
         /** Suspends the coroutine execution for the given amount of seconds using scaled time. */
-        class WaitForSeconds extends UnityEngine.YieldInstruction{ 
+        export class WaitForSeconds extends UnityEngine.YieldInstruction{ 
             
             public constructor($seconds: number);
             
@@ -14857,7 +14859,7 @@ declare module 'csharp' {
         }
         
         /** Suspends the coroutine execution for the given amount of seconds using unscaled time. */
-        class WaitForSecondsRealtime extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator{ 
+        export class WaitForSecondsRealtime extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator{ 
             /** The given amount of seconds that the yield instruction will wait for. */
             public get waitTime(): number;
             public set waitTime(value: number);
@@ -14872,7 +14874,7 @@ declare module 'csharp' {
         }
         
         /** Suspends the coroutine execution until the supplied delegate evaluates to true. */
-        class WaitUntil extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator{ 
+        export class WaitUntil extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator{ 
             
             public get keepWaiting(): boolean;
             
@@ -14884,7 +14886,7 @@ declare module 'csharp' {
         }
         
         /** Suspends the coroutine execution until the supplied delegate evaluates to false. */
-        class WaitWhile extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator{ 
+        export class WaitWhile extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator{ 
             
             public get keepWaiting(): boolean;
             
@@ -14896,40 +14898,40 @@ declare module 'csharp' {
         }
         
         /** Webplayer security related class. Not supported from 5.4.0 onwards. */
-        class Security extends System.Object{ 
+        export class Security extends System.Object{ 
             
             public constructor();
             
         }
         
         
-        class Types extends System.Object{ 
+        export class Types extends System.Object{ 
             
         }
         
         /** Force Unity to serialize a private field. */
-        class SerializeField extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class SerializeField extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Instruct Unity to serialize a field as a reference. */
-        class SerializeReference extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class SerializeReference extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Prefer ScriptableObject derived type to use binary serialization regardless of project's asset serialization mode. */
-        class PreferBinarySerialization extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class PreferBinarySerialization extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
         }
         
         /** Compute Shader asset. */
-        class ComputeShader extends UnityEngine.Object{ 
+        export class ComputeShader extends UnityEngine.Object{ 
             /** Array of locally enabled shader keywords. */
             public get shaderKeywords(): System.Array$1<string>;
             public set shaderKeywords(value: System.Array$1<string>);
@@ -15188,7 +15190,7 @@ declare module 'csharp' {
         }
         
         /** ShaderVariantCollection records which shader variants are actually used in each shader. */
-        class ShaderVariantCollection extends UnityEngine.Object{ 
+        export class ShaderVariantCollection extends UnityEngine.Object{ 
             /** Number of shaders in this collection (Read Only). */
             public get shaderCount(): number;
             
@@ -15214,10 +15216,10 @@ declare module 'csharp' {
         }
         
         /** Defines the axes that can be snapped. */
-        enum SnapAxis{ None = 0, X = 1, Y = 2, Z = 4, All = 7 }
+        export enum SnapAxis{ None = 0, X = 1, Y = 2, Z = 4, All = 7 }
         
         /** Snap values to rounded increments. */
-        class Snapping extends System.Object{ 
+        export class Snapping extends System.Object{ 
             /** Rounds value to the closest multiple of snap.
              * @param val The value to round.
              * @param snap The increment to round to.
@@ -15241,7 +15243,7 @@ declare module 'csharp' {
         }
         
         /** StaticBatchingUtility can prepare your objects to take advantage of Unity's static batching. */
-        class StaticBatchingUtility extends System.Object{ 
+        export class StaticBatchingUtility extends System.Object{ 
             /** StaticBatchingUtility.Combine prepares all children of the staticBatchRoot for static batching. * @param staticBatchRoot The GameObject that should become the root of the combined batch.
              */
             public static Combine($staticBatchRoot: UnityEngine.GameObject):void;
@@ -15255,16 +15257,16 @@ declare module 'csharp' {
         }
         
         /** Enumeration for SystemInfo.batteryStatus which represents the current status of the device's battery. */
-        enum BatteryStatus{ Unknown = 0, Charging = 1, Discharging = 2, NotCharging = 3, Full = 4 }
+        export enum BatteryStatus{ Unknown = 0, Charging = 1, Discharging = 2, NotCharging = 3, Full = 4 }
         
         /** Enumeration for SystemInfo.operatingSystemFamily. */
-        enum OperatingSystemFamily{ Other = 0, MacOSX = 1, Windows = 2, Linux = 3 }
+        export enum OperatingSystemFamily{ Other = 0, MacOSX = 1, Windows = 2, Linux = 3 }
         
         /** Enumeration for SystemInfo.deviceType, denotes a coarse grouping of kinds of devices. */
-        enum DeviceType{ Unknown = 0, Handheld = 1, Console = 2, Desktop = 3 }
+        export enum DeviceType{ Unknown = 0, Handheld = 1, Console = 2, Desktop = 3 }
         
         /** Access system and hardware information. */
-        class SystemInfo extends System.Object{ 
+        export class SystemInfo extends System.Object{ 
             /** Value returned by SystemInfo string properties which are not supported on the current platform. */
             public static unsupportedIdentifier: string;
             /** The current battery level (Read Only). */
@@ -15557,7 +15559,7 @@ declare module 'csharp' {
         }
         
         
-        class UnityEventQueueSystem extends System.Object{ 
+        export class UnityEventQueueSystem extends System.Object{ 
             
             public static GenerateEventIdForPayload($eventPayloadName: string):string;
             
@@ -15568,7 +15570,7 @@ declare module 'csharp' {
         }
         
         /** Representation of a Position, and a Rotation in 3D Space */
-        class Pose extends System.ValueType implements System.IEquatable$1<UnityEngine.Pose>{ 
+        export class Pose extends System.ValueType implements System.IEquatable$1<UnityEngine.Pose>{ 
             /** The position component of the pose. */
             public position: UnityEngine.Vector3;
             /** The rotation component of the pose. */
@@ -15613,10 +15615,10 @@ declare module 'csharp' {
         }
         
         /** An enumeration of transform properties that can be driven on a RectTransform by an object. */
-        enum DrivenTransformProperties{ None = 0, All = -1, AnchoredPositionX = 2, AnchoredPositionY = 4, AnchoredPositionZ = 8, Rotation = 16, ScaleX = 32, ScaleY = 64, ScaleZ = 128, AnchorMinX = 256, AnchorMinY = 512, AnchorMaxX = 1024, AnchorMaxY = 2048, SizeDeltaX = 4096, SizeDeltaY = 8192, PivotX = 16384, PivotY = 32768, AnchoredPosition = 6, AnchoredPosition3D = 14, Scale = 224, AnchorMin = 768, AnchorMax = 3072, Anchors = 3840, SizeDelta = 12288, Pivot = 49152 }
+        export enum DrivenTransformProperties{ None = 0, All = -1, AnchoredPositionX = 2, AnchoredPositionY = 4, AnchoredPositionZ = 8, Rotation = 16, ScaleX = 32, ScaleY = 64, ScaleZ = 128, AnchorMinX = 256, AnchorMinY = 512, AnchorMaxX = 1024, AnchorMaxY = 2048, SizeDeltaX = 4096, SizeDeltaY = 8192, PivotX = 16384, PivotY = 32768, AnchoredPosition = 6, AnchoredPosition3D = 14, Scale = 224, AnchorMin = 768, AnchorMax = 3072, Anchors = 3840, SizeDelta = 12288, Pivot = 49152 }
         
         /** A component can be designed to drive a RectTransform. The DrivenRectTransformTracker struct is used to specify which RectTransforms it is driving. */
-        class DrivenRectTransformTracker extends System.ValueType{ 
+        export class DrivenRectTransformTracker extends System.ValueType{ 
             /** Add a RectTransform to be driven. * @param driver The object to drive properties.
              * @param rectTransform The RectTransform to be driven.
              * @param drivenProperties The properties to be driven.
@@ -15628,7 +15630,7 @@ declare module 'csharp' {
         }
         
         /** Position, size, anchor and pivot information for a rectangle. */
-        class RectTransform extends UnityEngine.Transform implements System.Collections.IEnumerable{ 
+        export class RectTransform extends UnityEngine.Transform implements System.Collections.IEnumerable{ 
             /** The calculated rectangle in the local space of the Transform. */
             public get rect(): UnityEngine.Rect;
             
@@ -15681,16 +15683,16 @@ declare module 'csharp' {
         }
         
         /** SpriteRenderer draw mode. */
-        enum SpriteDrawMode{ Simple = 0, Sliced = 1, Tiled = 2 }
+        export enum SpriteDrawMode{ Simple = 0, Sliced = 1, Tiled = 2 }
         
         /** Tiling mode for SpriteRenderer.tileMode. */
-        enum SpriteTileMode{ Continuous = 0, Adaptive = 1 }
+        export enum SpriteTileMode{ Continuous = 0, Adaptive = 1 }
         
         /** This enum controls the mode under which the sprite will interact with the masking system. */
-        enum SpriteMaskInteraction{ None = 0, VisibleInsideMask = 1, VisibleOutsideMask = 2 }
+        export enum SpriteMaskInteraction{ None = 0, VisibleInsideMask = 1, VisibleOutsideMask = 2 }
         
         /** Renders a Sprite for 2D graphics. */
-        class SpriteRenderer extends UnityEngine.Renderer{ 
+        export class SpriteRenderer extends UnityEngine.Renderer{ 
             /** The Sprite to render. */
             public get sprite(): UnityEngine.Sprite;
             public set sprite(value: UnityEngine.Sprite);
@@ -15727,7 +15729,7 @@ declare module 'csharp' {
         }
         
         /** Represents a Sprite object for use in 2D gameplay. */
-        class Sprite extends UnityEngine.Object{ 
+        export class Sprite extends UnityEngine.Object{ 
             /** Bounds of the Sprite, specified by its center and extents in world space units. */
             public get bounds(): UnityEngine.Bounds;
             
@@ -15856,22 +15858,22 @@ declare module 'csharp' {
         }
         
         /** Determines the position of the Sprite used for sorting the Renderer. */
-        enum SpriteSortPoint{ Center = 0, Pivot = 1 }
+        export enum SpriteSortPoint{ Center = 0, Pivot = 1 }
         
         /** Defines the type of mesh generated for a sprite. */
-        enum SpriteMeshType{ FullRect = 0, Tight = 1 }
+        export enum SpriteMeshType{ FullRect = 0, Tight = 1 }
         
         /** How a Sprite's graphic rectangle is aligned with its pivot point. */
-        enum SpriteAlignment{ Center = 0, TopLeft = 1, TopCenter = 2, TopRight = 3, LeftCenter = 4, RightCenter = 5, BottomLeft = 6, BottomCenter = 7, BottomRight = 8, Custom = 9 }
+        export enum SpriteAlignment{ Center = 0, TopLeft = 1, TopCenter = 2, TopRight = 3, LeftCenter = 4, RightCenter = 5, BottomLeft = 6, BottomCenter = 7, BottomRight = 8, Custom = 9 }
         
         /** Sprite packing modes for the Sprite Packer. */
-        enum SpritePackingMode{ Tight = 0, Rectangle = 1 }
+        export enum SpritePackingMode{ Tight = 0, Rectangle = 1 }
         
         /** Sprite rotation modes for the Sprite Packer. */
-        enum SpritePackingRotation{ None = 0, FlipHorizontal = 1, FlipVertical = 2, Rotate180 = 3, Any = 15 }
+        export enum SpritePackingRotation{ None = 0, FlipHorizontal = 1, FlipVertical = 2, Rotate180 = 3, Any = 15 }
         
         /** Encapsulates a Texture2D and its shader property name to give Sprite-based renderers access to a secondary texture, in addition to the main Sprite texture. */
-        class SecondarySpriteTexture extends System.ValueType{ 
+        export class SecondarySpriteTexture extends System.ValueType{ 
             /** The shader property name of the secondary Sprite texture. Use this name to identify and sample the texture in the shader. */
             public name: string;
             /** The texture to be used as a secondary Sprite texture. */
@@ -15880,7 +15882,7 @@ declare module 'csharp' {
         }
         
         /** Generic access to the Social API. */
-        class Social extends System.Object{ 
+        export class Social extends System.Object{ 
             /** This is the currently active social platform.  */
             public static get Active(): UnityEngine.SocialPlatforms.ISocialPlatform;
             public static set Active(value: UnityEngine.SocialPlatforms.ISocialPlatform);
@@ -15911,7 +15913,7 @@ declare module 'csharp' {
         }
         
         /** Grid is the base class for plotting a layout of uniformly spaced points and lines. */
-        class Grid extends UnityEngine.GridLayout{ 
+        export class Grid extends UnityEngine.GridLayout{ 
             /** The size of each cell in the Grid. */
             public get cellSize(): UnityEngine.Vector3;
             public set cellSize(value: UnityEngine.Vector3);
@@ -15944,7 +15946,7 @@ declare module 'csharp' {
         }
         
         /** An abstract class that defines a grid layout. */
-        class GridLayout extends UnityEngine.Behaviour{ 
+        export class GridLayout extends UnityEngine.Behaviour{ 
             /** The size of each cell in the layout. */
             public get cellSize(): UnityEngine.Vector3;
             
@@ -16016,16 +16018,16 @@ declare module 'csharp' {
         }
         
         /** Types of UnityGUI input and processing events. */
-        enum EventType{ MouseDown = 0, MouseUp = 1, MouseMove = 2, MouseDrag = 3, KeyDown = 4, KeyUp = 5, ScrollWheel = 6, Repaint = 7, Layout = 8, DragUpdated = 9, DragPerform = 10, DragExited = 15, Ignore = 11, Used = 12, ValidateCommand = 13, ExecuteCommand = 14, ContextClick = 16, MouseEnterWindow = 20, MouseLeaveWindow = 21, TouchDown = 30, TouchUp = 31, TouchMove = 32, TouchEnter = 33, TouchLeave = 34, TouchStationary = 35, mouseDown = 0, mouseUp = 1, mouseMove = 2, mouseDrag = 3, keyDown = 4, keyUp = 5, scrollWheel = 6, repaint = 7, layout = 8, dragUpdated = 9, dragPerform = 10, ignore = 11, used = 12 }
+        export enum EventType{ MouseDown = 0, MouseUp = 1, MouseMove = 2, MouseDrag = 3, KeyDown = 4, KeyUp = 5, ScrollWheel = 6, Repaint = 7, Layout = 8, DragUpdated = 9, DragPerform = 10, DragExited = 15, Ignore = 11, Used = 12, ValidateCommand = 13, ExecuteCommand = 14, ContextClick = 16, MouseEnterWindow = 20, MouseLeaveWindow = 21, TouchDown = 30, TouchUp = 31, TouchMove = 32, TouchEnter = 33, TouchLeave = 34, TouchStationary = 35, mouseDown = 0, mouseUp = 1, mouseMove = 2, mouseDrag = 3, keyDown = 4, keyUp = 5, scrollWheel = 6, repaint = 7, layout = 8, dragUpdated = 9, dragPerform = 10, ignore = 11, used = 12 }
         
         /** Pointer types. */
-        enum PointerType{ Mouse = 0, Touch = 1, Pen = 2 }
+        export enum PointerType{ Mouse = 0, Touch = 1, Pen = 2 }
         
         /** Types of modifier key that can be active during a keystroke event. */
-        enum EventModifiers{ None = 0, Shift = 1, Control = 2, Alt = 4, Command = 8, Numeric = 16, CapsLock = 32, FunctionKey = 64 }
+        export enum EventModifiers{ None = 0, Shift = 1, Control = 2, Alt = 4, Command = 8, Numeric = 16, CapsLock = 32, FunctionKey = 64 }
         
         /** The GUI class is the interface for Unity's GUI with manual positioning. */
-        class GUI extends System.Object{ 
+        export class GUI extends System.Object{ 
             /** Applies a global tint to the GUI. The tint affects backgrounds and text colors. */
             public static get color(): UnityEngine.Color;
             public static set color(value: UnityEngine.Color);
@@ -16862,7 +16864,7 @@ declare module 'csharp' {
         }
         
         /** Defines how GUI looks and behaves. */
-        class GUISkin extends UnityEngine.ScriptableObject{ 
+        export class GUISkin extends UnityEngine.ScriptableObject{ 
             /** The default font to use for all styles. */
             public get font(): UnityEngine.Font;
             public set font(value: UnityEngine.Font);
@@ -16944,7 +16946,7 @@ declare module 'csharp' {
         }
         
         /** The contents of a GUI element. */
-        class GUIContent extends System.Object{ 
+        export class GUIContent extends System.Object{ 
             /** Shorthand for empty content. */
             public static none: UnityEngine.GUIContent;
             /** The text contained. */
@@ -16976,7 +16978,7 @@ declare module 'csharp' {
         }
         
         /** Styling information for GUI elements. */
-        class GUIStyle extends System.Object{ 
+        export class GUIStyle extends System.Object{ 
             /** The font to use for rendering. If null, the default font for the current GUISkin is used instead. */
             public get font(): UnityEngine.Font;
             public set font(value: UnityEngine.Font);
@@ -17104,13 +17106,13 @@ declare module 'csharp' {
         }
         
         /** Scaling mode to draw textures with. */
-        enum ScaleMode{ StretchToFill = 0, ScaleAndCrop = 1, ScaleToFit = 2 }
+        export enum ScaleMode{ StretchToFill = 0, ScaleAndCrop = 1, ScaleToFit = 2 }
         
         /** Used by GUIUtility.GetControlID to inform the IMGUI system if a given control can get keyboard focus. This allows the IMGUI system to give focus appropriately when a user presses tab for cycling between controls. */
-        enum FocusType{ Native = 0, Keyboard = 1, Passive = 2 }
+        export enum FocusType{ Native = 0, Keyboard = 1, Passive = 2 }
         
         /** The GUILayout class is the interface for Unity gui with automatic layout. */
-        class GUILayout extends System.Object{ 
+        export class GUILayout extends System.Object{ 
             /** Make an auto-layout label. * @param text Text to display on the label.
              * @param image Texture to display on the label.
              * @param content Text, image and tooltip for this label.
@@ -18029,12 +18031,12 @@ declare module 'csharp' {
         }
         
         /** Class internally used to pass layout options into GUILayout functions. You don't use these directly, but construct them with the layouting functions in the GUILayout class. */
-        class GUILayoutOption extends System.Object{ 
+        export class GUILayoutOption extends System.Object{ 
             
         }
         
         /** Utility functions for implementing and extending the GUILayout class. */
-        class GUILayoutUtility extends System.Object{ 
+        export class GUILayoutUtility extends System.Object{ 
             /** Reserve layout space for a rectangle for displaying some contents with a specific style.
              * @param content The content to make room for displaying.
              * @param style The GUIStyle to layout for.
@@ -18185,7 +18187,7 @@ declare module 'csharp' {
         }
         
         /** General settings for how the GUI behaves. */
-        class GUISettings extends System.Object{ 
+        export class GUISettings extends System.Object{ 
             /** Should double-clicking select words in text fields. */
             public get doubleClickSelectsWord(): boolean;
             public set doubleClickSelectsWord(value: boolean);
@@ -18207,7 +18209,7 @@ declare module 'csharp' {
         }
         
         /** Script interface for. */
-        class Font extends UnityEngine.Object{ 
+        export class Font extends UnityEngine.Object{ 
             /** The material used for the font display. */
             public get material(): UnityEngine.Material;
             public set material(value: UnityEngine.Material);
@@ -18294,7 +18296,7 @@ declare module 'csharp' {
         }
         
         /** Specialized values for the given states used by GUIStyle objects. */
-        class GUIStyleState extends System.Object{ 
+        export class GUIStyleState extends System.Object{ 
             /** The background image used by GUI elements in this given state. */
             public get background(): UnityEngine.Texture2D;
             public set background(value: UnityEngine.Texture2D);
@@ -18307,19 +18309,19 @@ declare module 'csharp' {
         }
         
         /** How image and text is placed inside GUIStyle. */
-        enum ImagePosition{ ImageLeft = 0, ImageAbove = 1, ImageOnly = 2, TextOnly = 3 }
+        export enum ImagePosition{ ImageLeft = 0, ImageAbove = 1, ImageOnly = 2, TextOnly = 3 }
         
         /** Where the anchor of the text is placed. */
-        enum TextAnchor{ UpperLeft = 0, UpperCenter = 1, UpperRight = 2, MiddleLeft = 3, MiddleCenter = 4, MiddleRight = 5, LowerLeft = 6, LowerCenter = 7, LowerRight = 8 }
+        export enum TextAnchor{ UpperLeft = 0, UpperCenter = 1, UpperRight = 2, MiddleLeft = 3, MiddleCenter = 4, MiddleRight = 5, LowerLeft = 6, LowerCenter = 7, LowerRight = 8 }
         
         /** Different methods for how the GUI system handles text being too large to fit the rectangle allocated. */
-        enum TextClipping{ Overflow = 0, Clip = 1 }
+        export enum TextClipping{ Overflow = 0, Clip = 1 }
         
         /** Font Style applied to GUI Texts, Text Meshes or GUIStyles. */
-        enum FontStyle{ Normal = 0, Bold = 1, Italic = 2, BoldAndItalic = 3 }
+        export enum FontStyle{ Normal = 0, Bold = 1, Italic = 2, BoldAndItalic = 3 }
         
         /** Allows to control for which display the OnGUI is called. */
-        class GUITargetAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class GUITargetAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public constructor();
             
@@ -18332,7 +18334,7 @@ declare module 'csharp' {
         }
         
         /** Utility class for making new GUI controls. */
-        class GUIUtility extends System.Object{ 
+        export class GUIUtility extends System.Object{ 
             /** A global property, which is true if a ModalWindow is being displayed, false otherwise. */
             public static get hasModalWindow(): boolean;
             
@@ -18395,14 +18397,14 @@ declare module 'csharp' {
         }
         
         /** An exception that will prevent all subsequent immediate mode GUI functions from evaluating for the remainder of the GUI loop. */
-        class ExitGUIException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class ExitGUIException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
             public constructor();
             
         }
         
         
-        class TextEditor extends System.Object{ 
+        export class TextEditor extends System.Object{ 
             
             public keyboardOnScreen: UnityEngine.TouchScreenKeyboard;
             
@@ -18579,7 +18581,7 @@ declare module 'csharp' {
         }
         
         /** This class provides utility and extension methods to convert image data from or to PNG, EXR, TGA, and JPEG formats. */
-        class ImageConversion extends System.Object{ 
+        export class ImageConversion extends System.Object{ 
             /** Enables legacy PNG runtime import behavior. */
             public static get EnableLegacyPngGammaRuntimeLoadBehavior(): boolean;
             public static set EnableLegacyPngGammaRuntimeLoadBehavior(value: boolean);
@@ -18638,16 +18640,16 @@ declare module 'csharp' {
         }
         
         /** Describes phase of a finger touch. */
-        enum TouchPhase{ Began = 0, Moved = 1, Stationary = 2, Ended = 3, Canceled = 4 }
+        export enum TouchPhase{ Began = 0, Moved = 1, Stationary = 2, Ended = 3, Canceled = 4 }
         
         /** Controls IME input. */
-        enum IMECompositionMode{ Auto = 0, On = 1, Off = 2 }
+        export enum IMECompositionMode{ Auto = 0, On = 1, Off = 2 }
         
         /** Describes whether a touch is direct, indirect (or remote), or from a stylus. */
-        enum TouchType{ Direct = 0, Indirect = 1, Stylus = 2 }
+        export enum TouchType{ Direct = 0, Indirect = 1, Stylus = 2 }
         
         /** Structure describing the status of a finger touching the screen. */
-        class Touch extends System.ValueType{ 
+        export class Touch extends System.ValueType{ 
             /** The unique index for the touch. */
             public get fingerId(): number;
             public set fingerId(value: number);
@@ -18694,10 +18696,10 @@ declare module 'csharp' {
         }
         
         /** Describes physical orientation of the device as determined by the OS. */
-        enum DeviceOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, FaceUp = 5, FaceDown = 6 }
+        export enum DeviceOrientation{ Unknown = 0, Portrait = 1, PortraitUpsideDown = 2, LandscapeLeft = 3, LandscapeRight = 4, FaceUp = 5, FaceDown = 6 }
         
         /** Structure describing acceleration status of the device. */
-        class AccelerationEvent extends System.ValueType{ 
+        export class AccelerationEvent extends System.ValueType{ 
             /** Value of acceleration. */
             public get acceleration(): UnityEngine.Vector3;
             
@@ -18708,7 +18710,7 @@ declare module 'csharp' {
         }
         
         /** Interface into the Gyroscope. */
-        class Gyroscope extends System.Object{ 
+        export class Gyroscope extends System.Object{ 
             /** Returns rotation rate as measured by the device's gyroscope. */
             public get rotationRate(): UnityEngine.Vector3;
             
@@ -18734,7 +18736,7 @@ declare module 'csharp' {
         }
         
         /** Structure describing device location. */
-        class LocationInfo extends System.ValueType{ 
+        export class LocationInfo extends System.ValueType{ 
             /** Geographical device location latitude. */
             public get latitude(): number;
             
@@ -18757,10 +18759,10 @@ declare module 'csharp' {
         }
         
         /** Describes location service status. */
-        enum LocationServiceStatus{ Stopped = 0, Initializing = 1, Running = 2, Failed = 3 }
+        export enum LocationServiceStatus{ Stopped = 0, Initializing = 1, Running = 2, Failed = 3 }
         
         /** Interface into location functionality. */
-        class LocationService extends System.Object{ 
+        export class LocationService extends System.Object{ 
             /** Specifies whether location service is enabled in user settings. */
             public get isEnabledByUser(): boolean;
             
@@ -18784,7 +18786,7 @@ declare module 'csharp' {
         }
         
         /** Interface into compass functionality. */
-        class Compass extends System.Object{ 
+        export class Compass extends System.Object{ 
             /** The heading in degrees relative to the magnetic North Pole. (Read Only) */
             public get magneticHeading(): number;
             
@@ -18809,7 +18811,7 @@ declare module 'csharp' {
         }
         
         /** Interface into the Input system. */
-        class Input extends System.Object{ 
+        export class Input extends System.Object{ 
             /** Enables/Disables mouse simulation with touches. By default this option is enabled. */
             public static get simulateMouseWithTouches(): boolean;
             public static set simulateMouseWithTouches(value: boolean);
@@ -18937,7 +18939,7 @@ declare module 'csharp' {
         }
         
         /** Utility functions for working with JSON data. */
-        class JsonUtility extends System.Object{ 
+        export class JsonUtility extends System.Object{ 
             /** Generate a JSON representation of the public fields of an object.
              * @param obj The object to convert to JSON form.
              * @param prettyPrint If true, format the output for readability. If false, format the output for minimum size. Default is false.
@@ -18964,7 +18966,7 @@ declare module 'csharp' {
         }
         
         /** An asset to represent a table of localized strings for one specific locale. */
-        class LocalizationAsset extends UnityEngine.Object{ 
+        export class LocalizationAsset extends UnityEngine.Object{ 
             /** ISO Code used to identify the locale. ex: en-uk, zh-hans, ja */
             public get localeIsoCode(): string;
             public set localeIsoCode(value: string);
@@ -18986,84 +18988,84 @@ declare module 'csharp' {
         }
         
         /** The mode in which particles are emitted. */
-        enum ParticleSystemEmissionType{ Time = 0, Distance = 1 }
+        export enum ParticleSystemEmissionType{ Time = 0, Distance = 1 }
         
         /** The particle curve mode. */
-        enum ParticleSystemCurveMode{ Constant = 0, Curve = 1, TwoCurves = 2, TwoConstants = 3 }
+        export enum ParticleSystemCurveMode{ Constant = 0, Curve = 1, TwoCurves = 2, TwoConstants = 3 }
         
         /** Control how a Particle System calculates its velocity. */
-        enum ParticleSystemEmitterVelocityMode{ Transform = 0, Rigidbody = 1, Custom = 2 }
+        export enum ParticleSystemEmitterVelocityMode{ Transform = 0, Rigidbody = 1, Custom = 2 }
         
         /** The action to perform when the Particle System stops. */
-        enum ParticleSystemStopAction{ None = 0, Disable = 1, Destroy = 2, Callback = 3 }
+        export enum ParticleSystemStopAction{ None = 0, Disable = 1, Destroy = 2, Callback = 3 }
         
         /** Control how particles are removed from the Particle System. */
-        enum ParticleSystemRingBufferMode{ Disabled = 0, PauseUntilReplaced = 1, LoopUntilReplaced = 2 }
+        export enum ParticleSystemRingBufferMode{ Disabled = 0, PauseUntilReplaced = 1, LoopUntilReplaced = 2 }
         
         /** The action to perform when the Particle System is offscreen. */
-        enum ParticleSystemCullingMode{ Automatic = 0, PauseAndCatchup = 1, Pause = 2, AlwaysSimulate = 3 }
+        export enum ParticleSystemCullingMode{ Automatic = 0, PauseAndCatchup = 1, Pause = 2, AlwaysSimulate = 3 }
         
         /** The emission shape. */
-        enum ParticleSystemShapeType{ Sphere = 0, SphereShell = 1, Hemisphere = 2, HemisphereShell = 3, Cone = 4, Box = 5, Mesh = 6, ConeShell = 7, ConeVolume = 8, ConeVolumeShell = 9, Circle = 10, CircleEdge = 11, SingleSidedEdge = 12, MeshRenderer = 13, SkinnedMeshRenderer = 14, BoxShell = 15, BoxEdge = 16, Donut = 17, Rectangle = 18, Sprite = 19, SpriteRenderer = 20 }
+        export enum ParticleSystemShapeType{ Sphere = 0, SphereShell = 1, Hemisphere = 2, HemisphereShell = 3, Cone = 4, Box = 5, Mesh = 6, ConeShell = 7, ConeVolume = 8, ConeVolumeShell = 9, Circle = 10, CircleEdge = 11, SingleSidedEdge = 12, MeshRenderer = 13, SkinnedMeshRenderer = 14, BoxShell = 15, BoxEdge = 16, Donut = 17, Rectangle = 18, Sprite = 19, SpriteRenderer = 20 }
         
         /** The mode used to generate new points in a shape. */
-        enum ParticleSystemShapeMultiModeValue{ Random = 0, Loop = 1, PingPong = 2, BurstSpread = 3 }
+        export enum ParticleSystemShapeMultiModeValue{ Random = 0, Loop = 1, PingPong = 2, BurstSpread = 3 }
         
         /** The mesh emission type. */
-        enum ParticleSystemMeshShapeType{ Vertex = 0, Edge = 1, Triangle = 2 }
+        export enum ParticleSystemMeshShapeType{ Vertex = 0, Edge = 1, Triangle = 2 }
         
         /** Renders meshes inserted by the MeshFilter or TextMesh. */
-        class MeshRenderer extends UnityEngine.Renderer{ 
+        export class MeshRenderer extends UnityEngine.Renderer{ 
             
         }
         
         /** The texture channel. */
-        enum ParticleSystemShapeTextureChannel{ Red = 0, Green = 1, Blue = 2, Alpha = 3 }
+        export enum ParticleSystemShapeTextureChannel{ Red = 0, Green = 1, Blue = 2, Alpha = 3 }
         
         /** The type of collisions to use for a given Particle System. */
-        enum ParticleSystemCollisionType{ Planes = 0, World = 1 }
+        export enum ParticleSystemCollisionType{ Planes = 0, World = 1 }
         
         /** Whether to use 2D or 3D colliders for particle collisions. */
-        enum ParticleSystemCollisionMode{ Collision3D = 0, Collision2D = 1 }
+        export enum ParticleSystemCollisionMode{ Collision3D = 0, Collision2D = 1 }
         
         /** Quality of world collisions. Medium and low quality are approximate and may leak particles. */
-        enum ParticleSystemCollisionQuality{ High = 0, Medium = 1, Low = 2 }
+        export enum ParticleSystemCollisionQuality{ High = 0, Medium = 1, Low = 2 }
         
         /** What action to perform when the particle trigger module passes a test. */
-        enum ParticleSystemOverlapAction{ Ignore = 0, Kill = 1, Callback = 2 }
+        export enum ParticleSystemOverlapAction{ Ignore = 0, Kill = 1, Callback = 2 }
         
         /** Whether collider information is available when using the ParticleSystem::GetTriggerParticles method. */
-        enum ParticleSystemColliderQueryMode{ Disabled = 0, One = 1, All = 2 }
+        export enum ParticleSystemColliderQueryMode{ Disabled = 0, One = 1, All = 2 }
         
         /** The events that cause new particles to be spawned. */
-        enum ParticleSystemSubEmitterType{ Birth = 0, Collision = 1, Death = 2, Trigger = 3, Manual = 4 }
+        export enum ParticleSystemSubEmitterType{ Birth = 0, Collision = 1, Death = 2, Trigger = 3, Manual = 4 }
         
         /** The properties of sub-emitter particles. */
-        enum ParticleSystemSubEmitterProperties{ InheritNothing = 0, InheritEverything = 31, InheritColor = 1, InheritSize = 2, InheritRotation = 4, InheritLifetime = 8, InheritDuration = 16 }
+        export enum ParticleSystemSubEmitterProperties{ InheritNothing = 0, InheritEverything = 31, InheritColor = 1, InheritSize = 2, InheritRotation = 4, InheritLifetime = 8, InheritDuration = 16 }
         
         /** The animation mode. */
-        enum ParticleSystemAnimationMode{ Grid = 0, Sprites = 1 }
+        export enum ParticleSystemAnimationMode{ Grid = 0, Sprites = 1 }
         
         /** Control how animation frames are selected. */
-        enum ParticleSystemAnimationTimeMode{ Lifetime = 0, Speed = 1, FPS = 2 }
+        export enum ParticleSystemAnimationTimeMode{ Lifetime = 0, Speed = 1, FPS = 2 }
         
         /** The animation type. */
-        enum ParticleSystemAnimationType{ WholeSheet = 0, SingleRow = 1 }
+        export enum ParticleSystemAnimationType{ WholeSheet = 0, SingleRow = 1 }
         
         /** The mode used for selecting rows of an animation in the Texture Sheet Animation Module. */
-        enum ParticleSystemAnimationRowMode{ Custom = 0, Random = 1, MeshIndex = 2 }
+        export enum ParticleSystemAnimationRowMode{ Custom = 0, Random = 1, MeshIndex = 2 }
         
         /** The particle gradient mode. */
-        enum ParticleSystemGradientMode{ Color = 0, Gradient = 1, TwoColors = 2, TwoGradients = 3, RandomColor = 4 }
+        export enum ParticleSystemGradientMode{ Color = 0, Gradient = 1, TwoColors = 2, TwoGradients = 3, RandomColor = 4 }
         
         /** How to apply emitter velocity to particles. */
-        enum ParticleSystemInheritVelocityMode{ Initial = 0, Current = 1 }
+        export enum ParticleSystemInheritVelocityMode{ Initial = 0, Current = 1 }
         
         /** The particle GameObject filtering mode that specifies which objects are used by specific Particle System modules. */
-        enum ParticleSystemGameObjectFilter{ LayerMask = 0, List = 1, LayerMaskAndList = 2 }
+        export enum ParticleSystemGameObjectFilter{ LayerMask = 0, List = 1, LayerMaskAndList = 2 }
         
         /** Script interface for Particle System Force Fields. */
-        class ParticleSystemForceField extends UnityEngine.Component{ 
+        export class ParticleSystemForceField extends UnityEngine.Component{ 
             /** Selects the type of shape used for influencing particles. */
             public get shape(): UnityEngine.ParticleSystemForceFieldShape;
             public set shape(value: UnityEngine.ParticleSystemForceFieldShape);
@@ -19124,19 +19126,19 @@ declare module 'csharp' {
         }
         
         /** The quality of the generated noise. */
-        enum ParticleSystemNoiseQuality{ Low = 0, Medium = 1, High = 2 }
+        export enum ParticleSystemNoiseQuality{ Low = 0, Medium = 1, High = 2 }
         
         /** Choose how Particle Trails are generated. */
-        enum ParticleSystemTrailMode{ PerParticle = 0, Ribbon = 1 }
+        export enum ParticleSystemTrailMode{ PerParticle = 0, Ribbon = 1 }
         
         /** Choose how textures are applied to Particle Trails. */
-        enum ParticleSystemTrailTextureMode{ Stretch = 0, Tile = 1, DistributePerSegment = 2, RepeatPerSegment = 3 }
+        export enum ParticleSystemTrailTextureMode{ Stretch = 0, Tile = 1, DistributePerSegment = 2, RepeatPerSegment = 3 }
         
         /** Which mode CustomDataModule uses to generate its data. */
-        enum ParticleSystemCustomDataMode{ Disabled = 0, Vector = 1, Color = 2 }
+        export enum ParticleSystemCustomDataMode{ Disabled = 0, Vector = 1, Color = 2 }
         
         /** Method extension for Physics in Particle System. */
-        class ParticlePhysicsExtensions extends System.Object{ 
+        export class ParticlePhysicsExtensions extends System.Object{ 
             /** Safe array size for use with ParticleSystem.GetCollisionEvents. */
             public static GetSafeCollisionEventSize($ps: UnityEngine.ParticleSystem):number;
             
@@ -19159,7 +19161,7 @@ declare module 'csharp' {
         }
         
         /** Information about a particle collision. */
-        class ParticleCollisionEvent extends System.ValueType{ 
+        export class ParticleCollisionEvent extends System.ValueType{ 
             /** Intersection point of the collision in world coordinates. */
             public get intersection(): UnityEngine.Vector3;
             
@@ -19176,40 +19178,40 @@ declare module 'csharp' {
         }
         
         /** The different types of particle triggers. */
-        enum ParticleSystemTriggerEventType{ Inside = 0, Outside = 1, Enter = 2, Exit = 3 }
+        export enum ParticleSystemTriggerEventType{ Inside = 0, Outside = 1, Enter = 2, Exit = 3 }
         
         /** The rendering mode for particle systems. */
-        enum ParticleSystemRenderMode{ Billboard = 0, Stretch = 1, HorizontalBillboard = 2, VerticalBillboard = 3, Mesh = 4, None = 5 }
+        export enum ParticleSystemRenderMode{ Billboard = 0, Stretch = 1, HorizontalBillboard = 2, VerticalBillboard = 3, Mesh = 4, None = 5 }
         
         /** The sorting mode for particle systems. */
-        enum ParticleSystemSortMode{ None = 0, Distance = 1, OldestInFront = 2, YoungestInFront = 3, Depth = 4 }
+        export enum ParticleSystemSortMode{ None = 0, Distance = 1, OldestInFront = 2, YoungestInFront = 3, Depth = 4 }
         
         /** How particles are aligned when rendered. */
-        enum ParticleSystemRenderSpace{ View = 0, World = 1, Local = 2, Facing = 3, Velocity = 4 }
+        export enum ParticleSystemRenderSpace{ View = 0, World = 1, Local = 2, Facing = 3, Velocity = 4 }
         
         /** All possible Particle System vertex shader inputs. */
-        enum ParticleSystemVertexStream{ Position = 0, Normal = 1, Tangent = 2, Color = 3, UV = 4, UV2 = 5, UV3 = 6, UV4 = 7, AnimBlend = 8, AnimFrame = 9, Center = 10, VertexID = 11, SizeX = 12, SizeXY = 13, SizeXYZ = 14, Rotation = 15, Rotation3D = 16, RotationSpeed = 17, RotationSpeed3D = 18, Velocity = 19, Speed = 20, AgePercent = 21, InvStartLifetime = 22, StableRandomX = 23, StableRandomXY = 24, StableRandomXYZ = 25, StableRandomXYZW = 26, VaryingRandomX = 27, VaryingRandomXY = 28, VaryingRandomXYZ = 29, VaryingRandomXYZW = 30, Custom1X = 31, Custom1XY = 32, Custom1XYZ = 33, Custom1XYZW = 34, Custom2X = 35, Custom2XY = 36, Custom2XYZ = 37, Custom2XYZW = 38, NoiseSumX = 39, NoiseSumXY = 40, NoiseSumXYZ = 41, NoiseImpulseX = 42, NoiseImpulseXY = 43, NoiseImpulseXYZ = 44, MeshIndex = 45 }
+        export enum ParticleSystemVertexStream{ Position = 0, Normal = 1, Tangent = 2, Color = 3, UV = 4, UV2 = 5, UV3 = 6, UV4 = 7, AnimBlend = 8, AnimFrame = 9, Center = 10, VertexID = 11, SizeX = 12, SizeXY = 13, SizeXYZ = 14, Rotation = 15, Rotation3D = 16, RotationSpeed = 17, RotationSpeed3D = 18, Velocity = 19, Speed = 20, AgePercent = 21, InvStartLifetime = 22, StableRandomX = 23, StableRandomXY = 24, StableRandomXYZ = 25, StableRandomXYZW = 26, VaryingRandomX = 27, VaryingRandomXY = 28, VaryingRandomXYZ = 29, VaryingRandomXYZW = 30, Custom1X = 31, Custom1XY = 32, Custom1XYZ = 33, Custom1XYZW = 34, Custom2X = 35, Custom2XY = 36, Custom2XYZ = 37, Custom2XYZW = 38, NoiseSumX = 39, NoiseSumXY = 40, NoiseSumXYZ = 41, NoiseImpulseX = 42, NoiseImpulseXY = 43, NoiseImpulseXYZ = 44, MeshIndex = 45 }
         
         /** The type of shape used for influencing particles in the Force Field Component. */
-        enum ParticleSystemForceFieldShape{ Sphere = 0, Hemisphere = 1, Cylinder = 2, Box = 3 }
+        export enum ParticleSystemForceFieldShape{ Sphere = 0, Hemisphere = 1, Cylinder = 2, Box = 3 }
         
         /** All possible Particle System vertex shader inputs. */
-        enum ParticleSystemVertexStreams{ Position = 1, Normal = 2, Tangent = 4, Color = 8, UV = 16, UV2BlendAndFrame = 32, CenterAndVertexID = 64, Size = 128, Rotation = 256, Velocity = 512, Lifetime = 1024, Custom1 = 2048, Custom2 = 4096, Random = 8192, None = 0, All = 2147483647 }
+        export enum ParticleSystemVertexStreams{ Position = 1, Normal = 2, Tangent = 4, Color = 8, UV = 16, UV2BlendAndFrame = 32, CenterAndVertexID = 64, Size = 128, Rotation = 256, Velocity = 512, Lifetime = 1024, Custom1 = 2048, Custom2 = 4096, Random = 8192, None = 0, All = 2147483647 }
         
         /** Use these flags to constrain motion of Rigidbodies. */
-        enum RigidbodyConstraints{ None = 0, FreezePositionX = 2, FreezePositionY = 4, FreezePositionZ = 8, FreezeRotationX = 16, FreezeRotationY = 32, FreezeRotationZ = 64, FreezePosition = 14, FreezeRotation = 112, FreezeAll = 126 }
+        export enum RigidbodyConstraints{ None = 0, FreezePositionX = 2, FreezePositionY = 4, FreezePositionZ = 8, FreezeRotationX = 16, FreezeRotationY = 32, FreezeRotationZ = 64, FreezePosition = 14, FreezeRotation = 112, FreezeAll = 126 }
         
         /** Use ForceMode to specify how to apply a force using Rigidbody.AddForce. */
-        enum ForceMode{ Force = 0, Acceleration = 5, Impulse = 1, VelocityChange = 2 }
+        export enum ForceMode{ Force = 0, Acceleration = 5, Impulse = 1, VelocityChange = 2 }
         
         /** Determines how to snap physics joints back to its constrained position when it drifts off too much. */
-        enum JointProjectionMode{ None = 0, PositionAndRotation = 1, PositionOnly = 2 }
+        export enum JointProjectionMode{ None = 0, PositionAndRotation = 1, PositionOnly = 2 }
         
         /** Cooking options that are available with MeshCollider. */
-        enum MeshColliderCookingOptions{ None = 0, InflateConvexMesh = 1, CookForFasterSimulation = 2, EnableMeshCleaning = 4, WeldColocatedVertices = 8, UseFastMidphase = 16 }
+        export enum MeshColliderCookingOptions{ None = 0, InflateConvexMesh = 1, CookForFasterSimulation = 2, EnableMeshCleaning = 4, WeldColocatedVertices = 8, UseFastMidphase = 16 }
         
         /** WheelFrictionCurve is used by the WheelCollider to describe friction properties of the wheel tire. */
-        class WheelFrictionCurve extends System.ValueType{ 
+        export class WheelFrictionCurve extends System.ValueType{ 
             /** Extremum point slip (default 1). */
             public get extremumSlip(): number;
             public set extremumSlip(value: number);
@@ -19229,7 +19231,7 @@ declare module 'csharp' {
         }
         
         /** The limits defined by the CharacterJoint. */
-        class SoftJointLimit extends System.ValueType{ 
+        export class SoftJointLimit extends System.ValueType{ 
             /** The limit position/angle of the joint (in degrees). */
             public get limit(): number;
             public set limit(value: number);
@@ -19243,7 +19245,7 @@ declare module 'csharp' {
         }
         
         /** The configuration of the spring attached to the joint's limits: linear and angular. Used by CharacterJoint and ConfigurableJoint. */
-        class SoftJointLimitSpring extends System.ValueType{ 
+        export class SoftJointLimitSpring extends System.ValueType{ 
             /** The stiffness of the spring limit. When stiffness is zero the limit is hard, otherwise soft. */
             public get spring(): number;
             public set spring(value: number);
@@ -19254,7 +19256,7 @@ declare module 'csharp' {
         }
         
         /** How the joint's movement will behave along its local X axis. */
-        class JointDrive extends System.ValueType{ 
+        export class JointDrive extends System.ValueType{ 
             /** Strength of a rubber-band pull toward the defined direction. Only used if mode includes Position. */
             public get positionSpring(): number;
             public set positionSpring(value: number);
@@ -19268,13 +19270,13 @@ declare module 'csharp' {
         }
         
         /** The ConfigurableJoint attempts to attain position / velocity targets based on this flag. */
-        enum JointDriveMode{ None = 0, Position = 1, Velocity = 2, PositionAndVelocity = 3 }
+        export enum JointDriveMode{ None = 0, Position = 1, Velocity = 2, PositionAndVelocity = 3 }
         
         /** Rigidbody interpolation mode. */
-        enum RigidbodyInterpolation{ None = 0, Interpolate = 1, Extrapolate = 2 }
+        export enum RigidbodyInterpolation{ None = 0, Interpolate = 1, Extrapolate = 2 }
         
         /** The JointMotor is used to motorize a joint. */
-        class JointMotor extends System.ValueType{ 
+        export class JointMotor extends System.ValueType{ 
             /** The motor will apply a force up to force to achieve targetVelocity. */
             public get targetVelocity(): number;
             public set targetVelocity(value: number);
@@ -19288,7 +19290,7 @@ declare module 'csharp' {
         }
         
         /** JointSpring is used add a spring force to HingeJoint and PhysicMaterial. */
-        class JointSpring extends System.ValueType{ 
+        export class JointSpring extends System.ValueType{ 
             /** The spring forces used to reach the target position. */
             public spring: number;
             /** The damper force uses to dampen the spring. */
@@ -19299,7 +19301,7 @@ declare module 'csharp' {
         }
         
         /** JointLimits is used by the HingeJoint to limit the joints angle. */
-        class JointLimits extends System.ValueType{ 
+        export class JointLimits extends System.ValueType{ 
             /** The lower angular limit (in degrees) of the joint. */
             public get min(): number;
             public set min(value: number);
@@ -19319,7 +19321,7 @@ declare module 'csharp' {
         }
         
         /** ControllerColliderHit is used by CharacterController.OnControllerColliderHit to give detailed information about the collision and how to deal with it. */
-        class ControllerColliderHit extends System.Object{ 
+        export class ControllerColliderHit extends System.Object{ 
             /** The controller that hit the collider. */
             public get controller(): UnityEngine.CharacterController;
             
@@ -19353,7 +19355,7 @@ declare module 'csharp' {
         }
         
         /** A CharacterController allows you to easily do movement constrained by collisions without having to deal with a rigidbody. */
-        class CharacterController extends UnityEngine.Collider{ 
+        export class CharacterController extends UnityEngine.Collider{ 
             /** The current relative velocity of the Character (see notes). */
             public get velocity(): UnityEngine.Vector3;
             
@@ -19401,7 +19403,7 @@ declare module 'csharp' {
         }
         
         /** Control of an object's position through physics simulation. */
-        class Rigidbody extends UnityEngine.Component{ 
+        export class Rigidbody extends UnityEngine.Component{ 
             /** The velocity vector of the rigidbody. It represents the rate of change of Rigidbody position. */
             public get velocity(): UnityEngine.Vector3;
             public set velocity(value: UnityEngine.Vector3);
@@ -19624,10 +19626,10 @@ declare module 'csharp' {
         The friction force as well as the residual bounce impulse are applied symmertrically to both of the colliders in contact, so each pair of overlapping colliders must have a single set of friction and bouciness settings. However, one can set arbitrary physics materials to any colliders. For that particular reason, there is a mechanism that allows the combination of two different sets of properties that correspond to each of the colliders in contact into one set to be used in the solver.
         Specifying Average, Maximum, Minimum or Multiply as the physics material combine mode, you directly set the function that is used to combine the settings corresponding to the two overlapping colliders into one set of settings that can be used to apply the material effect.
         Note that there is a special case when the two overlapping colliders have physics materials with different combine modes set. In this particular case, the function that has the highest priority is used. The priority order is as follows: Average < Minimum < Multiply < Maximum. For example, if one material has Average set but the other one has Maximum, then the combine function to be used is Maximum, since it has higher priority. */
-        enum PhysicMaterialCombine{ Average = 0, Minimum = 2, Multiply = 1, Maximum = 3 }
+        export enum PhysicMaterialCombine{ Average = 0, Minimum = 2, Multiply = 1, Maximum = 3 }
         
         /** Describes a collision. */
-        class Collision extends System.Object{ 
+        export class Collision extends System.Object{ 
             /** The relative linear velocity of the two colliding objects (Read Only). */
             public get relativeVelocity(): UnityEngine.Vector3;
             
@@ -19676,7 +19678,7 @@ declare module 'csharp' {
         }
         
         /** A body that forms part of a Physics articulation. */
-        class ArticulationBody extends UnityEngine.Behaviour{ 
+        export class ArticulationBody extends UnityEngine.Behaviour{ 
             /** The type of joint connecting this body to its parent body. */
             public get jointType(): UnityEngine.ArticulationJointType;
             public set jointType(value: UnityEngine.ArticulationJointType);
@@ -19881,7 +19883,7 @@ declare module 'csharp' {
         }
         
         /** Describes a contact point where the collision occurs. */
-        class ContactPoint extends System.ValueType{ 
+        export class ContactPoint extends System.ValueType{ 
             /** The point of contact. */
             public get point(): UnityEngine.Vector3;
             
@@ -19901,28 +19903,28 @@ declare module 'csharp' {
         }
         
         /** CollisionFlags is a bitmask returned by CharacterController.Move. */
-        enum CollisionFlags{ None = 0, Sides = 1, Above = 2, Below = 4, CollidedSides = 1, CollidedAbove = 2, CollidedBelow = 4 }
+        export enum CollisionFlags{ None = 0, Sides = 1, Above = 2, Below = 4, CollidedSides = 1, CollidedAbove = 2, CollidedBelow = 4 }
         
         /** Overrides the global Physics.queriesHitTriggers. */
-        enum QueryTriggerInteraction{ UseGlobal = 0, Ignore = 1, Collide = 2 }
+        export enum QueryTriggerInteraction{ UseGlobal = 0, Ignore = 1, Collide = 2 }
         
         /** The collision detection mode constants used for Rigidbody.collisionDetectionMode. */
-        enum CollisionDetectionMode{ Discrete = 0, Continuous = 1, ContinuousDynamic = 2, ContinuousSpeculative = 3 }
+        export enum CollisionDetectionMode{ Discrete = 0, Continuous = 1, ContinuousDynamic = 2, ContinuousSpeculative = 3 }
         
         /** Constrains movement for a ConfigurableJoint along the 6 axes. */
-        enum ConfigurableJointMotion{ Locked = 0, Limited = 1, Free = 2 }
+        export enum ConfigurableJointMotion{ Locked = 0, Limited = 1, Free = 2 }
         
         /** Control ConfigurableJoint's rotation with either X & YZ or Slerp Drive. */
-        enum RotationDriveMode{ XYAndZ = 0, Slerp = 1 }
+        export enum RotationDriveMode{ XYAndZ = 0, Slerp = 1 }
         
         /** The type of the joint that restricts movement of the two connected articulation bodies. */
-        enum ArticulationJointType{ FixedJoint = 0, PrismaticJoint = 1, RevoluteJoint = 2, SphericalJoint = 3 }
+        export enum ArticulationJointType{ FixedJoint = 0, PrismaticJoint = 1, RevoluteJoint = 2, SphericalJoint = 3 }
         
         /** The lock type applied to a particular degree of freedom of an articulation body. */
-        enum ArticulationDofLock{ LockedMotion = 0, LimitedMotion = 1, FreeMotion = 2 }
+        export enum ArticulationDofLock{ LockedMotion = 0, LimitedMotion = 1, FreeMotion = 2 }
         
         /** Drive applies forces and torques to the connected bodies. */
-        class ArticulationDrive extends System.ValueType{ 
+        export class ArticulationDrive extends System.ValueType{ 
             /** The lower limit of motion for a particular degree of freedom. */
             public lowerLimit: number;
             /** The upper limit of motion for a particular degree of freedom. */
@@ -19941,7 +19943,7 @@ declare module 'csharp' {
         }
         
         /** Coordinates in reduced space. */
-        class ArticulationReducedSpace extends System.ValueType{ 
+        export class ArticulationReducedSpace extends System.ValueType{ 
             /** The number of degrees of freedom of a body. */
             public dofCount: number;
             
@@ -19960,7 +19962,7 @@ declare module 'csharp' {
         }
         
         /** The floating point dense Jacobian matrix of the articulation body hierarchy. */
-        class ArticulationJacobian extends System.ValueType{ 
+        export class ArticulationJacobian extends System.ValueType{ 
             /** Number of rows of the matrix is equal to the number of articulation bodies in hierarchy times 6: 3 rows of linearpositional DOF and 3 rows of angularrotational DOF for each body. */
             public get rows(): number;
             public set rows(value: number);
@@ -19978,7 +19980,7 @@ declare module 'csharp' {
         }
         
         /** Physics material describes how to handle colliding objects (friction, bounciness). */
-        class PhysicMaterial extends UnityEngine.Object{ 
+        export class PhysicMaterial extends UnityEngine.Object{ 
             /** How bouncy is the surface? A value of 0 will not bounce. A value of 1 will bounce without any loss of energy. */
             public get bounciness(): number;
             public set bounciness(value: number);
@@ -20002,7 +20004,7 @@ declare module 'csharp' {
         }
         
         /** Structure used to get information back from a raycast. */
-        class RaycastHit extends System.ValueType{ 
+        export class RaycastHit extends System.ValueType{ 
             /** The Collider that was hit. */
             public get collider(): UnityEngine.Collider;
             
@@ -20043,7 +20045,7 @@ declare module 'csharp' {
         }
         
         /** A mesh collider allows you to do between meshes and primitives. */
-        class MeshCollider extends UnityEngine.Collider{ 
+        export class MeshCollider extends UnityEngine.Collider{ 
             /** The mesh object used for collision detection. */
             public get sharedMesh(): UnityEngine.Mesh;
             public set sharedMesh(value: UnityEngine.Mesh);
@@ -20059,7 +20061,7 @@ declare module 'csharp' {
         }
         
         /** A box-shaped primitive collider. */
-        class BoxCollider extends UnityEngine.Collider{ 
+        export class BoxCollider extends UnityEngine.Collider{ 
             /** The center of the box, measured in the object's local space. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -20072,7 +20074,7 @@ declare module 'csharp' {
         }
         
         /** A force applied constantly. */
-        class ConstantForce extends UnityEngine.Behaviour{ 
+        export class ConstantForce extends UnityEngine.Behaviour{ 
             /** The force applied to the rigidbody every frame. */
             public get force(): UnityEngine.Vector3;
             public set force(value: UnityEngine.Vector3);
@@ -20091,7 +20093,7 @@ declare module 'csharp' {
         }
         
         /** Joint is the base class for all joints. */
-        class Joint extends UnityEngine.Component{ 
+        export class Joint extends UnityEngine.Component{ 
             /** A reference to another rigidbody this joint connects to. */
             public get connectedBody(): UnityEngine.Rigidbody;
             public set connectedBody(value: UnityEngine.Rigidbody);
@@ -20140,7 +20142,7 @@ declare module 'csharp' {
         }
         
         /** The HingeJoint groups together 2 rigid bodies, constraining them to move like connected by a hinge. */
-        class HingeJoint extends UnityEngine.Joint{ 
+        export class HingeJoint extends UnityEngine.Joint{ 
             /** The motor will apply a force up to a maximum force to achieve the target velocity in degrees per second. */
             public get motor(): UnityEngine.JointMotor;
             public set motor(value: UnityEngine.JointMotor);
@@ -20171,7 +20173,7 @@ declare module 'csharp' {
         }
         
         /** The spring joint ties together 2 rigid bodies, spring forces will be automatically applied to keep the object at the given distance. */
-        class SpringJoint extends UnityEngine.Joint{ 
+        export class SpringJoint extends UnityEngine.Joint{ 
             /** The spring force used to keep the two objects together. */
             public get spring(): number;
             public set spring(value: number);
@@ -20193,14 +20195,14 @@ declare module 'csharp' {
         }
         
         /** The Fixed joint groups together 2 rigidbodies, making them stick together in their bound position. */
-        class FixedJoint extends UnityEngine.Joint{ 
+        export class FixedJoint extends UnityEngine.Joint{ 
             
             public constructor();
             
         }
         
         /** Character Joints are mainly used for Ragdoll effects. */
-        class CharacterJoint extends UnityEngine.Joint{ 
+        export class CharacterJoint extends UnityEngine.Joint{ 
             /** The secondary axis around which the joint can rotate. */
             public get swingAxis(): UnityEngine.Vector3;
             public set swingAxis(value: UnityEngine.Vector3);
@@ -20237,7 +20239,7 @@ declare module 'csharp' {
         }
         
         /** The configurable joint is an extremely flexible joint giving you complete control over rotation and linear motion. */
-        class ConfigurableJoint extends UnityEngine.Joint{ 
+        export class ConfigurableJoint extends UnityEngine.Joint{ 
             /** The joint's secondary axis. */
             public get secondaryAxis(): UnityEngine.Vector3;
             public set secondaryAxis(value: UnityEngine.Vector3);
@@ -20345,7 +20347,7 @@ declare module 'csharp' {
         }
         
         /** Represents a single instance of a 3D physics Scene. */
-        class PhysicsScene extends System.ValueType implements System.IEquatable$1<UnityEngine.PhysicsScene>{ 
+        export class PhysicsScene extends System.ValueType implements System.IEquatable$1<UnityEngine.PhysicsScene>{ 
             
             public static op_Equality($lhs: UnityEngine.PhysicsScene, $rhs: UnityEngine.PhysicsScene):boolean;
             
@@ -20505,7 +20507,7 @@ declare module 'csharp' {
         }
         
         /** Scene extensions to access the underlying physics scene. */
-        class PhysicsSceneExtensions extends System.Object{ 
+        export class PhysicsSceneExtensions extends System.Object{ 
             /** An extension method that returns the 3D physics Scene from the Scene.
              * @param scene The Scene from which to return the 3D physics Scene.
              * @returns The 3D physics Scene used by the Scene. 
@@ -20515,7 +20517,7 @@ declare module 'csharp' {
         }
         
         /** Global physics properties and helper methods. */
-        class Physics extends System.Object{ 
+        export class Physics extends System.Object{ 
             /** Layer mask constant to select ignore raycast layer. */
             public static IgnoreRaycastLayer: number;
             /** Layer mask constant to select default raycast layers. */
@@ -21148,7 +21150,7 @@ declare module 'csharp' {
         }
         
         /** Struct used to set up a raycast command to be performed asynchronously during a job. */
-        class RaycastCommand extends System.ValueType{ 
+        export class RaycastCommand extends System.ValueType{ 
             /** The starting point of the ray in world coordinates. */
             public get from(): UnityEngine.Vector3;
             public set from(value: UnityEngine.Vector3);
@@ -21174,7 +21176,7 @@ declare module 'csharp' {
         }
         
         /** Use this struct to set up a sphere cast command that is performed asynchronously during a job. */
-        class SpherecastCommand extends System.ValueType{ 
+        export class SpherecastCommand extends System.ValueType{ 
             /** The starting point of the sphere cast in world coordinates. */
             public get origin(): UnityEngine.Vector3;
             public set origin(value: UnityEngine.Vector3);
@@ -21200,7 +21202,7 @@ declare module 'csharp' {
         }
         
         /** Use this struct to set up a capsule cast command that is performed asynchronously during a job. */
-        class CapsulecastCommand extends System.ValueType{ 
+        export class CapsulecastCommand extends System.ValueType{ 
             /** The center of the sphere at the start of the capsule. */
             public get point1(): UnityEngine.Vector3;
             public set point1(value: UnityEngine.Vector3);
@@ -21229,7 +21231,7 @@ declare module 'csharp' {
         }
         
         /** Use this struct to set up a box cast command to be performed asynchronously during a job. */
-        class BoxcastCommand extends System.ValueType{ 
+        export class BoxcastCommand extends System.ValueType{ 
             /** Center of the box. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -21258,7 +21260,7 @@ declare module 'csharp' {
         }
         
         /** Represents a single instance of a 2D physics Scene. */
-        class PhysicsScene2D extends System.ValueType implements System.IEquatable$1<UnityEngine.PhysicsScene2D>{ 
+        export class PhysicsScene2D extends System.ValueType implements System.IEquatable$1<UnityEngine.PhysicsScene2D>{ 
             
             public static op_Equality($lhs: UnityEngine.PhysicsScene2D, $rhs: UnityEngine.PhysicsScene2D):boolean;
             
@@ -21725,7 +21727,7 @@ declare module 'csharp' {
         }
         
         /** Information returned about an object detected by a raycast in 2D physics. */
-        class RaycastHit2D extends System.ValueType{ 
+        export class RaycastHit2D extends System.ValueType{ 
             /** The centroid of the primitive used to perform the cast. */
             public get centroid(): UnityEngine.Vector2;
             public set centroid(value: UnityEngine.Vector2);
@@ -21758,7 +21760,7 @@ declare module 'csharp' {
         }
         
         /** A set of parameters for filtering contact results. Define the angle by referring to their position in world space, where 0 degrees is parallel to the positive x-axis, 90 degrees is parallel to the positive y-axis, 180 degrees is parallel to the negative x-axis, and 270 degrees is parallel to the negative y-axis. */
-        class ContactFilter2D extends System.ValueType{ 
+        export class ContactFilter2D extends System.ValueType{ 
             /** Sets to filter contact results based on trigger collider involvement. */
             public useTriggers: boolean;
             /** Sets the contact filter to filter results by layer mask. */
@@ -21834,10 +21836,10 @@ declare module 'csharp' {
         }
         
         /** The direction that the capsule sides can extend. */
-        enum CapsuleDirection2D{ Vertical = 0, Horizontal = 1 }
+        export enum CapsuleDirection2D{ Vertical = 0, Horizontal = 1 }
         
         /** Parent class for collider types used with 2D gameplay. */
-        class Collider2D extends UnityEngine.Behaviour{ 
+        export class Collider2D extends UnityEngine.Behaviour{ 
             /** The density of the collider used to calculate its mass (when auto mass is enabled). */
             public get density(): number;
             public set density(value: number);
@@ -22025,7 +22027,7 @@ declare module 'csharp' {
         }
         
         /** Scene extensions to access the underlying physics scene. */
-        class PhysicsSceneExtensions2D extends System.Object{ 
+        export class PhysicsSceneExtensions2D extends System.Object{ 
             /** An extension method that returns the 2D physics Scene from the Scene.
              * @param scene The Scene from which to return the 2D physics Scene.
              * @returns The 2D physics Scene used by the Scene. 
@@ -22035,7 +22037,7 @@ declare module 'csharp' {
         }
         
         /** Global settings and helpers for 2D physics. */
-        class Physics2D extends System.Object{ 
+        export class Physics2D extends System.Object{ 
             /** Layer mask constant for the default layer that ignores raycasts. */
             public static IgnoreRaycastLayer: number;
             /** Layer mask constant that includes all layers participating in raycasts by default. */
@@ -22990,10 +22992,10 @@ declare module 'csharp' {
         }
         
         /** A selection of modes that control when Unity executes the 2D physics simulation. */
-        enum SimulationMode2D{ FixedUpdate = 0, Update = 1, Script = 2 }
+        export enum SimulationMode2D{ FixedUpdate = 0, Update = 1, Script = 2 }
         
         /** A set of options that control how physics operates when using the job system to multithread the physics simulation. */
-        class PhysicsJobOptions2D extends System.ValueType{ 
+        export class PhysicsJobOptions2D extends System.ValueType{ 
             /** Should physics simulation use multithreading? */
             public get useMultithreading(): boolean;
             public set useMultithreading(value: boolean);
@@ -23049,7 +23051,7 @@ declare module 'csharp' {
         }
         
         /** Represents the separation or overlap of two Collider2D. */
-        class ColliderDistance2D extends System.ValueType{ 
+        export class ColliderDistance2D extends System.ValueType{ 
             /** A point on a Collider2D that is a specific distance away from pointB. */
             public get pointA(): UnityEngine.Vector2;
             public set pointA(value: UnityEngine.Vector2);
@@ -23072,7 +23074,7 @@ declare module 'csharp' {
         }
         
         /** Rigidbody physics component for 2D sprites. */
-        class Rigidbody2D extends UnityEngine.Component{ 
+        export class Rigidbody2D extends UnityEngine.Component{ 
             /** The position of the rigidbody. */
             public get position(): UnityEngine.Vector2;
             public set position(value: UnityEngine.Vector2);
@@ -23320,7 +23322,7 @@ declare module 'csharp' {
         }
         
         /** Details about a specific point of contact involved in a 2D physics collision. */
-        class ContactPoint2D extends System.ValueType{ 
+        export class ContactPoint2D extends System.ValueType{ 
             /** The point of contact between the two colliders in world space. */
             public get point(): UnityEngine.Vector2;
             
@@ -23358,34 +23360,34 @@ declare module 'csharp' {
         }
         
         /** Use these flags to constrain motion of the Rigidbody2D. */
-        enum RigidbodyConstraints2D{ None = 0, FreezePositionX = 1, FreezePositionY = 2, FreezeRotation = 4, FreezePosition = 3, FreezeAll = 7 }
+        export enum RigidbodyConstraints2D{ None = 0, FreezePositionX = 1, FreezePositionY = 2, FreezeRotation = 4, FreezePosition = 3, FreezeAll = 7 }
         
         /** Interpolation mode for Rigidbody2D objects. */
-        enum RigidbodyInterpolation2D{ None = 0, Interpolate = 1, Extrapolate = 2 }
+        export enum RigidbodyInterpolation2D{ None = 0, Interpolate = 1, Extrapolate = 2 }
         
         /** Settings for a Rigidbody2D's initial sleep state. */
-        enum RigidbodySleepMode2D{ NeverSleep = 0, StartAwake = 1, StartAsleep = 2 }
+        export enum RigidbodySleepMode2D{ NeverSleep = 0, StartAwake = 1, StartAsleep = 2 }
         
         /** Controls how collisions are detected when a Rigidbody2D moves. */
-        enum CollisionDetectionMode2D{ None = 0, Discrete = 0, Continuous = 1 }
+        export enum CollisionDetectionMode2D{ None = 0, Discrete = 0, Continuous = 1 }
         
         /** The physical behaviour type of the Rigidbody2D. */
-        enum RigidbodyType2D{ Dynamic = 0, Kinematic = 1, Static = 2 }
+        export enum RigidbodyType2D{ Dynamic = 0, Kinematic = 1, Static = 2 }
         
         /** Option for how to apply a force using Rigidbody2D.AddForce. */
-        enum ForceMode2D{ Force = 0, Impulse = 1 }
+        export enum ForceMode2D{ Force = 0, Impulse = 1 }
         
         /** Represents the state of a joint limit. */
-        enum JointLimitState2D{ Inactive = 0, LowerLimit = 1, UpperLimit = 2, EqualLimits = 3 }
+        export enum JointLimitState2D{ Inactive = 0, LowerLimit = 1, UpperLimit = 2, EqualLimits = 3 }
         
         /** Selects the source and/or target to be used by an Effector2D. */
-        enum EffectorSelection2D{ Rigidbody = 0, Collider = 1 }
+        export enum EffectorSelection2D{ Rigidbody = 0, Collider = 1 }
         
         /** The mode used to apply Effector2D forces. */
-        enum EffectorForceMode2D{ Constant = 0, InverseLinear = 1, InverseSquared = 2 }
+        export enum EffectorForceMode2D{ Constant = 0, InverseLinear = 1, InverseSquared = 2 }
         
         /** Collision details returned by 2D physics callback functions. */
-        class Collision2D extends System.Object{ 
+        export class Collision2D extends System.Object{ 
             /** The incoming Collider2D involved in the collision with the otherCollider. */
             public get collider(): UnityEngine.Collider2D;
             
@@ -23434,7 +23436,7 @@ declare module 'csharp' {
         }
         
         /** Angular limits on the rotation of a Rigidbody2D object around a HingeJoint2D. */
-        class JointAngleLimits2D extends System.ValueType{ 
+        export class JointAngleLimits2D extends System.ValueType{ 
             /** Lower angular limit of rotation. */
             public get min(): number;
             public set min(value: number);
@@ -23445,7 +23447,7 @@ declare module 'csharp' {
         }
         
         /** Motion limits of a Rigidbody2D object along a SliderJoint2D. */
-        class JointTranslationLimits2D extends System.ValueType{ 
+        export class JointTranslationLimits2D extends System.ValueType{ 
             /** Minimum distance the Rigidbody2D object can move from the Slider Joint's anchor. */
             public get min(): number;
             public set min(value: number);
@@ -23456,7 +23458,7 @@ declare module 'csharp' {
         }
         
         /** Parameters for the optional motor force applied to a Joint2D. */
-        class JointMotor2D extends System.ValueType{ 
+        export class JointMotor2D extends System.ValueType{ 
             /** The desired speed for the Rigidbody2D to reach as it moves with the joint. */
             public get motorSpeed(): number;
             public set motorSpeed(value: number);
@@ -23467,7 +23469,7 @@ declare module 'csharp' {
         }
         
         /** Joint suspension is used to define how suspension works on a WheelJoint2D. */
-        class JointSuspension2D extends System.ValueType{ 
+        export class JointSuspension2D extends System.ValueType{ 
             /** The amount by which the suspension spring force is reduced in proportion to the movement speed. */
             public get dampingRatio(): number;
             public set dampingRatio(value: number);
@@ -23481,7 +23483,7 @@ declare module 'csharp' {
         }
         
         /** Asset type that defines the surface properties of a Collider2D. */
-        class PhysicsMaterial2D extends UnityEngine.Object{ 
+        export class PhysicsMaterial2D extends UnityEngine.Object{ 
             /** The degree of elasticity during collisions. */
             public get bounciness(): number;
             public set bounciness(value: number);
@@ -23496,7 +23498,7 @@ declare module 'csharp' {
         }
         
         /** A Collider that can merge other Colliders together. */
-        class CompositeCollider2D extends UnityEngine.Collider2D{ 
+        export class CompositeCollider2D extends UnityEngine.Collider2D{ 
             /** Specifies the type of geometry the Composite Collider should generate. */
             public get geometryType(): UnityEngine.CompositeCollider2D.GeometryType;
             public set geometryType(value: UnityEngine.CompositeCollider2D.GeometryType);
@@ -23539,7 +23541,7 @@ declare module 'csharp' {
         }
         
         /** Collider for 2D physics representing an circle. */
-        class CircleCollider2D extends UnityEngine.Collider2D{ 
+        export class CircleCollider2D extends UnityEngine.Collider2D{ 
             /** Radius of the circle. */
             public get radius(): number;
             public set radius(value: number);
@@ -23549,7 +23551,7 @@ declare module 'csharp' {
         }
         
         /** A capsule-shaped primitive collider. */
-        class CapsuleCollider2D extends UnityEngine.Collider2D{ 
+        export class CapsuleCollider2D extends UnityEngine.Collider2D{ 
             /** The width and height of the capsule area. */
             public get size(): UnityEngine.Vector2;
             public set size(value: UnityEngine.Vector2);
@@ -23562,7 +23564,7 @@ declare module 'csharp' {
         }
         
         /** Collider for 2D physics representing an arbitrary set of connected edges (lines) defined by its vertices. */
-        class EdgeCollider2D extends UnityEngine.Collider2D{ 
+        export class EdgeCollider2D extends UnityEngine.Collider2D{ 
             /** Controls the radius of all edges created by the collider. */
             public get edgeRadius(): number;
             public set edgeRadius(value: number);
@@ -23599,7 +23601,7 @@ declare module 'csharp' {
         }
         
         /** Collider for 2D physics representing an axis-aligned rectangle. */
-        class BoxCollider2D extends UnityEngine.Collider2D{ 
+        export class BoxCollider2D extends UnityEngine.Collider2D{ 
             /** The width and height of the rectangle. */
             public get size(): UnityEngine.Vector2;
             public set size(value: UnityEngine.Vector2);
@@ -23615,7 +23617,7 @@ declare module 'csharp' {
         }
         
         /** Collider for 2D physics representing an arbitrary polygon defined by its vertices. */
-        class PolygonCollider2D extends UnityEngine.Collider2D{ 
+        export class PolygonCollider2D extends UnityEngine.Collider2D{ 
             /** Determines whether the PolygonCollider2D's shape is automatically updated based on a SpriteRenderer's tiling properties. */
             public get autoTiling(): boolean;
             public set autoTiling(value: boolean);
@@ -23655,7 +23657,7 @@ declare module 'csharp' {
         }
         
         /** Parent class for joints to connect Rigidbody2D objects. */
-        class Joint2D extends UnityEngine.Behaviour{ 
+        export class Joint2D extends UnityEngine.Behaviour{ 
             /** The Rigidbody2D attached to the Joint2D. */
             public get attachedRigidbody(): UnityEngine.Rigidbody2D;
             
@@ -23693,7 +23695,7 @@ declare module 'csharp' {
         }
         
         /** Parent class for all joints that have anchor points. */
-        class AnchoredJoint2D extends UnityEngine.Joint2D{ 
+        export class AnchoredJoint2D extends UnityEngine.Joint2D{ 
             /** The joint's anchor point on the object that has the joint component. */
             public get anchor(): UnityEngine.Vector2;
             public set anchor(value: UnityEngine.Vector2);
@@ -23709,7 +23711,7 @@ declare module 'csharp' {
         }
         
         /** Joint that attempts to keep two Rigidbody2D objects a set distance apart by applying a force between them. */
-        class SpringJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class SpringJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** Should the distance be calculated automatically? */
             public get autoConfigureDistance(): boolean;
             public set autoConfigureDistance(value: boolean);
@@ -23728,7 +23730,7 @@ declare module 'csharp' {
         }
         
         /** Joint that keeps two Rigidbody2D objects a fixed distance apart. */
-        class DistanceJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class DistanceJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** Should the distance be calculated automatically? */
             public get autoConfigureDistance(): boolean;
             public set autoConfigureDistance(value: boolean);
@@ -23744,7 +23746,7 @@ declare module 'csharp' {
         }
         
         /** Applies both force and torque to reduce both the linear and angular velocities to zero. */
-        class FrictionJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class FrictionJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** The maximum force that can be generated when trying to maintain the friction joint constraint. */
             public get maxForce(): number;
             public set maxForce(value: number);
@@ -23757,7 +23759,7 @@ declare module 'csharp' {
         }
         
         /** Joint that allows a Rigidbody2D object to rotate around a point in space or a point on another object. */
-        class HingeJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class HingeJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** Should the joint be rotated automatically by a motor torque? */
             public get useMotor(): boolean;
             public set useMotor(value: boolean);
@@ -23791,7 +23793,7 @@ declare module 'csharp' {
         }
         
         /** Keeps two Rigidbody2D at their relative orientations. */
-        class RelativeJoint2D extends UnityEngine.Joint2D{ 
+        export class RelativeJoint2D extends UnityEngine.Joint2D{ 
             /** The maximum force that can be generated when trying to maintain the relative joint constraint. */
             public get maxForce(): number;
             public set maxForce(value: number);
@@ -23819,7 +23821,7 @@ declare module 'csharp' {
         }
         
         /** Joint that restricts the motion of a Rigidbody2D object to a single line. */
-        class SliderJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class SliderJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** Should the angle be calculated automatically? */
             public get autoConfigureAngle(): boolean;
             public set autoConfigureAngle(value: boolean);
@@ -23859,7 +23861,7 @@ declare module 'csharp' {
         }
         
         /** The joint attempts to move a Rigidbody2D to a specific target position. */
-        class TargetJoint2D extends UnityEngine.Joint2D{ 
+        export class TargetJoint2D extends UnityEngine.Joint2D{ 
             /** The local-space anchor on the rigid-body the joint is attached to. */
             public get anchor(): UnityEngine.Vector2;
             public set anchor(value: UnityEngine.Vector2);
@@ -23884,7 +23886,7 @@ declare module 'csharp' {
         }
         
         /** Connects two Rigidbody2D together at their anchor points using a configurable spring. */
-        class FixedJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class FixedJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** The amount by which the spring force is reduced in proportion to the movement speed. */
             public get dampingRatio(): number;
             public set dampingRatio(value: number);
@@ -23900,7 +23902,7 @@ declare module 'csharp' {
         }
         
         /** The wheel joint allows the simulation of wheels by providing a constraining suspension motion with an optional motor. */
-        class WheelJoint2D extends UnityEngine.AnchoredJoint2D{ 
+        export class WheelJoint2D extends UnityEngine.AnchoredJoint2D{ 
             /** Set the joint suspension configuration. */
             public get suspension(): UnityEngine.JointSuspension2D;
             public set suspension(value: UnityEngine.JointSuspension2D);
@@ -23931,7 +23933,7 @@ declare module 'csharp' {
         }
         
         /** A base class for all 2D effectors. */
-        class Effector2D extends UnityEngine.Behaviour{ 
+        export class Effector2D extends UnityEngine.Behaviour{ 
             /** Should the collider-mask be used or the global collision matrix? */
             public get useColliderMask(): boolean;
             public set useColliderMask(value: boolean);
@@ -23944,7 +23946,7 @@ declare module 'csharp' {
         }
         
         /** Applies forces within an area. */
-        class AreaEffector2D extends UnityEngine.Effector2D{ 
+        export class AreaEffector2D extends UnityEngine.Effector2D{ 
             /** The angle of the force to be applied. */
             public get forceAngle(): number;
             public set forceAngle(value: number);
@@ -23972,7 +23974,7 @@ declare module 'csharp' {
         }
         
         /** Applies forces to simulate buoyancy, fluid-flow and fluid drag. */
-        class BuoyancyEffector2D extends UnityEngine.Effector2D{ 
+        export class BuoyancyEffector2D extends UnityEngine.Effector2D{ 
             /** Defines an arbitrary horizontal line that represents the fluid surface level. */
             public get surfaceLevel(): number;
             public set surfaceLevel(value: number);
@@ -24000,7 +24002,7 @@ declare module 'csharp' {
         }
         
         /** Applies forces to attract/repulse against a point. */
-        class PointEffector2D extends UnityEngine.Effector2D{ 
+        export class PointEffector2D extends UnityEngine.Effector2D{ 
             /** The magnitude of the force to be applied. */
             public get forceMagnitude(): number;
             public set forceMagnitude(value: number);
@@ -24031,7 +24033,7 @@ declare module 'csharp' {
         }
         
         /** Applies "platform" behaviour such as one-way collisions etc. */
-        class PlatformEffector2D extends UnityEngine.Effector2D{ 
+        export class PlatformEffector2D extends UnityEngine.Effector2D{ 
             /** Should the one-way collision behaviour be used? */
             public get useOneWay(): boolean;
             public set useOneWay(value: boolean);
@@ -24059,7 +24061,7 @@ declare module 'csharp' {
         }
         
         /** Applies tangent forces along the surfaces of colliders. */
-        class SurfaceEffector2D extends UnityEngine.Effector2D{ 
+        export class SurfaceEffector2D extends UnityEngine.Effector2D{ 
             /** The speed to be maintained along the surface. */
             public get speed(): number;
             public set speed(value: number);
@@ -24084,14 +24086,14 @@ declare module 'csharp' {
         }
         
         /** A base type for 2D physics components that required a callback during FixedUpdate. */
-        class PhysicsUpdateBehaviour2D extends UnityEngine.Behaviour{ 
+        export class PhysicsUpdateBehaviour2D extends UnityEngine.Behaviour{ 
             
             public constructor();
             
         }
         
         /** Applies both linear and angular (torque) forces continuously to the rigidbody each physics update. */
-        class ConstantForce2D extends UnityEngine.PhysicsUpdateBehaviour2D{ 
+        export class ConstantForce2D extends UnityEngine.PhysicsUpdateBehaviour2D{ 
             /** The linear force applied to the rigidbody each physics update. */
             public get force(): UnityEngine.Vector2;
             public set force(value: UnityEngine.Vector2);
@@ -24107,7 +24109,7 @@ declare module 'csharp' {
         }
         
         /** Functionality to take Screenshots. */
-        class ScreenCapture extends System.Object{ 
+        export class ScreenCapture extends System.Object{ 
             
             public static CaptureScreenshot($filename: string):void;
             /** Captures a screenshot at path filename as a PNG file. * @param filename Pathname to save the screenshot file to.
@@ -24132,7 +24134,7 @@ declare module 'csharp' {
         }
         
         /** A component for masking Sprites and Particles. */
-        class SpriteMask extends UnityEngine.Renderer{ 
+        export class SpriteMask extends UnityEngine.Renderer{ 
             /** Unique ID of the sorting layer defining the start of the custom range. */
             public get frontSortingLayerID(): number;
             public set frontSortingLayerID(value: number);
@@ -24163,7 +24165,7 @@ declare module 'csharp' {
         }
         
         /** A StreamingController controls the streaming settings for an individual camera location. */
-        class StreamingController extends UnityEngine.Behaviour{ 
+        export class StreamingController extends UnityEngine.Behaviour{ 
             /** Offset applied to the mipmap level chosen by the texture streaming system for any textures visible from this camera. This Offset can take either a positive or negative value. */
             public get streamingMipmapBias(): number;
             public set streamingMipmapBias(value: number);
@@ -24182,24 +24184,24 @@ declare module 'csharp' {
         }
         
         /** Deprecated feature, no longer available */
-        enum ProceduralProcessorUsage{ Unsupported = 0, One = 1, Half = 2, All = 3 }
+        export enum ProceduralProcessorUsage{ Unsupported = 0, One = 1, Half = 2, All = 3 }
         
         /** Deprecated feature, no longer available */
-        enum ProceduralCacheSize{ Tiny = 0, Medium = 1, Heavy = 2, NoLimit = 3, None = 4 }
+        export enum ProceduralCacheSize{ Tiny = 0, Medium = 1, Heavy = 2, NoLimit = 3, None = 4 }
         
         /** Deprecated feature, no longer available */
-        enum ProceduralLoadingBehavior{ DoNothing = 0, Generate = 1, BakeAndKeep = 2, BakeAndDiscard = 3, Cache = 4, DoNothingAndCache = 5 }
+        export enum ProceduralLoadingBehavior{ DoNothing = 0, Generate = 1, BakeAndKeep = 2, BakeAndDiscard = 3, Cache = 4, DoNothingAndCache = 5 }
         
         /** Deprecated feature, no longer available */
-        enum ProceduralPropertyType{ Boolean = 0, Float = 1, Vector2 = 2, Vector3 = 3, Vector4 = 4, Color3 = 5, Color4 = 6, Enum = 7, Texture = 8, String = 9 }
+        export enum ProceduralPropertyType{ Boolean = 0, Float = 1, Vector2 = 2, Vector3 = 3, Vector4 = 4, Color3 = 5, Color4 = 6, Enum = 7, Texture = 8, String = 9 }
         
         /** Deprecated feature, no longer available */
-        enum ProceduralOutputType{ Unknown = 0, Diffuse = 1, Normal = 2, Height = 3, Emissive = 4, Specular = 5, Opacity = 6, Smoothness = 7, AmbientOcclusion = 8, DetailMask = 9, Metallic = 10, Roughness = 11 }
+        export enum ProceduralOutputType{ Unknown = 0, Diffuse = 1, Normal = 2, Height = 3, Emissive = 4, Specular = 5, Opacity = 6, Smoothness = 7, AmbientOcclusion = 8, DetailMask = 9, Metallic = 10, Roughness = 11 }
         
         /** An IntegratedSubsystem is initialized from an IntegratedSubsystemDescriptor for a given Subsystem (Example, Input, Environment, Display, etc.) and provides an interface to interact with that given IntegratedSubsystem until it is Destroyed. After an IntegratedSubsystem is created it can be Started or Stopped to turn on and off functionality (and preserve performance). The base type for IntegratedSubsystem only exposes this functionality; this class is designed to be a base class for derived classes that expose more functionality specific to a given IntegratedSubsystem.
                     Note: initializing a second IntegratedSubsystem from the same IntegratedSubsystemDescriptor will return a reference to the existing IntegratedSubsystem as only one IntegratedSubsystem is currently allowed for a single IntegratedSubsystem provider.
                      */
-        class IntegratedSubsystem extends System.Object implements UnityEngine.ISubsystem{ 
+        export class IntegratedSubsystem extends System.Object implements UnityEngine.ISubsystem{ 
             /** Whether or not the subsystem is running. */
             public get running(): boolean;
             
@@ -24215,7 +24217,7 @@ declare module 'csharp' {
         }
         
         
-        interface ISubsystem{ 
+        export interface ISubsystem{ 
             /** Will be true if asking the subsytem to start was successful. False in the case that the subsystem has stopped, was asked to stop or has not been started yet. */
             running: boolean;
             
@@ -24228,7 +24230,7 @@ declare module 'csharp' {
         }
         
         /** Information about a subsystem that can be queried before creating a subsystem instance. */
-        class IntegratedSubsystemDescriptor extends System.Object implements UnityEngine.ISubsystemDescriptorImpl, UnityEngine.ISubsystemDescriptor{ 
+        export class IntegratedSubsystemDescriptor extends System.Object implements UnityEngine.ISubsystemDescriptorImpl, UnityEngine.ISubsystemDescriptor{ 
             /** A unique string that identifies the subsystem that this Descriptor can create. */
             public get id(): string;
             
@@ -24238,7 +24240,7 @@ declare module 'csharp' {
         }
         
         
-        interface ISubsystemDescriptorImpl extends UnityEngine.ISubsystemDescriptor{ 
+        export interface ISubsystemDescriptorImpl extends UnityEngine.ISubsystemDescriptor{ 
             /** A unique string that identifies the subsystem that this Descriptor can create. */
             id: string;
             
@@ -24247,7 +24249,7 @@ declare module 'csharp' {
         }
         
         
-        interface ISubsystemDescriptor{ 
+        export interface ISubsystemDescriptor{ 
             /** A unique string that identifies the subsystem that this Descriptor can create. */
             id: string;
             
@@ -24258,7 +24260,7 @@ declare module 'csharp' {
         /** A Subsystem is initialized from a SubsystemDescriptorWithProvider for a given Subsystem (Example, Input, Display, etc.) and provides an interface to interact with that given Subsystem until it is Destroyed. After a Subsystem is created it can be Started or Stopped to turn on and off functionality (and improve performance). The base type for subsystems only exposes this functionality; this class is designed to be a base class for derived classes that expose more functionality specific to a given Subsystem.
                     Note: initializing a second Subsystem from the same SubsystemDescriptor will return a reference to the existing Subsystem as only one Subsystem is currently allowed for a single Subsystem provider.
         This subsystem base-class is deprecated. If you are creating a new subsystem type, derive from SubsystemWithProvider instead. */
-        class Subsystem extends System.Object implements UnityEngine.ISubsystem{ 
+        export class Subsystem extends System.Object implements UnityEngine.ISubsystem{ 
             /** Whether or not the subsystem is running. */
             public get running(): boolean;
             
@@ -24273,7 +24275,7 @@ declare module 'csharp' {
         
         /** Information about a subsystem that can be queried before creating a subsystem instance.
         This subsystem descriptor base-class is deprecated. If you are creating a new subsystem type, derive from SubsystemDecriptorWithProvider instead. */
-        class SubsystemDescriptor extends System.Object implements UnityEngine.ISubsystemDescriptor{ 
+        export class SubsystemDescriptor extends System.Object implements UnityEngine.ISubsystemDescriptor{ 
             /** A unique string that identifies the subsystem that this Descriptor can create. */
             public get id(): string;
             public set id(value: string);
@@ -24286,7 +24288,7 @@ declare module 'csharp' {
         }
         
         /** Gives access to subsystems which provide additional functionality through plugins. */
-        class SubsystemManager extends System.Object{ 
+        export class SubsystemManager extends System.Object{ 
             
             public static GetAllSubsystemDescriptors($descriptors: System.Collections.Generic.List$1<UnityEngine.ISubsystemDescriptor>):void;
             
@@ -24309,13 +24311,13 @@ declare module 'csharp' {
         }
         
         /** Indicate the types of changes to the terrain in OnTerrainChanged callback. */
-        enum TerrainChangedFlags{ Heightmap = 1, TreeInstances = 2, DelayedHeightmapUpdate = 4, FlushEverythingImmediately = 8, RemoveDirtyDetailsImmediately = 16, HeightmapResolution = 32, Holes = 64, DelayedHolesUpdate = 128, WillBeDestroyed = 256 }
+        export enum TerrainChangedFlags{ Heightmap = 1, TreeInstances = 2, DelayedHeightmapUpdate = 4, FlushEverythingImmediately = 8, RemoveDirtyDetailsImmediately = 16, HeightmapResolution = 32, Holes = 64, DelayedHolesUpdate = 128, WillBeDestroyed = 256 }
         
         /** Enum provding terrain rendering options. */
-        enum TerrainRenderFlags{ heightmap = 1, trees = 2, details = 4, all = 7, Heightmap = 1, Trees = 2, Details = 4, All = 7 }
+        export enum TerrainRenderFlags{ heightmap = 1, trees = 2, details = 4, all = 7, Heightmap = 1, Trees = 2, Details = 4, All = 7 }
         
         /** The Terrain component renders the terrain. */
-        class Terrain extends UnityEngine.Behaviour{ 
+        export class Terrain extends UnityEngine.Behaviour{ 
             /** The Terrain Data that stores heightmaps, terrain textures, detail meshes and trees. */
             public get terrainData(): UnityEngine.TerrainData;
             public set terrainData(value: UnityEngine.TerrainData);
@@ -24493,12 +24495,12 @@ declare module 'csharp' {
         }
         
         /** The TerrainData class stores heightmaps, detail mesh positions, tree instances, and terrain texture alpha maps. */
-        class TerrainData extends UnityEngine.Object{ 
+        export class TerrainData extends UnityEngine.Object{ 
             
         }
         
         /** Contains information about a tree placed in the Terrain game object. */
-        class TreeInstance extends System.ValueType{ 
+        export class TreeInstance extends System.ValueType{ 
             /** Position of the tree. */
             public position: UnityEngine.Vector3;
             /** Width scale of this instance (compared to the prototype's size). */
@@ -24518,7 +24520,7 @@ declare module 'csharp' {
         }
         
         /** Extension methods to the Terrain class, used only for the UpdateGIMaterials method used by the Global Illumination System. */
-        class TerrainExtensions extends System.Object{ 
+        export class TerrainExtensions extends System.Object{ 
             /** Schedules an update of the albedo and emissive Textures of a system that contains the Terrain. */
             public static UpdateGIMaterials($terrain: UnityEngine.Terrain):void;
             /** Schedules an update of the albedo and emissive Textures of a system that contains the Terrain. */
@@ -24527,7 +24529,7 @@ declare module 'csharp' {
         }
         
         /** Tree Component for the tree creator. */
-        class Tree extends UnityEngine.Component{ 
+        export class Tree extends UnityEngine.Component{ 
             /** Data asociated to the Tree. */
             public get data(): UnityEngine.ScriptableObject;
             public set data(value: UnityEngine.ScriptableObject);
@@ -24540,7 +24542,7 @@ declare module 'csharp' {
         }
         
         /** Simple class that contains a pointer to a tree prototype. */
-        class TreePrototype extends System.Object{ 
+        export class TreePrototype extends System.Object{ 
             /** Retrieves the actual GameObject used by the tree. */
             public get prefab(): UnityEngine.GameObject;
             public set prefab(value: UnityEngine.GameObject);
@@ -24558,10 +24560,10 @@ declare module 'csharp' {
         }
         
         /** Render mode for detail prototypes. */
-        enum DetailRenderMode{ GrassBillboard = 0, VertexLit = 1, Grass = 2 }
+        export enum DetailRenderMode{ GrassBillboard = 0, VertexLit = 1, Grass = 2 }
         
         /** Detail prototype used by the Terrain GameObject. */
-        class DetailPrototype extends System.Object{ 
+        export class DetailPrototype extends System.Object{ 
             /** GameObject used by the DetailPrototype. */
             public get prototype(): UnityEngine.GameObject;
             public set prototype(value: UnityEngine.GameObject);
@@ -24611,7 +24613,7 @@ declare module 'csharp' {
         }
         
         /** A Splat prototype is just a texture that is used by the TerrainData. */
-        class SplatPrototype extends System.Object{ 
+        export class SplatPrototype extends System.Object{ 
             /** Texture of the splat applied to the Terrain. */
             public get texture(): UnityEngine.Texture2D;
             public set texture(value: UnityEngine.Texture2D);
@@ -24639,7 +24641,7 @@ declare module 'csharp' {
         }
         
         /** Structure containing minimum and maximum terrain patch height values. */
-        class PatchExtents extends System.ValueType{ 
+        export class PatchExtents extends System.ValueType{ 
             /** Minimum height of a terrain patch. */
             public get min(): number;
             public set min(value: number);
@@ -24650,10 +24652,10 @@ declare module 'csharp' {
         }
         
         /** Controls what Terrain heightmap data to synchronize when there are changes to the heightmap texture. */
-        enum TerrainHeightmapSyncControl{ None = 0, HeightOnly = 1, HeightAndLod = 2 }
+        export enum TerrainHeightmapSyncControl{ None = 0, HeightOnly = 1, HeightAndLod = 2 }
         
         /** Description of a terrain layer. */
-        class TerrainLayer extends UnityEngine.Object{ 
+        export class TerrainLayer extends UnityEngine.Object{ 
             /** The diffuse texture used by the terrain layer. */
             public get diffuseTexture(): UnityEngine.Texture2D;
             public set diffuseTexture(value: UnityEngine.Texture2D);
@@ -24699,7 +24701,7 @@ declare module 'csharp' {
         }
         
         /** A heightmap based collider. */
-        class TerrainCollider extends UnityEngine.Collider{ 
+        export class TerrainCollider extends UnityEngine.Collider{ 
             /** The terrain that stores the heightmap. */
             public get terrainData(): UnityEngine.TerrainData;
             public set terrainData(value: UnityEngine.TerrainData);
@@ -24709,7 +24711,7 @@ declare module 'csharp' {
         }
         
         /** A struct that stores the settings for TextGeneration. */
-        class TextGenerationSettings extends System.ValueType{ 
+        export class TextGenerationSettings extends System.ValueType{ 
             /** Font to use for generation. */
             public font: UnityEngine.Font;
             /** The base color for the text generation. */
@@ -24756,13 +24758,13 @@ declare module 'csharp' {
         }
         
         /** Wrapping modes for text that reaches the vertical boundary. */
-        enum VerticalWrapMode{ Truncate = 0, Overflow = 1 }
+        export enum VerticalWrapMode{ Truncate = 0, Overflow = 1 }
         
         /** Wrapping modes for text that reaches the horizontal boundary. */
-        enum HorizontalWrapMode{ Wrap = 0, Overflow = 1 }
+        export enum HorizontalWrapMode{ Wrap = 0, Overflow = 1 }
         
         /** Class that can be used to generate text for rendering. */
-        class TextGenerator extends System.Object implements System.IDisposable{ 
+        export class TextGenerator extends System.Object implements System.IDisposable{ 
             /** The number of characters that have been generated and are included in the visible lines. */
             public get characterCountVisible(): number;
             
@@ -24835,7 +24837,7 @@ declare module 'csharp' {
         }
         
         /** Class that specifies some information about a renderable character. */
-        class UICharInfo extends System.ValueType{ 
+        export class UICharInfo extends System.ValueType{ 
             /** Position of the character cursor in local (text generated) space. */
             public cursorPos: UnityEngine.Vector2;
             /** Character width. */
@@ -24844,7 +24846,7 @@ declare module 'csharp' {
         }
         
         /** Information about a generated line of text. */
-        class UILineInfo extends System.ValueType{ 
+        export class UILineInfo extends System.ValueType{ 
             /** Index of the first character in the line. */
             public startCharIdx: number;
             /** Height of the line. */
@@ -24857,7 +24859,7 @@ declare module 'csharp' {
         }
         
         /** Vertex class used by a Canvas for managing vertices. */
-        class UIVertex extends System.ValueType{ 
+        export class UIVertex extends System.ValueType{ 
             /** Vertex position. */
             public position: UnityEngine.Vector3;
             /** Normal. */
@@ -24880,10 +24882,10 @@ declare module 'csharp' {
         }
         
         /** How multiline text should be aligned. */
-        enum TextAlignment{ Left = 0, Center = 1, Right = 2 }
+        export enum TextAlignment{ Left = 0, Center = 1, Right = 2 }
         
         /** A script interface for the. */
-        class TextMesh extends UnityEngine.Component{ 
+        export class TextMesh extends UnityEngine.Component{ 
             /** The text that is displayed. */
             public get text(): string;
             public set text(value: string);
@@ -24926,7 +24928,7 @@ declare module 'csharp' {
         }
         
         /** Specification for how to render a character from the font texture. See Font.characterInfo. */
-        class CharacterInfo extends System.ValueType{ 
+        export class CharacterInfo extends System.ValueType{ 
             /** Unicode value of the character. */
             public index: number;
             /** The size of the character or 0 if it is the default font size. */
@@ -24973,7 +24975,7 @@ declare module 'csharp' {
         }
         
         /** Attribute to define the class as a grid brush and to make it available in the palette window. */
-        class CustomGridBrushAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class CustomGridBrushAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             /** Hide all asset instances of this brush in the tile palette window. */
             public get hideAssetInstances(): boolean;
             
@@ -24995,7 +24997,7 @@ declare module 'csharp' {
         }
         
         /** Base class for authoring data on a grid with grid painting tools like paint, erase, pick, select and fill. */
-        class GridBrushBase extends UnityEngine.ScriptableObject{ 
+        export class GridBrushBase extends UnityEngine.ScriptableObject{ 
             /** Paints data into a grid within the given bounds. * @param grid Grid used for layout.
              * @param brushTarget Target of the paint operation. By default the currently selected GameObject.
              * @param position The coordinates of the cell to paint data to.
@@ -25061,7 +25063,7 @@ declare module 'csharp' {
         }
         
         /** A Canvas placable element that can be used to modify children Alpha, Raycasting, Enabled state. */
-        class CanvasGroup extends UnityEngine.Behaviour implements UnityEngine.ICanvasRaycastFilter{ 
+        export class CanvasGroup extends UnityEngine.Behaviour implements UnityEngine.ICanvasRaycastFilter{ 
             /** Set the alpha of the group. */
             public get alpha(): number;
             public set alpha(value: number);
@@ -25088,7 +25090,7 @@ declare module 'csharp' {
         }
         
         /** A component that will render to the screen after all normal rendering has completed when attached to a Canvas. Designed for GUI application. */
-        class CanvasRenderer extends UnityEngine.Component{ 
+        export class CanvasRenderer extends UnityEngine.Component{ 
             /** Enable 'render stack' pop draw call. */
             public get hasPopInstruction(): boolean;
             public set hasPopInstruction(value: boolean);
@@ -25190,7 +25192,7 @@ declare module 'csharp' {
         }
         
         /** Utility class containing helper methods for working with  RectTransform. */
-        class RectTransformUtility extends System.Object{ 
+        export class RectTransformUtility extends System.Object{ 
             /** Convert a given point in screen space into a pixel correct point.
              * @returns Pixel adjusted point. 
              */
@@ -25249,7 +25251,7 @@ declare module 'csharp' {
         }
         
         
-        class UISystemProfilerApi extends System.Object{ 
+        export class UISystemProfilerApi extends System.Object{ 
             
             public static BeginSample($type: UnityEngine.UISystemProfilerApi.SampleType):void;
             
@@ -25260,7 +25262,7 @@ declare module 'csharp' {
         }
         
         /** Provides access to your remote settings. */
-        class RemoteSettings extends System.Object{ 
+        export class RemoteSettings extends System.Object{ 
             
             public static add_Updated($value: UnityEngine.RemoteSettings.UpdatedEventHandler):void;
             
@@ -25363,7 +25365,7 @@ declare module 'csharp' {
         }
         
         
-        class RemoteConfigSettings extends System.Object implements System.IDisposable{ 
+        export class RemoteConfigSettings extends System.Object implements System.IDisposable{ 
             
             public add_Updated($value: System.Action$1<boolean>):void;
             
@@ -25420,7 +25422,7 @@ declare module 'csharp' {
         }
         
         /** Helper class to generate form data to post to web servers using the UnityWebRequest or WWW classes. */
-        class WWWForm extends System.Object{ 
+        export class WWWForm extends System.Object{ 
             /** (Read Only) Returns the correct request headers for posting the form using the WWW class. */
             public get headers(): System.Collections.Generic.Dictionary$2<string, string>;
             
@@ -25445,12 +25447,12 @@ declare module 'csharp' {
         }
         
         
-        class WWWAudioExtensions extends System.Object{ 
+        export class WWWAudioExtensions extends System.Object{ 
             
         }
         
         /** Simple access to web pages. */
-        class WWW extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator, System.IDisposable{ 
+        export class WWW extends UnityEngine.CustomYieldInstruction implements System.Collections.IEnumerator, System.IDisposable{ 
             
         }
         
@@ -25476,12 +25478,12 @@ declare module 'csharp' {
         }
         
         /** MovieTexture has been removed. Use VideoPlayer instead. */
-        class MovieTexture extends UnityEngine.Texture{ 
+        export class MovieTexture extends UnityEngine.Texture{ 
             
         }
         
         /** Contact information for the wheel, reported by WheelCollider. */
-        class WheelHit extends System.ValueType{ 
+        export class WheelHit extends System.ValueType{ 
             /** The other Collider the wheel is hitting. */
             public get collider(): UnityEngine.Collider;
             public set collider(value: UnityEngine.Collider);
@@ -25510,7 +25512,7 @@ declare module 'csharp' {
         }
         
         /** A special collider for vehicle wheels. */
-        class WheelCollider extends UnityEngine.Collider{ 
+        export class WheelCollider extends UnityEngine.Collider{ 
             /** The center of the wheel, measured in the object's local space. */
             public get center(): UnityEngine.Vector3;
             public set center(value: UnityEngine.Vector3);
@@ -25579,10 +25581,10 @@ declare module 'csharp' {
         }
         
         /** Modes a Wind Zone can have, either Spherical or Directional. */
-        enum WindZoneMode{ Directional = 0, Spherical = 1 }
+        export enum WindZoneMode{ Directional = 0, Spherical = 1 }
         
         /** Wind Zones add realism to the trees you create by making them wave their branches and leaves as if blown by the wind. */
-        class WindZone extends UnityEngine.Component{ 
+        export class WindZone extends UnityEngine.Component{ 
             /** Defines the type of wind zone to be used (Spherical or Directional). */
             public get mode(): UnityEngine.WindZoneMode;
             public set mode(value: UnityEngine.WindZoneMode);
@@ -25607,7 +25609,7 @@ declare module 'csharp' {
         }
         
         
-        class AssetReferenceUIRestriction extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class AssetReferenceUIRestriction extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
             public ValidateAsset($obj: UnityEngine.Object):boolean;
             
@@ -25618,7 +25620,7 @@ declare module 'csharp' {
         }
         
         
-        class AssetReferenceUILabelRestriction extends UnityEngine.AssetReferenceUIRestriction implements System.Runtime.InteropServices._Attribute{ 
+        export class AssetReferenceUILabelRestriction extends UnityEngine.AssetReferenceUIRestriction implements System.Runtime.InteropServices._Attribute{ 
             
             public m_AllowedLabels: System.Array$1<string>;
             
@@ -25632,9 +25634,9 @@ declare module 'csharp' {
         
         
     }
-    namespace System {
+    export namespace System {
         
-        class Object{ 
+        export class Object{ 
             
             public Equals($obj: any):boolean;
             
@@ -25653,82 +25655,82 @@ declare module 'csharp' {
         }
         
         
-        class Void extends System.ValueType{ 
+        export class Void extends System.ValueType{ 
             
         }
         
         
-        class ValueType extends System.Object{ 
+        export class ValueType extends System.Object{ 
             
         }
         
         
-        interface IEquatable$1<T>{ 
+        export interface IEquatable$1<T>{ 
             
         }
         
         
-        interface IFormattable{ 
+        export interface IFormattable{ 
             
         }
         
         
-        class Single extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class Single extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        interface IComparable{ 
+        export interface IComparable{ 
             
         }
         
         
-        interface IComparable$1<T>{ 
+        export interface IComparable$1<T>{ 
             
         }
         
         
-        interface IConvertible{ 
+        export interface IConvertible{ 
             
         }
         
         
-        class Boolean extends System.ValueType implements System.IComparable, System.IComparable$1<boolean>, System.IConvertible, System.IEquatable$1<boolean>{ 
+        export class Boolean extends System.ValueType implements System.IComparable, System.IComparable$1<boolean>, System.IConvertible, System.IEquatable$1<boolean>{ 
             
         }
         
         
-        class Int32 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class Int32 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        class String extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.IComparable, System.IComparable$1<string>, System.IConvertible, System.IEquatable$1<string>, System.Collections.Generic.IEnumerable$1<number>{ 
+        export class String extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.IComparable, System.IComparable$1<string>, System.IConvertible, System.IEquatable$1<string>, System.Collections.Generic.IEnumerable$1<number>{ 
             
         }
         
         
-        interface ICloneable{ 
+        export interface ICloneable{ 
             
         }
         
         
-        class Char extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>{ 
+        export class Char extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>{ 
             
         }
         
         
-        class Enum extends System.ValueType implements System.IComparable, System.IConvertible, System.IFormattable{ 
+        export class Enum extends System.ValueType implements System.IComparable, System.IConvertible, System.IFormattable{ 
             
         }
         
         
-        class Exception extends System.Object implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class Exception extends System.Object implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        class Array extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.Collections.IList, System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.Collections.ICollection{ 
+        export class Array extends System.Object implements System.ICloneable, System.Collections.IEnumerable, System.Collections.IList, System.Collections.IStructuralComparable, System.Collections.IStructuralEquatable, System.Collections.ICollection{ 
             
             public get LongLength(): bigint;
             
@@ -25868,7 +25870,7 @@ declare module 'csharp' {
         }
         
         
-        class Type extends System.Reflection.MemberInfo implements System.Reflection.IReflect, System.Runtime.InteropServices._Type, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+        export class Type extends System.Reflection.MemberInfo implements System.Reflection.IReflect, System.Runtime.InteropServices._Type, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
             
             public static FilterAttribute: System.Reflection.MemberFilter;
             
@@ -26256,19 +26258,19 @@ declare module 'csharp' {
         }
         
         
-        class Int64 extends System.ValueType implements System.IComparable, System.IComparable$1<bigint>, System.IConvertible, System.IEquatable$1<bigint>, System.IFormattable{ 
+        export class Int64 extends System.ValueType implements System.IComparable, System.IComparable$1<bigint>, System.IConvertible, System.IEquatable$1<bigint>, System.IFormattable{ 
             
         }
         
         
-        type Converter$2<TInput, TOutput> = (input: TInput) => TOutput;
+        export type Converter$2<TInput, TOutput> = (input: TInput) => TOutput;
         
         
-        type MulticastDelegate = (...args:any[]) => any;
+        export type MulticastDelegate = (...args:any[]) => any;
         var MulticastDelegate: {new (func: (...args:any[]) => any): MulticastDelegate;}
         
         
-        class Delegate extends System.Object implements System.ICloneable, System.Runtime.Serialization.ISerializable{ 
+        export class Delegate extends System.Object implements System.ICloneable, System.Runtime.Serialization.ISerializable{ 
             
             public get Method(): System.Reflection.MethodInfo;
             
@@ -26319,213 +26321,213 @@ declare module 'csharp' {
         }
         
         
-        type Action$1<T> = (obj: T) => void;
+        export type Action$1<T> = (obj: T) => void;
         
         
-        type Comparison$1<T> = (x: T, y: T) => number;
+        export type Comparison$1<T> = (x: T, y: T) => number;
         
         
-        type Predicate$1<T> = (obj: T) => boolean;
+        export type Predicate$1<T> = (obj: T) => boolean;
         
         
-        interface IFormatProvider{ 
+        export interface IFormatProvider{ 
             
         }
         
         
-        interface IDisposable{ 
+        export interface IDisposable{ 
             
         }
         
         
-        class Double extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class Double extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        interface IAsyncResult{ 
+        export interface IAsyncResult{ 
             
         }
         
         
-        class UInt64 extends System.ValueType implements System.IComparable, System.IComparable$1<bigint>, System.IConvertible, System.IEquatable$1<bigint>, System.IFormattable{ 
+        export class UInt64 extends System.ValueType implements System.IComparable, System.IComparable$1<bigint>, System.IConvertible, System.IEquatable$1<bigint>, System.IFormattable{ 
             
         }
         
         
-        type Func$2<T, TResult> = (arg: T) => TResult;
+        export type Func$2<T, TResult> = (arg: T) => TResult;
         
         
-        type Func$4<T1, T2, T3, TResult> = (arg1: T1, arg2: T2, arg3: T3) => TResult;
+        export type Func$4<T1, T2, T3, TResult> = (arg1: T1, arg2: T2, arg3: T3) => TResult;
         
         
-        class Attribute extends System.Object implements System.Runtime.InteropServices._Attribute{ 
+        export class Attribute extends System.Object implements System.Runtime.InteropServices._Attribute{ 
             
         }
         
         
-        class Guid extends System.ValueType implements System.IComparable, System.IComparable$1<System.Guid>, System.IEquatable$1<System.Guid>, System.IFormattable{ 
+        export class Guid extends System.ValueType implements System.IComparable, System.IComparable$1<System.Guid>, System.IEquatable$1<System.Guid>, System.IFormattable{ 
             
         }
         
         
-        enum TypeCode{ Empty = 0, Object = 1, DBNull = 2, Boolean = 3, Char = 4, SByte = 5, Byte = 6, Int16 = 7, UInt16 = 8, Int32 = 9, UInt32 = 10, Int64 = 11, UInt64 = 12, Single = 13, Double = 14, Decimal = 15, DateTime = 16, String = 18 }
+        export enum TypeCode{ Empty = 0, Object = 1, DBNull = 2, Boolean = 3, Char = 4, SByte = 5, Byte = 6, Int16 = 7, UInt16 = 8, Int32 = 9, UInt32 = 10, Int64 = 11, UInt64 = 12, Single = 13, Double = 14, Decimal = 15, DateTime = 16, String = 18 }
         
         
-        class RuntimeTypeHandle extends System.ValueType implements System.Runtime.Serialization.ISerializable{ 
+        export class RuntimeTypeHandle extends System.ValueType implements System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        class UInt32 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class UInt32 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        type AsyncCallback = (ar: System.IAsyncResult) => void;
+        export type AsyncCallback = (ar: System.IAsyncResult) => void;
         var AsyncCallback: {new (func: (ar: System.IAsyncResult) => void): AsyncCallback;}
         
         
-        class IntPtr extends System.ValueType implements System.Runtime.Serialization.ISerializable{ 
+        export class IntPtr extends System.ValueType implements System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        class SByte extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class SByte extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        class Int16 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class Int16 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        class Byte extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class Byte extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        class MarshalByRefObject extends System.Object{ 
+        export class MarshalByRefObject extends System.Object{ 
             
         }
         
         
-        class Nullable$1<T> extends System.ValueType{ 
+        export class Nullable$1<T> extends System.ValueType{ 
             
         }
         
         
-        type Func$1<TResult> = () => TResult;
+        export type Func$1<TResult> = () => TResult;
         
         
-        type Action = () => void;
+        export type Action = () => void;
         var Action: {new (func: () => void): Action;}
         
         
-        type Action$2<T1, T2> = (arg1: T1, arg2: T2) => void;
+        export type Action$2<T1, T2> = (arg1: T1, arg2: T2) => void;
         
         
-        class DateTime extends System.ValueType implements System.IComparable, System.IComparable$1<Date>, System.IConvertible, System.IEquatable$1<Date>, System.Runtime.Serialization.ISerializable, System.IFormattable{ 
+        export class DateTime extends System.ValueType implements System.IComparable, System.IComparable$1<Date>, System.IConvertible, System.IEquatable$1<Date>, System.Runtime.Serialization.ISerializable, System.IFormattable{ 
             
         }
         
         
-        class UInt16 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
+        export class UInt16 extends System.ValueType implements System.IComparable, System.IComparable$1<number>, System.IConvertible, System.IEquatable$1<number>, System.IFormattable{ 
             
         }
         
         
-        class SystemException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
+        export class SystemException extends System.Exception implements System.Runtime.InteropServices._Exception, System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        type Action$3<T1, T2, T3> = (arg1: T1, arg2: T2, arg3: T3) => void;
+        export type Action$3<T1, T2, T3> = (arg1: T1, arg2: T2, arg3: T3) => void;
         
         
     }
-    namespace System.Collections {
+    export namespace System.Collections {
         
-        interface IEnumerable{ 
+        export interface IEnumerable{ 
             
         }
         
         
-        interface IList extends System.Collections.IEnumerable, System.Collections.ICollection{ 
+        export interface IList extends System.Collections.IEnumerable, System.Collections.ICollection{ 
             
         }
         
         
-        interface ICollection extends System.Collections.IEnumerable{ 
+        export interface ICollection extends System.Collections.IEnumerable{ 
             
         }
         
         
-        interface IStructuralComparable{ 
+        export interface IStructuralComparable{ 
             
         }
         
         
-        interface IStructuralEquatable{ 
+        export interface IStructuralEquatable{ 
             
         }
         
         
-        interface IComparer{ 
+        export interface IComparer{ 
             
         }
         
         
-        interface IEnumerator{ 
+        export interface IEnumerator{ 
             
         }
         
         
-        interface IDictionary extends System.Collections.IEnumerable, System.Collections.ICollection{ 
+        export interface IDictionary extends System.Collections.IEnumerable, System.Collections.ICollection{ 
             
         }
         
         
-        interface IDictionaryEnumerator extends System.Collections.IEnumerator{ 
+        export interface IDictionaryEnumerator extends System.Collections.IEnumerator{ 
             
         }
         
         
     }
-    namespace System.Collections.Generic {
+    export namespace System.Collections.Generic {
         
-        interface IEnumerable$1<T> extends System.Collections.IEnumerable{ 
+        export interface IEnumerable$1<T> extends System.Collections.IEnumerable{ 
             
         }
         
         
-        interface IList$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.ICollection$1<T>, System.Collections.Generic.IEnumerable$1<T>{ 
+        export interface IList$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.ICollection$1<T>, System.Collections.Generic.IEnumerable$1<T>{ 
             
         }
         
         
-        interface ICollection$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.IEnumerable$1<T>{ 
+        export interface ICollection$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.IEnumerable$1<T>{ 
             
         }
         
         
-        interface IReadOnlyCollection$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.IEnumerable$1<T>{ 
+        export interface IReadOnlyCollection$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.IEnumerable$1<T>{ 
             
         }
         
         
-        interface IReadOnlyList$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<T>, System.Collections.Generic.IEnumerable$1<T>{ 
+        export interface IReadOnlyList$1<T> extends System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<T>, System.Collections.Generic.IEnumerable$1<T>{ 
             
         }
         
         
-        interface IComparer$1<T>{ 
+        export interface IComparer$1<T>{ 
             
         }
         
         
-        class List$1<T> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IList$1<T>, System.Collections.Generic.IReadOnlyCollection$1<T>, System.Collections.Generic.IReadOnlyList$1<T>, System.Collections.IList, System.Collections.Generic.ICollection$1<T>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<T>{ 
+        export class List$1<T> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IList$1<T>, System.Collections.Generic.IReadOnlyCollection$1<T>, System.Collections.Generic.IReadOnlyList$1<T>, System.Collections.IList, System.Collections.Generic.ICollection$1<T>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<T>{ 
             
             public get Capacity(): number;
             public set Capacity(value: number);
@@ -26636,12 +26638,12 @@ declare module 'csharp' {
         }
         
         
-        interface IEnumerator$1<T> extends System.Collections.IEnumerator, System.IDisposable{ 
+        export interface IEnumerator$1<T> extends System.Collections.IEnumerator, System.IDisposable{ 
             
         }
         
         
-        class Dictionary$2<TKey, TValue> extends System.Object implements System.Collections.IDictionary, System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.Generic.IReadOnlyDictionary$2<TKey, TValue>, System.Runtime.Serialization.IDeserializationCallback, System.Collections.Generic.ICollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Runtime.Serialization.ISerializable, System.Collections.ICollection, System.Collections.Generic.IDictionary$2<TKey, TValue>, System.Collections.Generic.IEnumerable$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>{ 
+        export class Dictionary$2<TKey, TValue> extends System.Object implements System.Collections.IDictionary, System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.Generic.IReadOnlyDictionary$2<TKey, TValue>, System.Runtime.Serialization.IDeserializationCallback, System.Collections.Generic.ICollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Runtime.Serialization.ISerializable, System.Collections.ICollection, System.Collections.Generic.IDictionary$2<TKey, TValue>, System.Collections.Generic.IEnumerable$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>{ 
             
             public get Comparer(): System.Collections.Generic.IEqualityComparer$1<TKey>;
             
@@ -26688,235 +26690,235 @@ declare module 'csharp' {
         }
         
         
-        class KeyValuePair$2<TKey, TValue> extends System.ValueType{ 
+        export class KeyValuePair$2<TKey, TValue> extends System.ValueType{ 
             
         }
         
         
-        interface IReadOnlyDictionary$2<TKey, TValue> extends System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.Generic.IEnumerable$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>{ 
+        export interface IReadOnlyDictionary$2<TKey, TValue> extends System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.Generic.IEnumerable$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>{ 
             
         }
         
         
-        interface IDictionary$2<TKey, TValue> extends System.Collections.IEnumerable, System.Collections.Generic.ICollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.Generic.IEnumerable$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>{ 
+        export interface IDictionary$2<TKey, TValue> extends System.Collections.IEnumerable, System.Collections.Generic.ICollection$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.Generic.IEnumerable$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>{ 
             
         }
         
         
-        interface IEqualityComparer$1<T>{ 
-            
-        }
-        
-        
-    }
-    namespace System.Runtime.InteropServices {
-        
-        interface _Exception{ 
-            
-        }
-        
-        
-        interface _MemberInfo{ 
-            
-        }
-        
-        
-        interface _Type{ 
-            
-        }
-        
-        
-        interface _MethodBase{ 
-            
-        }
-        
-        
-        interface _MethodInfo{ 
-            
-        }
-        
-        
-        interface _AssemblyName{ 
-            
-        }
-        
-        
-        interface _Assembly{ 
-            
-        }
-        
-        
-        class StructLayoutAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
-            
-        }
-        
-        
-        interface _Attribute{ 
-            
-        }
-        
-        
-        interface _Module{ 
-            
-        }
-        
-        
-        interface _ConstructorInfo{ 
-            
-        }
-        
-        
-        interface _FieldInfo{ 
-            
-        }
-        
-        
-        interface _EventInfo{ 
-            
-        }
-        
-        
-        interface _PropertyInfo{ 
+        export interface IEqualityComparer$1<T>{ 
             
         }
         
         
     }
-    namespace System.Runtime.Serialization {
+    export namespace System.Runtime.InteropServices {
         
-        interface ISerializable{ 
+        export interface _Exception{ 
             
         }
         
         
-        interface IDeserializationCallback{ 
+        export interface _MemberInfo{ 
             
         }
         
         
-        class SerializationInfo extends System.Object{ 
+        export interface _Type{ 
             
         }
         
         
-        class StreamingContext extends System.ValueType{ 
+        export interface _MethodBase{ 
+            
+        }
+        
+        
+        export interface _MethodInfo{ 
+            
+        }
+        
+        
+        export interface _AssemblyName{ 
+            
+        }
+        
+        
+        export interface _Assembly{ 
+            
+        }
+        
+        
+        export class StructLayoutAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+            
+        }
+        
+        
+        export interface _Attribute{ 
+            
+        }
+        
+        
+        export interface _Module{ 
+            
+        }
+        
+        
+        export interface _ConstructorInfo{ 
+            
+        }
+        
+        
+        export interface _FieldInfo{ 
+            
+        }
+        
+        
+        export interface _EventInfo{ 
+            
+        }
+        
+        
+        export interface _PropertyInfo{ 
             
         }
         
         
     }
-    namespace System.Reflection {
+    export namespace System.Runtime.Serialization {
         
-        class MemberInfo extends System.Object implements System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+        export interface ISerializable{ 
             
         }
         
         
-        interface ICustomAttributeProvider{ 
+        export interface IDeserializationCallback{ 
             
         }
         
         
-        interface IReflect{ 
+        export class SerializationInfo extends System.Object{ 
             
         }
         
         
-        class MethodInfo extends System.Reflection.MethodBase implements System.Runtime.InteropServices._MethodBase, System.Runtime.InteropServices._MethodInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+        export class StreamingContext extends System.ValueType{ 
             
         }
         
         
-        class MethodBase extends System.Reflection.MemberInfo implements System.Runtime.InteropServices._MethodBase, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+    }
+    export namespace System.Reflection {
+        
+        export class MemberInfo extends System.Object implements System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
             
         }
         
         
-        type MemberFilter = (m: System.Reflection.MemberInfo, filterCriteria: any) => boolean;
+        export interface ICustomAttributeProvider{ 
+            
+        }
+        
+        
+        export interface IReflect{ 
+            
+        }
+        
+        
+        export class MethodInfo extends System.Reflection.MethodBase implements System.Runtime.InteropServices._MethodBase, System.Runtime.InteropServices._MethodInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+            
+        }
+        
+        
+        export class MethodBase extends System.Reflection.MemberInfo implements System.Runtime.InteropServices._MethodBase, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+            
+        }
+        
+        
+        export type MemberFilter = (m: System.Reflection.MemberInfo, filterCriteria: any) => boolean;
         var MemberFilter: {new (func: (m: System.Reflection.MemberInfo, filterCriteria: any) => boolean): MemberFilter;}
         
         
-        enum MemberTypes{ Constructor = 1, Event = 2, Field = 4, Method = 8, Property = 16, TypeInfo = 32, Custom = 64, NestedType = 128, All = 191 }
+        export enum MemberTypes{ Constructor = 1, Event = 2, Field = 4, Method = 8, Property = 16, TypeInfo = 32, Custom = 64, NestedType = 128, All = 191 }
         
         
-        class AssemblyName extends System.Object implements System.ICloneable, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.InteropServices._AssemblyName, System.Runtime.Serialization.ISerializable{ 
+        export class AssemblyName extends System.Object implements System.ICloneable, System.Runtime.Serialization.IDeserializationCallback, System.Runtime.InteropServices._AssemblyName, System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        class Assembly extends System.Object implements System.Security.IEvidenceFactory, System.Runtime.InteropServices._Assembly, System.Reflection.ICustomAttributeProvider, System.Runtime.Serialization.ISerializable{ 
+        export class Assembly extends System.Object implements System.Security.IEvidenceFactory, System.Runtime.InteropServices._Assembly, System.Reflection.ICustomAttributeProvider, System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        class Binder extends System.Object{ 
+        export class Binder extends System.Object{ 
             
         }
         
         
-        enum BindingFlags{ Default = 0, IgnoreCase = 1, DeclaredOnly = 2, Instance = 4, Static = 8, Public = 16, NonPublic = 32, FlattenHierarchy = 64, InvokeMethod = 256, CreateInstance = 512, GetField = 1024, SetField = 2048, GetProperty = 4096, SetProperty = 8192, PutDispProperty = 16384, PutRefDispProperty = 32768, ExactBinding = 65536, SuppressChangeType = 131072, OptionalParamBinding = 262144, IgnoreReturn = 16777216 }
+        export enum BindingFlags{ Default = 0, IgnoreCase = 1, DeclaredOnly = 2, Instance = 4, Static = 8, Public = 16, NonPublic = 32, FlattenHierarchy = 64, InvokeMethod = 256, CreateInstance = 512, GetField = 1024, SetField = 2048, GetProperty = 4096, SetProperty = 8192, PutDispProperty = 16384, PutRefDispProperty = 32768, ExactBinding = 65536, SuppressChangeType = 131072, OptionalParamBinding = 262144, IgnoreReturn = 16777216 }
         
         
-        class ParameterModifier extends System.ValueType{ 
+        export class ParameterModifier extends System.ValueType{ 
             
         }
         
         
-        class Module extends System.Object implements System.Runtime.InteropServices._Module, System.Reflection.ICustomAttributeProvider, System.Runtime.Serialization.ISerializable{ 
+        export class Module extends System.Object implements System.Runtime.InteropServices._Module, System.Reflection.ICustomAttributeProvider, System.Runtime.Serialization.ISerializable{ 
             
         }
         
         
-        class ConstructorInfo extends System.Reflection.MethodBase implements System.Runtime.InteropServices._MethodBase, System.Runtime.InteropServices._ConstructorInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+        export class ConstructorInfo extends System.Reflection.MethodBase implements System.Runtime.InteropServices._MethodBase, System.Runtime.InteropServices._ConstructorInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
             
         }
         
         
-        enum CallingConventions{ Standard = 1, VarArgs = 2, Any = 3, HasThis = 32, ExplicitThis = 64 }
+        export enum CallingConventions{ Standard = 1, VarArgs = 2, Any = 3, HasThis = 32, ExplicitThis = 64 }
         
         
-        class FieldInfo extends System.Reflection.MemberInfo implements System.Runtime.InteropServices._FieldInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+        export class FieldInfo extends System.Reflection.MemberInfo implements System.Runtime.InteropServices._FieldInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
             
         }
         
         
-        type TypeFilter = (m: System.Type, filterCriteria: any) => boolean;
+        export type TypeFilter = (m: System.Type, filterCriteria: any) => boolean;
         var TypeFilter: {new (func: (m: System.Type, filterCriteria: any) => boolean): TypeFilter;}
         
         
-        class EventInfo extends System.Reflection.MemberInfo implements System.Runtime.InteropServices._EventInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
+        export class EventInfo extends System.Reflection.MemberInfo implements System.Runtime.InteropServices._EventInfo, System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._MemberInfo{ 
             
         }
         
         
-        class PropertyInfo extends System.Reflection.MemberInfo implements System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._PropertyInfo, System.Runtime.InteropServices._MemberInfo{ 
+        export class PropertyInfo extends System.Reflection.MemberInfo implements System.Reflection.ICustomAttributeProvider, System.Runtime.InteropServices._PropertyInfo, System.Runtime.InteropServices._MemberInfo{ 
             
         }
         
         
-        enum TypeAttributes{ VisibilityMask = 7, NotPublic = 0, Public = 1, NestedPublic = 2, NestedPrivate = 3, NestedFamily = 4, NestedAssembly = 5, NestedFamANDAssem = 6, NestedFamORAssem = 7, LayoutMask = 24, AutoLayout = 0, SequentialLayout = 8, ExplicitLayout = 16, ClassSemanticsMask = 32, Class = 0, Interface = 32, Abstract = 128, Sealed = 256, SpecialName = 1024, Import = 4096, Serializable = 8192, WindowsRuntime = 16384, StringFormatMask = 196608, AnsiClass = 0, UnicodeClass = 65536, AutoClass = 131072, CustomFormatClass = 196608, CustomFormatMask = 12582912, BeforeFieldInit = 1048576, ReservedMask = 264192, RTSpecialName = 2048, HasSecurity = 262144 }
+        export enum TypeAttributes{ VisibilityMask = 7, NotPublic = 0, Public = 1, NestedPublic = 2, NestedPrivate = 3, NestedFamily = 4, NestedAssembly = 5, NestedFamANDAssem = 6, NestedFamORAssem = 7, LayoutMask = 24, AutoLayout = 0, SequentialLayout = 8, ExplicitLayout = 16, ClassSemanticsMask = 32, Class = 0, Interface = 32, Abstract = 128, Sealed = 256, SpecialName = 1024, Import = 4096, Serializable = 8192, WindowsRuntime = 16384, StringFormatMask = 196608, AnsiClass = 0, UnicodeClass = 65536, AutoClass = 131072, CustomFormatClass = 196608, CustomFormatMask = 12582912, BeforeFieldInit = 1048576, ReservedMask = 264192, RTSpecialName = 2048, HasSecurity = 262144 }
         
         
-        enum GenericParameterAttributes{ None = 0, VarianceMask = 3, Covariant = 1, Contravariant = 2, SpecialConstraintMask = 28, ReferenceTypeConstraint = 4, NotNullableValueTypeConstraint = 8, DefaultConstructorConstraint = 16 }
+        export enum GenericParameterAttributes{ None = 0, VarianceMask = 3, Covariant = 1, Contravariant = 2, SpecialConstraintMask = 28, ReferenceTypeConstraint = 4, NotNullableValueTypeConstraint = 8, DefaultConstructorConstraint = 16 }
         
         
-        class InterfaceMapping extends System.ValueType{ 
-            
-        }
-        
-        
-    }
-    namespace System.Collections.ObjectModel {
-        
-        class ReadOnlyCollection$1<T> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IList$1<T>, System.Collections.Generic.IReadOnlyCollection$1<T>, System.Collections.Generic.IReadOnlyList$1<T>, System.Collections.IList, System.Collections.Generic.ICollection$1<T>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<T>{ 
+        export class InterfaceMapping extends System.ValueType{ 
             
         }
         
         
     }
-    namespace PuertsTest {
+    export namespace System.Collections.ObjectModel {
         
-        class TestClass extends System.Object{ 
+        export class ReadOnlyCollection$1<T> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IList$1<T>, System.Collections.Generic.IReadOnlyCollection$1<T>, System.Collections.Generic.IReadOnlyList$1<T>, System.Collections.IList, System.Collections.Generic.ICollection$1<T>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<T>{ 
+            
+        }
+        
+        
+    }
+    export namespace PuertsTest {
+        
+        export class TestClass extends System.Object{ 
             
             public AddEventCallback1($callback1: PuertsTest.Callback1):void;
             
@@ -26933,15 +26935,15 @@ declare module 'csharp' {
         }
         
         
-        type Callback1 = (obj: PuertsTest.TestClass) => void;
+        export type Callback1 = (obj: PuertsTest.TestClass) => void;
         var Callback1: {new (func: (obj: PuertsTest.TestClass) => void): Callback1;}
         
         
-        type Callback2 = (str: number) => void;
+        export type Callback2 = (str: number) => void;
         var Callback2: {new (func: (str: number) => void): Callback2;}
         
         
-        class BaseClass extends System.Object{ 
+        export class BaseClass extends System.Object{ 
             
             public static BSF: number;
             
@@ -26970,7 +26972,7 @@ declare module 'csharp' {
         }
         
         
-        class DerivedClass extends PuertsTest.BaseClass{ 
+        export class DerivedClass extends PuertsTest.BaseClass{ 
             
             public static DSF: number;
             
@@ -27012,14 +27014,14 @@ declare module 'csharp' {
         }
         
         
-        type MyCallback = (msg: string) => void;
+        export type MyCallback = (msg: string) => void;
         var MyCallback: {new (func: (msg: string) => void): MyCallback;}
         
         
-        enum MyEnum{ E1 = 0, E2 = 1 }
+        export enum MyEnum{ E1 = 0, E2 = 1 }
         
         
-        class BaseClassExtension extends System.Object{ 
+        export class BaseClassExtension extends System.Object{ 
             
             public static PlainExtension($a: PuertsTest.BaseClass):void;
             
@@ -27032,46 +27034,46 @@ declare module 'csharp' {
         }
         
         
-        class BaseClass1 extends System.Object{ 
+        export class BaseClass1 extends System.Object{ 
             
         }
         
         
     }
-    namespace System.Collections.Generic.List$1 {
+    export namespace System.Collections.Generic.List$1 {
         
-        class Enumerator<T> extends System.ValueType implements System.Collections.Generic.IEnumerator$1<T>, System.Collections.IEnumerator, System.IDisposable{ 
+        export class Enumerator<T> extends System.ValueType implements System.Collections.Generic.IEnumerator$1<T>, System.Collections.IEnumerator, System.IDisposable{ 
             
         }
         
         
     }
-    namespace System.Collections.Generic.Dictionary$2 {
+    export namespace System.Collections.Generic.Dictionary$2 {
         
-        class KeyCollection<TKey, TValue> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<TKey>, System.Collections.Generic.ICollection$1<TKey>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<TKey>{ 
+        export class KeyCollection<TKey, TValue> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<TKey>, System.Collections.Generic.ICollection$1<TKey>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<TKey>{ 
             
         }
         
         
-        class ValueCollection<TKey, TValue> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<TValue>, System.Collections.Generic.ICollection$1<TValue>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<TValue>{ 
+        export class ValueCollection<TKey, TValue> extends System.Object implements System.Collections.IEnumerable, System.Collections.Generic.IReadOnlyCollection$1<TValue>, System.Collections.Generic.ICollection$1<TValue>, System.Collections.ICollection, System.Collections.Generic.IEnumerable$1<TValue>{ 
             
         }
         
         
-        class Enumerator<TKey, TValue> extends System.ValueType implements System.Collections.Generic.IEnumerator$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.IDictionaryEnumerator, System.Collections.IEnumerator, System.IDisposable{ 
+        export class Enumerator<TKey, TValue> extends System.ValueType implements System.Collections.Generic.IEnumerator$1<System.Collections.Generic.KeyValuePair$2<TKey, TValue>>, System.Collections.IDictionaryEnumerator, System.Collections.IEnumerator, System.IDisposable{ 
             
         }
         
         
     }
-    namespace Puerts {
+    export namespace Puerts {
         
-        class ArrayBuffer extends System.Object{ 
+        export class ArrayBuffer extends System.Object{ 
             
         }
         
         
-        class JsEnv extends System.Object implements System.IDisposable{ 
+        export class JsEnv extends System.Object implements System.IDisposable{ 
             
             public static jsEnvs: System.Collections.Generic.List$1<Puerts.JsEnv>;
             
@@ -27121,7 +27123,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILoader{ 
+        export interface ILoader{ 
             
             FileExists($filepath: string):boolean;
             
@@ -27130,57 +27132,57 @@ declare module 'csharp' {
         }
         
         
-        class TypeRegisterInfo extends System.Object{ 
+        export class TypeRegisterInfo extends System.Object{ 
             
         }
         
         
-        type GeneralGetter = (isolate: System.IntPtr, getValueApi: Puerts.IGetValueFromJs, value: System.IntPtr, isByRef: boolean) => any;
+        export type GeneralGetter = (isolate: System.IntPtr, getValueApi: Puerts.IGetValueFromJs, value: System.IntPtr, isByRef: boolean) => any;
         var GeneralGetter: {new (func: (isolate: System.IntPtr, getValueApi: Puerts.IGetValueFromJs, value: System.IntPtr, isByRef: boolean) => any): GeneralGetter;}
         
         
-        interface IGetValueFromJs{ 
+        export interface IGetValueFromJs{ 
             
         }
         
         
-        type GeneralSetter = (isolate: System.IntPtr, setValueApi: Puerts.ISetValueToJs, holder: System.IntPtr, obj: any) => void;
+        export type GeneralSetter = (isolate: System.IntPtr, setValueApi: Puerts.ISetValueToJs, holder: System.IntPtr, obj: any) => void;
         var GeneralSetter: {new (func: (isolate: System.IntPtr, setValueApi: Puerts.ISetValueToJs, holder: System.IntPtr, obj: any) => void): GeneralSetter;}
         
         
-        interface ISetValueToJs{ 
+        export interface ISetValueToJs{ 
             
         }
         
         
-        enum JsEnvMode{ Default = 0, Node = 1, External = 2 }
+        export enum JsEnvMode{ Default = 0, Node = 1, External = 2 }
         
         
     }
-    namespace System.Threading.Tasks {
+    export namespace System.Threading.Tasks {
         
-        class Task$1<TResult> extends System.Threading.Tasks.Task implements System.IAsyncResult, System.Threading.IThreadPoolWorkItem, System.IDisposable{ 
+        export class Task$1<TResult> extends System.Threading.Tasks.Task implements System.IAsyncResult, System.Threading.IThreadPoolWorkItem, System.IDisposable{ 
             
         }
         
         
-        class Task extends System.Object implements System.IAsyncResult, System.Threading.IThreadPoolWorkItem, System.IDisposable{ 
-            
-        }
-        
-        
-    }
-    namespace System.Threading {
-        
-        interface IThreadPoolWorkItem{ 
+        export class Task extends System.Object implements System.IAsyncResult, System.Threading.IThreadPoolWorkItem, System.IDisposable{ 
             
         }
         
         
     }
-    namespace UnityEngine.SceneManagement {
+    export namespace System.Threading {
+        
+        export interface IThreadPoolWorkItem{ 
+            
+        }
+        
+        
+    }
+    export namespace UnityEngine.SceneManagement {
         /** Run-time data structure for *.unity file. */
-        class Scene extends System.ValueType{ 
+        export class Scene extends System.ValueType{ 
             
         }
         
@@ -27201,25 +27203,25 @@ declare module 'csharp' {
         
         
     }
-    namespace System.Security {
+    export namespace System.Security {
         
-        interface IEvidenceFactory{ 
+        export interface IEvidenceFactory{ 
             
         }
         
         
     }
-    namespace System.Globalization {
+    export namespace System.Globalization {
         
-        class CultureInfo extends System.Object implements System.ICloneable, System.IFormatProvider{ 
+        export class CultureInfo extends System.Object implements System.ICloneable, System.IFormatProvider{ 
             
         }
         
         
     }
-    namespace UnityEngine.ParticleSystem {
+    export namespace UnityEngine.ParticleSystem {
         
-        class Particle extends System.ValueType{ 
+        export class Particle extends System.ValueType{ 
             
             public get position(): UnityEngine.Vector3;
             public set position(value: UnityEngine.Vector3);
@@ -27279,17 +27281,17 @@ declare module 'csharp' {
         }
         
         
-        class PlaybackState extends System.ValueType{ 
+        export class PlaybackState extends System.ValueType{ 
             
         }
         
         
-        class Trails extends System.ValueType{ 
+        export class Trails extends System.ValueType{ 
             
         }
         
         
-        class EmitParams extends System.ValueType{ 
+        export class EmitParams extends System.ValueType{ 
             
             public get particle(): UnityEngine.ParticleSystem.Particle;
             public set particle(value: UnityEngine.ParticleSystem.Particle);
@@ -27359,7 +27361,7 @@ declare module 'csharp' {
         }
         
         
-        class MainModule extends System.ValueType{ 
+        export class MainModule extends System.ValueType{ 
             
             public get emitterVelocity(): UnityEngine.Vector3;
             public set emitterVelocity(value: UnityEngine.Vector3);
@@ -27496,7 +27498,7 @@ declare module 'csharp' {
         }
         
         
-        class EmissionModule extends System.ValueType{ 
+        export class EmissionModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27529,7 +27531,7 @@ declare module 'csharp' {
         }
         
         
-        class ShapeModule extends System.ValueType{ 
+        export class ShapeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27669,7 +27671,7 @@ declare module 'csharp' {
         }
         
         
-        class VelocityOverLifetimeModule extends System.ValueType{ 
+        export class VelocityOverLifetimeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27746,7 +27748,7 @@ declare module 'csharp' {
         }
         
         
-        class LimitVelocityOverLifetimeModule extends System.ValueType{ 
+        export class LimitVelocityOverLifetimeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27799,7 +27801,7 @@ declare module 'csharp' {
         }
         
         
-        class InheritVelocityModule extends System.ValueType{ 
+        export class InheritVelocityModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27816,7 +27818,7 @@ declare module 'csharp' {
         }
         
         
-        class LifetimeByEmitterSpeedModule extends System.ValueType{ 
+        export class LifetimeByEmitterSpeedModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27833,7 +27835,7 @@ declare module 'csharp' {
         }
         
         
-        class ForceOverLifetimeModule extends System.ValueType{ 
+        export class ForceOverLifetimeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27865,7 +27867,7 @@ declare module 'csharp' {
         }
         
         
-        class ColorOverLifetimeModule extends System.ValueType{ 
+        export class ColorOverLifetimeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27876,7 +27878,7 @@ declare module 'csharp' {
         }
         
         
-        class ColorBySpeedModule extends System.ValueType{ 
+        export class ColorBySpeedModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27890,7 +27892,7 @@ declare module 'csharp' {
         }
         
         
-        class SizeOverLifetimeModule extends System.ValueType{ 
+        export class SizeOverLifetimeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27925,7 +27927,7 @@ declare module 'csharp' {
         }
         
         
-        class SizeBySpeedModule extends System.ValueType{ 
+        export class SizeBySpeedModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27963,7 +27965,7 @@ declare module 'csharp' {
         }
         
         
-        class RotationOverLifetimeModule extends System.ValueType{ 
+        export class RotationOverLifetimeModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -27992,7 +27994,7 @@ declare module 'csharp' {
         }
         
         
-        class RotationBySpeedModule extends System.ValueType{ 
+        export class RotationBySpeedModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28024,7 +28026,7 @@ declare module 'csharp' {
         }
         
         
-        class ExternalForcesModule extends System.ValueType{ 
+        export class ExternalForcesModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28061,7 +28063,7 @@ declare module 'csharp' {
         }
         
         
-        class NoiseModule extends System.ValueType{ 
+        export class NoiseModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28156,7 +28158,7 @@ declare module 'csharp' {
         }
         
         
-        class CollisionModule extends System.ValueType{ 
+        export class CollisionModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28240,7 +28242,7 @@ declare module 'csharp' {
         }
         
         
-        class TriggerModule extends System.ValueType{ 
+        export class TriggerModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28279,7 +28281,7 @@ declare module 'csharp' {
         }
         
         
-        class SubEmittersModule extends System.ValueType{ 
+        export class SubEmittersModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28314,7 +28316,7 @@ declare module 'csharp' {
         }
         
         
-        class TextureSheetAnimationModule extends System.ValueType{ 
+        export class TextureSheetAnimationModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28378,7 +28380,7 @@ declare module 'csharp' {
         }
         
         
-        class LightsModule extends System.ValueType{ 
+        export class LightsModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28419,7 +28421,7 @@ declare module 'csharp' {
         }
         
         
-        class TrailModule extends System.ValueType{ 
+        export class TrailModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28487,7 +28489,7 @@ declare module 'csharp' {
         }
         
         
-        class CustomDataModule extends System.ValueType{ 
+        export class CustomDataModule extends System.ValueType{ 
             
             public get enabled(): boolean;
             public set enabled(value: boolean);
@@ -28511,7 +28513,7 @@ declare module 'csharp' {
         }
         
         
-        class MinMaxCurve extends System.ValueType{ 
+        export class MinMaxCurve extends System.ValueType{ 
             
             public get mode(): UnityEngine.ParticleSystemCurveMode;
             public set mode(value: UnityEngine.ParticleSystemCurveMode);
@@ -28556,7 +28558,7 @@ declare module 'csharp' {
         }
         
         
-        class MinMaxGradient extends System.ValueType{ 
+        export class MinMaxGradient extends System.ValueType{ 
             
             public get mode(): UnityEngine.ParticleSystemGradientMode;
             public set mode(value: UnityEngine.ParticleSystemGradientMode);
@@ -28600,7 +28602,7 @@ declare module 'csharp' {
         }
         
         
-        class Burst extends System.ValueType{ 
+        export class Burst extends System.ValueType{ 
             
             public get time(): number;
             public set time(value: number);
@@ -28638,7 +28640,7 @@ declare module 'csharp' {
         }
         
         
-        class ColliderData extends System.ValueType{ 
+        export class ColliderData extends System.ValueType{ 
             
             public GetColliderCount($particleIndex: number):number;
             
@@ -28648,29 +28650,29 @@ declare module 'csharp' {
         
         
     }
-    namespace Unity.Collections {
+    export namespace Unity.Collections {
         
-        class NativeArray$1<T> extends System.ValueType implements System.Collections.IEnumerable, System.IDisposable, System.IEquatable$1<Unity.Collections.NativeArray$1<T>>, System.Collections.Generic.IEnumerable$1<T>{ 
+        export class NativeArray$1<T> extends System.ValueType implements System.Collections.IEnumerable, System.IDisposable, System.IEquatable$1<Unity.Collections.NativeArray$1<T>>, System.Collections.Generic.IEnumerable$1<T>{ 
             
         }
         
         
-        class NativeSlice$1<T> extends System.ValueType implements System.Collections.IEnumerable, System.IEquatable$1<Unity.Collections.NativeSlice$1<T>>, System.Collections.Generic.IEnumerable$1<T>{ 
+        export class NativeSlice$1<T> extends System.ValueType implements System.Collections.IEnumerable, System.IEquatable$1<Unity.Collections.NativeSlice$1<T>>, System.Collections.Generic.IEnumerable$1<T>{ 
             
         }
         
         
     }
-    namespace UnityEngine.Canvas {
+    export namespace UnityEngine.Canvas {
         
-        type WillRenderCanvases = () => void;
+        export type WillRenderCanvases = () => void;
         var WillRenderCanvases: {new (func: () => void): WillRenderCanvases;}
         
         
     }
-    namespace UnityEngine.EventSystems {
+    export namespace UnityEngine.EventSystems {
         
-        class UIBehaviour extends UnityEngine.MonoBehaviour{ 
+        export class UIBehaviour extends UnityEngine.MonoBehaviour{ 
             
             public IsActive():boolean;
             
@@ -28679,125 +28681,125 @@ declare module 'csharp' {
         }
         
         
-        interface IEventSystemHandler{ 
+        export interface IEventSystemHandler{ 
             
         }
         
         
-        interface IPointerEnterHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IPointerEnterHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface ISelectHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface ISelectHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IPointerExitHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IPointerExitHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IDeselectHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IDeselectHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IPointerDownHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IPointerDownHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IPointerUpHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IPointerUpHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IMoveHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IMoveHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        class AxisEventData extends UnityEngine.EventSystems.BaseEventData{ 
+        export class AxisEventData extends UnityEngine.EventSystems.BaseEventData{ 
             
         }
         
         
-        class BaseEventData extends UnityEngine.EventSystems.AbstractEventData{ 
+        export class BaseEventData extends UnityEngine.EventSystems.AbstractEventData{ 
             
         }
         
         
-        class AbstractEventData extends System.Object{ 
+        export class AbstractEventData extends System.Object{ 
             
         }
         
         
-        class PointerEventData extends UnityEngine.EventSystems.BaseEventData{ 
+        export class PointerEventData extends UnityEngine.EventSystems.BaseEventData{ 
             
         }
         
         
-        interface ISubmitHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface ISubmitHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IPointerClickHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IPointerClickHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IBeginDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IBeginDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IEndDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IEndDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IUpdateSelectedHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IUpdateSelectedHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface ICancelHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface ICancelHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        class BaseRaycaster extends UnityEngine.EventSystems.UIBehaviour{ 
+        export class BaseRaycaster extends UnityEngine.EventSystems.UIBehaviour{ 
             
         }
         
         
-        class RaycastResult extends System.ValueType{ 
+        export class RaycastResult extends System.ValueType{ 
             
         }
         
         
-        interface IInitializePotentialDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IInitializePotentialDragHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
-        interface IScrollHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
+        export interface IScrollHandler extends UnityEngine.EventSystems.IEventSystemHandler{ 
             
         }
         
         
     }
-    namespace UnityEngine.UI {
+    export namespace UnityEngine.UI {
         
-        class Selectable extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler{ 
+        export class Selectable extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler{ 
             
             public static get allSelectablesArray(): System.Array$1<UnityEngine.UI.Selectable>;
             
@@ -28865,7 +28867,7 @@ declare module 'csharp' {
         }
         
         
-        class Navigation extends System.ValueType implements System.IEquatable$1<UnityEngine.UI.Navigation>{ 
+        export class Navigation extends System.ValueType implements System.IEquatable$1<UnityEngine.UI.Navigation>{ 
             
             public get mode(): UnityEngine.UI.Navigation.Mode;
             public set mode(value: UnityEngine.UI.Navigation.Mode);
@@ -28897,7 +28899,7 @@ declare module 'csharp' {
         }
         
         
-        class ColorBlock extends System.ValueType implements System.IEquatable$1<UnityEngine.UI.ColorBlock>{ 
+        export class ColorBlock extends System.ValueType implements System.IEquatable$1<UnityEngine.UI.ColorBlock>{ 
             
             public static defaultColorBlock: UnityEngine.UI.ColorBlock;
             
@@ -28937,7 +28939,7 @@ declare module 'csharp' {
         }
         
         
-        class SpriteState extends System.ValueType implements System.IEquatable$1<UnityEngine.UI.SpriteState>{ 
+        export class SpriteState extends System.ValueType implements System.IEquatable$1<UnityEngine.UI.SpriteState>{ 
             
             public get highlightedSprite(): UnityEngine.Sprite;
             public set highlightedSprite(value: UnityEngine.Sprite);
@@ -28960,7 +28962,7 @@ declare module 'csharp' {
         }
         
         
-        class AnimationTriggers extends System.Object{ 
+        export class AnimationTriggers extends System.Object{ 
             
             public get normalTrigger(): string;
             public set normalTrigger(value: string);
@@ -28982,7 +28984,7 @@ declare module 'csharp' {
         }
         
         
-        class Graphic extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ICanvasElement{ 
+        export class Graphic extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ICanvasElement{ 
             
             public static get defaultGraphicMaterial(): UnityEngine.Material;
             
@@ -29067,7 +29069,7 @@ declare module 'csharp' {
         }
         
         
-        interface ICanvasElement{ 
+        export interface ICanvasElement{ 
             
             transform: UnityEngine.Transform;
             
@@ -29082,7 +29084,7 @@ declare module 'csharp' {
         }
         
         
-        class Image extends UnityEngine.UI.MaskableGraphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.ICanvasRaycastFilter, UnityEngine.UI.ICanvasElement, UnityEngine.ISerializationCallbackReceiver, UnityEngine.UI.ILayoutElement, UnityEngine.UI.IClippable{ 
+        export class Image extends UnityEngine.UI.MaskableGraphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.ICanvasRaycastFilter, UnityEngine.UI.ICanvasElement, UnityEngine.ISerializationCallbackReceiver, UnityEngine.UI.ILayoutElement, UnityEngine.UI.IClippable{ 
             
             public get sprite(): UnityEngine.Sprite;
             public set sprite(value: UnityEngine.Sprite);
@@ -29213,7 +29215,7 @@ declare module 'csharp' {
         }
         
         
-        class MaskableGraphic extends UnityEngine.UI.Graphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.UI.ICanvasElement, UnityEngine.UI.IClippable{ 
+        export class MaskableGraphic extends UnityEngine.UI.Graphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.UI.ICanvasElement, UnityEngine.UI.IClippable{ 
             
             public get onCullStateChanged(): UnityEngine.UI.MaskableGraphic.CullStateChangedEvent;
             public set onCullStateChanged(value: UnityEngine.UI.MaskableGraphic.CullStateChangedEvent);
@@ -29253,21 +29255,21 @@ declare module 'csharp' {
         }
         
         
-        interface IMaterialModifier{ 
+        export interface IMaterialModifier{ 
             
             GetModifiedMaterial($baseMaterial: UnityEngine.Material):UnityEngine.Material;
             
         }
         
         
-        interface IMaskable{ 
+        export interface IMaskable{ 
             
             RecalculateMasking():void;
             
         }
         
         
-        interface IClippable{ 
+        export interface IClippable{ 
             
             gameObject: UnityEngine.GameObject;
             
@@ -29284,7 +29286,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILayoutElement{ 
+        export interface ILayoutElement{ 
             
             minWidth: number;
             
@@ -29307,7 +29309,7 @@ declare module 'csharp' {
         }
         
         
-        class Button extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
+        export class Button extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
             
             public get onClick(): UnityEngine.UI.Button.ButtonClickedEvent;
             public set onClick(value: UnityEngine.UI.Button.ButtonClickedEvent);
@@ -29319,7 +29321,7 @@ declare module 'csharp' {
         }
         
         
-        class InputField extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IBeginDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.EventSystems.IEndDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.IUpdateSelectedHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.UI.ILayoutElement, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
+        export class InputField extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IBeginDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.EventSystems.IEndDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.IUpdateSelectedHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.UI.ILayoutElement, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
             
             public get shouldHideMobileInput(): boolean;
             public set shouldHideMobileInput(value: boolean);
@@ -29470,7 +29472,7 @@ declare module 'csharp' {
         }
         
         
-        class Text extends UnityEngine.UI.MaskableGraphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.UI.ICanvasElement, UnityEngine.UI.ILayoutElement, UnityEngine.UI.IClippable{ 
+        export class Text extends UnityEngine.UI.MaskableGraphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.UI.ICanvasElement, UnityEngine.UI.ILayoutElement, UnityEngine.UI.IClippable{ 
             
             public get cachedTextGenerator(): UnityEngine.TextGenerator;
             
@@ -29593,10 +29595,10 @@ declare module 'csharp' {
         }
         
         
-        enum CanvasUpdate{ Prelayout = 0, Layout = 1, PostLayout = 2, PreRender = 3, LatePreRender = 4, MaxUpdateValue = 5 }
+        export enum CanvasUpdate{ Prelayout = 0, Layout = 1, PostLayout = 2, PreRender = 3, LatePreRender = 4, MaxUpdateValue = 5 }
         
         
-        class Toggle extends UnityEngine.UI.Selectable implements UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
+        export class Toggle extends UnityEngine.UI.Selectable implements UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
             
             public toggleTransition: UnityEngine.UI.Toggle.ToggleTransition;
             
@@ -29627,7 +29629,7 @@ declare module 'csharp' {
         }
         
         
-        class ToggleGroup extends UnityEngine.EventSystems.UIBehaviour{ 
+        export class ToggleGroup extends UnityEngine.EventSystems.UIBehaviour{ 
             
             public get allowSwitchOff(): boolean;
             public set allowSwitchOff(value: boolean);
@@ -29651,7 +29653,7 @@ declare module 'csharp' {
         }
         
         
-        class CanvasUpdateRegistry extends System.Object{ 
+        export class CanvasUpdateRegistry extends System.Object{ 
             
             public static get instance(): UnityEngine.UI.CanvasUpdateRegistry;
             
@@ -29673,7 +29675,7 @@ declare module 'csharp' {
         }
         
         
-        class ClipperRegistry extends System.Object{ 
+        export class ClipperRegistry extends System.Object{ 
             
             public static get instance(): UnityEngine.UI.ClipperRegistry;
             
@@ -29687,21 +29689,21 @@ declare module 'csharp' {
         }
         
         
-        interface IClipper{ 
+        export interface IClipper{ 
             
             PerformClipping():void;
             
         }
         
         
-        class Clipping extends System.Object{ 
+        export class Clipping extends System.Object{ 
             
             public static FindCullAndClipWorldRect($rectMaskParents: System.Collections.Generic.List$1<UnityEngine.UI.RectMask2D>, $validRect: $Ref<boolean>):UnityEngine.Rect;
             
         }
         
         
-        class RectMask2D extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.ICanvasRaycastFilter, UnityEngine.UI.IClipper{ 
+        export class RectMask2D extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.ICanvasRaycastFilter, UnityEngine.UI.IClipper{ 
             
             public get padding(): UnityEngine.Vector4;
             public set padding(value: UnityEngine.Vector4);
@@ -29734,7 +29736,7 @@ declare module 'csharp' {
         }
         
         
-        class Dropdown extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.ICancelHandler, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
+        export class Dropdown extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.ICancelHandler, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler, UnityEngine.EventSystems.ISubmitHandler, UnityEngine.EventSystems.IPointerClickHandler{ 
             
             public get template(): UnityEngine.RectTransform;
             public set template(value: UnityEngine.RectTransform);
@@ -29788,7 +29790,7 @@ declare module 'csharp' {
         }
         
         
-        class FontData extends System.Object implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class FontData extends System.Object implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public static get defaultFontData(): UnityEngine.UI.FontData;
             
@@ -29838,7 +29840,7 @@ declare module 'csharp' {
         }
         
         
-        class FontUpdateTracker extends System.Object{ 
+        export class FontUpdateTracker extends System.Object{ 
             
             public static TrackText($t: UnityEngine.UI.Text):void;
             
@@ -29847,7 +29849,7 @@ declare module 'csharp' {
         }
         
         
-        class GraphicRaycaster extends UnityEngine.EventSystems.BaseRaycaster{ 
+        export class GraphicRaycaster extends UnityEngine.EventSystems.BaseRaycaster{ 
             
             public get sortOrderPriority(): number;
             
@@ -29870,7 +29872,7 @@ declare module 'csharp' {
         }
         
         
-        class GraphicRegistry extends System.Object{ 
+        export class GraphicRegistry extends System.Object{ 
             
             public static get instance(): UnityEngine.UI.GraphicRegistry;
             
@@ -29890,7 +29892,7 @@ declare module 'csharp' {
         }
         
         
-        class AspectRatioFitter extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutSelfController, UnityEngine.UI.ILayoutController{ 
+        export class AspectRatioFitter extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutSelfController, UnityEngine.UI.ILayoutController{ 
             
             public get aspectMode(): UnityEngine.UI.AspectRatioFitter.AspectMode;
             public set aspectMode(value: UnityEngine.UI.AspectRatioFitter.AspectMode);
@@ -29909,7 +29911,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILayoutSelfController extends UnityEngine.UI.ILayoutController{ 
+        export interface ILayoutSelfController extends UnityEngine.UI.ILayoutController{ 
             
             SetLayoutHorizontal():void;
             
@@ -29918,7 +29920,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILayoutController{ 
+        export interface ILayoutController{ 
             
             SetLayoutHorizontal():void;
             
@@ -29927,7 +29929,7 @@ declare module 'csharp' {
         }
         
         
-        class CanvasScaler extends UnityEngine.EventSystems.UIBehaviour{ 
+        export class CanvasScaler extends UnityEngine.EventSystems.UIBehaviour{ 
             
             public get uiScaleMode(): UnityEngine.UI.CanvasScaler.ScaleMode;
             public set uiScaleMode(value: UnityEngine.UI.CanvasScaler.ScaleMode);
@@ -29962,7 +29964,7 @@ declare module 'csharp' {
         }
         
         
-        class ContentSizeFitter extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutSelfController, UnityEngine.UI.ILayoutController{ 
+        export class ContentSizeFitter extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutSelfController, UnityEngine.UI.ILayoutController{ 
             
             public get horizontalFit(): UnityEngine.UI.ContentSizeFitter.FitMode;
             public set horizontalFit(value: UnityEngine.UI.ContentSizeFitter.FitMode);
@@ -29977,7 +29979,7 @@ declare module 'csharp' {
         }
         
         
-        class GridLayoutGroup extends UnityEngine.UI.LayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
+        export class GridLayoutGroup extends UnityEngine.UI.LayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
             
             public get startCorner(): UnityEngine.UI.GridLayoutGroup.Corner;
             public set startCorner(value: UnityEngine.UI.GridLayoutGroup.Corner);
@@ -30000,7 +30002,7 @@ declare module 'csharp' {
         }
         
         
-        class LayoutGroup extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
+        export class LayoutGroup extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
             
             public get padding(): UnityEngine.RectOffset;
             public set padding(value: UnityEngine.RectOffset);
@@ -30040,7 +30042,7 @@ declare module 'csharp' {
         }
         
         
-        interface ILayoutGroup extends UnityEngine.UI.ILayoutController{ 
+        export interface ILayoutGroup extends UnityEngine.UI.ILayoutController{ 
             
             SetLayoutHorizontal():void;
             
@@ -30049,12 +30051,12 @@ declare module 'csharp' {
         }
         
         
-        class HorizontalLayoutGroup extends UnityEngine.UI.HorizontalOrVerticalLayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
+        export class HorizontalLayoutGroup extends UnityEngine.UI.HorizontalOrVerticalLayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
             
         }
         
         
-        class HorizontalOrVerticalLayoutGroup extends UnityEngine.UI.LayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
+        export class HorizontalOrVerticalLayoutGroup extends UnityEngine.UI.LayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
             
             public get spacing(): number;
             public set spacing(value: number);
@@ -30083,14 +30085,14 @@ declare module 'csharp' {
         }
         
         
-        interface ILayoutIgnorer{ 
+        export interface ILayoutIgnorer{ 
             
             ignoreLayout: boolean;
             
         }
         
         
-        class LayoutElement extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutIgnorer, UnityEngine.UI.ILayoutElement{ 
+        export class LayoutElement extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutIgnorer, UnityEngine.UI.ILayoutElement{ 
             
             public get ignoreLayout(): boolean;
             public set ignoreLayout(value: boolean);
@@ -30123,7 +30125,7 @@ declare module 'csharp' {
         }
         
         
-        class LayoutRebuilder extends System.Object implements UnityEngine.UI.ICanvasElement{ 
+        export class LayoutRebuilder extends System.Object implements UnityEngine.UI.ICanvasElement{ 
             
             public get transform(): UnityEngine.Transform;
             
@@ -30147,7 +30149,7 @@ declare module 'csharp' {
         }
         
         
-        class LayoutUtility extends System.Object{ 
+        export class LayoutUtility extends System.Object{ 
             
             public static GetMinSize($rect: UnityEngine.RectTransform, $axis: number):number;
             
@@ -30174,12 +30176,12 @@ declare module 'csharp' {
         }
         
         
-        class VerticalLayoutGroup extends UnityEngine.UI.HorizontalOrVerticalLayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
+        export class VerticalLayoutGroup extends UnityEngine.UI.HorizontalOrVerticalLayoutGroup implements UnityEngine.UI.ILayoutGroup, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
             
         }
         
         
-        class Mask extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.IMaterialModifier, UnityEngine.ICanvasRaycastFilter{ 
+        export class Mask extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.IMaterialModifier, UnityEngine.ICanvasRaycastFilter{ 
             
             public get rectTransform(): UnityEngine.RectTransform;
             
@@ -30207,7 +30209,7 @@ declare module 'csharp' {
         }
         
         
-        class MaskUtilities extends System.Object{ 
+        export class MaskUtilities extends System.Object{ 
             
             public static Notify2DMaskStateChanged($mask: UnityEngine.Component):void;
             
@@ -30228,7 +30230,7 @@ declare module 'csharp' {
         }
         
         
-        class RawImage extends UnityEngine.UI.MaskableGraphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.UI.ICanvasElement, UnityEngine.UI.IClippable{ 
+        export class RawImage extends UnityEngine.UI.MaskableGraphic implements UnityEngine.UI.IMaterialModifier, UnityEngine.UI.IMaskable, UnityEngine.UI.ICanvasElement, UnityEngine.UI.IClippable{ 
             
             public get mainTexture(): UnityEngine.Texture;
             
@@ -30278,7 +30280,7 @@ declare module 'csharp' {
         }
         
         
-        class Scrollbar extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IBeginDragHandler, UnityEngine.EventSystems.IInitializePotentialDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler{ 
+        export class Scrollbar extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IBeginDragHandler, UnityEngine.EventSystems.IInitializePotentialDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler{ 
             
             public get handleRect(): UnityEngine.RectTransform;
             public set handleRect(value: UnityEngine.RectTransform);
@@ -30319,7 +30321,7 @@ declare module 'csharp' {
         }
         
         
-        class ScrollRect extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutGroup, UnityEngine.EventSystems.IBeginDragHandler, UnityEngine.EventSystems.IInitializePotentialDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.EventSystems.IEndDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IScrollHandler, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
+        export class ScrollRect extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.ILayoutGroup, UnityEngine.EventSystems.IBeginDragHandler, UnityEngine.EventSystems.IInitializePotentialDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.EventSystems.IEndDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IScrollHandler, UnityEngine.UI.ILayoutElement, UnityEngine.UI.ILayoutController{ 
             
             public get content(): UnityEngine.RectTransform;
             public set content(value: UnityEngine.RectTransform);
@@ -30433,7 +30435,7 @@ declare module 'csharp' {
         }
         
         
-        class Slider extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IInitializePotentialDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler{ 
+        export class Slider extends UnityEngine.UI.Selectable implements UnityEngine.EventSystems.IInitializePotentialDragHandler, UnityEngine.EventSystems.IDragHandler, UnityEngine.UI.ICanvasElement, UnityEngine.EventSystems.IEventSystemHandler, UnityEngine.EventSystems.IPointerEnterHandler, UnityEngine.EventSystems.ISelectHandler, UnityEngine.EventSystems.IPointerExitHandler, UnityEngine.EventSystems.IDeselectHandler, UnityEngine.EventSystems.IPointerDownHandler, UnityEngine.EventSystems.IPointerUpHandler, UnityEngine.EventSystems.IMoveHandler{ 
             
             public get fillRect(): UnityEngine.RectTransform;
             public set fillRect(value: UnityEngine.RectTransform);
@@ -30481,7 +30483,7 @@ declare module 'csharp' {
         }
         
         
-        class StencilMaterial extends System.Object{ 
+        export class StencilMaterial extends System.Object{ 
             
             public static Add($baseMat: UnityEngine.Material, $stencilID: number, $operation: UnityEngine.Rendering.StencilOp, $compareFunction: UnityEngine.Rendering.CompareFunction, $colorWriteMask: UnityEngine.Rendering.ColorWriteMask):UnityEngine.Material;
             
@@ -30494,7 +30496,7 @@ declare module 'csharp' {
         }
         
         
-        class VertexHelper extends System.Object implements System.IDisposable{ 
+        export class VertexHelper extends System.Object implements System.IDisposable{ 
             
             public get currentVertCount(): number;
             
@@ -30537,7 +30539,7 @@ declare module 'csharp' {
         }
         
         
-        class BaseMeshEffect extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.IMeshModifier{ 
+        export class BaseMeshEffect extends UnityEngine.EventSystems.UIBehaviour implements UnityEngine.UI.IMeshModifier{ 
             
             public ModifyMesh($mesh: UnityEngine.Mesh):void;
             
@@ -30548,14 +30550,14 @@ declare module 'csharp' {
         }
         
         
-        interface IMeshModifier{ 
+        export interface IMeshModifier{ 
             
             ModifyMesh($verts: UnityEngine.UI.VertexHelper):void;
             
         }
         
         
-        class Outline extends UnityEngine.UI.Shadow implements UnityEngine.UI.IMeshModifier{ 
+        export class Outline extends UnityEngine.UI.Shadow implements UnityEngine.UI.IMeshModifier{ 
             
             public ModifyMesh($verts: UnityEngine.UI.VertexHelper):void;
             
@@ -30576,7 +30578,7 @@ declare module 'csharp' {
         }
         
         
-        class Shadow extends UnityEngine.UI.BaseMeshEffect implements UnityEngine.UI.IMeshModifier{ 
+        export class Shadow extends UnityEngine.UI.BaseMeshEffect implements UnityEngine.UI.IMeshModifier{ 
             
             public get effectColor(): UnityEngine.Color;
             public set effectColor(value: UnityEngine.Color);
@@ -30598,7 +30600,7 @@ declare module 'csharp' {
         }
         
         
-        class PositionAsUV1 extends UnityEngine.UI.BaseMeshEffect implements UnityEngine.UI.IMeshModifier{ 
+        export class PositionAsUV1 extends UnityEngine.UI.BaseMeshEffect implements UnityEngine.UI.IMeshModifier{ 
             
             public ModifyMesh($verts: UnityEngine.UI.VertexHelper):void;
             
@@ -30612,15 +30614,15 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.UI.Selectable {
+    export namespace UnityEngine.UI.Selectable {
         
-        enum Transition{ None = 0, ColorTint = 1, SpriteSwap = 2, Animation = 3 }
+        export enum Transition{ None = 0, ColorTint = 1, SpriteSwap = 2, Animation = 3 }
         
         
     }
-    namespace UnityEngine.UI.Button {
+    export namespace UnityEngine.UI.Button {
         
-        class ButtonClickedEvent extends UnityEngine.Events.UnityEvent implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class ButtonClickedEvent extends UnityEngine.Events.UnityEvent implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -30628,9 +30630,9 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.Events {
+    export namespace UnityEngine.Events {
         /** A zero argument persistent callback that can be saved with the Scene. */
-        class UnityEvent extends UnityEngine.Events.UnityEventBase implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class UnityEvent extends UnityEngine.Events.UnityEventBase implements UnityEngine.ISerializationCallbackReceiver{ 
             /** Add a non persistent listener to the UnityEvent. * @param call Callback function.
              */
             public AddListener($call: UnityEngine.Events.UnityAction):void;
@@ -30645,7 +30647,7 @@ declare module 'csharp' {
         }
         
         /** Abstract base class for UnityEvents. */
-        class UnityEventBase extends System.Object implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class UnityEventBase extends System.Object implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public OnBeforeSerialize():void;
             
@@ -30654,11 +30656,11 @@ declare module 'csharp' {
         }
         
         /** Zero argument delegate used by UnityEvents. */
-        type UnityAction = () => void;
+        export type UnityAction = () => void;
         var UnityAction: {new (func: () => void): UnityAction;}
         
         
-        class UnityEvent$1<T0> extends UnityEngine.Events.UnityEventBase implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class UnityEvent$1<T0> extends UnityEngine.Events.UnityEventBase implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public AddListener($call: UnityEngine.Events.UnityAction$1<T0>):void;
             
@@ -30671,13 +30673,13 @@ declare module 'csharp' {
         }
         
         
-        type UnityAction$1<T0> = (arg0: T0) => void;
+        export type UnityAction$1<T0> = (arg0: T0) => void;
         
         
     }
-    namespace UnityEngine.UI.InputField {
+    export namespace UnityEngine.UI.InputField {
         
-        class EndEditEvent extends UnityEngine.Events.UnityEvent$1<string> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class EndEditEvent extends UnityEngine.Events.UnityEvent$1<string> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -30688,7 +30690,7 @@ declare module 'csharp' {
         }
         
         
-        class SubmitEvent extends UnityEngine.Events.UnityEvent$1<string> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class SubmitEvent extends UnityEngine.Events.UnityEvent$1<string> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -30699,7 +30701,7 @@ declare module 'csharp' {
         }
         
         
-        class OnChangeEvent extends UnityEngine.Events.UnityEvent$1<string> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class OnChangeEvent extends UnityEngine.Events.UnityEvent$1<string> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -30710,29 +30712,29 @@ declare module 'csharp' {
         }
         
         
-        type OnValidateInput = (text: string, charIndex: number, addedChar: number) => number;
+        export type OnValidateInput = (text: string, charIndex: number, addedChar: number) => number;
         var OnValidateInput: {new (func: (text: string, charIndex: number, addedChar: number) => number): OnValidateInput;}
         
         
-        enum ContentType{ Standard = 0, Autocorrected = 1, IntegerNumber = 2, DecimalNumber = 3, Alphanumeric = 4, Name = 5, EmailAddress = 6, Password = 7, Pin = 8, Custom = 9 }
+        export enum ContentType{ Standard = 0, Autocorrected = 1, IntegerNumber = 2, DecimalNumber = 3, Alphanumeric = 4, Name = 5, EmailAddress = 6, Password = 7, Pin = 8, Custom = 9 }
         
         
-        enum LineType{ SingleLine = 0, MultiLineSubmit = 1, MultiLineNewline = 2 }
+        export enum LineType{ SingleLine = 0, MultiLineSubmit = 1, MultiLineNewline = 2 }
         
         
-        enum InputType{ Standard = 0, AutoCorrect = 1, Password = 2 }
+        export enum InputType{ Standard = 0, AutoCorrect = 1, Password = 2 }
         
         
-        enum CharacterValidation{ None = 0, Integer = 1, Decimal = 2, Alphanumeric = 3, Name = 4, EmailAddress = 5 }
+        export enum CharacterValidation{ None = 0, Integer = 1, Decimal = 2, Alphanumeric = 3, Name = 4, EmailAddress = 5 }
         
         
     }
-    namespace UnityEngine.UI.Toggle {
+    export namespace UnityEngine.UI.Toggle {
         
-        enum ToggleTransition{ None = 0, Fade = 1 }
+        export enum ToggleTransition{ None = 0, Fade = 1 }
         
         
-        class ToggleEvent extends UnityEngine.Events.UnityEvent$1<boolean> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class ToggleEvent extends UnityEngine.Events.UnityEvent$1<boolean> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -30744,9 +30746,9 @@ declare module 'csharp' {
         
         
     }
-    namespace PuertsDeclareTest.Plants {
+    export namespace PuertsDeclareTest.Plants {
         
-        class pumkinPeaShooter extends System.Object implements PuertsDeclareTest.Plants.Pumpkin$1.Protectable<PuertsDeclareTest.Plants.pumkinPeaShooter>, PuertsDeclareTest.Plants.Shootable{ 
+        export class pumkinPeaShooter extends System.Object implements PuertsDeclareTest.Plants.Pumpkin$1.Protectable<PuertsDeclareTest.Plants.pumkinPeaShooter>, PuertsDeclareTest.Plants.Shootable{ 
             
             public shoot():void;
             
@@ -30757,7 +30759,7 @@ declare module 'csharp' {
         }
         
         
-        interface Shootable{ 
+        export interface Shootable{ 
             
             shoot():void;
             
@@ -30765,31 +30767,31 @@ declare module 'csharp' {
         
         
     }
-    namespace PuertsDeclareTest.Plants.Pumpkin$1 {
+    export namespace PuertsDeclareTest.Plants.Pumpkin$1 {
         
-        interface Protectable<T>{ 
+        export interface Protectable<T>{ 
             
         }
         
         
     }
-    namespace PuertsDeclareTest.Zombies {
+    export namespace PuertsDeclareTest.Zombies {
         
-        interface Walkable{ 
+        export interface Walkable{ 
             
             action():void;
             
         }
         
         
-        interface Flyable{ 
+        export interface Flyable{ 
             
             action():void;
             
         }
         
         
-        class BalloonZombie extends System.Object implements PuertsDeclareTest.Zombies.Flyable, PuertsDeclareTest.Zombies.Walkable{ 
+        export class BalloonZombie extends System.Object implements PuertsDeclareTest.Zombies.Flyable, PuertsDeclareTest.Zombies.Walkable{ 
             
             public constructor();
             
@@ -30799,42 +30801,42 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.Playables {
+    export namespace UnityEngine.Playables {
         /** Use the PlayableGraph to manage Playable creations and destructions. */
-        class PlayableGraph extends System.ValueType{ 
+        export class PlayableGraph extends System.ValueType{ 
             
         }
         
         
-        interface IPlayable{ 
+        export interface IPlayable{ 
             
         }
         
         
     }
-    namespace UnityEngine.Animations {
+    export namespace UnityEngine.Animations {
         /** An implementation of IPlayable that controls an animation RuntimeAnimatorController. */
-        class AnimatorControllerPlayable extends System.ValueType implements UnityEngine.Playables.IPlayable, System.IEquatable$1<UnityEngine.Animations.AnimatorControllerPlayable>{ 
+        export class AnimatorControllerPlayable extends System.ValueType implements UnityEngine.Playables.IPlayable, System.IEquatable$1<UnityEngine.Animations.AnimatorControllerPlayable>{ 
             
         }
         
         
     }
-    namespace System.IO {
+    export namespace System.IO {
         
-        class Stream extends System.MarshalByRefObject implements System.IDisposable{ 
+        export class Stream extends System.MarshalByRefObject implements System.IDisposable{ 
             
         }
         
         
     }
-    namespace UnityEngine.AudioSettings {
+    export namespace UnityEngine.AudioSettings {
         
-        type AudioConfigurationChangeHandler = (deviceWasChanged: boolean) => void;
+        export type AudioConfigurationChangeHandler = (deviceWasChanged: boolean) => void;
         var AudioConfigurationChangeHandler: {new (func: (deviceWasChanged: boolean) => void): AudioConfigurationChangeHandler;}
         
         
-        class Mobile extends System.Object{ 
+        export class Mobile extends System.Object{ 
             
             public static get muteState(): boolean;
             
@@ -30857,61 +30859,61 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.Audio {
+    export namespace UnityEngine.Audio {
         /** Object representing a group in the mixer. */
-        class AudioMixerGroup extends UnityEngine.Object implements UnityEngine.Internal.ISubAssetNotDuplicatable{ 
+        export class AudioMixerGroup extends UnityEngine.Object implements UnityEngine.Internal.ISubAssetNotDuplicatable{ 
             
         }
         
         
     }
-    namespace UnityEngine.Internal {
+    export namespace UnityEngine.Internal {
         
-        interface ISubAssetNotDuplicatable{ 
+        export interface ISubAssetNotDuplicatable{ 
             
         }
         
         
     }
-    namespace UnityEngine.AudioClip {
+    export namespace UnityEngine.AudioClip {
         
-        type PCMReaderCallback = (data: System.Array$1<number>) => void;
+        export type PCMReaderCallback = (data: System.Array$1<number>) => void;
         var PCMReaderCallback: {new (func: (data: System.Array$1<number>) => void): PCMReaderCallback;}
         
         
-        type PCMSetPositionCallback = (position: number) => void;
+        export type PCMSetPositionCallback = (position: number) => void;
         var PCMSetPositionCallback: {new (func: (position: number) => void): PCMSetPositionCallback;}
         
         
     }
-    namespace UnityEngine.Application {
+    export namespace UnityEngine.Application {
         
-        type AdvertisingIdentifierCallback = (advertisingId: string, trackingEnabled: boolean, errorMsg: string) => void;
+        export type AdvertisingIdentifierCallback = (advertisingId: string, trackingEnabled: boolean, errorMsg: string) => void;
         var AdvertisingIdentifierCallback: {new (func: (advertisingId: string, trackingEnabled: boolean, errorMsg: string) => void): AdvertisingIdentifierCallback;}
         
         
-        type LowMemoryCallback = () => void;
+        export type LowMemoryCallback = () => void;
         var LowMemoryCallback: {new (func: () => void): LowMemoryCallback;}
         
         
-        type LogCallback = (condition: string, stackTrace: string, type: UnityEngine.LogType) => void;
+        export type LogCallback = (condition: string, stackTrace: string, type: UnityEngine.LogType) => void;
         var LogCallback: {new (func: (condition: string, stackTrace: string, type: UnityEngine.LogType) => void): LogCallback;}
         
         
     }
-    namespace UnityEngine.Camera {
+    export namespace UnityEngine.Camera {
         
-        type CameraCallback = (cam: UnityEngine.Camera) => void;
+        export type CameraCallback = (cam: UnityEngine.Camera) => void;
         var CameraCallback: {new (func: (cam: UnityEngine.Camera) => void): CameraCallback;}
         
         
-        enum GateFitMode{ Vertical = 1, Horizontal = 2, Fill = 3, Overscan = 4, None = 0 }
+        export enum GateFitMode{ Vertical = 1, Horizontal = 2, Fill = 3, Overscan = 4, None = 0 }
         
         
-        enum MonoOrStereoscopicEye{ Left = 0, Right = 1, Mono = 2 }
+        export enum MonoOrStereoscopicEye{ Left = 0, Right = 1, Mono = 2 }
         
         
-        class GateFitParameters extends System.ValueType{ 
+        export class GateFitParameters extends System.ValueType{ 
             
             public get mode(): UnityEngine.Camera.GateFitMode;
             public set mode(value: UnityEngine.Camera.GateFitMode);
@@ -30926,10 +30928,10 @@ declare module 'csharp' {
         }
         
         
-        enum StereoscopicEye{ Left = 0, Right = 1 }
+        export enum StereoscopicEye{ Left = 0, Right = 1 }
         
         
-        class RenderRequest extends System.ValueType{ 
+        export class RenderRequest extends System.ValueType{ 
             
             public get isValid(): boolean;
             
@@ -30952,210 +30954,210 @@ declare module 'csharp' {
         }
         
         
-        enum FieldOfViewAxis{ Vertical = 0, Horizontal = 1 }
+        export enum FieldOfViewAxis{ Vertical = 0, Horizontal = 1 }
         
         
-        enum RenderRequestMode{ None = 0, ObjectId = 1, Depth = 2, VertexNormal = 3, WorldPosition = 4, EntityId = 5, BaseColor = 6, SpecularColor = 7, Metallic = 8, Emission = 9, Normal = 10, Smoothness = 11, Occlusion = 12, DiffuseColor = 13 }
+        export enum RenderRequestMode{ None = 0, ObjectId = 1, Depth = 2, VertexNormal = 3, WorldPosition = 4, EntityId = 5, BaseColor = 6, SpecularColor = 7, Metallic = 8, Emission = 9, Normal = 10, Smoothness = 11, Occlusion = 12, DiffuseColor = 13 }
         
         
-        enum RenderRequestOutputSpace{ ScreenSpace = -1, UV0 = 0, UV1 = 1, UV2 = 2, UV3 = 3, UV4 = 4, UV5 = 5, UV6 = 6, UV7 = 7, UV8 = 8 }
+        export enum RenderRequestOutputSpace{ ScreenSpace = -1, UV0 = 0, UV1 = 1, UV2 = 2, UV3 = 3, UV4 = 4, UV5 = 5, UV6 = 6, UV7 = 7, UV8 = 8 }
         
         
     }
-    namespace UnityEngine.Rendering {
+    export namespace UnityEngine.Rendering {
         /** Opaque object sorting mode of a Camera. */
-        enum OpaqueSortMode{ Default = 0, FrontToBack = 1, NoDistanceSort = 2 }
+        export enum OpaqueSortMode{ Default = 0, FrontToBack = 1, NoDistanceSort = 2 }
         
         /** Defines a place in camera's rendering to attach Rendering.CommandBuffer objects to. */
-        enum CameraEvent{ BeforeDepthTexture = 0, AfterDepthTexture = 1, BeforeDepthNormalsTexture = 2, AfterDepthNormalsTexture = 3, BeforeGBuffer = 4, AfterGBuffer = 5, BeforeLighting = 6, AfterLighting = 7, BeforeFinalPass = 8, AfterFinalPass = 9, BeforeForwardOpaque = 10, AfterForwardOpaque = 11, BeforeImageEffectsOpaque = 12, AfterImageEffectsOpaque = 13, BeforeSkybox = 14, AfterSkybox = 15, BeforeForwardAlpha = 16, AfterForwardAlpha = 17, BeforeImageEffects = 18, AfterImageEffects = 19, AfterEverything = 20, BeforeReflections = 21, AfterReflections = 22, BeforeHaloAndLensFlares = 23, AfterHaloAndLensFlares = 24 }
+        export enum CameraEvent{ BeforeDepthTexture = 0, AfterDepthTexture = 1, BeforeDepthNormalsTexture = 2, AfterDepthNormalsTexture = 3, BeforeGBuffer = 4, AfterGBuffer = 5, BeforeLighting = 6, AfterLighting = 7, BeforeFinalPass = 8, AfterFinalPass = 9, BeforeForwardOpaque = 10, AfterForwardOpaque = 11, BeforeImageEffectsOpaque = 12, AfterImageEffectsOpaque = 13, BeforeSkybox = 14, AfterSkybox = 15, BeforeForwardAlpha = 16, AfterForwardAlpha = 17, BeforeImageEffects = 18, AfterImageEffects = 19, AfterEverything = 20, BeforeReflections = 21, AfterReflections = 22, BeforeHaloAndLensFlares = 23, AfterHaloAndLensFlares = 24 }
         
         /** List of graphics commands to execute. */
-        class CommandBuffer extends System.Object implements System.IDisposable{ 
+        export class CommandBuffer extends System.Object implements System.IDisposable{ 
             
         }
         
         /** Describes the desired characteristics with respect to prioritisation and load balancing of the queue that a command buffer being submitted via Graphics.ExecuteCommandBufferAsync or [[ScriptableRenderContext.ExecuteCommandBufferAsync] should be sent to. */
-        enum ComputeQueueType{ Default = 0, Background = 1, Urgent = 2 }
+        export enum ComputeQueueType{ Default = 0, Background = 1, Urgent = 2 }
         
         /** Parameters that configure a culling operation in the Scriptable Render Pipeline. */
-        class ScriptableCullingParameters extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.ScriptableCullingParameters>{ 
+        export class ScriptableCullingParameters extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.ScriptableCullingParameters>{ 
             
         }
         
         
-        enum ReflectionProbeType{ Cube = 0, Card = 1 }
+        export enum ReflectionProbeType{ Cube = 0, Card = 1 }
         
         /** Values for ReflectionProbe.clearFlags, determining what to clear when rendering a ReflectionProbe. */
-        enum ReflectionProbeClearFlags{ Skybox = 1, SolidColor = 2 }
+        export enum ReflectionProbeClearFlags{ Skybox = 1, SolidColor = 2 }
         
         /** Reflection probe's update mode. */
-        enum ReflectionProbeMode{ Baked = 0, Realtime = 1, Custom = 2 }
+        export enum ReflectionProbeMode{ Baked = 0, Realtime = 1, Custom = 2 }
         
         /** An enum describing the way a realtime reflection probe refreshes in the Player. */
-        enum ReflectionProbeRefreshMode{ OnAwake = 0, EveryFrame = 1, ViaScripting = 2 }
+        export enum ReflectionProbeRefreshMode{ OnAwake = 0, EveryFrame = 1, ViaScripting = 2 }
         
         /** When a probe's ReflectionProbe.refreshMode is set to ReflectionProbeRefreshMode.EveryFrame, this enum specify whether or not Unity should update the probe's cubemap over several frames or update the whole cubemap in one frame.
         Updating a probe's cubemap is a costly operation. Unity needs to render the entire Scene for each face of the cubemap, as well as perform special blurring in order to get glossy reflections. The impact on frame rate can be significant. Time-slicing helps maintaning a more constant frame rate during these updates by performing the rendering over several frames. */
-        enum ReflectionProbeTimeSlicingMode{ AllFacesAtOnce = 0, IndividualFaces = 1, NoTimeSlicing = 2 }
+        export enum ReflectionProbeTimeSlicingMode{ AllFacesAtOnce = 0, IndividualFaces = 1, NoTimeSlicing = 2 }
         
         /**  The Graphics Tier Unity uses. You can only set a GraphicsTier in the Built-in Render Pipeline.
         See Also: Graphics.activeTier. */
-        enum GraphicsTier{ Tier1 = 0, Tier2 = 1, Tier3 = 2 }
+        export enum GraphicsTier{ Tier1 = 0, Tier2 = 1, Tier3 = 2 }
         
         /** Specifies the OpenGL ES version. */
-        enum OpenGLESVersion{ None = 0, OpenGLES20 = 1, OpenGLES30 = 2, OpenGLES31 = 3, OpenGLES31AEP = 4, OpenGLES32 = 5 }
+        export enum OpenGLESVersion{ None = 0, OpenGLES20 = 1, OpenGLES30 = 2, OpenGLES31 = 3, OpenGLES31AEP = 4, OpenGLES32 = 5 }
         
         /** Used to manage synchronisation between tasks on async compute queues and the graphics queue. */
-        class GraphicsFence extends System.ValueType{ 
+        export class GraphicsFence extends System.ValueType{ 
             
         }
         
         /** Broadly describes the stages of processing a draw call on the GPU. */
-        enum SynchronisationStage{ VertexProcessing = 0, PixelProcessing = 1 }
+        export enum SynchronisationStage{ VertexProcessing = 0, PixelProcessing = 1 }
         
         /** The type of the GraphicsFence. Currently the only supported fence type is AsyncQueueSynchronization. */
-        enum GraphicsFenceType{ AsyncQueueSynchronisation = 0, CPUSynchronisation = 1 }
+        export enum GraphicsFenceType{ AsyncQueueSynchronisation = 0, CPUSynchronisation = 1 }
         
         /** Describes the various stages of GPU processing against which the GraphicsFence can be set and waited against. */
-        enum SynchronisationStageFlags{ VertexProcessing = 1, PixelProcessing = 2, ComputeProcessing = 4, AllGPUOperations = 7 }
+        export enum SynchronisationStageFlags{ VertexProcessing = 1, PixelProcessing = 2, ComputeProcessing = 4, AllGPUOperations = 7 }
         
         /** How shadows are cast from this object. */
-        enum ShadowCastingMode{ Off = 0, On = 1, TwoSided = 2, ShadowsOnly = 3 }
+        export enum ShadowCastingMode{ Off = 0, On = 1, TwoSided = 2, ShadowsOnly = 3 }
         
         /** Light probe interpolation type. */
-        enum LightProbeUsage{ Off = 0, BlendProbes = 1, UseProxyVolume = 2, CustomProvided = 4 }
+        export enum LightProbeUsage{ Off = 0, BlendProbes = 1, UseProxyVolume = 2, CustomProvided = 4 }
         
         /** This functionality is deprecated, and should no longer be used. Please use GraphicsFence. */
-        class GPUFence extends System.ValueType{ 
+        export class GPUFence extends System.ValueType{ 
             
         }
         
         /** Spherical harmonics up to the second order (3 bands, 9 coefficients). */
-        class SphericalHarmonicsL2 extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.SphericalHarmonicsL2>{ 
+        export class SphericalHarmonicsL2 extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.SphericalHarmonicsL2>{ 
             
         }
         
         /** This enum describes what should be done on the render target when it is activated (loaded). */
-        enum RenderBufferLoadAction{ Load = 0, Clear = 1, DontCare = 2 }
+        export enum RenderBufferLoadAction{ Load = 0, Clear = 1, DontCare = 2 }
         
         /** This enum describes what should be done on the render target when the GPU is done rendering into it. */
-        enum RenderBufferStoreAction{ Store = 0, Resolve = 1, StoreAndResolve = 2, DontCare = 3 }
+        export enum RenderBufferStoreAction{ Store = 0, Resolve = 1, StoreAndResolve = 2, DontCare = 3 }
         
         /** An asset that produces a specific IRenderPipeline. */
-        class RenderPipelineAsset extends UnityEngine.ScriptableObject{ 
+        export class RenderPipelineAsset extends UnityEngine.ScriptableObject{ 
             
         }
         
         /** Format of the mesh index buffer data. */
-        enum IndexFormat{ UInt16 = 0, UInt32 = 1 }
+        export enum IndexFormat{ UInt16 = 0, UInt32 = 1 }
         
         /** Information about a single VertexAttribute of a Mesh vertex. */
-        class VertexAttributeDescriptor extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.VertexAttributeDescriptor>{ 
+        export class VertexAttributeDescriptor extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.VertexAttributeDescriptor>{ 
             
         }
         
         /** Possible attribute types that describe a vertex in a Mesh. */
-        enum VertexAttribute{ Position = 0, Normal = 1, Tangent = 2, Color = 3, TexCoord0 = 4, TexCoord1 = 5, TexCoord2 = 6, TexCoord3 = 7, TexCoord4 = 8, TexCoord5 = 9, TexCoord6 = 10, TexCoord7 = 11, BlendWeight = 12, BlendIndices = 13 }
+        export enum VertexAttribute{ Position = 0, Normal = 1, Tangent = 2, Color = 3, TexCoord0 = 4, TexCoord1 = 5, TexCoord2 = 6, TexCoord3 = 7, TexCoord4 = 8, TexCoord5 = 9, TexCoord6 = 10, TexCoord7 = 11, BlendWeight = 12, BlendIndices = 13 }
         
         /** Data type of a VertexAttribute. */
-        enum VertexAttributeFormat{ Float32 = 0, Float16 = 1, UNorm8 = 2, SNorm8 = 3, UNorm16 = 4, SNorm16 = 5, UInt8 = 6, SInt8 = 7, UInt16 = 8, SInt16 = 9, UInt32 = 10, SInt32 = 11 }
+        export enum VertexAttributeFormat{ Float32 = 0, Float16 = 1, UNorm8 = 2, SNorm8 = 3, UNorm16 = 4, SNorm16 = 5, UInt8 = 6, SInt8 = 7, UInt16 = 8, SInt16 = 9, UInt32 = 10, SInt32 = 11 }
         
         /** Contains information about a single sub-mesh of a Mesh. */
-        class SubMeshDescriptor extends System.ValueType{ 
+        export class SubMeshDescriptor extends System.ValueType{ 
             
         }
         
         /** Mesh data update flags. */
-        enum MeshUpdateFlags{ Default = 0, DontValidateIndices = 1, DontResetBoneBounds = 2, DontNotifyMeshUsers = 4, DontRecalculateBounds = 8 }
+        export enum MeshUpdateFlags{ Default = 0, DontValidateIndices = 1, DontResetBoneBounds = 2, DontNotifyMeshUsers = 4, DontRecalculateBounds = 8 }
         
         /** Reflection Probe usage. */
-        enum ReflectionProbeUsage{ Off = 0, BlendProbes = 1, BlendProbesAndSkybox = 2, Simple = 3 }
+        export enum ReflectionProbeUsage{ Off = 0, BlendProbes = 1, BlendProbesAndSkybox = 2, Simple = 3 }
         
         /** ReflectionProbeBlendInfo contains information required for blending probes. */
-        class ReflectionProbeBlendInfo extends System.ValueType{ 
+        export class ReflectionProbeBlendInfo extends System.ValueType{ 
             
         }
         
         
-        enum ShaderHardwareTier{ Tier1 = 0, Tier2 = 1, Tier3 = 2 }
+        export enum ShaderHardwareTier{ Tier1 = 0, Tier2 = 1, Tier3 = 2 }
         
         /** Shader tag ids are used to refer to various names in shaders. */
-        class ShaderTagId extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.ShaderTagId>{ 
+        export class ShaderTagId extends System.ValueType implements System.IEquatable$1<UnityEngine.Rendering.ShaderTagId>{ 
             
         }
         
         /** Types of data that you can encapsulate within a render texture. */
-        enum RenderTextureSubElement{ Color = 0, Depth = 1, Stencil = 2, Default = 3 }
+        export enum RenderTextureSubElement{ Color = 0, Depth = 1, Stencil = 2, Default = 3 }
         
         /** Type of a given shader property. */
-        enum ShaderPropertyType{ Color = 0, Vector = 1, Float = 2, Range = 3, Texture = 4, Int = 5 }
+        export enum ShaderPropertyType{ Color = 0, Vector = 1, Float = 2, Range = 3, Texture = 4, Int = 5 }
         
         /** Flags that control how a shader property behaves. */
-        enum ShaderPropertyFlags{ None = 0, HideInInspector = 1, PerRendererData = 2, NoScaleOffset = 4, Normal = 8, HDR = 16, Gamma = 32, NonModifiableTextureData = 64, MainTexture = 128, MainColor = 256 }
+        export enum ShaderPropertyFlags{ None = 0, HideInInspector = 1, PerRendererData = 2, NoScaleOffset = 4, Normal = 8, HDR = 16, Gamma = 32, NonModifiableTextureData = 64, MainTexture = 128, MainColor = 256 }
         
         /** Texture "dimension" (type). */
-        enum TextureDimension{ Unknown = -1, None = 0, Any = 1, Tex2D = 2, Tex3D = 3, Cube = 4, Tex2DArray = 5, CubeArray = 6 }
+        export enum TextureDimension{ Unknown = -1, None = 0, Any = 1, Tex2D = 2, Tex3D = 3, Cube = 4, Tex2DArray = 5, CubeArray = 6 }
         
         /** Ambient lighting mode. */
-        enum AmbientMode{ Skybox = 0, Trilight = 1, Flat = 3, Custom = 4 }
+        export enum AmbientMode{ Skybox = 0, Trilight = 1, Flat = 3, Custom = 4 }
         
         /** Default reflection mode. */
-        enum DefaultReflectionMode{ Skybox = 0, Custom = 1 }
+        export enum DefaultReflectionMode{ Skybox = 0, Custom = 1 }
         
         /** Shadow resolution options for a Light. */
-        enum LightShadowResolution{ FromQualitySettings = -1, Low = 0, Medium = 1, High = 2, VeryHigh = 3 }
+        export enum LightShadowResolution{ FromQualitySettings = -1, Low = 0, Medium = 1, High = 2, VeryHigh = 3 }
         
         /** Defines a place in light's rendering to attach Rendering.CommandBuffer objects to. */
-        enum LightEvent{ BeforeShadowMap = 0, AfterShadowMap = 1, BeforeScreenspaceMask = 2, AfterScreenspaceMask = 3, BeforeShadowMapPass = 4, AfterShadowMapPass = 5 }
+        export enum LightEvent{ BeforeShadowMap = 0, AfterShadowMap = 1, BeforeScreenspaceMask = 2, AfterScreenspaceMask = 3, BeforeShadowMapPass = 4, AfterShadowMapPass = 5 }
         
         /** Allows precise control over which shadow map passes to execute Rendering.CommandBuffer objects attached using Light.AddCommandBuffer. */
-        enum ShadowMapPass{ PointlightPositiveX = 1, PointlightNegativeX = 2, PointlightPositiveY = 4, PointlightNegativeY = 8, PointlightPositiveZ = 16, PointlightNegativeZ = 32, DirectionalCascade0 = 64, DirectionalCascade1 = 128, DirectionalCascade2 = 256, DirectionalCascade3 = 512, Spotlight = 1024, Pointlight = 63, Directional = 960, All = 2047 }
+        export enum ShadowMapPass{ PointlightPositiveX = 1, PointlightNegativeX = 2, PointlightPositiveY = 4, PointlightNegativeY = 8, PointlightPositiveZ = 16, PointlightNegativeZ = 32, DirectionalCascade0 = 64, DirectionalCascade1 = 128, DirectionalCascade2 = 256, DirectionalCascade3 = 512, Spotlight = 1024, Pointlight = 63, Directional = 960, All = 2047 }
         
         /** Used by CommandBuffer.SetShadowSamplingMode. */
-        enum ShadowSamplingMode{ CompareDepths = 0, RawDepth = 1, None = 2 }
+        export enum ShadowSamplingMode{ CompareDepths = 0, RawDepth = 1, None = 2 }
         
         /** Shader pass type for Unity's lighting pipeline. */
-        enum PassType{ Normal = 0, Vertex = 1, VertexLM = 2, VertexLMRGBM = 3, ForwardBase = 4, ForwardAdd = 5, LightPrePassBase = 6, LightPrePassFinal = 7, ShadowCaster = 8, Deferred = 10, Meta = 11, MotionVectors = 12, ScriptableRenderPipeline = 13, ScriptableRenderPipelineDefaultUnlit = 14 }
+        export enum PassType{ Normal = 0, Vertex = 1, VertexLM = 2, VertexLMRGBM = 3, ForwardBase = 4, ForwardAdd = 5, LightPrePassBase = 6, LightPrePassFinal = 7, ShadowCaster = 8, Deferred = 10, Meta = 11, MotionVectors = 12, ScriptableRenderPipeline = 13, ScriptableRenderPipelineDefaultUnlit = 14 }
         
         /** Graphics device API type. */
-        enum GraphicsDeviceType{ OpenGL2 = 0, Direct3D9 = 1, Direct3D11 = 2, PlayStation3 = 3, Null = 4, Xbox360 = 6, OpenGLES2 = 8, OpenGLES3 = 11, PlayStationVita = 12, PlayStation4 = 13, XboxOne = 14, PlayStationMobile = 15, Metal = 16, OpenGLCore = 17, Direct3D12 = 18, N3DS = 19, Vulkan = 21, Switch = 22, XboxOneD3D12 = 23, GameCoreXboxOne = 24, GameCoreScarlett = 25, GameCoreXboxSeries = 25, PlayStation5 = 26, PlayStation5NGGC = 27 }
+        export enum GraphicsDeviceType{ OpenGL2 = 0, Direct3D9 = 1, Direct3D11 = 2, PlayStation3 = 3, Null = 4, Xbox360 = 6, OpenGLES2 = 8, OpenGLES3 = 11, PlayStationVita = 12, PlayStation4 = 13, XboxOne = 14, PlayStationMobile = 15, Metal = 16, OpenGLCore = 17, Direct3D12 = 18, N3DS = 19, Vulkan = 21, Switch = 22, XboxOneD3D12 = 23, GameCoreXboxOne = 24, GameCoreScarlett = 25, GameCoreXboxSeries = 25, PlayStation5 = 26, PlayStation5NGGC = 27 }
         
         /** Options for the application's actual rendering threading mode. */
-        enum RenderingThreadingMode{ Direct = 0, SingleThreaded = 1, MultiThreaded = 2, LegacyJobified = 3, NativeGraphicsJobs = 4, NativeGraphicsJobsWithoutRenderThread = 5 }
+        export enum RenderingThreadingMode{ Direct = 0, SingleThreaded = 1, MultiThreaded = 2, LegacyJobified = 3, NativeGraphicsJobs = 4, NativeGraphicsJobsWithoutRenderThread = 5 }
         
         /** Support for various Graphics.CopyTexture cases. */
-        enum CopyTextureSupport{ None = 0, Basic = 1, Copy3D = 2, DifferentTypes = 4, TextureToRT = 8, RTToTexture = 16 }
+        export enum CopyTextureSupport{ None = 0, Basic = 1, Copy3D = 2, DifferentTypes = 4, TextureToRT = 8, RTToTexture = 16 }
         
         /** A flag representing each UV channel. */
-        enum UVChannelFlags{ UV0 = 1, UV1 = 2, UV2 = 4, UV3 = 8 }
+        export enum UVChannelFlags{ UV0 = 1, UV1 = 2, UV2 = 4, UV3 = 8 }
         
         /** Specifies the operation that's performed on the stencil buffer when rendering. */
-        enum StencilOp{ Keep = 0, Zero = 1, Replace = 2, IncrementSaturate = 3, DecrementSaturate = 4, Invert = 5, IncrementWrap = 6, DecrementWrap = 7 }
+        export enum StencilOp{ Keep = 0, Zero = 1, Replace = 2, IncrementSaturate = 3, DecrementSaturate = 4, Invert = 5, IncrementWrap = 6, DecrementWrap = 7 }
         
         /** Depth or stencil comparison function. */
-        enum CompareFunction{ Disabled = 0, Never = 1, Less = 2, Equal = 3, LessEqual = 4, Greater = 5, NotEqual = 6, GreaterEqual = 7, Always = 8 }
+        export enum CompareFunction{ Disabled = 0, Never = 1, Less = 2, Equal = 3, LessEqual = 4, Greater = 5, NotEqual = 6, GreaterEqual = 7, Always = 8 }
         
         /** Specifies which color components will get written into the target framebuffer. */
-        enum ColorWriteMask{ Alpha = 1, Blue = 2, Green = 4, Red = 8, All = 15 }
+        export enum ColorWriteMask{ Alpha = 1, Blue = 2, Green = 4, Red = 8, All = 15 }
         
         
     }
-    namespace UnityEngine.CullingGroup {
+    export namespace UnityEngine.CullingGroup {
         
-        type StateChanged = (sphere: UnityEngine.CullingGroupEvent) => void;
+        export type StateChanged = (sphere: UnityEngine.CullingGroupEvent) => void;
         var StateChanged: {new (func: (sphere: UnityEngine.CullingGroupEvent) => void): StateChanged;}
         
         
     }
-    namespace UnityEngine.ReflectionProbe {
+    export namespace UnityEngine.ReflectionProbe {
         
-        enum ReflectionProbeEvent{ ReflectionProbeAdded = 0, ReflectionProbeRemoved = 1 }
+        export enum ReflectionProbeEvent{ ReflectionProbeAdded = 0, ReflectionProbeRemoved = 1 }
         
         
     }
-    namespace UnityEngine.BoundsInt {
+    export namespace UnityEngine.BoundsInt {
         
-        class PositionEnumerator extends System.ValueType implements System.Collections.Generic.IEnumerator$1<UnityEngine.Vector3Int>, System.Collections.IEnumerator, System.IDisposable{ 
+        export class PositionEnumerator extends System.ValueType implements System.Collections.Generic.IEnumerator$1<UnityEngine.Vector3Int>, System.Collections.IEnumerator, System.IDisposable{ 
             
             public get Current(): UnityEngine.Vector3Int;
             
@@ -31174,9 +31176,9 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.RectInt {
+    export namespace UnityEngine.RectInt {
         
-        class PositionEnumerator extends System.ValueType implements System.Collections.Generic.IEnumerator$1<UnityEngine.Vector2Int>, System.Collections.IEnumerator, System.IDisposable{ 
+        export class PositionEnumerator extends System.ValueType implements System.Collections.Generic.IEnumerator$1<UnityEngine.Vector2Int>, System.Collections.IEnumerator, System.IDisposable{ 
             
             public get Current(): UnityEngine.Vector2Int;
             
@@ -31195,54 +31197,54 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.LightingSettings {
+    export namespace UnityEngine.LightingSettings {
         
-        enum Lightmapper{ Enlighten = 0, ProgressiveCPU = 1, ProgressiveGPU = 2 }
-        
-        
-        enum Sampling{ Auto = 0, Fixed = 1 }
+        export enum Lightmapper{ Enlighten = 0, ProgressiveCPU = 1, ProgressiveGPU = 2 }
         
         
-        enum FilterMode{ None = 0, Auto = 1, Advanced = 2 }
+        export enum Sampling{ Auto = 0, Fixed = 1 }
         
         
-        enum DenoiserType{ None = 0, Optix = 1, OpenImage = 2, RadeonPro = 3 }
+        export enum FilterMode{ None = 0, Auto = 1, Advanced = 2 }
         
         
-        enum FilterType{ Gaussian = 0, ATrous = 1, None = 2 }
+        export enum DenoiserType{ None = 0, Optix = 1, OpenImage = 2, RadeonPro = 3 }
+        
+        
+        export enum FilterType{ Gaussian = 0, ATrous = 1, None = 2 }
         
         
     }
-    namespace UnityEngine.Display {
+    export namespace UnityEngine.Display {
         
-        type DisplaysUpdatedDelegate = () => void;
+        export type DisplaysUpdatedDelegate = () => void;
         var DisplaysUpdatedDelegate: {new (func: () => void): DisplaysUpdatedDelegate;}
         
         
     }
-    namespace UnityEngine.Experimental.Rendering {
+    export namespace UnityEngine.Experimental.Rendering {
         /** Use this format to create either Textures or RenderTextures from scripts. */
-        enum GraphicsFormat{ None = 0, R8_SRGB = 1, R8G8_SRGB = 2, R8G8B8_SRGB = 3, R8G8B8A8_SRGB = 4, R8_UNorm = 5, R8G8_UNorm = 6, R8G8B8_UNorm = 7, R8G8B8A8_UNorm = 8, R8_SNorm = 9, R8G8_SNorm = 10, R8G8B8_SNorm = 11, R8G8B8A8_SNorm = 12, R8_UInt = 13, R8G8_UInt = 14, R8G8B8_UInt = 15, R8G8B8A8_UInt = 16, R8_SInt = 17, R8G8_SInt = 18, R8G8B8_SInt = 19, R8G8B8A8_SInt = 20, R16_UNorm = 21, R16G16_UNorm = 22, R16G16B16_UNorm = 23, R16G16B16A16_UNorm = 24, R16_SNorm = 25, R16G16_SNorm = 26, R16G16B16_SNorm = 27, R16G16B16A16_SNorm = 28, R16_UInt = 29, R16G16_UInt = 30, R16G16B16_UInt = 31, R16G16B16A16_UInt = 32, R16_SInt = 33, R16G16_SInt = 34, R16G16B16_SInt = 35, R16G16B16A16_SInt = 36, R32_UInt = 37, R32G32_UInt = 38, R32G32B32_UInt = 39, R32G32B32A32_UInt = 40, R32_SInt = 41, R32G32_SInt = 42, R32G32B32_SInt = 43, R32G32B32A32_SInt = 44, R16_SFloat = 45, R16G16_SFloat = 46, R16G16B16_SFloat = 47, R16G16B16A16_SFloat = 48, R32_SFloat = 49, R32G32_SFloat = 50, R32G32B32_SFloat = 51, R32G32B32A32_SFloat = 52, B8G8R8_SRGB = 56, B8G8R8A8_SRGB = 57, B8G8R8_UNorm = 58, B8G8R8A8_UNorm = 59, B8G8R8_SNorm = 60, B8G8R8A8_SNorm = 61, B8G8R8_UInt = 62, B8G8R8A8_UInt = 63, B8G8R8_SInt = 64, B8G8R8A8_SInt = 65, R4G4B4A4_UNormPack16 = 66, B4G4R4A4_UNormPack16 = 67, R5G6B5_UNormPack16 = 68, B5G6R5_UNormPack16 = 69, R5G5B5A1_UNormPack16 = 70, B5G5R5A1_UNormPack16 = 71, A1R5G5B5_UNormPack16 = 72, E5B9G9R9_UFloatPack32 = 73, B10G11R11_UFloatPack32 = 74, A2B10G10R10_UNormPack32 = 75, A2B10G10R10_UIntPack32 = 76, A2B10G10R10_SIntPack32 = 77, A2R10G10B10_UNormPack32 = 78, A2R10G10B10_UIntPack32 = 79, A2R10G10B10_SIntPack32 = 80, A2R10G10B10_XRSRGBPack32 = 81, A2R10G10B10_XRUNormPack32 = 82, R10G10B10_XRSRGBPack32 = 83, R10G10B10_XRUNormPack32 = 84, A10R10G10B10_XRSRGBPack32 = 85, A10R10G10B10_XRUNormPack32 = 86, RGB_DXT1_SRGB = 96, RGBA_DXT1_SRGB = 96, RGB_DXT1_UNorm = 97, RGBA_DXT1_UNorm = 97, RGBA_DXT3_SRGB = 98, RGBA_DXT3_UNorm = 99, RGBA_DXT5_SRGB = 100, RGBA_DXT5_UNorm = 101, R_BC4_UNorm = 102, R_BC4_SNorm = 103, RG_BC5_UNorm = 104, RG_BC5_SNorm = 105, RGB_BC6H_UFloat = 106, RGB_BC6H_SFloat = 107, RGBA_BC7_SRGB = 108, RGBA_BC7_UNorm = 109, RGB_PVRTC_2Bpp_SRGB = 110, RGB_PVRTC_2Bpp_UNorm = 111, RGB_PVRTC_4Bpp_SRGB = 112, RGB_PVRTC_4Bpp_UNorm = 113, RGBA_PVRTC_2Bpp_SRGB = 114, RGBA_PVRTC_2Bpp_UNorm = 115, RGBA_PVRTC_4Bpp_SRGB = 116, RGBA_PVRTC_4Bpp_UNorm = 117, RGB_ETC_UNorm = 118, RGB_ETC2_SRGB = 119, RGB_ETC2_UNorm = 120, RGB_A1_ETC2_SRGB = 121, RGB_A1_ETC2_UNorm = 122, RGBA_ETC2_SRGB = 123, RGBA_ETC2_UNorm = 124, R_EAC_UNorm = 125, R_EAC_SNorm = 126, RG_EAC_UNorm = 127, RG_EAC_SNorm = 128, RGBA_ASTC4X4_SRGB = 129, RGBA_ASTC4X4_UNorm = 130, RGBA_ASTC5X5_SRGB = 131, RGBA_ASTC5X5_UNorm = 132, RGBA_ASTC6X6_SRGB = 133, RGBA_ASTC6X6_UNorm = 134, RGBA_ASTC8X8_SRGB = 135, RGBA_ASTC8X8_UNorm = 136, RGBA_ASTC10X10_SRGB = 137, RGBA_ASTC10X10_UNorm = 138, RGBA_ASTC12X12_SRGB = 139, RGBA_ASTC12X12_UNorm = 140, YUV2 = 141, DepthAuto = 142, ShadowAuto = 143, VideoAuto = 144, RGBA_ASTC4X4_UFloat = 145, RGBA_ASTC5X5_UFloat = 146, RGBA_ASTC6X6_UFloat = 147, RGBA_ASTC8X8_UFloat = 148, RGBA_ASTC10X10_UFloat = 149, RGBA_ASTC12X12_UFloat = 150 }
+        export enum GraphicsFormat{ None = 0, R8_SRGB = 1, R8G8_SRGB = 2, R8G8B8_SRGB = 3, R8G8B8A8_SRGB = 4, R8_UNorm = 5, R8G8_UNorm = 6, R8G8B8_UNorm = 7, R8G8B8A8_UNorm = 8, R8_SNorm = 9, R8G8_SNorm = 10, R8G8B8_SNorm = 11, R8G8B8A8_SNorm = 12, R8_UInt = 13, R8G8_UInt = 14, R8G8B8_UInt = 15, R8G8B8A8_UInt = 16, R8_SInt = 17, R8G8_SInt = 18, R8G8B8_SInt = 19, R8G8B8A8_SInt = 20, R16_UNorm = 21, R16G16_UNorm = 22, R16G16B16_UNorm = 23, R16G16B16A16_UNorm = 24, R16_SNorm = 25, R16G16_SNorm = 26, R16G16B16_SNorm = 27, R16G16B16A16_SNorm = 28, R16_UInt = 29, R16G16_UInt = 30, R16G16B16_UInt = 31, R16G16B16A16_UInt = 32, R16_SInt = 33, R16G16_SInt = 34, R16G16B16_SInt = 35, R16G16B16A16_SInt = 36, R32_UInt = 37, R32G32_UInt = 38, R32G32B32_UInt = 39, R32G32B32A32_UInt = 40, R32_SInt = 41, R32G32_SInt = 42, R32G32B32_SInt = 43, R32G32B32A32_SInt = 44, R16_SFloat = 45, R16G16_SFloat = 46, R16G16B16_SFloat = 47, R16G16B16A16_SFloat = 48, R32_SFloat = 49, R32G32_SFloat = 50, R32G32B32_SFloat = 51, R32G32B32A32_SFloat = 52, B8G8R8_SRGB = 56, B8G8R8A8_SRGB = 57, B8G8R8_UNorm = 58, B8G8R8A8_UNorm = 59, B8G8R8_SNorm = 60, B8G8R8A8_SNorm = 61, B8G8R8_UInt = 62, B8G8R8A8_UInt = 63, B8G8R8_SInt = 64, B8G8R8A8_SInt = 65, R4G4B4A4_UNormPack16 = 66, B4G4R4A4_UNormPack16 = 67, R5G6B5_UNormPack16 = 68, B5G6R5_UNormPack16 = 69, R5G5B5A1_UNormPack16 = 70, B5G5R5A1_UNormPack16 = 71, A1R5G5B5_UNormPack16 = 72, E5B9G9R9_UFloatPack32 = 73, B10G11R11_UFloatPack32 = 74, A2B10G10R10_UNormPack32 = 75, A2B10G10R10_UIntPack32 = 76, A2B10G10R10_SIntPack32 = 77, A2R10G10B10_UNormPack32 = 78, A2R10G10B10_UIntPack32 = 79, A2R10G10B10_SIntPack32 = 80, A2R10G10B10_XRSRGBPack32 = 81, A2R10G10B10_XRUNormPack32 = 82, R10G10B10_XRSRGBPack32 = 83, R10G10B10_XRUNormPack32 = 84, A10R10G10B10_XRSRGBPack32 = 85, A10R10G10B10_XRUNormPack32 = 86, RGB_DXT1_SRGB = 96, RGBA_DXT1_SRGB = 96, RGB_DXT1_UNorm = 97, RGBA_DXT1_UNorm = 97, RGBA_DXT3_SRGB = 98, RGBA_DXT3_UNorm = 99, RGBA_DXT5_SRGB = 100, RGBA_DXT5_UNorm = 101, R_BC4_UNorm = 102, R_BC4_SNorm = 103, RG_BC5_UNorm = 104, RG_BC5_SNorm = 105, RGB_BC6H_UFloat = 106, RGB_BC6H_SFloat = 107, RGBA_BC7_SRGB = 108, RGBA_BC7_UNorm = 109, RGB_PVRTC_2Bpp_SRGB = 110, RGB_PVRTC_2Bpp_UNorm = 111, RGB_PVRTC_4Bpp_SRGB = 112, RGB_PVRTC_4Bpp_UNorm = 113, RGBA_PVRTC_2Bpp_SRGB = 114, RGBA_PVRTC_2Bpp_UNorm = 115, RGBA_PVRTC_4Bpp_SRGB = 116, RGBA_PVRTC_4Bpp_UNorm = 117, RGB_ETC_UNorm = 118, RGB_ETC2_SRGB = 119, RGB_ETC2_UNorm = 120, RGB_A1_ETC2_SRGB = 121, RGB_A1_ETC2_UNorm = 122, RGBA_ETC2_SRGB = 123, RGBA_ETC2_UNorm = 124, R_EAC_UNorm = 125, R_EAC_SNorm = 126, RG_EAC_UNorm = 127, RG_EAC_SNorm = 128, RGBA_ASTC4X4_SRGB = 129, RGBA_ASTC4X4_UNorm = 130, RGBA_ASTC5X5_SRGB = 131, RGBA_ASTC5X5_UNorm = 132, RGBA_ASTC6X6_SRGB = 133, RGBA_ASTC6X6_UNorm = 134, RGBA_ASTC8X8_SRGB = 135, RGBA_ASTC8X8_UNorm = 136, RGBA_ASTC10X10_SRGB = 137, RGBA_ASTC10X10_UNorm = 138, RGBA_ASTC12X12_SRGB = 139, RGBA_ASTC12X12_UNorm = 140, YUV2 = 141, DepthAuto = 142, ShadowAuto = 143, VideoAuto = 144, RGBA_ASTC4X4_UFloat = 145, RGBA_ASTC5X5_UFloat = 146, RGBA_ASTC6X6_UFloat = 147, RGBA_ASTC8X8_UFloat = 148, RGBA_ASTC10X10_UFloat = 149, RGBA_ASTC12X12_UFloat = 150 }
         
         /** Indicates how a Renderer is updated. */
-        enum RayTracingMode{ Off = 0, Static = 1, DynamicTransform = 2, DynamicGeometry = 3 }
+        export enum RayTracingMode{ Off = 0, Static = 1, DynamicTransform = 2, DynamicGeometry = 3 }
         
         /** 
                         Use a default format to create either Textures or RenderTextures from scripts based on platform specific capability.
                      */
-        enum DefaultFormat{ LDR = 0, HDR = 1 }
+        export enum DefaultFormat{ LDR = 0, HDR = 1 }
         
         
-        enum TextureCreationFlags{ None = 0, MipChain = 1, Crunch = 64 }
+        export enum TextureCreationFlags{ None = 0, MipChain = 1, Crunch = 64 }
         
         /** Use this format usages to figure out the capabilities of specific GraphicsFormat */
-        enum FormatUsage{ Sample = 0, Linear = 1, Sparse = 2, Render = 4, Blend = 5, GetPixels = 6, SetPixels = 7, SetPixels32 = 8, ReadPixels = 9, LoadStore = 10, MSAA2x = 11, MSAA4x = 12, MSAA8x = 13, StencilSampling = 16 }
+        export enum FormatUsage{ Sample = 0, Linear = 1, Sparse = 2, Render = 4, Blend = 5, GetPixels = 6, SetPixels = 7, SetPixels32 = 8, ReadPixels = 9, LoadStore = 10, MSAA2x = 11, MSAA4x = 12, MSAA8x = 13, StencilSampling = 16 }
         
         
     }
-    namespace UnityEngine.Mesh {
+    export namespace UnityEngine.Mesh {
         
-        class MeshDataArray extends System.ValueType implements System.IDisposable{ 
+        export class MeshDataArray extends System.ValueType implements System.IDisposable{ 
             
             public get Length(): number;
             
@@ -31254,7 +31256,7 @@ declare module 'csharp' {
         }
         
         
-        class MeshData extends System.ValueType{ 
+        export class MeshData extends System.ValueType{ 
             
             public get vertexCount(): number;
             
@@ -31308,82 +31310,82 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.GraphicsBuffer {
+    export namespace UnityEngine.GraphicsBuffer {
         
-        enum Target{ Vertex = 1, Index = 2, Structured = 16, Raw = 32, Append = 64, Counter = 128, IndirectArguments = 256, Constant = 512 }
-        
-        
-    }
-    namespace UnityEngine.LightProbeProxyVolume {
-        
-        enum BoundingBoxMode{ AutomaticLocal = 0, AutomaticWorld = 1, Custom = 2 }
-        
-        
-        enum ResolutionMode{ Automatic = 0, Custom = 1 }
-        
-        
-        enum ProbePositionMode{ CellCorner = 0, CellCenter = 1 }
-        
-        
-        enum RefreshMode{ Automatic = 0, EveryFrame = 1, ViaScripting = 2 }
-        
-        
-        enum QualityMode{ Low = 0, Normal = 1 }
-        
-        
-        enum DataFormat{ HalfFloat = 0, Float = 1 }
+        export enum Target{ Vertex = 1, Index = 2, Structured = 16, Raw = 32, Append = 64, Counter = 128, IndirectArguments = 256, Constant = 512 }
         
         
     }
-    namespace UnityEngine.Texture2D {
+    export namespace UnityEngine.LightProbeProxyVolume {
         
-        enum EXRFlags{ None = 0, OutputAsFloat = 1, CompressZIP = 2, CompressRLE = 4, CompressPIZ = 8 }
+        export enum BoundingBoxMode{ AutomaticLocal = 0, AutomaticWorld = 1, Custom = 2 }
+        
+        
+        export enum ResolutionMode{ Automatic = 0, Custom = 1 }
+        
+        
+        export enum ProbePositionMode{ CellCorner = 0, CellCenter = 1 }
+        
+        
+        export enum RefreshMode{ Automatic = 0, EveryFrame = 1, ViaScripting = 2 }
+        
+        
+        export enum QualityMode{ Low = 0, Normal = 1 }
+        
+        
+        export enum DataFormat{ HalfFloat = 0, Float = 1 }
         
         
     }
-    namespace UnityEngine.ADBannerView {
+    export namespace UnityEngine.Texture2D {
         
-        enum Layout{ Top = 0, Bottom = 1, TopLeft = 0, TopRight = 4, TopCenter = 8, BottomLeft = 1, BottomRight = 5, BottomCenter = 9, CenterLeft = 2, CenterRight = 6, Center = 10, Manual = -1 }
-        
-        
-        enum Type{ Banner = 0, MediumRect = 1 }
+        export enum EXRFlags{ None = 0, OutputAsFloat = 1, CompressZIP = 2, CompressRLE = 4, CompressPIZ = 8 }
         
         
-        type BannerWasClickedDelegate = () => void;
+    }
+    export namespace UnityEngine.ADBannerView {
+        
+        export enum Layout{ Top = 0, Bottom = 1, TopLeft = 0, TopRight = 4, TopCenter = 8, BottomLeft = 1, BottomRight = 5, BottomCenter = 9, CenterLeft = 2, CenterRight = 6, Center = 10, Manual = -1 }
+        
+        
+        export enum Type{ Banner = 0, MediumRect = 1 }
+        
+        
+        export type BannerWasClickedDelegate = () => void;
         var BannerWasClickedDelegate: {new (func: () => void): BannerWasClickedDelegate;}
         
         
-        type BannerWasLoadedDelegate = () => void;
+        export type BannerWasLoadedDelegate = () => void;
         var BannerWasLoadedDelegate: {new (func: () => void): BannerWasLoadedDelegate;}
         
         
     }
-    namespace UnityEngine.ADInterstitialAd {
+    export namespace UnityEngine.ADInterstitialAd {
         
-        type InterstitialWasLoadedDelegate = () => void;
+        export type InterstitialWasLoadedDelegate = () => void;
         var InterstitialWasLoadedDelegate: {new (func: () => void): InterstitialWasLoadedDelegate;}
         
         
     }
-    namespace UnityEngine.Random {
+    export namespace UnityEngine.Random {
         
-        class State extends System.ValueType{ 
+        export class State extends System.ValueType{ 
             
         }
         
         
     }
-    namespace UnityEngine.Scripting {
+    export namespace UnityEngine.Scripting {
         /** PreserveAttribute prevents byte code stripping from removing a class, method, field, or property. */
-        class PreserveAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
+        export class PreserveAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             
         }
         
         
     }
-    namespace UnityEngine.ShaderVariantCollection {
+    export namespace UnityEngine.ShaderVariantCollection {
         
-        class ShaderVariant extends System.ValueType{ 
+        export class ShaderVariant extends System.ValueType{ 
             
             public shader: UnityEngine.Shader;
             
@@ -31399,82 +31401,82 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.TouchScreenKeyboard {
+    export namespace UnityEngine.TouchScreenKeyboard {
         
-        enum Status{ Visible = 0, Done = 1, Canceled = 2, LostFocus = 3 }
+        export enum Status{ Visible = 0, Done = 1, Canceled = 2, LostFocus = 3 }
         
         
     }
-    namespace UnityEngine.RectTransform {
+    export namespace UnityEngine.RectTransform {
         
-        type ReapplyDrivenProperties = (driven: UnityEngine.RectTransform) => void;
+        export type ReapplyDrivenProperties = (driven: UnityEngine.RectTransform) => void;
         var ReapplyDrivenProperties: {new (func: (driven: UnityEngine.RectTransform) => void): ReapplyDrivenProperties;}
         
         
-        enum Edge{ Left = 0, Right = 1, Top = 2, Bottom = 3 }
+        export enum Edge{ Left = 0, Right = 1, Top = 2, Bottom = 3 }
         
         
-        enum Axis{ Horizontal = 0, Vertical = 1 }
-        
-        
-    }
-    namespace UnityEngine.SocialPlatforms {
-        
-        interface ISocialPlatform{ 
-            
-        }
-        
-        
-        interface ILocalUser extends UnityEngine.SocialPlatforms.IUserProfile{ 
-            
-        }
-        
-        
-        interface IUserProfile{ 
-            
-        }
-        
-        
-        interface IAchievementDescription{ 
-            
-        }
-        
-        
-        interface IAchievement{ 
-            
-        }
-        
-        
-        interface IScore{ 
-            
-        }
-        
-        
-        interface ILeaderboard{ 
-            
-        }
+        export enum Axis{ Horizontal = 0, Vertical = 1 }
         
         
     }
-    namespace UnityEngine.GridLayout {
+    export namespace UnityEngine.SocialPlatforms {
         
-        enum CellLayout{ Rectangle = 0, Hexagon = 1, Isometric = 2, IsometricZAsY = 3 }
+        export interface ISocialPlatform{ 
+            
+        }
         
         
-        enum CellSwizzle{ XYZ = 0, XZY = 1, YXZ = 2, YZX = 3, ZXY = 4, ZYX = 5 }
+        export interface ILocalUser extends UnityEngine.SocialPlatforms.IUserProfile{ 
+            
+        }
+        
+        
+        export interface IUserProfile{ 
+            
+        }
+        
+        
+        export interface IAchievementDescription{ 
+            
+        }
+        
+        
+        export interface IAchievement{ 
+            
+        }
+        
+        
+        export interface IScore{ 
+            
+        }
+        
+        
+        export interface ILeaderboard{ 
+            
+        }
         
         
     }
-    namespace UnityEngine.GUI {
+    export namespace UnityEngine.GridLayout {
         
-        enum ToolbarButtonSize{ Fixed = 0, FitToContents = 1 }
+        export enum CellLayout{ Rectangle = 0, Hexagon = 1, Isometric = 2, IsometricZAsY = 3 }
         
         
-        type WindowFunction = (id: number) => void;
+        export enum CellSwizzle{ XYZ = 0, XZY = 1, YXZ = 2, YZX = 3, ZXY = 4, ZYX = 5 }
+        
+        
+    }
+    export namespace UnityEngine.GUI {
+        
+        export enum ToolbarButtonSize{ Fixed = 0, FitToContents = 1 }
+        
+        
+        export type WindowFunction = (id: number) => void;
         var WindowFunction: {new (func: (id: number) => void): WindowFunction;}
         
         
-        class Scope extends System.Object implements System.IDisposable{ 
+        export class Scope extends System.Object implements System.IDisposable{ 
             
             public Dispose():void;
             
@@ -31482,91 +31484,91 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.TextEditor {
+    export namespace UnityEngine.TextEditor {
         
-        enum DblClickSnapping{ WORDS = 0, PARAGRAPHS = 1 }
+        export enum DblClickSnapping{ WORDS = 0, PARAGRAPHS = 1 }
         
         
     }
-    namespace Unity.Jobs {
+    export namespace Unity.Jobs {
         /** JobHandle. */
-        class JobHandle extends System.ValueType{ 
+        export class JobHandle extends System.ValueType{ 
             
         }
         
         
     }
-    namespace UnityEngine.CompositeCollider2D {
+    export namespace UnityEngine.CompositeCollider2D {
         
-        enum GeometryType{ Outlines = 0, Polygons = 1 }
-        
-        
-        enum GenerationType{ Synchronous = 0, Manual = 1 }
+        export enum GeometryType{ Outlines = 0, Polygons = 1 }
         
         
-    }
-    namespace UnityEngine.ScreenCapture {
-        
-        enum StereoScreenCaptureMode{ LeftEye = 1, RightEye = 2, BothEyes = 3 }
+        export enum GenerationType{ Synchronous = 0, Manual = 1 }
         
         
     }
-    namespace UnityEngine.Terrain {
+    export namespace UnityEngine.ScreenCapture {
         
-        enum MaterialType{ BuiltInStandard = 0, BuiltInLegacyDiffuse = 1, BuiltInLegacySpecular = 2, Custom = 3 }
+        export enum StereoScreenCaptureMode{ LeftEye = 1, RightEye = 2, BothEyes = 3 }
         
         
     }
-    namespace UnityEngine.Font {
+    export namespace UnityEngine.Terrain {
         
-        type FontTextureRebuildCallback = () => void;
+        export enum MaterialType{ BuiltInStandard = 0, BuiltInLegacyDiffuse = 1, BuiltInLegacySpecular = 2, Custom = 3 }
+        
+        
+    }
+    export namespace UnityEngine.Font {
+        
+        export type FontTextureRebuildCallback = () => void;
         var FontTextureRebuildCallback: {new (func: () => void): FontTextureRebuildCallback;}
         
         
     }
-    namespace UnityEngine.GridBrushBase {
+    export namespace UnityEngine.GridBrushBase {
         
-        enum RotationDirection{ Clockwise = 0, CounterClockwise = 1 }
-        
-        
-        enum FlipAxis{ X = 0, Y = 1 }
+        export enum RotationDirection{ Clockwise = 0, CounterClockwise = 1 }
         
         
-        enum Tool{ Select = 0, Move = 1, Paint = 2, Box = 3, Pick = 4, Erase = 5, FloodFill = 6 }
+        export enum FlipAxis{ X = 0, Y = 1 }
+        
+        
+        export enum Tool{ Select = 0, Move = 1, Paint = 2, Box = 3, Pick = 4, Erase = 5, FloodFill = 6 }
         
         
     }
-    namespace UnityEngine.CanvasRenderer {
+    export namespace UnityEngine.CanvasRenderer {
         
-        type OnRequestRebuild = () => void;
+        export type OnRequestRebuild = () => void;
         var OnRequestRebuild: {new (func: () => void): OnRequestRebuild;}
         
         
     }
-    namespace UnityEngine.UISystemProfilerApi {
+    export namespace UnityEngine.UISystemProfilerApi {
         
-        enum SampleType{ Layout = 0, Render = 1 }
+        export enum SampleType{ Layout = 0, Render = 1 }
         
         
     }
-    namespace UnityEngine.RemoteSettings {
+    export namespace UnityEngine.RemoteSettings {
         
-        type UpdatedEventHandler = () => void;
+        export type UpdatedEventHandler = () => void;
         var UpdatedEventHandler: {new (func: () => void): UpdatedEventHandler;}
         
         
     }
-    namespace System.Text {
+    export namespace System.Text {
         
-        class Encoding extends System.Object implements System.ICloneable{ 
+        export class Encoding extends System.Object implements System.ICloneable{ 
             
         }
         
         
     }
-    namespace UnityEngine.UI.Dropdown {
+    export namespace UnityEngine.UI.Dropdown {
         
-        class OptionData extends System.Object{ 
+        export class OptionData extends System.Object{ 
             
             public get text(): string;
             public set text(value: string);
@@ -31585,7 +31587,7 @@ declare module 'csharp' {
         }
         
         
-        class DropdownEvent extends UnityEngine.Events.UnityEvent$1<number> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class DropdownEvent extends UnityEngine.Events.UnityEvent$1<number> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -31596,7 +31598,7 @@ declare module 'csharp' {
         }
         
         
-        class OptionDataList extends System.Object{ 
+        export class OptionDataList extends System.Object{ 
             
             public get options(): System.Collections.Generic.List$1<UnityEngine.UI.Dropdown.OptionData>;
             public set options(value: System.Collections.Generic.List$1<UnityEngine.UI.Dropdown.OptionData>);
@@ -31607,75 +31609,75 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.UI.GraphicRaycaster {
+    export namespace UnityEngine.UI.GraphicRaycaster {
         
-        enum BlockingObjects{ None = 0, TwoD = 1, ThreeD = 2, All = 3 }
-        
-        
-    }
-    namespace UnityEngine.UI.Image {
-        
-        enum Type{ Simple = 0, Sliced = 1, Tiled = 2, Filled = 3 }
-        
-        
-        enum FillMethod{ Horizontal = 0, Vertical = 1, Radial90 = 2, Radial180 = 3, Radial360 = 4 }
-        
-        
-        enum OriginHorizontal{ Left = 0, Right = 1 }
-        
-        
-        enum OriginVertical{ Bottom = 0, Top = 1 }
-        
-        
-        enum Origin90{ BottomLeft = 0, TopLeft = 1, TopRight = 2, BottomRight = 3 }
-        
-        
-        enum Origin180{ Bottom = 0, Left = 1, Top = 2, Right = 3 }
-        
-        
-        enum Origin360{ Bottom = 0, Right = 1, Top = 2, Left = 3 }
+        export enum BlockingObjects{ None = 0, TwoD = 1, ThreeD = 2, All = 3 }
         
         
     }
-    namespace UnityEngine.UI.AspectRatioFitter {
+    export namespace UnityEngine.UI.Image {
         
-        enum AspectMode{ None = 0, WidthControlsHeight = 1, HeightControlsWidth = 2, FitInParent = 3, EnvelopeParent = 4 }
-        
-        
-    }
-    namespace UnityEngine.UI.CanvasScaler {
-        
-        enum ScaleMode{ ConstantPixelSize = 0, ScaleWithScreenSize = 1, ConstantPhysicalSize = 2 }
+        export enum Type{ Simple = 0, Sliced = 1, Tiled = 2, Filled = 3 }
         
         
-        enum ScreenMatchMode{ MatchWidthOrHeight = 0, Expand = 1, Shrink = 2 }
+        export enum FillMethod{ Horizontal = 0, Vertical = 1, Radial90 = 2, Radial180 = 3, Radial360 = 4 }
         
         
-        enum Unit{ Centimeters = 0, Millimeters = 1, Inches = 2, Points = 3, Picas = 4 }
+        export enum OriginHorizontal{ Left = 0, Right = 1 }
         
         
-    }
-    namespace UnityEngine.UI.ContentSizeFitter {
-        
-        enum FitMode{ Unconstrained = 0, MinSize = 1, PreferredSize = 2 }
+        export enum OriginVertical{ Bottom = 0, Top = 1 }
         
         
-    }
-    namespace UnityEngine.UI.GridLayoutGroup {
-        
-        enum Corner{ UpperLeft = 0, UpperRight = 1, LowerLeft = 2, LowerRight = 3 }
+        export enum Origin90{ BottomLeft = 0, TopLeft = 1, TopRight = 2, BottomRight = 3 }
         
         
-        enum Axis{ Horizontal = 0, Vertical = 1 }
+        export enum Origin180{ Bottom = 0, Left = 1, Top = 2, Right = 3 }
         
         
-        enum Constraint{ Flexible = 0, FixedColumnCount = 1, FixedRowCount = 2 }
+        export enum Origin360{ Bottom = 0, Right = 1, Top = 2, Left = 3 }
         
         
     }
-    namespace UnityEngine.UI.MaskableGraphic {
+    export namespace UnityEngine.UI.AspectRatioFitter {
         
-        class CullStateChangedEvent extends UnityEngine.Events.UnityEvent$1<boolean> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export enum AspectMode{ None = 0, WidthControlsHeight = 1, HeightControlsWidth = 2, FitInParent = 3, EnvelopeParent = 4 }
+        
+        
+    }
+    export namespace UnityEngine.UI.CanvasScaler {
+        
+        export enum ScaleMode{ ConstantPixelSize = 0, ScaleWithScreenSize = 1, ConstantPhysicalSize = 2 }
+        
+        
+        export enum ScreenMatchMode{ MatchWidthOrHeight = 0, Expand = 1, Shrink = 2 }
+        
+        
+        export enum Unit{ Centimeters = 0, Millimeters = 1, Inches = 2, Points = 3, Picas = 4 }
+        
+        
+    }
+    export namespace UnityEngine.UI.ContentSizeFitter {
+        
+        export enum FitMode{ Unconstrained = 0, MinSize = 1, PreferredSize = 2 }
+        
+        
+    }
+    export namespace UnityEngine.UI.GridLayoutGroup {
+        
+        export enum Corner{ UpperLeft = 0, UpperRight = 1, LowerLeft = 2, LowerRight = 3 }
+        
+        
+        export enum Axis{ Horizontal = 0, Vertical = 1 }
+        
+        
+        export enum Constraint{ Flexible = 0, FixedColumnCount = 1, FixedRowCount = 2 }
+        
+        
+    }
+    export namespace UnityEngine.UI.MaskableGraphic {
+        
+        export class CullStateChangedEvent extends UnityEngine.Events.UnityEvent$1<boolean> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -31687,18 +31689,18 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.UI.Navigation {
+    export namespace UnityEngine.UI.Navigation {
         
-        enum Mode{ None = 0, Horizontal = 1, Vertical = 2, Automatic = 3, Explicit = 4 }
+        export enum Mode{ None = 0, Horizontal = 1, Vertical = 2, Automatic = 3, Explicit = 4 }
         
         
     }
-    namespace UnityEngine.UI.Scrollbar {
+    export namespace UnityEngine.UI.Scrollbar {
         
-        enum Direction{ LeftToRight = 0, RightToLeft = 1, BottomToTop = 2, TopToBottom = 3 }
+        export enum Direction{ LeftToRight = 0, RightToLeft = 1, BottomToTop = 2, TopToBottom = 3 }
         
         
-        class ScrollEvent extends UnityEngine.Events.UnityEvent$1<number> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class ScrollEvent extends UnityEngine.Events.UnityEvent$1<number> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -31710,15 +31712,15 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.UI.ScrollRect {
+    export namespace UnityEngine.UI.ScrollRect {
         
-        enum MovementType{ Unrestricted = 0, Elastic = 1, Clamped = 2 }
-        
-        
-        enum ScrollbarVisibility{ Permanent = 0, AutoHide = 1, AutoHideAndExpandViewport = 2 }
+        export enum MovementType{ Unrestricted = 0, Elastic = 1, Clamped = 2 }
         
         
-        class ScrollRectEvent extends UnityEngine.Events.UnityEvent$1<UnityEngine.Vector2> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export enum ScrollbarVisibility{ Permanent = 0, AutoHide = 1, AutoHideAndExpandViewport = 2 }
+        
+        
+        export class ScrollRectEvent extends UnityEngine.Events.UnityEvent$1<UnityEngine.Vector2> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -31730,12 +31732,12 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.UI.Slider {
+    export namespace UnityEngine.UI.Slider {
         
-        enum Direction{ LeftToRight = 0, RightToLeft = 1, BottomToTop = 2, TopToBottom = 3 }
+        export enum Direction{ LeftToRight = 0, RightToLeft = 1, BottomToTop = 2, TopToBottom = 3 }
         
         
-        class SliderEvent extends UnityEngine.Events.UnityEvent$1<number> implements UnityEngine.ISerializationCallbackReceiver{ 
+        export class SliderEvent extends UnityEngine.Events.UnityEvent$1<number> implements UnityEngine.ISerializationCallbackReceiver{ 
             
             public constructor();
             
@@ -31747,16 +31749,16 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEngine.UI.DefaultControls {
+    export namespace UnityEngine.UI.DefaultControls {
         
-        interface IFactoryControls{ 
+        export interface IFactoryControls{ 
             
             CreateGameObject($name: string, ...components: System.Type[]):UnityEngine.GameObject;
             
         }
         
         
-        class Resources extends System.ValueType{ 
+        export class Resources extends System.ValueType{ 
             
             public standard: UnityEngine.Sprite;
             
@@ -31776,9 +31778,9 @@ declare module 'csharp' {
         
         
     }
-    namespace SandBox {
+    export namespace SandBox {
         
-        class TestJs extends UnityEngine.MonoBehaviour{ 
+        export class TestJs extends UnityEngine.MonoBehaviour{ 
             
             public constructor();
             
@@ -31786,9 +31788,9 @@ declare module 'csharp' {
         
         
     }
-    namespace Examples.Node_tsc {
+    export namespace Examples.Node_tsc {
         
-        class UIEvent extends UnityEngine.MonoBehaviour{ 
+        export class UIEvent extends UnityEngine.MonoBehaviour{ 
             
             public constructor();
             
@@ -31796,9 +31798,9 @@ declare module 'csharp' {
         
         
     }
-    namespace Js {
+    export namespace Js {
         
-        class JsBinding extends UnityEngine.MonoBehaviour{ 
+        export class JsBinding extends UnityEngine.MonoBehaviour{ 
             
             public args: System.Array$1<Js.JsArg>;
             
@@ -31807,7 +31809,7 @@ declare module 'csharp' {
         }
         
         
-        class JsArg extends System.ValueType{ 
+        export class JsArg extends System.ValueType{ 
             
             public name: string;
             
@@ -31816,7 +31818,7 @@ declare module 'csharp' {
         }
         
         
-        class JsBindingEditor extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
+        export class JsBindingEditor extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
             
             public constructor();
             
@@ -31824,34 +31826,34 @@ declare module 'csharp' {
         
         
     }
-    namespace UnityEditor {
+    export namespace UnityEditor {
         /** Derive from this base class to create a custom inspector or editor for your custom object. */
-        class Editor extends UnityEngine.ScriptableObject implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
+        export class Editor extends UnityEngine.ScriptableObject implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
             
         }
         
         
-        interface IPreviewable{ 
+        export interface IPreviewable{ 
             
         }
         
         
-        interface IToolModeOwner{ 
+        export interface IToolModeOwner{ 
             
         }
         
         
     }
-    namespace Puerts.JsEnv {
+    export namespace Puerts.JsEnv {
         
-        type JsEnvCreateCallback = (env: Puerts.JsEnv, loader: Puerts.ILoader, debugPort: number) => void;
+        export type JsEnvCreateCallback = (env: Puerts.JsEnv, loader: Puerts.ILoader, debugPort: number) => void;
         var JsEnvCreateCallback: {new (func: (env: Puerts.JsEnv, loader: Puerts.ILoader, debugPort: number) => void): JsEnvCreateCallback;}
         
         
-        type JsEnvDisposeCallback = (env: Puerts.JsEnv) => void;
+        export type JsEnvDisposeCallback = (env: Puerts.JsEnv) => void;
         var JsEnvDisposeCallback: {new (func: (env: Puerts.JsEnv) => void): JsEnvDisposeCallback;}
         
         
     }
     
-}
+//}
