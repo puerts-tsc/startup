@@ -5,13 +5,18 @@ import { $ref, $unref, $generic, $promise, $typeof } from 'puerts'
 import './ExtensionDecl'
 import GameObject = UnityEngine.GameObject;
 
+let react = require('react');
+let metadata = require('reflect-metadata');
+let reconciler = require('react-reconciler');
+let testRenderer = require('react-test-renderer');
+
 export default function() {
     
-    global.$log = function(msg: string){
-        console.log("[test 021]",msg);
+    global.$log = function(msg: string) {
+        console.log('[test 021]', msg);
     }
     
-    global.$log("hello, puerts");
+    global.$log('hello, puerts');
     
     //静态函数
     UnityEngine.Debug.Log('hello world');
@@ -116,7 +121,5 @@ export default function() {
     }
     
     asyncCall().catch(e => console.log('catch: ' + e));
-    
-    
     
 }

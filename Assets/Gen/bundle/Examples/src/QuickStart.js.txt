@@ -4,11 +4,15 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const csharp_1 = require("csharp");
 const puerts_1 = require("puerts");
 require("./ExtensionDecl");
+let react = require('react');
+let metadata = require('reflect-metadata');
+let reconciler = require('react-reconciler');
+let testRenderer = require('react-test-renderer');
 function default_1() {
     global.$log = function (msg) {
-        console.log("[test 021]", msg);
+        console.log('[test 021]', msg);
     };
-    global.$log("hello, puerts");
+    global.$log('hello, puerts');
     //静态函数
     csharp_1.UnityEngine.Debug.Log('hello world');
     //对象构造
