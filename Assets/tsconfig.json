@@ -44,6 +44,7 @@
     "include": [
         "Gen/Typing/**/*",
         "Plugins/Puerts/Typing/**/*",
+        "Scripts/Node-tsc/Typing/**/*",
         "**/src/**/*",
         "**/Typing/**/*"
     ],
