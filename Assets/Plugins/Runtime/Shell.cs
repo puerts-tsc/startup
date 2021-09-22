@@ -7,7 +7,7 @@ using Debug = UnityEngine.Debug;
 
 namespace Admin
 {
-    public class ShellExec
+    public class Shell
     {
         // 当找不到文件或者拒绝访问时出现的Win32错误码
         const int ERROR_FILE_NOT_FOUND = 2;
@@ -18,12 +18,13 @@ namespace Admin
         /// </summary>
         /// <param name="cmd"></param>
         /// <returns></returns>
-        public static string Wsl( string cmd ) => Run( "wsl.exe", $"{cmd} 2>&1" );
+        public static string Wsl( string cmd, bool noWindow = true ) 
+            => Run( "wsl.exe", $"{cmd} 2>&1", noWindow );
 
-        public static string Run( string command, string argument )
+        public static string Run( string command, string argument, bool noWindow = true )
         {
             ProcessStartInfo start = new ProcessStartInfo();
-            start.CreateNoWindow = true;
+            start.CreateNoWindow = noWindow;
             start.FileName = command;
             start.Arguments = argument;
             start.ErrorDialog = false;
@@ -92,7 +93,7 @@ namespace Admin
         {
             //MyProcess myProcess = new MyProcess();
             //myProcess.Execute();
-            ShellExec.Execute( "ls" );
+            Shell.Execute( "ls" );
             Console.ReadKey();
         }
     }
