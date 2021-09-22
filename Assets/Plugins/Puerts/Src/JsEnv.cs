@@ -585,6 +585,7 @@ namespace Puerts
 
         public void WaitDebugger()
         {
+
 #if THREAD_SAFE
             lock(this) {
 #endif

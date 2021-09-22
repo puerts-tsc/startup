@@ -1,0 +1,46 @@
+{
+    "compilerOptions": {
+        "target": "esnext",
+        "module": "commonjs",
+        "jsx": "react",
+        "allowSyntheticDefaultImports": true,
+        "emitDecoratorMetadata": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "resolveJsonModule": true,
+        "strict": false,
+        "strictNullChecks": false,
+        "strictPropertyInitialization": false,
+        "sourceMap": true,
+        "noImplicitAny": false,
+        "skipLibCheck": true,
+        "baseUrl": ".",
+        "paths": {
+            "*": [
+                "Scripts/Node-tsc/src/*",
+                "Examples/src/*"
+            ],
+            "node-tsc/*": [
+                "Scripts/Node-tsc/src/*"
+            ],
+            "examples/*": [
+                "Examples/src/*"
+            ]
+        },
+        "typeRoots": [
+            "Plugins/Puerts/Typing",
+            "Scripts/Node-tsc/Typing",
+            "Gen/Typing",
+            "../node_modules/@types"
+        ],
+        "outDir": "Gen/dist~"
+    },
+    "include": [
+        "**/src/**/*",
+        "**/Typing/**/*"
+    ],
+    "exclude": [
+        "node_modules",
+        "**/*.spec.ts"
+    ]
+}

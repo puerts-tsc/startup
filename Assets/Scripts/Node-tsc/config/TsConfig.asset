@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d1bfaa2201471fb4a9ae1d495be1ce79, type: 3}
+  m_Name: TsConfig
+  m_EditorClassIdentifier: 
+  debugPort: 9229
+  isWatching: 1
+  isPause: 0
+  isLog: 0
+  isReportLoaderLog: 1
+  dirs:
+  - {fileID: 102900000, guid: 760e71bc473a98240951e1a20483bbf1, type: 3}
+  - {fileID: 102900000, guid: a5821ef98a11f89498cf8c1a4142b2f1, type: 3}

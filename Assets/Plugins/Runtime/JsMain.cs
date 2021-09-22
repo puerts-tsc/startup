@@ -16,90 +16,10 @@ namespace Runtime
     [ExecuteAlways]
     public class JsMain : MonoBehaviour
     {
-        public class CustomJsLoader : ILoader
-        {
-            private string root = "";
-            public CustomJsLoader() { }
-
-            public CustomJsLoader( string root )
-            {
-                this.root = root;
-            }
-
-            private string PathToUse( string filepath )
-            {
-                return filepath.EndsWith( ".cjs" ) ? filepath.Substring( 0, filepath.Length - 4 ) : filepath;
-            }
-
-            public bool FileExists( string filepath )
-            {
-                Debug.Log( $"require: {filepath}" );
-                if ( Application.isEditor && File.Exists( Path.Combine( root, filepath ) ) ) {
-                    return true;
-                }
-                else {
-                    try {
-                        var location = Addressables.LoadResourceLocationsAsync( $"Res/{filepath}.txt" )
-                            .WaitForCompletion();
-                        if ( location.Any() ) {
-                            Debug.Log( $"{filepath} addressable exists." );
-                            return true;
-                        }
-                    }
-                    catch ( TargetException e ) {
-                        Debug.Log( e.Message );
-                    }
-
-                    string pathToUse = this.PathToUse( filepath );
-                    var asset = UnityEngine.Resources.Load( pathToUse );
-                    if ( asset == null ) {
-                        Debug.Log( $"{filepath} not exist" );
-                    }
-                    else {
-                        Debug.Log( $"{filepath} resource exists." );
-                    }
-
-                    return asset != null;
-                }
-            }
-
-            public string ReadFile( string filepath, out string debugpath )
-            {
-                debugpath = Path.GetFullPath( Path.Combine( root, filepath ) );
-                if ( Application.isEditor && File.Exists( debugpath ) ) {
-                    Debug.Log( debugpath );
-                    return File.ReadAllText( debugpath );
-                }
-
-                UnityEngine.TextAsset file = null;
-                try {
-                    var location = Addressables.LoadResourceLocationsAsync( $"Res/{filepath}.txt" ).WaitForCompletion();
-                    if ( location.Any() ) {
-                        file = Addressables.LoadAssetAsync<TextAsset>( $"Res/{filepath}.txt" ).WaitForCompletion();
-                    }
-                }
-                catch ( TargetException e ) {
-                    Debug.Log( e.Message );
-                }
-
-                if ( file == null ) {
-                    string pathToUse = this.PathToUse( filepath );
-                    file = (UnityEngine.TextAsset)UnityEngine.Resources.Load( pathToUse );
-                }
-#if UNITY_EDITOR
-                if ( file != null ) {
-                    debugpath = Path.GetFullPath( Path.Combine( Application.dataPath, "..",
-                        AssetDatabase.GetAssetPath( file ) ) );
-                }
-#endif
-                return file?.text;
-            }
-        }
-
         static JsEnv jsEnv;
         public static JsEnv env => CheckOrLoadEnv();
-        static int port = 9222;
         bool isReady => jsEnv != null && jsEnv.isolate != IntPtr.Zero;
+        public static TsConfig config => TsConfig.instance;
 #if UNITY_EDITOR
         [InitializeOnLoadMethod, DidReloadScripts]
 #endif
@@ -112,18 +32,22 @@ namespace Runtime
             }
             catch ( TargetException e ) { }
 
-            CheckOrLoadEnv();
+            if ( !TsConfig.hasInstance ) {
+                TsConfig.OnLoad += () => CheckOrLoadEnv();
+            }
+            else {
+                CheckOrLoadEnv();
+            }
         }
 
-        static TsConfig config => TsConfig.instance ?? TsConfig.FindAsset();
 
         static JsEnv CheckOrLoadEnv()
         {
             if ( jsEnv == null || jsEnv.isolate == IntPtr.Zero ) {
-                var root = Path.GetFullPath( $"{Application.dataPath}/../{config.OutputPath}" );
+                var root = Path.GetFullPath( $"{Application.dataPath}/../{config.outputPath}" );
                 Debug.Log( $"root: {root}" );
                 var mode = Application.isEditor ? JsEnvMode.Node : JsEnvMode.Default;
-                jsEnv = new JsEnv( new CustomJsLoader( root ), port, mode );
+                jsEnv = new JsEnv( new CustomJsLoader( root ), config.debugPort, mode );
                 AutoUsing();
                 jsEnv.Eval( @"require('log-plus')" );
                 RunQuickStart();

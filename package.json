@@ -1,20 +1,22 @@
 {
-  "name": "node-tsc",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "@types/chrome-remote-interface": "^0.31.3",
-    "@types/node": "^16.7.13",
-    "chokidar": "^3.5.2",
-    "chrome-remote-interface": "^0.31.0",
-    "mkdirp": "^1.0.4",
-    "ts-node": "^10.2.1",
-    "typescript": "^4.4.2"
-  }
+    "name": "node-tsc",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "author": "",
+    "license": "ISC",
+    "scripts": {
+        "postbuild": "cd Assets && node Scripts/Node-tsc/copyJsFile.js Gen/dist~ Gen/bundle && cd -",
+        "build": "npx tsc -p Assets/tsconfig.json",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "@types/chrome-remote-interface": "^0.31.3",
+        "@types/node": "^16.7.13",
+        "chokidar": "^3.5.2",
+        "chrome-remote-interface": "^0.31.0",
+        "mkdirp": "^1.0.4",
+        "ts-node": "^10.2.1",
+        "typescript": "^4.4.2"
+    }
 }
