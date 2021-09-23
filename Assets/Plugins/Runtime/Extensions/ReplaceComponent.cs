@@ -2,7 +2,7 @@ using System.Linq;
 using System.Reflection;
 using UnityEngine;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 /// <summary>
 ///     https://xbuba.com/questions/54973000

@@ -10,23 +10,21 @@
     {
         public static void AutoUsing(this JsEnv jsEnv)
         {
-            jsEnv.UsingAction<Puerts.JsEnv, Puerts.ILoader, System.Int32>();
             jsEnv.UsingAction<System.Boolean>();
             jsEnv.UsingAction<System.Boolean, System.Boolean, System.Int32>();
             jsEnv.UsingAction<System.Int32>();
+            jsEnv.UsingAction<System.Int32, UnityEngine.Vector2>();
             jsEnv.UsingAction<System.IntPtr, Puerts.ISetValueToJs, System.IntPtr, System.Object>();
-            jsEnv.UsingAction<System.String, System.Boolean, System.String>();
-            jsEnv.UsingAction<System.String, System.String, UnityEngine.LogType>();
-            jsEnv.UsingAction<UnityEngine.CullingGroupEvent>();
+            jsEnv.UsingAction<System.Single>();
             jsEnv.UsingAction<UnityEngine.CustomRenderTexture, System.Int32>();
-            jsEnv.UsingAction<UnityEngine.ReflectionProbe, UnityEngine.ReflectionProbe.ReflectionProbeEvent>();
+            jsEnv.UsingAction<UnityEngine.Vector2>();
             jsEnv.UsingFunc<System.Boolean>();
             jsEnv.UsingFunc<System.Int32, System.Boolean>();
             jsEnv.UsingFunc<System.Int32, System.Int32, System.Int32>();
             jsEnv.UsingFunc<System.IntPtr, Puerts.IGetValueFromJs, System.IntPtr, System.Boolean, System.Object>();
             jsEnv.UsingFunc<System.Reflection.Assembly, System.String, System.Boolean, System.Type>();
             jsEnv.UsingFunc<System.Reflection.MemberInfo, System.Object, System.Boolean>();
-            jsEnv.UsingFunc<System.String, System.Int32, System.Char, System.Char>();
+            jsEnv.UsingFunc<System.Single, System.Single, System.Single>();
             jsEnv.UsingFunc<System.Type, System.Object, System.Boolean>();
             jsEnv.UsingFunc<UnityEngine.UI.ILayoutElement, System.Single>();
             

@@ -2,12 +2,11 @@
 using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using System.Linq;
-
 #if ECS
 using Unity.Entities;
 #endif
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 static class TypeExtensions {
 

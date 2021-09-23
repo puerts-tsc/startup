@@ -6,10 +6,14 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
-using GameEngine.Extensions;
+using Runtime.Extensions;
 using Sirenix.Utilities;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Callbacks;
+#endif
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;

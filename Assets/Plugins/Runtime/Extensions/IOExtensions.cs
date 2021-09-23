@@ -1,7 +1,7 @@
 using System;
 using System.IO;
 
-namespace UnityRoyale.Puerts.Runtime.Extensions {
+namespace Runtime.Extensions {
 
 public static class IOExtensions {
 

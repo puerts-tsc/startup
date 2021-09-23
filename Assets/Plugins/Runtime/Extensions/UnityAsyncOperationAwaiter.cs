@@ -2,7 +2,7 @@ using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using UnityEngine;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 public static partial class UnityAsyncOperationAwaiter {
 

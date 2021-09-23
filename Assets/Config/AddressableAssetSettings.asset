@@ -37,7 +37,7 @@ MonoBehaviour:
   m_RemoteCatalogLoadPath:
     m_Id: 4a238afdaa7944e419d418f3f25316ca
   m_ContentStateBuildPath: 
-  m_overridePlayerVersion: 0.1.0
+  m_overridePlayerVersion: '[VER]'
   m_GroupAssets:
   - {fileID: 11400000, guid: 83687d87c2dee3f43a3d068518f5ed7f, type: 2}
   - {fileID: 11400000, guid: 2a85c7408be63a94ba034059f4711525, type: 2}
@@ -80,7 +80,7 @@ MonoBehaviour:
       - m_Id: 58822e15009a49a4f9ad4671f0b55bdb
         m_Value: '[UnityEngine.AddressableAssets.Addressables.BuildPath]/[BuildTarget]'
       - m_Id: 2ee14fef0154551409f75ed0c945cef9
-        m_Value: http://[PrivateIpAddress]
+        m_Value: http://[PrivateIpAddress]:[HostingServicePort]
       - m_Id: fc2d97af1c52762448eb235541a6139e
         m_Value: 1.0.0
     m_ProfileEntryNames:
@@ -131,7 +131,7 @@ MonoBehaviour:
         m_SerializedData:
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
-          m_Data: 57490
+          m_Data: 3690
           m_Key: HostingServicePort
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Int32
@@ -143,7 +143,7 @@ MonoBehaviour:
           m_Key: ContentRoot
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.Boolean
-          m_Data: True
+          m_Data: False
           m_Key: IsEnabled
         - m_AssemblyName: mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
           m_ClassName: System.String

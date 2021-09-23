@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Text.RegularExpressions;
+using Runtime;
 using Sirenix.Utilities;
 using UnityEditor;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace Puerts
 {
     public static class Gen
     {
-        [MenuItem( "Puerts/Generate Extensions", false, -102 )]
+        [MenuItem( "NodeTSC/生成 Extensions", false, -102 )]
         static void GenerateExtensions()
         {
             var mb = Puerts.Editor.Generator.Utils.extensionMethods;
@@ -56,45 +57,32 @@ export default function() {{
 
     console.log(""init extensions"");
 ";
-            File.WriteAllText( Application.dataPath + "/Scripts/src~/extensions.ts", $"{head}\n{output}\n}}" );
+            var path = TsConfig.instance.rootPath + "/src/gen/extensions.ts";
+            Directory.CreateDirectory( Path.GetDirectoryName( path ) ?? "" );
+            File.WriteAllText( path, $"{head}\n{output}\n}}" );
         }
 
-        [MenuItem( "Puerts/[new] Generate All Without Binding", false, -105 )]
+        [MenuItem( "NodeTSC/一键生成 Bindings,Using,Extensions", false, -105 )]
         public static void GenerateDTS()
         {
-            //NodeTSCAndHotReload.UnWatch();
             Puerts.Editor.Generator.Menu.GenerateDTS();
             Puerts.Editor.GeneratorUsing.GenerateUsingCode();
 
-            //var start = DateTime.Now;
+            var start = DateTime.Now;
             var src = Path.Combine( Configure.GetCodeOutputDirectory(), "Typing/csharp" );
-            var saveTo = string.Join( "/", Application.dataPath, "Scripts/Typing" );
+            var saveTo = TsConfig.instance.rootPath +  "/Typing";
             var dts = File.ReadAllText( $"{saveTo}/extra/index.d.ts" );
             // 替换掉type后面有个*的报错
             var content = dts + "\n" + File.ReadAllText( $"{src}/index.d.ts" );
-            content = Regex.Replace( content, @"(\w)\*([^\*])", "$1 $2" ,RegexOptions.Multiline);
-                //new Regex( @"(\w)\*([^\*])" ).Replace( content, "$1 $2" );
-
+            content = Regex.Replace( content, @"(\w)\*([^\*])", "$1 $2", RegexOptions.Multiline );
+            //new Regex( @"(\w)\*([^\*])" ).Replace( content, "$1 $2" );
             File.WriteAllText( $"{src}/index.d.ts", content );
 
-//            //Directory.CreateDirectory(saveTo);
-//            Directory.CreateDirectory(saveTo + "/csharp");
-//            //Puerts.Editor.Generator.Utils.GenerateDTS();
-//            //File.Copy($"{src}/index.d.ts", $"{saveTo}/index.d.ts", true);
-//            using (StreamWriter textWriter = new StreamWriter($"{saveTo}/csharp/index.d.ts", false, Encoding.UTF8)) {
-//                //string fileContext = typingRender(ToTypingGenInfo(tsTypes));
-//                textWriter.Write(File.ReadAllText($"{saveTo}/extra/index.d.ts") + "\n" +
-//                    File.ReadAllText($"{src}/index.d.ts"));
-//                textWriter.Flush();
-//            }
-//
-//            File.Delete($"{src}/index.d.ts");
             GenerateExtensions();
             //ExamplesCfg.TestUsingAction();
 
-            //Debug.Log("finished! use " + (DateTime.Now - start).TotalMilliseconds + " ms");
+            Debug.Log("finished! use " + (DateTime.Now - start).TotalMilliseconds + " ms");
             AssetDatabase.Refresh();
-            //NodeTSCAndHotReload.Watch();
         }
     }
 }

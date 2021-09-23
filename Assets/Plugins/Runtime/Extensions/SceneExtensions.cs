@@ -1,12 +1,10 @@
+using UnityEngine;
+using UnityEngine.SceneManagement;
 #if UNITY_EDITOR
-using UnityEditor.iOS.Extensions.Common;
 using UnityEditor.SceneManagement;
 #endif
 
-using UnityEngine;
-using UnityEngine.SceneManagement;
-
-namespace GameEngine.Extensions
+namespace Runtime.Extensions
 {
     public static partial class SceneExtensions
     {

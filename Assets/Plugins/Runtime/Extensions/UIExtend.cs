@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 /// <summary>
 ///     RectTransform 的 DOJump 效果位移不对的补丁

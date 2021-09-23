@@ -1,8 +1,7 @@
 ﻿using System;
 using Puerts;
-using Runtime;
 
-namespace Plugins.Runtime
+namespace Runtime
 {
     public static partial class JsEnvUtils
     {

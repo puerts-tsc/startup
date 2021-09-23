@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: TsConfig
   m_EditorClassIdentifier: 
   debugPort: 9229
+  m_TscRoot: {fileID: 102900000, guid: 760e71bc473a98240951e1a20483bbf1, type: 3}
+  rootPath: Assets/Scripts/Node-tsc
   isWatching: 1
   isPause: 0
   isLog: 0

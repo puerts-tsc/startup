@@ -3,7 +3,7 @@ using System.Collections;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 public static class MonoBehaviourExt {
 

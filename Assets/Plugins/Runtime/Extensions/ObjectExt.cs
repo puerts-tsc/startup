@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using UnityEngine;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 public static class ObjectExt {
 

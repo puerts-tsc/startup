@@ -4,8 +4,12 @@ using System.Linq;
 using System.Reflection;
 using Puerts;
 using Sirenix.OdinInspector;
+
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Callbacks;
+#endif
+
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 #if UNITY_EDITOR

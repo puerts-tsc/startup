@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 public static class ListExtension {
 

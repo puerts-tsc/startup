@@ -1300,11 +1300,13 @@ namespace Puerts.Editor
                     if (Utils.IsDelegate(type) && type != typeof(Delegate) && type != typeof(MulticastDelegate))
                     {
                         MethodInfo delegateMethod = type.GetMethod("Invoke");
-                        AddRefType(workTypes, refTypes, delegateMethod.ReturnType);
-                        foreach (var pinfo in delegateMethod.GetParameters())
-                        {
-                            AddRefType(workTypes, refTypes, pinfo.ParameterType);
+                        if ( delegateMethod != null ) { // fix:error
+                            AddRefType(workTypes, refTypes, delegateMethod.ReturnType);
+                            foreach ( var pinfo in delegateMethod.GetParameters() ) {
+                                AddRefType( workTypes, refTypes, pinfo.ParameterType );
+                            }
                         }
+                        
                     }
 
                     var baseType = type.BaseType;

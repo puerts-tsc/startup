@@ -4,8 +4,11 @@ using System.Reflection;
 using System.Text.RegularExpressions;
 using Puerts;
 
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Build.Pipeline.Tasks;
+#endif
+
 using UnityEngine;
 using UnityEngine.AddressableAssets;
 
@@ -16,7 +19,7 @@ namespace Runtime
         private string root = "";
         public static TsConfig config => TsConfig.instance;
         public CustomJsLoader() { }
-        static string genPath => Application.dataPath + "/Gen/dist~";
+        static string genPath => TsConfig.instance.rootPath + "/dist~";
 
         static string DistPath( string baseDir, string path ) =>
             Regex.Replace( baseDir + "/src/", @"^Assets\/", "/" ) + path;
@@ -26,13 +29,13 @@ namespace Runtime
             this.root = root;
         }
 
-        string log( string s )
+        string log( params string[] log )
         {
             if ( config.isReportLoaderLog ) {
-                Debug.Log( s,AssetDatabase.LoadAssetAtPath<TextAsset>( s.Replace( Application.dataPath ,"Assets")  ) );
+                Debug.Log( string.Join( ", ", log ) );
             }
 
-            return s;
+            return log[0];
         }
 
         private string PathToUse( string filepath )
@@ -43,13 +46,17 @@ namespace Runtime
         public bool FileExists( string filepath )
         {
             if ( config.isReportLoaderLog ) Debug.Log( $"require: {filepath}" );
+            if ( filepath.StartsWith( "node_modules/" ) ) {
+                return File.Exists( $"{Application.dataPath}/../{filepath}" );
+            }
+
             if ( Application.isEditor &&
-                config.sourcePath.Any( s => File.Exists( log(genPath + DistPath( s, filepath )) ) ) ) {
+                config.sourcePath.Any( s => File.Exists( log( genPath + DistPath( s, filepath ) ) ) ) ) {
                 return true;
             }
             else {
                 try {
-                    if ( null != config.sourcePath.Select( s => log("Res" + DistPath( s, filepath + ".txt" )) )
+                    if ( null != config.sourcePath.Select( s => log( "Res" + DistPath( s, filepath + ".txt" ) ) )
                         .FirstOrDefault( s =>
                             Addressables.LoadResourceLocationsAsync( s ).WaitForCompletion().Any() ) ) {
                         if ( config.isReportLoaderLog ) Debug.Log( $"{filepath} addressable exists." );
@@ -76,10 +83,19 @@ namespace Runtime
         public string ReadFile( string filepath, out string debugpath )
         {
             debugpath = root + "/" + filepath;
+            if ( filepath.StartsWith( "node_modules/" ) ) {
+                debugpath = Path.GetFullPath( $"{Application.dataPath}/../{filepath}" );
+                if ( File.Exists( debugpath ) ) {
+                    return File.ReadAllText( debugpath );
+                }
+
+                return null;
+            }
+
             if ( Application.isEditor ) {
                 var path = config.sourcePath.FirstOrDefault( s => File.Exists( genPath + DistPath( s, filepath ) ) );
                 if ( path != null ) {
-                    debugpath = Path.GetFullPath(genPath+ DistPath( path, filepath ) );
+                    debugpath = Path.GetFullPath( genPath + DistPath( path, filepath ) );
                     if ( config.isReportLoaderLog ) Debug.Log( $"debugPath: {debugpath}" );
                     return File.ReadAllText( debugpath );
                 }

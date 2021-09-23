@@ -5,7 +5,7 @@ using System.IO;
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
-namespace Admin
+namespace Runtime
 {
     public class Shell
     {

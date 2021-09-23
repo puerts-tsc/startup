@@ -3,7 +3,7 @@ using Cysharp.Threading.Tasks;
 using UnityEngine.Events;
 using UnityEngine.ResourceManagement.AsyncOperations;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 public static class AddressablesExtesion {
 

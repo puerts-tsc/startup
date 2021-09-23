@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using Admin;
 using Sirenix.OdinInspector;
+using Sirenix.Serialization;
 using Sirenix.Utilities;
 using UnityEditor;
 using UnityEngine;
@@ -32,7 +32,26 @@ namespace Runtime
         [Header( "Inspector 调试接口" )]
         public int debugPort = 9229;
 
+        [FormerlySerializedAs( "TscRoot" )]
+        [SerializeField, HideInInspector]
+        UnityEngine.Object m_TscRoot;
 
+        [ShowInInspector,PropertyOrder(-1)]
+        UnityEngine.Object TscRootDir {
+            get => m_TscRoot;
+            set {
+                m_TscRoot = value;
+#if UNITY_EDITOR
+                rootPath = AssetDatabase.GetAssetPath( m_TscRoot );
+                if ( rootPath != null && !Directory.Exists( rootPath ) ) {
+                    rootPath = Path.GetDirectoryName( rootPath );
+                }
+#endif
+            }
+        }
+
+        [ReadOnly]
+        public string rootPath;
 
         public bool isWatching;
         public bool isPause;

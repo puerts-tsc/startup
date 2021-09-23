@@ -3,7 +3,7 @@ using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.Networking;
 
-namespace GameEngine.Extensions {
+namespace Runtime.Extensions {
 
 public class UnityWebRequestAwaiter : INotifyCompletion {
     UnityWebRequestAsyncOperation asyncOp;

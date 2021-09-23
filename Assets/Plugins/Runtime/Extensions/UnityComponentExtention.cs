@@ -3,7 +3,7 @@ using UnityEditor;
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-namespace GameEngine.Extensions
+namespace Runtime.Extensions
 {
 #if UNITY_EDITOR
 #endif

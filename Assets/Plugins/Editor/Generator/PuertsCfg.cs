@@ -15,7 +15,6 @@ using Runtime;
 using Sirenix.Utilities;
 using UnityEditor;
 using UnityEngine;
-using UnityRoyale.Puerts.Runtime;
 
 //1、配置类必须打[Configure]标签
 //2、必须放Editor目录
