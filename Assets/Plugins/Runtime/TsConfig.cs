@@ -32,6 +32,8 @@ namespace Runtime
         [Header( "Inspector 调试接口" )]
         public int debugPort = 9229;
 
+
+
         public bool isWatching;
         public bool isPause;
         public bool isLog;

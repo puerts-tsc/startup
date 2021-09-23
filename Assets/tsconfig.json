@@ -39,7 +39,7 @@
             "Gen/Typing",
             "../node_modules/@types"
         ],
-        "outDir": "Gen/dist~"
+        "outDir": "Scripts/Node-tsc/dist~"
     },
     "include": [
         "Gen/Typing/**/*",

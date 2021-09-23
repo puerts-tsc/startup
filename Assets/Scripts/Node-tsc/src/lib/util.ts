@@ -23,7 +23,7 @@ export function getCompilerOptions(): ts.CompilerOptions {
 }
 
 export function getTsProjectPath(): string {
-    return path.resolve(CS.UnityEngine.Application.dataPath, 'puerts-tsc');
+    return path.resolve(CS.UnityEngine.Application.dataPath, '');
     //, CS.UnityEditor.AssetDatabase.GetAssetPath(CS.Runtime.TsConfig.TsRoot) 
     
 }

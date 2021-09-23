@@ -18,7 +18,7 @@ using System.Runtime.CompilerServices;
 namespace Puerts.Editor
 {
     namespace Generator {
-        class Utils {
+        public class Utils {
             public const BindingFlags Flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.Static | BindingFlags.DeclaredOnly;
 
             public static List<MethodInfo> filters = null;
@@ -1357,7 +1357,7 @@ namespace Puerts.Editor
             public static void ClearAll()
             {
                 var saveTo = Configure.GetCodeOutputDirectory();
-                if (Directory.Exists(saveTo))
+                if (Directory.Exists(saveTo ))
                 {
                     Directory.Delete(saveTo, true);
                     AssetDatabase.DeleteAsset(saveTo.Substring(saveTo.IndexOf("Assets") + "Assets".Length));
@@ -1410,12 +1410,19 @@ namespace Puerts.Editor
                             GenClass.TypeGenInfo typeGenInfo = GenClass.TypeGenInfo.FromType(type, genTypes);
                             typeGenInfo.BlittableCopy = blittableCopyTypes.Contains(type);
                             typeGenInfos.Add(typeGenInfo);
-                            string filePath = saveTo + typeGenInfo.WrapClassName + ".cs";
+                            var sp = typeGenInfo.WrapClassName.Split( '_' ).Where( s => !string.IsNullOrEmpty( s ) ).ToArray();
+                            var sub = sp.Length > 2 ? string.Join( "/", sp.Take( sp.Length - 2 ) ) : "global";
+                            Directory.CreateDirectory( saveTo  + sub);
+                            string filePath = saveTo + sub + "/"
+                                +  /*typeGenInfo.WrapClassName*/
+                                ( sp.Length > 2 ?  sp.Skip( sp.Length -2 ).First() : sp.First() ) + ".cs";
 
                             int uniqueId = 1;
                             while (makeFileUniqueMap.ContainsKey(filePath.ToLower()))
                             {
-                                filePath = saveTo + typeGenInfo.WrapClassName + "_" + uniqueId + ".cs";
+                                filePath = saveTo  + sub + "/"
+                                    + /*typeGenInfo.WrapClassName*/
+                                    ( sp.Length > 2 ? sp.Skip( sp.Length -2 ).First() : sp.First() ) + "_" + uniqueId + ".cs";
                                 uniqueId++;
                             }
                             makeFileUniqueMap.Add(filePath.ToLower(), true);
@@ -1429,7 +1436,7 @@ namespace Puerts.Editor
                         }
 
                         var autoRegisterRender = templateGetter("autoreg.tpl");
-                        using (StreamWriter textWriter = new StreamWriter(saveTo + "AutoStaticCodeRegister.cs", false, Encoding.UTF8))
+                        using (StreamWriter textWriter = new StreamWriter(saveTo  + "AutoStaticCodeRegister.cs", false, Encoding.UTF8))
                         {
                             string fileContext = autoRegisterRender(typeGenInfos.ToArray());
                             textWriter.Write(fileContext);

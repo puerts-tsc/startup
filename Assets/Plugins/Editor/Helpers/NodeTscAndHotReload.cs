@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Text.RegularExpressions;
 using Puerts;
 using Runtime;
@@ -93,7 +94,9 @@ and run `npm i` in project directory
         }
 
         static string tsRoot => Application.dataPath + "/";
-        static string tsConfig => File.ReadAllText( $"{tsRoot}tsconfig.json".HoverTreeClearMark().Replace( "\"", "'" ) );
+
+        static string tsConfig =>
+            File.ReadAllText( $"{tsRoot}tsconfig.json".HoverTreeClearMark().Replace( "\"", "'" ) );
 
 //    moduleRequire('ts-node').register({
 //    compilerOptions: {
@@ -118,30 +121,42 @@ and run `npm i` in project directory
         [MenuItem( "NodeTSC/Compile TsProj" )]
         static void Compile()
         {
-            EditorUtility.DisplayProgressBar( "complile ts", "create jsEnv", 0 );
-            JsEnv env = new JsEnv( JsEnvMode.Node );
-            bool result = env.Eval<bool>( @"
-            try {
-                const moduleRequire = require('module').createRequire('" + tsRoot + @"')
-                moduleRequire('ts-node').register(" + tsConfig + @")
-                moduleRequire('./Scripts/Node-tsc/src/compile.ts')
+            Debug.Log( "compiling" );
+            var func = JsMain.env.Eval<Action<string>>( "require('compile').default" );
+            var extensions = new List<string> { ".ts", ".tsx" };
+            TsConfig.instance.sourcePath.ForEach( dir => {
+                var files = JsonUtility.ToJson( Directory
+                    .GetFiles( Path.GetFullPath( Application.dataPath + $"/../{dir}/src" ), "*.*",
+                        SearchOption.AllDirectories ).Where( f => extensions.IndexOf( Path.GetExtension( f ) ) >= 0 )
+                    .ToArray() );
+                Debug.Log( files );
+                func.Invoke( files );
+            } );
 
-                true;
-            } catch(e) {
-                console.error(e);
-                console.error('Some error triggered. Maybe you should run `npm i` in project directory');
-                false;
-            }
-        " );
-            if ( !result ) {
-                EditorUtility.ClearProgressBar();
-            }
-
-            env.Dispose();
-            env = null;
+//            EditorUtility.DisplayProgressBar( "compile ts", "create jsEnv", 0 );
+//            JsEnv env = new JsEnv( JsEnvMode.Node );
+//            bool result = env.Eval<bool>( @"
+//            try {
+//                const moduleRequire = require('module').createRequire('" + tsRoot + @"')
+//                moduleRequire('ts-node').register(" + tsConfig + @")
+//                moduleRequire('./Scripts/Node-tsc/src/compile.ts')
+//
+//                true;
+//            } catch(e) {
+//                console.error(e);
+//                console.error('Some error triggered. Maybe you should run `npm i` in project directory');
+//                false;
+//            }
+//        " );
+//            if ( !result ) {
+//                EditorUtility.ClearProgressBar();
+//            }
+//
+//            env.Dispose();
+//            env = null;
         }
 
-        [MenuItem( "NodeTSC/Compile TsProj" )]
+        [MenuItem( "NodeTSC/Compile TsProj" ,true)]
         static bool CompileValidate()
         {
             return PuertsDLL.IsJSEngineBackendSupported( JsEnvMode.Node );
