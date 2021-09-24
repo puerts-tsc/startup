@@ -19,7 +19,7 @@ namespace Helpers
 
             var compileTime = DateTime.Now - startTime;
       
-            Debug.Log($"=== 12 CompilationPipeline Assembly Finished {s} ({compileTime.ToString("s\\.fff")}s)");
+            //Debug.Log($"=== 12 CompilationPipeline Assembly Finished {s} ({compileTime.ToString("s\\.fff")}s)");
 
             NodeTscAndHotReload.Reload();
 

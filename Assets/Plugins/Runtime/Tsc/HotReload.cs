@@ -1,4 +1,5 @@
-﻿using Sirenix.OdinInspector;
+﻿#if UNITY_EDITOR
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace Helpers
@@ -12,3 +13,4 @@ namespace Helpers
         void Watch() => NodeTscAndHotReload.Watch();
     }
 }
+#endif

@@ -7,10 +7,10 @@ import GameObject = UnityEngine.GameObject;
 import Button = UnityEngine.UI.Button;
 import JsMain = Runtime.JsMain;
 
-let react = require('react');
-let metadata = require('reflect-metadata');
-let reconciler = require('react-reconciler');
-let testRenderer = require('react-test-renderer');
+// let react = require('react');
+// let metadata = require('reflect-metadata');
+// let reconciler = require('react-reconciler');
+// let testRenderer = require('react-test-renderer');
 
 //extensions();
 

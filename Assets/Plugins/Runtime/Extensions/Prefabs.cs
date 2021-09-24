@@ -1,21 +1,18 @@
-
+#if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.Experimental.SceneManagement;
+#endif
 using UnityEngine;
-#if UNITY_EDITOR
-#endif
-#if UNITY_EDITOR
-#endif
 
 // using WebSocketSharp;
 
-namespace Runtime {
-
-public static class Prefabs {
-
-    public static void SyncAssets(this GameObject gameObject, string path = null)
+namespace Runtime
+{
+    public static class Prefabs
     {
-        return;
+        public static void SyncAssets( this GameObject gameObject, string path = null )
+        {
+            return;
 
 //    #if UNITY_EDITOR
 //        if (path.IsNullOrEmpty()) {
@@ -62,32 +59,28 @@ public static class Prefabs {
 //            }
 //        }
 //    #endif
-    }
-
-    public static string _GetPrefabSavePath(this GameObject gameObject, bool getDirName = false)
-    {
-    #if UNITY_EDITOR
-        var stage = PrefabStageUtility.GetCurrentPrefabStage();
-        var path = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(gameObject);
-        var root = PrefabUtility.GetNearestPrefabInstanceRoot(gameObject) ?? stage?.prefabContentsRoot;
-
-        if (path.IsNullOrEmpty()) {
-            path = stage?.assetPath;
         }
 
-        if (path.IsNullOrEmpty()) {
-            path = gameObject.scene.path;
+        public static string _GetPrefabSavePath( this GameObject gameObject, bool getDirName = false )
+        {
+        #if UNITY_EDITOR
+            var stage = PrefabStageUtility.GetCurrentPrefabStage();
+            var path = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot( gameObject );
+            var root = PrefabUtility.GetNearestPrefabInstanceRoot( gameObject ) ?? stage?.prefabContentsRoot;
+            if ( path.IsNullOrEmpty() ) {
+                path = stage?.assetPath;
+            }
+
+            if ( path.IsNullOrEmpty() ) {
+                path = gameObject.scene.path;
+            }
+
+            var dir = path.Replace( "\\", "/" ).Replace( ".prefab", "" ).Replace( ".unity", "" );
+            return getDirName
+                ? $"{dir}/{gameObject.name}".CreateDirFromFilePath( false )
+                : $"{dir}/{root?.name ?? gameObject.scene.name}-{gameObject.name}.prefab".CreateDirFromFilePath();
+        #endif
+            return Application.dataPath + "/../Temp";
         }
-
-        var dir = path.Replace("\\", "/").Replace(".prefab", "").Replace(".unity", "");
-
-        return getDirName
-            ? $"{dir}/{gameObject.name}".CreateDirFromFilePath(false)
-            : $"{dir}/{root?.name ?? gameObject.scene.name}-{gameObject.name}.prefab".CreateDirFromFilePath();
-
-    #endif
-        return Application.dataPath + "/../Temp";
     }
-}
-
 }

@@ -34,7 +34,7 @@ namespace Helpers
         [DidReloadScripts]
         public static void Reload()
         {
-            Debug.Log( "reload NodeTscAndHotReload 111" );
+            //Debug.Log( "reload NodeTscAndHotReload 111" );
             //
             JsMain.SetTscReloadTime = DateTimeOffset.Now.ToString( "h:mm:ss" );
             EditorApplication.update -= Update;

@@ -4,10 +4,10 @@ const csharp_1 = require("csharp");
 const puerts_1 = require("puerts");
 require("./ExtensionDecl");
 var JsMain = csharp_1.Runtime.JsMain;
-let react = require('react');
-let metadata = require('reflect-metadata');
-let reconciler = require('react-reconciler');
-let testRenderer = require('react-test-renderer');
+// let react = require('react');
+// let metadata = require('reflect-metadata');
+// let reconciler = require('react-reconciler');
+// let testRenderer = require('react-test-renderer');
 //extensions();
 class TestA {
     constructor() {
