@@ -4,6 +4,7 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using Puerts;
+using Runtime;
 
 namespace Examples.Configure
 {
@@ -44,6 +45,7 @@ namespace Examples.Configure
                 return new List<Type>()
                 {
                     //直接指定的类型
+                    typeof(JsMain),
                     typeof(JsEnv),
                     typeof(ILoader),
                 };
@@ -57,6 +59,8 @@ namespace Examples.Configure
                 // 在这里添加名字空间
                 var namespaces = new List<string>()
                 {
+                    "DG",
+                    "Runtime",
                     "UnityEngine",
                     "UnityEngine.UI",
                 };
@@ -67,6 +71,7 @@ namespace Examples.Configure
                     select type);
                 string[] customAssemblys = new string[] {
                     "Assembly-CSharp",
+                    "Assembly-CSharp-firstpass",
                 };
                 var customTypes = (from assembly in customAssemblys.Select(s => Assembly.Load(s))
                     where !(assembly.ManifestModule is System.Reflection.Emit.ModuleBuilder)

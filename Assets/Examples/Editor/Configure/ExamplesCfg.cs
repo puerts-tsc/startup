@@ -58,11 +58,11 @@ namespace Examples.Configure
                     typeof(UnityEngine.UI.Toggle.ToggleEvent),
                     typeof(UnityEngine.Events.UnityEvent<bool>),
 
-                    typeof(PuertsDeclareTest.Plants.pumkinPeaShooter),
-                    typeof(PuertsDeclareTest.Plants.Shootable),
-                    typeof(PuertsDeclareTest.Zombies.Walkable),
-                    typeof(PuertsDeclareTest.Zombies.Flyable),
-                    typeof(PuertsDeclareTest.Zombies.BalloonZombie)
+                    typeof(Plants.pumkinPeaShooter),
+                    typeof(Plants.Shootable),
+                    typeof(Zombies.Walkable),
+                    typeof(Zombies.Flyable),
+                    typeof(Zombies.BalloonZombie)
                 };
             }
         }

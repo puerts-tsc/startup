@@ -64,7 +64,10 @@ var global = global || (function () { return this; }());
                     return nodeRequire(moduleName);
                     
                 } catch(e) {
-                    throw new Error("can not find " + moduleName);
+                    //throw new Error("can not find " + moduleName);
+                    console.warn("can not find " + moduleName);
+                    return null;
+    
                 }
             }
 

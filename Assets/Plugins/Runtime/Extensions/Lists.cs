@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using Sirenix.Utilities;
 
-namespace Runtime.Extensions
+namespace Runtime
 {
     public static class Lists
     {
+        public static void Add<T>(this List<string> list)
+        {
+            list.Add(typeof(T).Name);
+        }
 
         public static bool ContainsList<T>(this IEnumerable<IEnumerable<T>> list, IEnumerable<T> other)
         {

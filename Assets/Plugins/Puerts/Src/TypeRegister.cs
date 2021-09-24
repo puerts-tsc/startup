@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Linq;
+using UnityEngine;
 
 namespace Puerts
 {
@@ -464,7 +465,20 @@ namespace Puerts
                     {
                         constraintedArgumentTypes[j] = genericArguments[j].BaseType;
                     }
-                    method = method.MakeGenericMethod(constraintedArgumentTypes);
+
+                    if ( constraintedArgumentTypes.Any( t => t.IsConstructedGenericType ) ) {
+                        continue;
+                    }
+
+                    try {
+                         method = method.MakeGenericMethod(constraintedArgumentTypes);
+                    }
+                    catch ( Exception e ) {
+                        Debug.LogError($"{method.DeclaringType.FullName} => {method.Name}({string.Join( ", ", constraintedArgumentTypes.Select( t => t.FullName ) )})"  );
+                        //throw;
+                        continue;
+                    }
+                   
                 }
 
                 if (method.IsConstructor || method.IsGenericMethodDefinition)

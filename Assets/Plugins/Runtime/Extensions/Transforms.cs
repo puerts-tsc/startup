@@ -13,7 +13,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 
-namespace Runtime.Extensions
+namespace Runtime
 {
 
     public static partial class Transforms
@@ -136,7 +136,7 @@ namespace Runtime.Extensions
 
         public static Transform AlignTo(this Transform src, Transform dest, bool moveToLast = false)
         {
-            new RectTransformData(dest).PushToTransform(src);
+            new RectTransforms.RectTransformData(dest).PushToTransform(src);
             if (moveToLast) {
                 src.SetAsLastSibling();
             }
@@ -146,7 +146,7 @@ namespace Runtime.Extensions
 
         public static RectTransform AlignTo(this RectTransform src, RectTransform dest, bool moveToLast = false)
         {
-            new RectTransformData(dest).PushToTransform(src);
+            new RectTransforms.RectTransformData(dest).PushToTransform(src);
             if (moveToLast) {
                 src.SetAsLastSibling();
             }

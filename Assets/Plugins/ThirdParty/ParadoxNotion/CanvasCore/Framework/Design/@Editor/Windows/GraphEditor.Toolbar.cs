@@ -5,7 +5,7 @@ using UnityEditor;
 using NodeCanvas.Framework;
 using ParadoxNotion.Design;
 using System.Linq;
-using Runtime.Extensions;
+using Runtime;
 
 namespace NodeCanvas.Editor
 {

@@ -13,7 +13,7 @@ using Object = UnityEngine.Object;
 
 namespace Runtime
 {
-    [CreateAssetMenu( fileName = "TsConfig", menuName = "Node-tsc/TsConfig", order = 0 )]
+    [CreateAssetMenu( fileName = "TsConfig", menuName = "tsc/TsConfig", order = 0 )]
     public class TsConfig : ScriptableObject
     {
         static TsConfig m_Instance;
@@ -22,7 +22,8 @@ namespace Runtime
         // ?? ( m_Instance = FindAsset() ?? ScriptableObject.CreateInstance<TsConfig>() );
 
         public static bool hasInstance => m_Instance != null;
-        public string outputPath => Application.dataPath + "/Gen/dist~";
+        public string outputPath => rootPath + "/dist~";
+        public bool isRunQuickStart;
 
 //        [Header( "ts项目目录" ), SerializeField]
 //        public Object TsRoot;
@@ -36,18 +37,23 @@ namespace Runtime
         [SerializeField, HideInInspector]
         UnityEngine.Object m_TscRoot;
 
-        [ShowInInspector,PropertyOrder(-1)]
+        [ShowInInspector, PropertyOrder( -1 )]
         UnityEngine.Object TscRootDir {
             get => m_TscRoot;
             set {
                 m_TscRoot = value;
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
                 rootPath = AssetDatabase.GetAssetPath( m_TscRoot );
                 if ( rootPath != null && !Directory.Exists( rootPath ) ) {
                     rootPath = Path.GetDirectoryName( rootPath );
                 }
-#endif
+            #endif
             }
+        }
+
+        public bool isLogDebugPath {
+            get { return m_IsLogDebugPath; }
+            set { m_IsLogDebugPath = value; }
         }
 
         [ReadOnly]
@@ -56,7 +62,8 @@ namespace Runtime
         public bool isWatching;
         public bool isPause;
         public bool isLog;
-        public bool isReportLoaderLog;
+        [FormerlySerializedAs( "isReportLoaderLog" )]
+        public bool isLogRequirePath;
 
         [Title( "脚本目录", "目录里面必须存在 `src/` 和 `package.json`", horizontalLine: false )]
         [SerializeField]
@@ -64,6 +71,9 @@ namespace Runtime
 
         [ReadOnly, ShowInInspector]
         public readonly List<string> sourcePath = new List<string>();
+
+        [SerializeField]
+        bool m_IsLogDebugPath;
 
         public static event Action OnLoad;
 
@@ -83,7 +93,17 @@ namespace Runtime
             }
         }
 
-#if UNITY_EDITOR
+        public static TsConfig FindAsset()
+        {
+            TsConfig asset = null;
+        #if UNITY_EDITOR
+            asset = AssetDatabase.FindAssets( $"t:{typeof(TsConfig).Name}" ).Select( guid =>
+                AssetDatabase.LoadAssetAtPath<TsConfig>( AssetDatabase.GUIDToAssetPath( guid ) ) ).FirstOrDefault();
+        #endif
+            return asset;
+        }
+
+    #if UNITY_EDITOR
         void OnValidate()
         {
             sourcePath.Clear();
@@ -91,29 +111,23 @@ namespace Runtime
                 .Where( t => Directory.Exists( $"{t}/src" ) && File.Exists( $"{t}/package.json" ) )
                 .ForEach( path => sourcePath.Add( path ) );
         }
-#endif
 
-        public static TsConfig FindAsset()
-        {
-            TsConfig asset = null;
-#if UNITY_EDITOR
-            asset = AssetDatabase.FindAssets( $"t:{typeof(TsConfig).Name}" ).Select( guid =>
-                AssetDatabase.LoadAssetAtPath<TsConfig>( AssetDatabase.GUIDToAssetPath( guid ) ) ).FirstOrDefault();
-#endif
-            if ( asset != null ) {
-                //Debug.Log( AssetDatabase.GetAssetPath(  asset)  );
-                return asset;
-            }
-
-            return null;
-        }
-
-#if UNITY_EDITOR
         [MenuItem( "NodeTSC/Config" )]
         static void OpenConfig()
         {
             Debug.Log( $"found : {AssetDatabase.OpenAsset( FindAsset() )}" );
         }
-#endif
+
+        [MenuItem( "NodeTSC/生成脚本目录" ), Button]
+        public static void GenScriptPath()
+        {
+            instance.sourcePath.ForEach( t => {
+                var dir = $"{instance.outputPath}/{t.Substring( "Assets/".Length )}/src";
+                Directory.CreateDirectory( dir );
+                File.WriteAllText( $"{dir}/.gitkeep", "" );
+            } );
+            Debug.Log( "finish" );
+        }
+    #endif
     }
 }

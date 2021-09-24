@@ -56,6 +56,7 @@ function typeDeclaration(type, level1) {
     return result;
 }
 function indent(str, n) {
+    return '';
     let lines = str.split(/[\n\r]/);
     let newLines = [lines[0]];
     let append = " ".repeat(n);
@@ -74,7 +75,7 @@ function typeNameWithOutGenericType(type, name) {
 }}
 
 //@ts-nocheck
-//declare module 'csharp' {
+//export namespace csharp {
     interface $Ref<T> {
         value: T
     }

@@ -1,4 +1,4 @@
-namespace PuertsDeclareTest {
+namespace Examples {
     
     public class Plants {
         public interface Shootable {

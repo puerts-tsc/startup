@@ -6,7 +6,7 @@
     "author": "",
     "license": "ISC",
     "scripts": {
-        "postbuild": "cd Assets/Scripts/Node-tsc/ && node copyJsFile.js dist~ bundle && cd -",
+        "postbuild": "cd Assets/Scripts/tsc/ && node copyJsFile.js dist~ bundle && cd -",
         "build": "npx tsc -p Assets/tsconfig.json",
         "test": "echo \"Error: no test specified\" && exit 1"
     },

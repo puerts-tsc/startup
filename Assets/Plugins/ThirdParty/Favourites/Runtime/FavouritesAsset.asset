@@ -55,6 +55,10 @@ MonoBehaviour:
     obj: {fileID: 102900000, guid: cd3e567a37c3fae4c97971ce706b5a63, type: 3}
   - categoryId: 3
     obj: {fileID: 102900000, guid: 00fe4ed7806c5c24782a2f54e0741e7d, type: 3}
+  - categoryId: 2
+    obj: {fileID: 11400000, guid: 43f3b85f27ad9c34a86949b3b72439b6, type: 2}
+  - categoryId: 1
+    obj: {fileID: 7267453380050109290, guid: 68b371441ab973e439af33e33be4b37c, type: 3}
   categories:
   - id: 0
     name: Nodes

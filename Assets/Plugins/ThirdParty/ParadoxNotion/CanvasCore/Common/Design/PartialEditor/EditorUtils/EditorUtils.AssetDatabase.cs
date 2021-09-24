@@ -77,7 +77,7 @@ namespace ParadoxNotion.Design
                 .FirstOrDefault(m => m != null && m.GetClass() == targetType);
         }
 
-        [MenuItem("Tests/Find ts files")]
+        [MenuItem("Debug/Find ts files")]
         static void FindTsFileTest()
         {
             AssetDatabase.FindAssets($"t:TextAsset")

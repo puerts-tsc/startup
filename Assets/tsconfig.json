@@ -3,6 +3,7 @@
         "target": "esnext",
         "module": "commonjs",
         "jsx": "react",
+        "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "esModuleInterop": true,
@@ -16,37 +17,42 @@
         "skipLibCheck": true,
         "baseUrl": ".",
         "paths": {
-            "*": [
-                "Scripts/Node-tsc/src/*",
-                "Examples/src/*"
-            ],
-            "node-tsc/*": [
-                "Scripts/Node-tsc/src/*"
-            ],
             "csharp": [
                 "Gen/Typing/csharp"
             ],
             "puerts": [
                 "Plugins/Puerts/Typing/puerts"
             ],
+            "*": [
+                "Scripts/tsc/src/*",
+                "Examples/src/*",
+                "Scripts/sandbox/src/*"
+            ],
+            "tsc/*": [
+                "Scripts/tsc/src/*"
+            ],
             "examples/*": [
                 "Examples/src/*"
+            ],
+            "sandbox/*": [
+                "Scripts/sandbox/src/*"
             ]
         },
         "typeRoots": [
             "Plugins/Puerts/Typing",
-            "Scripts/Node-tsc/Typing",
+            "Examples/Typing",
+            "Scripts/tsc/Typing",
+            "Scripts/sandbox/Typing",
             "Gen/Typing",
             "../node_modules/@types"
         ],
-        "outDir": "Scripts/Node-tsc/dist~"
+        "outDir": "Scripts/tsc/dist~"
     },
     "include": [
-        "Gen/Typing/**/*",
-        "Plugins/Puerts/Typing/**/*",
-        "Scripts/Node-tsc/Typing/**/*",
-        "**/src/**/*",
-        "**/Typing/**/*"
+        "Examples/src/**/*",
+        "Scripts/sandbox/src/**/*",
+        "Scripts/tsc/src/**/*",
+        "Scripts/tsc/Typing/**/*"
     ],
     "exclude": [
         "node_modules",

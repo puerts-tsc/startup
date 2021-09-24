@@ -60,7 +60,7 @@ var global = global || (function () {
     function toString(args, fn) {
         let error = new Error("");
         let path = puerts.loadType('UnityEngine.Application').dataPath.replace("/Assets", "")
-        UnityEngine_Debug.Log(path);
+        //UnityEngine_Debug.Log(path);
         error = error.stack.replace(error.message, '').replace(/\\/g, '/');
         error = error.replace(new RegExp(path+"/", "g"), '');
         error = error.replace(/((Packages|Assets)\/.+?):(\d+)(:\d+)/g, " <a href=\"$1\" line=\"$3\"><color=yellow>$1:$3</color></a> ");
@@ -89,42 +89,42 @@ var global = global || (function () {
     
     console.log = function () {
         if (console_org) console_org.log.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.Log(toString(arguments));
+        //UnityEngine_Debug.Log(toString(arguments));
     }
     
     console.log.blue = function () {
         if (console_org) console_org.log.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.Log(toString(arguments, Strings.ToBlue));
+        //UnityEngine_Debug.Log(toString(arguments, Strings.ToBlue));
     }
     
     console.log.red = function () {
         if (console_org) console_org.log.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.Log(toString(arguments, Strings.ToRed));
+        //UnityEngine_Debug.Log(toString(arguments, Strings.ToRed));
     }
     
     console.log.yellow = function () {
         if (console_org) console_org.log.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.Log(toString(arguments, Strings.ToYellow));
+        //UnityEngine_Debug.Log(toString(arguments, Strings.ToYellow));
     }
     
     console.log.green = function () {
         if (console_org) console_org.log.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.Log(toString(arguments, Strings.ToGreen));
+        //UnityEngine_Debug.Log(toString(arguments, Strings.ToGreen));
     }
     
     console.info = function () {
         if (console_org) console_org.info.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.Log(toString(arguments));
+        //UnityEngine_Debug.Log(toString(arguments));
     }
     
     console.warn = function () {
         if (console_org) console_org.warn.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.LogWarning(toString(arguments));
+        //UnityEngine_Debug.LogWarning(toString(arguments));
     }
     
     console.error = function () {
         if (console_org) console_org.error.apply(null, Array.prototype.slice.call(arguments));
-        UnityEngine_Debug.LogError(toString(arguments));
+        //UnityEngine_Debug.LogError(toString(arguments));
     }
     
     global.console = console;

@@ -10,22 +10,32 @@
     {
         public static void AutoUsing(this JsEnv jsEnv)
         {
+            jsEnv.UsingAction<FlowCanvas.Flow>();
+            jsEnv.UsingAction<NodeCanvas.BehaviourTrees.BehaviourTree, NodeCanvas.Framework.Status>();
+            jsEnv.UsingAction<NodeCanvas.Framework.Status>();
             jsEnv.UsingAction<System.Boolean>();
             jsEnv.UsingAction<System.Boolean, System.Boolean, System.Int32>();
             jsEnv.UsingAction<System.Int32>();
+            jsEnv.UsingAction<System.Int32, System.Int32, System.Int32>();
             jsEnv.UsingAction<System.Int32, UnityEngine.Vector2>();
             jsEnv.UsingAction<System.IntPtr, Puerts.ISetValueToJs, System.IntPtr, System.Object>();
             jsEnv.UsingAction<System.Single>();
             jsEnv.UsingAction<UnityEngine.CustomRenderTexture, System.Int32>();
             jsEnv.UsingAction<UnityEngine.Vector2>();
             jsEnv.UsingFunc<System.Boolean>();
+            jsEnv.UsingFunc<System.Int32>();
             jsEnv.UsingFunc<System.Int32, System.Boolean>();
             jsEnv.UsingFunc<System.Int32, System.Int32, System.Int32>();
             jsEnv.UsingFunc<System.IntPtr, Puerts.IGetValueFromJs, System.IntPtr, System.Boolean, System.Object>();
             jsEnv.UsingFunc<System.Reflection.Assembly, System.String, System.Boolean, System.Type>();
+            jsEnv.UsingFunc<System.Reflection.FieldInfo, System.Boolean>();
             jsEnv.UsingFunc<System.Reflection.MemberInfo, System.Object, System.Boolean>();
+            jsEnv.UsingFunc<System.Single>();
+            jsEnv.UsingFunc<System.Single, System.Single>();
             jsEnv.UsingFunc<System.Single, System.Single, System.Single>();
+            jsEnv.UsingFunc<System.Single, System.Single, System.Single, System.Single>();
             jsEnv.UsingFunc<System.Type, System.Object, System.Boolean>();
+            jsEnv.UsingFunc<System.ValueTuple<System.Single, System.Single>>();
             jsEnv.UsingFunc<UnityEngine.UI.ILayoutElement, System.Single>();
             
         }

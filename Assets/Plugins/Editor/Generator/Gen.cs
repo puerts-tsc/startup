@@ -62,26 +62,34 @@ export default function() {{
             File.WriteAllText( path, $"{head}\n{output}\n}}" );
         }
 
-        [MenuItem( "NodeTSC/一键生成 Bindings,Using,Extensions", false, -105 )]
+        public static string HoverTreeClearMark( string input )
+        {
+            input = Regex.Replace( input, @"/\*[\s\S]*?\*/", "", RegexOptions.IgnoreCase );
+            input = Regex.Replace( input, @"^\s*//[\s\S]*?$", "", RegexOptions.Multiline );
+            input = Regex.Replace( input, @"^\s*$\n", "", RegexOptions.Multiline );
+            input = Regex.Replace( input, @"^\s*//[\s\S]*", "", RegexOptions.Multiline );
+            return input;
+        }
+
+        [MenuItem( "NodeTSC/一键生成 Bindings 和 Using", false, -105 )]
         public static void GenerateDTS()
         {
             Puerts.Editor.Generator.Menu.GenerateDTS();
             Puerts.Editor.GeneratorUsing.GenerateUsingCode();
-
             var start = DateTime.Now;
             var src = Path.Combine( Configure.GetCodeOutputDirectory(), "Typing/csharp" );
-            var saveTo = TsConfig.instance.rootPath +  "/Typing";
-            var dts = File.ReadAllText( $"{saveTo}/extra/index.d.ts" );
+            //var saveTo = TsConfig.instance.rootPath + "/Typing";
+            var dts = File.ReadAllText( $"Assets/Scripts/extra/index.d.ts" );
             // 替换掉type后面有个*的报错
             var content = dts + "\n" + File.ReadAllText( $"{src}/index.d.ts" );
             content = Regex.Replace( content, @"(\w)\*([^\*])", "$1 $2", RegexOptions.Multiline );
             //new Regex( @"(\w)\*([^\*])" ).Replace( content, "$1 $2" );
-            File.WriteAllText( $"{src}/index.d.ts", content );
+            content = HoverTreeClearMark( content );
+            File.WriteAllText( $"{src}/index.d.ts", "//@ts-nocheck\n" + content );
 
-            GenerateExtensions();
+            //GenerateExtensions();
             //ExamplesCfg.TestUsingAction();
-
-            Debug.Log("finished! use " + (DateTime.Now - start).TotalMilliseconds + " ms");
+            //Debug.Log( "finished! use " + ( DateTime.Now - start ).TotalMilliseconds + " ms" );
             AssetDatabase.Refresh();
         }
     }
