@@ -7,6 +7,9 @@
 
 using System;
 using System.Linq;
+using Runtime;
+using Sirenix.Utilities;
+using UnityEngine;
 
 namespace Puerts
 {
@@ -212,9 +215,15 @@ namespace Puerts
             }
             else if (type.IsGenericType)
             {
-                var genericArgumentNames = type.GetGenericArguments()
-                    .Select(x => GetFriendlyName(x)).ToArray();
-                return type.FullName.Split('`')[0] + "<" + string.Join(", ", genericArgumentNames) + ">";
+                try {
+                    var genericArgumentNames = type.GetGenericArguments().Select( x => GetFriendlyName( x ) ).ToArray();
+                    return type.FullName.Split( '`' )[0] + "<" + string.Join( ", ", genericArgumentNames ) + ">";
+                }
+                catch ( Exception e ) {
+                    return type.GetNiceFullName().Of( s => Debug.Log( s ) );
+                    //throw;
+                }
+
             }
             else
                 return type.FullName;

@@ -26,6 +26,7 @@ namespace Runtime
         static JsMain m_instance;
         public static JsMain instance => m_instance ?? ( m_instance = FindObjectOfType<JsMain>( true ) );
 
+        
         [ShowInInspector]
         TsConfig m_Config {
             get => TsConfig.instance;

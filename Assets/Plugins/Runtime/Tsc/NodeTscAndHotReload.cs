@@ -190,13 +190,39 @@ and run `npm i` in project directory
         [MenuItem( "NodeTSC/Watch tsProj And HotReload/on", false, 1 )]
         public static void Watch()
         {
-            Debug.Log( "tsRoot: " + root );
+            Debug.Log( "Root: " + root );
             //env = new JsEnv( JsEnvMode.Node );
             env.UsingAction<int>();
-            bool result = env.Eval<bool>( @$"
-            $root =  '{root}';
-            $config = {config};
-            require('hot-reload/watch');
+            bool result = env.Eval<bool>( @"
+            $root =  '" + root + @"';
+            $config = " + config + @";
+            CS = require('csharp');
+            process.on('uncaughtException', function(e) { console.error('uncaughtException', e) });
+            try {
+        
+                const moduleRequire = require('module').createRequire($root)
+                moduleRequire('ts-node').register($config)
+                global.HotReloadWatcher = moduleRequire('./Scripts/tsc/src/watch.ts').default
+        
+                const jsEnvs = CS.Puerts.JsEnv.jsEnvs
+                console.log('jsEnvs.Count:' + jsEnvs.Count);
+                for (let i = 0; i < jsEnvs.Count; i++)
+                {
+                    const item = jsEnvs.get_Item(i);
+                    if (item && item.debugPort != -1) {
+                         HotReloadWatcher.addDebugger(item.debugPort)
+                    }
+                }
+        
+                CS.NodeTSCAndHotReload.addDebugger = HotReloadWatcher.addDebugger.bind(HotReloadWatcher);
+                CS.NodeTSCAndHotReload.removeDebugger = HotReloadWatcher.removeDebugger.bind(HotReloadWatcher);
+        
+                true;
+            } catch(e) {
+                console.error(e.stack);
+                console.error('Some error triggered. Maybe you should run `npm i` in project directory');
+                false;
+            }
         " );
             if ( !result ) {
                 Debug.LogError( "Watch Fail" );

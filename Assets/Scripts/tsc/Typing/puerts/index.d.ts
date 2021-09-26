@@ -21,52 +21,52 @@
 // *.d.ts 顶层不能出现 import, 否则会出问题
 // ==========================================
 
-declare module 'puerts' {
-    import { $Ref, $Task, System } from 'csharp';
-    //const React: React;
-    // const Component: React.Component;
-    // type ReactNode = React.ReactNode;
-    
-    function registerBuildinModule(name: string, module: any)
-    
-    function $ref<T>(x?: T): $Ref<T>;
-    
-    function $unref<T>(x: $Ref<T>): T;
-    
-    function $set<T>(x: $Ref<T>, val: T): void;
-    
-    function $promise<T>(x: $Task<T>): Promise<T>;
-    
-    function $generic<T extends new (...args: any[]) => any>(genericType: T, ...genericArguments: (new (...args: any[]) => any)[]): T;
-    
-    function $typeof(x: new (...args: any[]) => any): System.Type;
-    
-    function $extension(c: Function, e: Function): void;
-    
-    function on(eventType: string, listener: Function, prepend?: boolean): void;
-    
-    function off(eventType: string, listener: Function): void;
-    
-    function emit(eventType: string, ...args: any[]): boolean;
-    
-    /**
-     * 将Uint8Array类型转为C# byte[]类型
-     * @param data
-     */
-    export function Uint8ArrayToBytes(data: Uint8Array): System.Array$1<number>;
-    
-    /**
-     * 将C# byte[]类型转为Uint8Array类型
-     * @param data
-     */
-    export function BytesToUint8Array(data: System.Array$1<number>): Uint8Array;
-    
-}
-
-declare var require: {
-    <T>(path: string): T; (paths: string[], callback: (...modules: any[]) => void): void; 
-    ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void;
-};
+// declare module 'puerts' {
+//     import { $Ref, $Task, System } from 'csharp';
+//     //const React: React;
+//     // const Component: React.Component;
+//     // type ReactNode = React.ReactNode;
+//    
+//     function registerBuildinModule(name: string, module: any)
+//    
+//     function $ref<T>(x?: T): $Ref<T>;
+//    
+//     function $unref<T>(x: $Ref<T>): T;
+//    
+//     function $set<T>(x: $Ref<T>, val: T): void;
+//    
+//     function $promise<T>(x: $Task<T>): Promise<T>;
+//    
+//     function $generic<T extends new (...args: any[]) => any>(genericType: T, ...genericArguments: (new (...args: any[]) => any)[]): T;
+//    
+//     function $typeof(x: new (...args: any[]) => any): System.Type;
+//    
+//     function $extension(c: Function, e: Function): void;
+//    
+//     function on(eventType: string, listener: Function, prepend?: boolean): void;
+//    
+//     function off(eventType: string, listener: Function): void;
+//    
+//     function emit(eventType: string, ...args: any[]): boolean;
+//    
+//     /**
+//      * 将Uint8Array类型转为C# byte[]类型
+//      * @param data
+//      */
+//     export function Uint8ArrayToBytes(data: Uint8Array): System.Array$1<number>;
+//    
+//     /**
+//      * 将C# byte[]类型转为Uint8Array类型
+//      * @param data
+//      */
+//     export function BytesToUint8Array(data: System.Array$1<number>): Uint8Array;
+//    
+// }
+//
+// declare var require: {
+//     <T>(path: string): T; (paths: string[], callback: (...modules: any[]) => void): void; 
+//     ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void;
+// };
 
 declare var global: typeof globalThis & any;
 

@@ -22,7 +22,7 @@ const watcher = new class Watcher {
         let outFile = filename.replace(/\.ts$/g, '.js');
         watch(global.$needCompile = [ file ], global.$compilerOptions = compilerOptions);
         let src = path.resolve(compilerOptions.outDir, outFile);
-        //`${ getTsProjectPath() }/Scripts/tsc/dist~/Examples/src/${ filename.replace(/\.ts/g,
+        //`${ getTsProjectPath() }/Scripts/dist~/Examples/src/${ filename.replace(/\.ts/g,
         // '.js') }`.replace(/\\/g, '/');
         fs.writeFileSync(src.replace('/dist~/', '/bundle/') + '.txt', fs.readFileSync(src));
         fs.writeFileSync(src.replace('/dist~/', '/bundle/') + '.map.txt', fs.readFileSync(src + '.map'));
@@ -61,9 +61,17 @@ const watcher = new class Watcher {
             recursive: true,
         }, function(event, filename) {
             console.log(event, filename);
-            if (filename.match(/\.ts$/g) && $this.cache.indexOf(filename) == -1) {
-                $this.cache.push(filename);
-                $this.press(filename);
+            if (filename.match(/\.ts$/g)) {
+                let index = $this.cache.indexOf(filename);
+                if (index == -1) {
+                    if (fs.existsSync(root + '/' + filename)) {
+                        $this.cache.push(filename);
+                        $this.press(filename);
+                    }
+                } else if (!fs.existsSync(root + '/' + filename)) {
+                    $this.cache.slice(index, 1);
+                }
+                
             }
         });
     }

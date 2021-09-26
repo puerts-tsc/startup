@@ -109,6 +109,7 @@ MonoBehaviour:
     - Res
     - Base
     - AI
+    - Scripts
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: c1cb61850ba2a054cba85f689f1aa555, type: 2}

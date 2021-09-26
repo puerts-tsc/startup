@@ -1,4 +1,6 @@
 //@ts-nocheck
+interface T extends object {
+}
 export namespace System {
     interface Array {
         toArray(): any[]
@@ -284,7 +286,7 @@ export namespace UnityEngine {
             public constructor();
         }
         interface Object {
-            DestroySelf($delay?: number):boolean;
+            DestroySelf($delay: number):boolean;
             DestroySelf():void;
             IsNull():boolean;
             RenameObject($newName: string):void;
@@ -344,7 +346,7 @@ export namespace UnityEngine {
             public constructor($name: string);
             public constructor();
             public constructor($name: string, ...components: System.Type[]);
-            public DestroySelf($delay?: number):null;
+            public DestroySelf($delay: number):null;
             public DestroySelf():null;
         }
         interface GameObject {
@@ -353,7 +355,7 @@ export namespace UnityEngine {
             RequireComponent($type: System.Type):UnityEngine.MonoBehaviour;
             SetActiveAll($active: boolean, $recursively: boolean, $includeInactive?: boolean):void;
             FindFirstComponentInChild($layerStr: string, $type: System.Type):UnityEngine.Component;
-            DestroySelf($delay?: number):boolean;
+            DestroySelf($delay: number):boolean;
             SetLayer($layer: number, $withChildren: boolean):void;
             ResetTransform():void;
             SetParent($parent: UnityEngine.Transform):void;
@@ -431,9 +433,9 @@ export namespace UnityEngine {
             X($withParent?: boolean, $x?: number):number;
             Y($withParent?: boolean, $y?: number):number;
             Z($withParent?: boolean, $z?: number):number;
-            X($withParent?: boolean, $x?: number):number;
-            Y($withParent?: boolean, $y?: number):number;
-            Z($withParent?: boolean, $z?: number):number;
+            IntX($withParent?: boolean, $x?: number):number;
+            IntY($withParent?: boolean, $y?: number):number;
+            IntZ($withParent?: boolean, $z?: number):number;
             XAdd($x: number):UnityEngine.Vector3;
             YAdd($y: number):UnityEngine.Vector3;
             ZAdd($z: number):UnityEngine.Vector3;
@@ -561,7 +563,7 @@ export namespace UnityEngine {
             RequireComponent($type: System.Type):UnityEngine.MonoBehaviour;
             FindChildGameObject($layerStr: string):UnityEngine.GameObject;
             FindFirstComponentInChild($layerStr: string, $type: System.Type):UnityEngine.Component;
-            DestroySelf($delay?: number):boolean;
+            DestroySelf($delay: number):boolean;
             ResetTransform():void;
             CopyTempTransform():UnityEngine.Transform;
             ResetParent($parent: UnityEngine.Transform, $resetTransform?: boolean):void;
@@ -5810,7 +5812,6 @@ export namespace UnityEngine {
             public constructor();
         }
         export class AssemblyIsEditorAssembly extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
-            public constructor();
         }
         export class ExcludeFromPresetAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             public constructor();
@@ -6839,94 +6840,6 @@ export namespace UnityEngine {
             public constructor();
         }
         export class TextEditor extends System.Object{ 
-            public keyboardOnScreen: UnityEngine.TouchScreenKeyboard;
-            public controlID: number;
-            public style: UnityEngine.GUIStyle;
-            public multiline: boolean;
-            public hasHorizontalCursorPos: boolean;
-            public isPasswordField: boolean;
-            public scrollOffset: UnityEngine.Vector2;
-            public graphicalCursorPos: UnityEngine.Vector2;
-            public graphicalSelectCursorPos: UnityEngine.Vector2;
-            public get text(): string;
-            public set text(value: string);
-            public get position(): UnityEngine.Rect;
-            public set position(value: UnityEngine.Rect);
-            public get cursorIndex(): number;
-            public set cursorIndex(value: number);
-            public get selectIndex(): number;
-            public set selectIndex(value: number);
-            public get doubleClickSnapping(): UnityEngine.TextEditor.DblClickSnapping;
-            public set doubleClickSnapping(value: UnityEngine.TextEditor.DblClickSnapping);
-            public get altCursorPosition(): number;
-            public set altCursorPosition(value: number);
-            public get hasSelection(): boolean;
-            public get SelectedText(): string;
-            public OnFocus():void;
-            public OnLostFocus():void;
-            public HandleKeyEvent($e: UnityEngine.Event):boolean;
-            public DeleteLineBack():boolean;
-            public DeleteWordBack():boolean;
-            public DeleteWordForward():boolean;
-            public Delete():boolean;
-            public CanPaste():boolean;
-            public Backspace():boolean;
-            public SelectAll():void;
-            public SelectNone():void;
-            public DeleteSelection():boolean;
-            public ReplaceSelection($replace: string):void;
-            public Insert($c: number):void;
-            public MoveSelectionToAltCursor():void;
-            public MoveRight():void;
-            public MoveLeft():void;
-            public MoveUp():void;
-            public MoveDown():void;
-            public MoveLineStart():void;
-            public MoveLineEnd():void;
-            public MoveGraphicalLineStart():void;
-            public MoveGraphicalLineEnd():void;
-            public MoveTextStart():void;
-            public MoveTextEnd():void;
-            public MoveParagraphForward():void;
-            public MoveParagraphBackward():void;
-            public MoveCursorToPosition($cursorPosition: UnityEngine.Vector2):void;
-            public MoveAltCursorToPosition($cursorPosition: UnityEngine.Vector2):void;
-            public IsOverSelection($cursorPosition: UnityEngine.Vector2):boolean;
-            public SelectToPosition($cursorPosition: UnityEngine.Vector2):void;
-            public SelectLeft():void;
-            public SelectRight():void;
-            public SelectUp():void;
-            public SelectDown():void;
-            public SelectTextEnd():void;
-            public SelectTextStart():void;
-            public MouseDragSelectsWholeWords($on: boolean):void;
-            public DblClickSnap($snapping: UnityEngine.TextEditor.DblClickSnapping):void;
-            public MoveWordRight():void;
-            public MoveToStartOfNextWord():void;
-            public MoveToEndOfPreviousWord():void;
-            public SelectToStartOfNextWord():void;
-            public SelectToEndOfPreviousWord():void;
-            public FindStartOfNextWord($p: number):number;
-            public MoveWordLeft():void;
-            public SelectWordRight():void;
-            public SelectWordLeft():void;
-            public ExpandSelectGraphicalLineStart():void;
-            public ExpandSelectGraphicalLineEnd():void;
-            public SelectGraphicalLineStart():void;
-            public SelectGraphicalLineEnd():void;
-            public SelectParagraphForward():void;
-            public SelectParagraphBackward():void;
-            public SelectCurrentWord():void;
-            public SelectCurrentParagraph():void;
-            public UpdateScrollOffsetIfNeeded($evt: UnityEngine.Event):void;
-            public DrawCursor($newText: string):void;
-            public SaveBackup():void;
-            public Undo():void;
-            public Cut():boolean;
-            public Copy():void;
-            public Paste():boolean;
-            public DetectFocusChange():void;
-            public constructor();
         }
         export class ImageConversion extends System.Object{ 
             public static get EnableLegacyPngGammaRuntimeLoadBehavior(): boolean;
@@ -13258,9 +13171,9 @@ export namespace UnityEngine {
             public static SetActiveAll($go: UnityEngine.GameObject, $active: boolean, $recursively: boolean, $includeInactive?: boolean):void;
             public static FindFirstComponentInChild($trans: UnityEngine.Transform, $layerStr: string, $type: System.Type):UnityEngine.Component;
             public static FindFirstComponentInChild($go: UnityEngine.GameObject, $layerStr: string, $type: System.Type):UnityEngine.Component;
-            public static DestroySelf($go: UnityEngine.Transform, $delay?: number):boolean;
-            public static DestroySelf($go: UnityEngine.Object, $delay?: number):boolean;
-            public static DestroySelf($go: UnityEngine.GameObject, $delay?: number):boolean;
+            public static DestroySelf($go: UnityEngine.Transform, $delay: number):boolean;
+            public static DestroySelf($go: UnityEngine.Object, $delay: number):boolean;
+            public static DestroySelf($go: UnityEngine.GameObject, $delay: number):boolean;
             public static SetLayer($go: UnityEngine.GameObject, $layer: number, $withChildren: boolean):void;
             public static DestroySelf($obj: UnityEngine.Object):void;
             public static DestroyGameObject($go: $Ref<UnityEngine.GameObject>):void;
@@ -13306,11 +13219,11 @@ export namespace UnityEngine {
         export class Lists extends System.Object{ 
             public static Add($list: System.Collections.Generic.List$1<string>, $value: any):void;
             public static ForEach($array: System.Array$1<number>, $action: System.Action$3<number, number, number>):System.Array$1<number>;
-            public static ToCols($array: System.Array$1<number>, $action?: System.Action$1<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
-            public static ToRows($array: System.Array$1<number>, $action?: System.Action$1<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
+            public static ToCols0($array: System.Array$1<number>, $action?: System.Action$1<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
+            public static ToRows0($array: System.Array$1<number>, $action?: System.Action$1<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
             public static ToRows($array: System.Array$1<number>, $action?: System.Action$2<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>, System.Collections.Generic.List$1<number>>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
-            public static ToRows($array: System.Array$1<number>, $action?: System.Action$3<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>, System.Collections.Generic.List$1<number>, number>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
-            public static ToCols($array: System.Array$1<number>, $action?: System.Action$3<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>, System.Collections.Generic.List$1<number>, number>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
+            public static ToRows2($array: System.Array$1<number>, $action?: System.Action$3<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>, System.Collections.Generic.List$1<number>, number>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
+            public static ToCols2($array: System.Array$1<number>, $action?: System.Action$3<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>, System.Collections.Generic.List$1<number>, number>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
             public static ToCols($array: System.Array$1<number>, $action?: System.Action$2<System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>, System.Collections.Generic.List$1<number>>):System.Collections.Generic.List$1<System.Collections.Generic.List$1<number>>;
         }
         export class Monos extends System.Object{ 
@@ -13408,9 +13321,9 @@ export namespace UnityEngine {
             public static X($component: UnityEngine.Component, $withParent?: boolean, $x?: number):number;
             public static Y($component: UnityEngine.Component, $withParent?: boolean, $y?: number):number;
             public static Z($component: UnityEngine.Component, $withParent?: boolean, $z?: number):number;
-            public static X($component: UnityEngine.Component, $withParent?: boolean, $x?: number):number;
-            public static Y($component: UnityEngine.Component, $withParent?: boolean, $y?: number):number;
-            public static Z($component: UnityEngine.Component, $withParent?: boolean, $z?: number):number;
+            public static IntX($component: UnityEngine.Component, $withParent?: boolean, $x?: number):number;
+            public static IntY($component: UnityEngine.Component, $withParent?: boolean, $y?: number):number;
+            public static IntZ($component: UnityEngine.Component, $withParent?: boolean, $z?: number):number;
             public static XAdd($component: UnityEngine.Component, $x: number):UnityEngine.Vector3;
             public static YAdd($component: UnityEngine.Component, $y: number):UnityEngine.Vector3;
             public static ZAdd($component: UnityEngine.Component, $z: number):UnityEngine.Vector3;
@@ -14117,7 +14030,6 @@ export namespace UnityEngine {
             public value: UnityEngine.Object;
         }
         export class JsBindingEditor extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
     }
     export namespace UnityEditor {
@@ -14595,9 +14507,6 @@ export namespace UnityEngine {
     export namespace Saro {
         export enum MenuItemState{ Disabled = 0, Selected = 1, Normal = 2 }
         export class EditorEx extends System.Object{ 
-            public static DragValue($rect: UnityEngine.Rect, $value: number, $step: number):number;
-            public static DragValue($rect: UnityEngine.Rect, $content: UnityEngine.GUIContent, $value: number, $step: number, $style: UnityEngine.GUIStyle, $horizontal?: boolean):number;
-            public static ProgressBar($rect: UnityEngine.Rect, $value: number, $backgroundColor: UnityEngine.Color, $foregroundColor: UnityEngine.Color):number;
         }
         export class TweenCanvasGroupAlpha extends Saro.TweenFloat{ 
             public targetCanvasGroup: UnityEngine.CanvasGroup;
@@ -15365,22 +15274,14 @@ export namespace UnityEngine {
     }
     export namespace Saro.Tween {
         export class Editor extends Saro.BaseEditor$1<Saro.Tween> implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public static get ImageButtonSytle(): UnityEngine.GUIStyle;
-            public static get ProgressBackgroundInvalid(): UnityEngine.Color;
-            public static get ProgressBackgroundValid(): UnityEngine.Color;
-            public static get ProgressForegroundInvalid(): UnityEngine.Color;
-            public static get ProgressForegroundValid(): UnityEngine.Color;
-            public constructor();
         }
     }
     export namespace Saro.TweenAnimation {
         export class Editor extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public OnInsPectorGUI($tween: Saro.Tween):void;
         }
     }
     export namespace Tetris.Tools.GameEntry.GlobalApplication {
         export class GameEntryEditor extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
     }
     export namespace NodeCanvas.Framework {
@@ -16041,22 +15942,6 @@ export namespace UnityEngine {
         export class NodeUtils extends System.Object{ 
         }
         export class EdtDummy extends Sirenix.OdinInspector.SerializedScriptableObject implements UnityEngine.ISerializationCallbackReceiver{ 
-            public static cache: System.Collections.Generic.Dictionary$2<any, NodeCanvas.Framework.EdtDummy>;
-            public value: UnityEngine.AddressableAssets.AssetReference;
-            public assetLabelReferences: System.Collections.Generic.List$1<UnityEngine.AddressableAssets.AssetLabelReference>;
-            public assetLabelReference: UnityEngine.AddressableAssets.AssetLabelReference;
-            public assetReferenceGameObject: UnityEngine.AddressableAssets.AssetReferenceGameObject;
-            public assetReferenceSprite: UnityEngine.AddressableAssets.AssetReferenceSprite;
-            public assetReferenceTexture: UnityEngine.AddressableAssets.AssetReferenceTexture;
-            public assetReferenceTexture2D: UnityEngine.AddressableAssets.AssetReferenceTexture2D;
-            public assetReferenceTexture3D: UnityEngine.AddressableAssets.AssetReferenceTexture3D;
-            public so: UnityEditor.SerializedObject;
-            public sp: UnityEditor.SerializedProperty;
-            public SavedNamespace: System.Collections.Generic.List$1<string>;
-            public static propCache: System.Collections.Generic.Dictionary$2<System.ValueTuple$2<any, System.Reflection.FieldInfo>, NodeCanvas.Framework.EdtDummy>;
-            public static get Instance(): NodeCanvas.Framework.EdtDummy;
-            public static set Instance(value: NodeCanvas.Framework.EdtDummy);
-            public constructor();
         }
         export class ExposedParameter extends System.Object{ 
             public get targetVariableID(): string;
@@ -19600,7 +19485,6 @@ export namespace UnityEngine {
             public OnAfterDeserialize():void;
         }
         export interface IEditorMenuCallbackReceiver{ 
-            OnMenu($menu: UnityEditor.GenericMenu, $pos: UnityEngine.Vector2, $sourcePort: FlowCanvas.Port, $dropInstance: any):void;
         }
         export class RenderImageEvent extends FlowCanvas.Nodes.RouterEventNode$1<UnityEngine.Camera> implements ParadoxNotion.Serialization.FullSerializer.ISerializationCollectable, NodeCanvas.Framework.IGraphElement, UnityEngine.ISerializationCallbackReceiver{ 
             public get name(): string;
@@ -20466,7 +20350,6 @@ export namespace UnityEngine {
             public get port(): FlowCanvas.FlowOutput;
             public get name(): string;
             public constructor();
-            public OnMenu($menu: UnityEditor.GenericMenu, $pos: UnityEngine.Vector2, $sourcePort: FlowCanvas.Port, $dropInstance: any):void;
         }
         export class GoToStatement extends FlowCanvas.Nodes.FlowControlNode implements NodeCanvas.Framework.IHaveNodeReference, ParadoxNotion.Serialization.FullSerializer.ISerializationCollectable, NodeCanvas.Framework.IGraphElement, UnityEngine.ISerializationCallbackReceiver{ 
             public _targetLabel: NodeCanvas.Framework.NodeReference$1<FlowCanvas.Nodes.GoToLabel>;
@@ -20555,7 +20438,6 @@ export namespace UnityEngine {
             public InvokeAsync($f: FlowCanvas.Flow, $flowCallback: FlowCanvas.FlowHandler, ...args: any[]):void;
             public GetReturnValue():any;
             public constructor();
-            public OnMenu($menu: UnityEditor.GenericMenu, $pos: UnityEngine.Vector2, $sourcePort: FlowCanvas.Port, $dropInstance: any):void;
             public GetInvocationID():string;
             public Invoke(...args: any[]):any;
             public InvokeAsync($callback: System.Action$1<any>, ...args: any[]):void;
@@ -22364,15 +22246,6 @@ export namespace UnityEngine {
     }
     export namespace FlowCanvas.Editor {
         export class Commands extends System.Object{ 
-            public static CreateGlobalSceneBlackboard():void;
-            public static ShowPrefTypes():void;
-            public static OpenConsole():void;
-            public static OpenExplorer():void;
-            public static OpenRefactor():void;
-            public static OpenOwnersOverview():void;
-            public static ShowExternalInspector():void;
-            public static ShowWelcome():void;
-            public static VisitWebsite():void;
         }
     }
     export namespace NodeCanvas {
@@ -23996,297 +23869,80 @@ export namespace UnityEngine {
     }
     export namespace NodeCanvas.Editor {
         export class GraphAssetPostProcessor extends System.Object{ 
-            public constructor();
         }
         export class AssetBlackboardInspector extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class BlackboardInspector extends Sirenix.OdinInspector.Editor.OdinEditor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class GlobalBlackboardInspector extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class GraphInspector extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public ShowBasicGUI():void;
-            public ShowBlackboardGUI():void;
-            public constructor();
         }
         export class GraphOwnerInspector extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public get isBoundGraphOnPrefabRoot(): boolean;
-            public get isBoundGraphOnPrefabInstance(): boolean;
-            public get isBoundGraphPrefabOverridden(): boolean;
-            public NewAsBound():NodeCanvas.Framework.Graph;
-            public AssetToBound():void;
-            public PrefabRevertBoundGraph():void;
-            public PrefabApplyBoundGraph():void;
-            public constructor();
         }
         export class SignalDefinitionInspector extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class ActiveOwnersOverview extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public constructor();
         }
         export class ExternalInspectorWindow extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public constructor();
         }
         export class GraphConsole extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public static GetFormatedGUIContentForMessage($msg: ParadoxNotion.Services.Logger.Message):UnityEngine.GUIContent;
-            public static GetFirstMessageForGraph($graph: NodeCanvas.Framework.Graph):ParadoxNotion.Services.Logger.Message;
-            public constructor();
         }
         export class GraphEditor extends UnityEditor.EditorWindow{ 
-            public static get current(): NodeCanvas.Editor.GraphEditor;
-            public static get currentGraph(): NodeCanvas.Framework.Graph;
-            public static get rootGraph(): NodeCanvas.Framework.Graph;
-            public static get targetOwner(): NodeCanvas.Framework.GraphOwner;
-            public static add_onCurrentGraphChanged($value: System.Action$1<NodeCanvas.Framework.Graph>):void;
-            public static remove_onCurrentGraphChanged($value: System.Action$1<NodeCanvas.Framework.Graph>):void;
-            public static OpenAsset($instanceID: number, $line: number):boolean;
-            public static OpenWindow():NodeCanvas.Editor.GraphEditor;
-            public static OpenWindow($owner: NodeCanvas.Framework.GraphOwner):NodeCanvas.Editor.GraphEditor;
-            public static OpenWindow($newGraph: NodeCanvas.Framework.Graph):NodeCanvas.Editor.GraphEditor;
-            public static OpenWindow($newGraph: NodeCanvas.Framework.Graph, $owner: NodeCanvas.Framework.GraphOwner, $blackboard: NodeCanvas.Framework.IBlackboard):NodeCanvas.Editor.GraphEditor;
-            public static SetReferences($newOwner: NodeCanvas.Framework.GraphOwner):void;
-            public static SetReferences($newGraph: NodeCanvas.Framework.Graph):void;
-            public static SetReferences($newGraph: NodeCanvas.Framework.Graph, $newOwner: NodeCanvas.Framework.GraphOwner, $newBlackboard: NodeCanvas.Framework.IBlackboard):void;
-            public static FocusSelection():void;
-            public static PingElement($element: NodeCanvas.Framework.IGraphElement):void;
-            public static FocusElement($element: NodeCanvas.Framework.IGraphElement, $alsoSelect?: boolean):void;
-            public static FocusNode($node: NodeCanvas.Framework.Node, $alsoSelect?: boolean):void;
-            public static FocusConnection($connection: NodeCanvas.Framework.Connection, $alsoSelect?: boolean):void;
-            public static FocusPosition($targetPos: UnityEngine.Vector2, $smooth?: boolean):void;
-            public static PingRect($rect: UnityEngine.Rect):void;
-            public static FullDrawPass():void;
-            public static ShowToolbar($graph: NodeCanvas.Framework.Graph):void;
-            public static NewAsAsset($owner: NodeCanvas.Framework.GraphOwner):NodeCanvas.Framework.Graph;
-            public constructor();
         }
         export class GraphExplorer extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public constructor();
         }
         export class GraphRefactor extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public constructor();
         }
         export class QuickPopup extends UnityEditor.PopupWindowContent{ 
-            public static Show($Call: System.Action, $pos?: UnityEngine.Vector2):void;
-            public constructor($Call: System.Action);
-            public constructor();
         }
         export class TaskWizardWindow extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public constructor();
         }
         export class WelcomeWindow extends UnityEditor.EditorWindow{ 
-            public static ShowWindow($t: System.Type):void;
-            public constructor();
         }
         export class BBParameterDrawer extends ParadoxNotion.Design.ObjectDrawer$1<NodeCanvas.Framework.BBParameter> implements ParadoxNotion.Design.IObjectDrawer{ 
-            public constructor();
             public DrawGUI($content: UnityEngine.GUIContent, $instance: any, $info: ParadoxNotion.Design.InspectedFieldInfo):any;
             public MoveNextDrawer():any;
         }
         export class BlackboardSourceDrawer extends ParadoxNotion.Design.ObjectDrawer$1<NodeCanvas.Framework.Internal.BlackboardSource> implements ParadoxNotion.Design.IObjectDrawer{ 
-            public constructor();
             public DrawGUI($content: UnityEngine.GUIContent, $instance: any, $info: ParadoxNotion.Design.InspectedFieldInfo):any;
             public MoveNextDrawer():any;
         }
         export class NodeReferenceDrawer extends ParadoxNotion.Design.ObjectDrawer$1<NodeCanvas.Framework.INodeReference> implements ParadoxNotion.Design.IObjectDrawer{ 
-            public constructor();
             public DrawGUI($content: UnityEngine.GUIContent, $instance: any, $info: ParadoxNotion.Design.InspectedFieldInfo):any;
             public MoveNextDrawer():any;
         }
         export class TaskDrawer extends ParadoxNotion.Design.ObjectDrawer$1<NodeCanvas.Framework.Task> implements ParadoxNotion.Design.IObjectDrawer{ 
-            public constructor();
             public DrawGUI($content: UnityEngine.GUIContent, $instance: any, $info: ParadoxNotion.Design.InspectedFieldInfo):any;
             public MoveNextDrawer():any;
         }
         export class BBParameterEditor extends System.Object{ 
-            public static ParameterField($name: string, $bbParam: NodeCanvas.Framework.BBParameter, $context: UnityEngine.Object):NodeCanvas.Framework.BBParameter;
-            public static ParameterField($name: string, $bbParam: NodeCanvas.Framework.BBParameter, $blackboardOnly?: boolean, $context?: UnityEngine.Object):NodeCanvas.Framework.BBParameter;
-            public static ParameterField($content: UnityEngine.GUIContent, $bbParam: NodeCanvas.Framework.BBParameter, $blackboardOnly?: boolean, $required?: boolean, $info?: ParadoxNotion.Design.InspectedFieldInfo):NodeCanvas.Framework.BBParameter;
         }
         export class BlackboardEditor extends ParadoxNotion.Design.EditorObjectWrapper$1<NodeCanvas.Framework.IBlackboard> implements System.IDisposable{ 
-            public static get pickedVariable(): NodeCanvas.Framework.Variable;
-            public static get pickedVariableBlackboard(): NodeCanvas.Framework.IBlackboard;
-            public static ResetPick():void;
-            public static ShowVariables($bb: NodeCanvas.Framework.IBlackboard, $overrideContextObject?: UnityEngine.Object):void;
-            public constructor();
         }
         export class TaskEditor extends ParadoxNotion.Design.EditorObjectWrapper$1<NodeCanvas.Framework.Task> implements System.IDisposable{ 
-            public static TaskFieldSingle($task: NodeCanvas.Framework.Task, $callback: System.Action$1<NodeCanvas.Framework.Task>, $showTitlebar?: boolean):void;
-            public static TaskFieldMulti($task: NodeCanvas.Framework.Task, $ownerSystem: NodeCanvas.Framework.ITaskSystem, $callback: System.Action$1<T>):void;
-            public static TaskFieldMulti($task: NodeCanvas.Framework.Task, $ownerSystem: NodeCanvas.Framework.ITaskSystem, $baseType: System.Type, $callback: System.Action$1<NodeCanvas.Framework.Task>):void;
-            public static ShowCreateTaskSelectionButton($ownerSystem: NodeCanvas.Framework.ITaskSystem, $baseType: System.Type, $callback: System.Action$1<NodeCanvas.Framework.Task>):void;
-            public constructor();
         }
         export class TaskSO extends Sirenix.OdinInspector.SerializedScriptableObject implements UnityEngine.ISerializationCallbackReceiver{ 
-            public m_节点数据: NodeCanvas.Framework.Task;
-            public constructor();
         }
         export class GraphEditorUtility extends System.Object{ 
-            public static allowClick: boolean;
-            public static get realMousePosition(): UnityEngine.Vector2;
-            public static set realMousePosition(value: UnityEngine.Vector2);
-            public static get lastNodeID(): number;
-            public static get lastConnectionID(): number;
-            public static get activeElement(): NodeCanvas.Framework.IGraphElement;
-            public static set activeElement(value: NodeCanvas.Framework.IGraphElement);
-            public static get activeElements(): System.Collections.Generic.List$1<NodeCanvas.Framework.IGraphElement>;
-            public static set activeElements(value: System.Collections.Generic.List$1<NodeCanvas.Framework.IGraphElement>);
-            public static get activeNode(): NodeCanvas.Framework.Node;
-            public static get activeConnection(): NodeCanvas.Framework.Connection;
-            public static add_PostGUI($value: System.Action):void;
-            public static remove_PostGUI($value: System.Action):void;
-            public static add_onActiveElementChanged($value: System.Action$1<NodeCanvas.Framework.IGraphElement>):void;
-            public static remove_onActiveElementChanged($value: System.Action$1<NodeCanvas.Framework.IGraphElement>):void;
-            public static AddActiveElement($e: NodeCanvas.Framework.IGraphElement):void;
-            public static RemoveActiveElement($e: NodeCanvas.Framework.IGraphElement):void;
-            public static GetGraphJSONFileExtension($graph: NodeCanvas.Framework.Graph):string;
-            public static GetSelectedOrAll($graph: NodeCanvas.Framework.Graph):System.Collections.Generic.IEnumerable$1<NodeCanvas.Framework.Node>;
-            public static ScanForStructTypesAndAppendThem($graph: NodeCanvas.Framework.Graph):void;
-            public static DeepCopy($root: NodeCanvas.Framework.Graph):NodeCanvas.Framework.Graph;
         }
         export class Prefs extends System.Object{ 
-            public static MINIMAP_MIN_SIZE: UnityEngine.Vector2;
-            public static MINIMAP_MAX_SIZE: UnityEngine.Vector2;
-            public static get isEditorLocked(): boolean;
-            public static set isEditorLocked(value: boolean);
-            public static get showBlackboard(): boolean;
-            public static set showBlackboard(value: boolean);
-            public static get showNodePanel(): boolean;
-            public static set showNodePanel(value: boolean);
-            public static get showNodeInfo(): boolean;
-            public static set showNodeInfo(value: boolean);
-            public static get showIcons(): boolean;
-            public static set showIcons(value: boolean);
-            public static get showTaskSummary(): boolean;
-            public static set showTaskSummary(value: boolean);
-            public static get showComments(): boolean;
-            public static set showComments(value: boolean);
-            public static get showNodeIDs(): boolean;
-            public static set showNodeIDs(value: boolean);
-            public static get showNodeElapsedTimes(): boolean;
-            public static set showNodeElapsedTimes(value: boolean);
-            public static get showGrid(): boolean;
-            public static set showGrid(value: boolean);
-            public static get snapToGrid(): boolean;
-            public static set snapToGrid(value: boolean);
-            public static get hierarchicalMove(): boolean;
-            public static set hierarchicalMove(value: boolean);
-            public static get useExternalInspector(): boolean;
-            public static set useExternalInspector(value: boolean);
-            public static get showWelcomeWindow(): boolean;
-            public static set showWelcomeWindow(value: boolean);
-            public static get logEventsInfo(): boolean;
-            public static set logEventsInfo(value: boolean);
-            public static get logVariablesInfo(): boolean;
-            public static set logVariablesInfo(value: boolean);
-            public static get showHierarchyIcons(): boolean;
-            public static set showHierarchyIcons(value: boolean);
-            public static get breakpointPauseEditor(): boolean;
-            public static set breakpointPauseEditor(value: boolean);
-            public static get inspectorPanelWidth(): number;
-            public static set inspectorPanelWidth(value: number);
-            public static get blackboardPanelWidth(): number;
-            public static set blackboardPanelWidth(value: number);
-            public static get animatePanels(): boolean;
-            public static set animatePanels(value: boolean);
-            public static get connectionsMLT(): number;
-            public static set connectionsMLT(value: number);
-            public static get consoleLogInfo(): boolean;
-            public static set consoleLogInfo(value: boolean);
-            public static get consoleLogWarning(): boolean;
-            public static set consoleLogWarning(value: boolean);
-            public static get consoleLogError(): boolean;
-            public static set consoleLogError(value: boolean);
-            public static get consoleClearOnPlay(): boolean;
-            public static set consoleClearOnPlay(value: boolean);
-            public static get consoleLogOrder(): NodeCanvas.Editor.Prefs.ConsoleLogOrder;
-            public static set consoleLogOrder(value: NodeCanvas.Editor.Prefs.ConsoleLogOrder);
-            public static get explorerShowTypeNames(): boolean;
-            public static set explorerShowTypeNames(value: boolean);
-            public static get minimapSize(): UnityEngine.Vector2;
-            public static set minimapSize(value: UnityEngine.Vector2);
         }
         export class StyleSheet extends UnityEngine.ScriptableObject{ 
-            public styles: NodeCanvas.Editor.StyleSheet.Styles;
-            public icons: NodeCanvas.Editor.StyleSheet.Icons;
-            public static get bezierTexture(): UnityEngine.Texture2D;
-            public static get window(): UnityEngine.GUIStyle;
-            public static get windowShadow(): UnityEngine.GUIStyle;
-            public static get windowHighlight(): UnityEngine.GUIStyle;
-            public static get windowHeader(): UnityEngine.GUIStyle;
-            public static get windowTitle(): UnityEngine.GUIStyle;
-            public static get button(): UnityEngine.GUIStyle;
-            public static get box(): UnityEngine.GUIStyle;
-            public static get labelOnCanvas(): UnityEngine.GUIStyle;
-            public static get commentsBox(): UnityEngine.GUIStyle;
-            public static get nodePortContainer(): UnityEngine.GUIStyle;
-            public static get nodePortConnected(): UnityEngine.GUIStyle;
-            public static get nodePortEmpty(): UnityEngine.GUIStyle;
-            public static get scaleArrowBR(): UnityEngine.GUIStyle;
-            public static get scaleArrowTL(): UnityEngine.GUIStyle;
-            public static get canvasBG(): UnityEngine.GUIStyle;
-            public static get canvasBorders(): UnityEngine.GUIStyle;
-            public static get editorPanel(): UnityEngine.GUIStyle;
-            public static get canvasGroupHeader(): UnityEngine.GUIStyle;
-            public static get hollowBox(): UnityEngine.GUIStyle;
-            public static get canvasIcon(): UnityEngine.Texture2D;
-            public static get statusSuccess(): UnityEngine.Texture2D;
-            public static get statusFailure(): UnityEngine.Texture2D;
-            public static get statusRunning(): UnityEngine.Texture2D;
-            public static get circle(): UnityEngine.Texture2D;
-            public static get arrowLeft(): UnityEngine.Texture2D;
-            public static get arrowRight(): UnityEngine.Texture2D;
-            public static get arrowTop(): UnityEngine.Texture2D;
-            public static get arrowBottom(): UnityEngine.Texture2D;
-            public static get log(): UnityEngine.Texture2D;
-            public static get lens(): UnityEngine.Texture2D;
-            public static get refactor(): UnityEngine.Texture2D;
-            public static get verboseLevel1(): UnityEngine.Texture2D;
-            public static get verboseLevel2(): UnityEngine.Texture2D;
-            public static get verboseLevel3(): UnityEngine.Texture2D;
-            public static GetDirectionArrow($dir: UnityEngine.Vector2):UnityEngine.Texture2D;
-            public static GetStatusIcon($status: NodeCanvas.Framework.Status):UnityEngine.Texture2D;
-            public static GetStatusColor($status: NodeCanvas.Framework.Status):UnityEngine.Color;
-            public constructor();
         }
         export class Commands extends System.Object{ 
-            public static ShowTaskWizard():void;
-            public static CreateGlobalSceneBlackboard():void;
-            public static ShowPrefTypes():void;
-            public static OpenConsole():void;
-            public static OpenExplorer():void;
-            public static OpenRefactor():void;
-            public static OpenOwnersOverview():void;
-            public static ShowExternalInspector():void;
-            public static ShowWelcome():void;
-            public static VisitWebsite():void;
         }
         export class StatementDrawer extends ParadoxNotion.Design.ObjectDrawer$1<NodeCanvas.DialogueTrees.Statement> implements ParadoxNotion.Design.IObjectDrawer{ 
-            public constructor();
             public DrawGUI($content: UnityEngine.GUIContent, $instance: any, $info: ParadoxNotion.Design.InspectedFieldInfo):any;
             public MoveNextDrawer():any;
         }
         export class ActionListPlayerInspector extends UnityEditor.Editor implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class BehaviourTreeOwnerInspector extends NodeCanvas.Editor.GraphOwnerInspector implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class DialogueTreeControllerInspector extends NodeCanvas.Editor.GraphOwnerInspector implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public constructor();
         }
         export class DialogueTreeInspector extends NodeCanvas.Editor.GraphInspector implements UnityEditor.IPreviewable, UnityEditor.IToolModeOwner{ 
-            public static ShowActorParameters($dialogue: NodeCanvas.DialogueTrees.DialogueTree):void;
-            public constructor();
         }
     }
     export namespace Sirenix.OdinInspector.Editor {
@@ -24333,9 +23989,6 @@ export namespace UnityEngine {
         export class EditorObjectWrapper$1<T> extends ParadoxNotion.Design.EditorObjectWrapper implements System.IDisposable{ 
         }
         export class EditorObjectWrapper extends System.Object implements System.IDisposable{ 
-            public get target(): any;
-            public Enable($target: any):void;
-            public CreateMethodWrapper($name: string):ParadoxNotion.Design.EditorMethodWrapper;
         }
         export class SpoofAOTAttribute extends System.Attribute implements System.Runtime.InteropServices._Attribute{ 
             public constructor();
@@ -24612,73 +24265,12 @@ export namespace UnityEngine {
             public static XMLFromAssembly($assembly: System.Reflection.Assembly):System.Xml.XmlDocument;
         }
         export class EditorUtils extends System.Object{ 
-            public static currentNode: NodeCanvas.Framework.Node;
-            public static CreateAsset($type: System.Type):UnityEngine.ScriptableObject;
-            public static CreateAsset($type: System.Type, $path: string):UnityEngine.ScriptableObject;
-            public static GetAssetUniquePath($fileName: string):string;
-            public static MonoScriptFromType($targetType: System.Type):UnityEditor.MonoScript;
-            public static GenTsFile($type: System.Type):UnityEngine.TextAsset;
-            public static OpenTypeScriptOfType($type: System.Type):boolean;
-            public static OpenScriptOfType($type: System.Type):boolean;
-            public static AssetToSystemPath($obj: UnityEngine.Object):string;
-            public static AssetToSystemPath($assetPath: string):string;
-            public static GetSceneNames():System.Collections.Generic.List$1<string>;
-            public static GetTypeSelectionMenu($baseType: System.Type, $callback: System.Action$1<System.Type>, $menu?: UnityEditor.GenericMenu, $subCategory?: string):UnityEditor.GenericMenu;
-            public static GetPreferedTypesSelectionMenu($baseType: System.Type, $callback: System.Action$1<System.Type>, $menu?: UnityEditor.GenericMenu, $subCategory?: string, $showAddTypeOption?: boolean):UnityEditor.GenericMenu;
-            public static ShowPreferedTypesSelectionMenu($type: System.Type, $callback: System.Action$1<System.Type>):void;
-            public static GetInstanceFieldSelectionMenu($type: System.Type, $fieldType: System.Type, $callback: System.Action$1<System.Reflection.FieldInfo>, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetStaticFieldSelectionMenu($type: System.Type, $fieldType: System.Type, $callback: System.Action$1<System.Reflection.FieldInfo>, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetInstancePropertySelectionMenu($type: System.Type, $propType: System.Type, $callback: System.Action$1<System.Reflection.PropertyInfo>, $mustRead?: boolean, $mustWrite?: boolean, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetStaticPropertySelectionMenu($type: System.Type, $propType: System.Type, $callback: System.Action$1<System.Reflection.PropertyInfo>, $mustRead?: boolean, $mustWrite?: boolean, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetInstanceMethodSelectionMenu($type: System.Type, $returnType: System.Type, $acceptedParamsType: System.Type, $callback: System.Action$1<System.Reflection.MethodInfo>, $maxParameters: number, $propertiesOnly: boolean, $excludeVoid?: boolean, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetStaticMethodSelectionMenu($type: System.Type, $returnType: System.Type, $acceptedParamsType: System.Type, $callback: System.Action$1<System.Reflection.MethodInfo>, $maxParameters: number, $propertiesOnly: boolean, $excludeVoid?: boolean, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetInstanceEventSelectionMenu($type: System.Type, $argType: System.Type, $callback: System.Action$1<System.Reflection.EventInfo>, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetStaticEventSelectionMenu($type: System.Type, $argType: System.Type, $callback: System.Action$1<System.Reflection.EventInfo>, $menu?: UnityEditor.GenericMenu, $subMenu?: string):UnityEditor.GenericMenu;
-            public static GetMenuItems($menu: UnityEditor.GenericMenu):System.Array$1<ParadoxNotion.Design.EditorUtils.MenuItemInfo>;
-            public static ShowAsBrowser($menu: UnityEditor.GenericMenu, $pos: UnityEngine.Vector2, $title: string, $keyType?: System.Type):void;
-            public static ShowAsBrowser($menu: UnityEditor.GenericMenu, $title: string, $keyType?: System.Type):void;
-            public static Show($menu: UnityEditor.GenericMenu, $asBrowser: boolean, $title: string, $keyType?: System.Type):void;
-            public static CoolLabel($text: string):void;
-            public static TitledSeparator($title: string):void;
-            public static Separator():void;
-            public static BoldSeparator():void;
-            public static EndOfInspector():void;
-            public static SearchField($search: string):string;
-            public static CommentLastTextField($check: string, $comment?: string):void;
-            public static HighlightLastField():void;
-            public static MarkLastFieldOverride():void;
-            public static MarkLastFieldWarning($tooltip: string):void;
-            public static MarkLastFieldError($tooltip: string):void;
-            public static LayerMaskField($prefix: string, $layerMask: UnityEngine.LayerMask, ...layoutOptions: UnityEngine.GUILayoutOption[]):UnityEngine.LayerMask;
-            public static LayerMaskField($content: UnityEngine.GUIContent, $layerMask: UnityEngine.LayerMask, ...layoutOptions: UnityEngine.GUILayoutOption[]):UnityEngine.LayerMask;
-            public static CachedFoldout($key: System.Type, $content: UnityEngine.GUIContent):boolean;
-            public static ListEditor($content: UnityEngine.GUIContent, $list: System.Collections.IList, $listType: System.Type, $info: ParadoxNotion.Design.InspectedFieldInfo):System.Collections.IList;
-            public static DictionaryEditor($content: UnityEngine.GUIContent, $dict: System.Collections.IDictionary, $dictType: System.Type, $info: ParadoxNotion.Design.InspectedFieldInfo):System.Collections.IDictionary;
-            public static ComponentField($content: UnityEngine.GUIContent, $comp: UnityEngine.Component, $type: System.Type, ...GUIOptions: UnityEngine.GUILayoutOption[]):UnityEngine.Component;
-            public static StringPopup($content: UnityEngine.GUIContent, $selected: string, $options: System.Collections.Generic.IEnumerable$1<string>, ...GUIOptions: UnityEngine.GUILayoutOption[]):string;
-            public static ButtonTypePopup($prefix: string, $selected: System.Type, $Callback: System.Action$1<System.Type>):void;
-            public static ButtonTypePopup($content: UnityEngine.GUIContent, $selected: System.Type, $Callback: System.Action$1<System.Type>):void;
-            public static GetTempContent($text?: string, $image?: UnityEngine.Texture, $tooltip?: string):UnityEngine.GUIContent;
-            public static GetTempContent($image?: UnityEngine.Texture, $tooltip?: string):UnityEngine.GUIContent;
-            public static ReflectedObjectInspector($target: any, $unityObjectContext: UnityEngine.Object):void;
-            public static ReflectedFieldInspector($name: string, $value: any, $t: System.Type, $info: ParadoxNotion.Design.InspectedFieldInfo, $dummy: NodeCanvas.Framework.EdtDummy):any;
-            public static ReflectedFieldInspector($content: UnityEngine.GUIContent, $value: any, $t: System.Type, $info: ParadoxNotion.Design.InspectedFieldInfo, $dummy: NodeCanvas.Framework.EdtDummy):any;
-            public static ReflectedFieldInspector($content: UnityEngine.GUIContent, $value: any, $t: System.Type, $info: ParadoxNotion.Design.InspectedFieldInfo):any;
-            public static DrawEditorFieldDirect($content: UnityEngine.GUIContent, $value: any, $t: System.Type, $info: ParadoxNotion.Design.InspectedFieldInfo, $dummy: NodeCanvas.Framework.EdtDummy):any;
-            public static DirectFieldControl($content: UnityEngine.GUIContent, $value: any, $t: System.Type, $unityObjectContext: UnityEngine.Object, $attributes: System.Array$1<any>, $handled: $Ref<boolean>, ...options: UnityEngine.GUILayoutOption[]):any;
-            public static ReorderableList($list: System.Collections.IList, $GUICallback: ParadoxNotion.Design.EditorUtils.ReorderableListCallback):System.Collections.IList;
-            public static ReorderableList($list: System.Collections.IList, $options: ParadoxNotion.Design.EditorUtils.ReorderableListOptions, $GUICallback: ParadoxNotion.Design.EditorUtils.ReorderableListCallback):System.Collections.IList;
-            public static GetScriptInfosOfType($baseType: System.Type):System.Collections.Generic.List$1<ParadoxNotion.Design.EditorUtils.ScriptInfo>;
-            public static MakeGenericInfo($info: ParadoxNotion.Design.EditorUtils.ScriptInfo, $targetType: System.Type, $subCategory?: string, $priorityShift?: number):ParadoxNotion.Design.EditorUtils.ScriptInfo;
         }
         export class EditorWrapperFactory extends System.Object{ 
         }
         export class EditorPropertyWrapper$1<T> extends System.Object{ 
         }
         export class EditorMethodWrapper extends System.Object{ 
-            public Invoke(...args: any[]):void;
-            public Init($editor: ParadoxNotion.Design.EditorObjectWrapper, $method: System.Reflection.MethodInfo):void;
-            public constructor();
         }
         export class GenericInspectorWindow extends Sirenix.OdinInspector.Editor.OdinEditorWindow implements UnityEngine.ISerializationCallbackReceiver{ 
             public static Show($title: string, $targetType: System.Type, $unityObjectContext: UnityEngine.Object, $read: System.Func$1<any>, $write: System.Action$1<any>):void;
@@ -24729,8 +24321,6 @@ export namespace UnityEngine {
             public static GetTypeDoc($info: System.Reflection.MemberInfo):string;
         }
         export class TypePrefsEditorWindow extends UnityEditor.EditorWindow{ 
-            public static ShowWindow():void;
-            public constructor();
         }
         export class UndoUtility extends System.Object{ 
             public static get lastOperationName(): string;
@@ -24749,45 +24339,8 @@ export namespace UnityEngine {
     }
     export namespace NodeCanvas.Editor.StyleSheet {
         export class Styles extends System.Object{ 
-            public window: UnityEngine.GUIStyle;
-            public windowShadow: UnityEngine.GUIStyle;
-            public windowHighlight: UnityEngine.GUIStyle;
-            public windowHeader: UnityEngine.GUIStyle;
-            public windowTitle: UnityEngine.GUIStyle;
-            public button: UnityEngine.GUIStyle;
-            public box: UnityEngine.GUIStyle;
-            public labelOnCanvas: UnityEngine.GUIStyle;
-            public commentsBox: UnityEngine.GUIStyle;
-            public nodePortContainer: UnityEngine.GUIStyle;
-            public nodePortConnected: UnityEngine.GUIStyle;
-            public nodePortEmpty: UnityEngine.GUIStyle;
-            public scaleArrowBR: UnityEngine.GUIStyle;
-            public scaleArrowTL: UnityEngine.GUIStyle;
-            public canvasBG: UnityEngine.GUIStyle;
-            public canvasBorders: UnityEngine.GUIStyle;
-            public editorPanel: UnityEngine.GUIStyle;
-            public canvasGroupHeader: UnityEngine.GUIStyle;
-            public hollowBox: UnityEngine.GUIStyle;
-            public constructor();
         }
         export class Icons extends System.Object{ 
-            public bezierTexture: UnityEngine.Texture2D;
-            public statusSuccess: UnityEngine.Texture2D;
-            public statusFailure: UnityEngine.Texture2D;
-            public statusRunning: UnityEngine.Texture2D;
-            public circle: UnityEngine.Texture2D;
-            public arrowLeft: UnityEngine.Texture2D;
-            public arrowRight: UnityEngine.Texture2D;
-            public arrowTop: UnityEngine.Texture2D;
-            public arrowBottom: UnityEngine.Texture2D;
-            public canvasIcon: UnityEngine.Texture2D;
-            public log: UnityEngine.Texture2D;
-            public lens: UnityEngine.Texture2D;
-            public refactor: UnityEngine.Texture2D;
-            public verboseLevel1: UnityEngine.Texture2D;
-            public verboseLevel2: UnityEngine.Texture2D;
-            public verboseLevel3: UnityEngine.Texture2D;
-            public constructor();
         }
     }
     export namespace ParadoxNotion.ReflectionTools {
@@ -24892,36 +24445,12 @@ export namespace UnityEngine {
     }
     export namespace ParadoxNotion.Design.EditorUtils {
         export class MenuItemInfo extends System.ValueType{ 
-            public content: UnityEngine.GUIContent;
-            public separator: boolean;
-            public selected: boolean;
-            public func: UnityEditor.GenericMenu.MenuFunction;
-            public func2: UnityEditor.GenericMenu.MenuFunction2;
-            public userData: any;
-            public get isValid(): boolean;
-            public constructor($c: UnityEngine.GUIContent, $sep: boolean, $slc: boolean, $f1: UnityEditor.GenericMenu.MenuFunction, $f2: UnityEditor.GenericMenu.MenuFunction2, $o: any);
-            public constructor();
         }
         export type ReorderableListCallback = (index: number, isPicked: boolean) => void;
         var ReorderableListCallback: {new (func: (index: number, isPicked: boolean) => void): ReorderableListCallback;}
         export class ReorderableListOptions extends System.ValueType{ 
-            public blockReorder: boolean;
-            public allowAdd: boolean;
-            public allowRemove: boolean;
-            public unityObjectContext: UnityEngine.Object;
-            public customItemMenu: ParadoxNotion.Design.EditorUtils.ReorderableListOptions.GetItemMenuDelegate;
         }
         export class ScriptInfo extends System.ValueType{ 
-            public originalType: System.Type;
-            public originalName: string;
-            public originalCategory: string;
-            public type: System.Type;
-            public name: string;
-            public category: string;
-            public priority: number;
-            public get isValid(): boolean;
-            public constructor($type: System.Type, $name: string, $category: string, $priority: number);
-            public constructor();
         }
         interface ScriptInfo {
             MakeGenericInfo($targetType: System.Type, $subCategory?: string, $priorityShift?: number):ParadoxNotion.Design.EditorUtils.ScriptInfo;

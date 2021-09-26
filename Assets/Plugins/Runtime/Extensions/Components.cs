@@ -229,9 +229,9 @@ namespace Runtime
         public static Component FindFirstComponentInChild(this GameObject go, string layerStr, Type type) =>
             FindFirstComponentInChild(go.transform, layerStr, type);
 
-        public static bool DestroySelf(this Transform go, float delay = 0.0f) => DestroySelf(go?.gameObject, delay);
+        public static bool DestroySelf(this Transform go, float delay) => DestroySelf(go?.gameObject, delay);
 
-        public static bool DestroySelf(this Object go, float delay = 0.0f)
+        public static bool DestroySelf(this Object go, float delay)
         {
             if (!go) {
                 return false;
@@ -253,7 +253,7 @@ namespace Runtime
         }
 
         // destroy test
-        public static bool DestroySelf(this GameObject go, float delay = 0.0f)
+        public static bool DestroySelf(this GameObject go, float delay)
         {
             if (!go) {
                 return false;

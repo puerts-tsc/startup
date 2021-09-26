@@ -75,7 +75,7 @@ namespace Runtime
             return array;
         }
 
-        public static List<List<int>> ToCols(this int[,] array, Action<List<List<int>>> action = null)
+        public static List<List<int>> ToCols0(this int[,] array, Action<List<List<int>>> action = null)
         {
             var ret = new List<List<int>>();
             for (var x = 0; x < array.GetLength(0); x++) {
@@ -91,7 +91,7 @@ namespace Runtime
             return ret;
         }
 
-        public static List<List<int>> ToRows(this int[,] array, Action<List<List<int>>> action = null)
+        public static List<List<int>> ToRows0(this int[,] array, Action<List<List<int>>> action = null)
         {
             var ret = new List<List<int>>();
             for (var row = 0; row < array.GetLength(1); row++) {
@@ -109,25 +109,25 @@ namespace Runtime
 
         public static List<List<int>> ToRows(this int[,] array, Action<List<List<int>>, List<int>> action = null)
         {
-            return ToRows(array, t => {
+            return ToRows0(array, t => {
                 for (var i = 0; i < t.Count(); i++) {
                     action?.Invoke(t, t[i]);
                 }
             });
         }
 
-        public static List<List<int>> ToRows(this int[,] array, Action<List<List<int>>, List<int>, int> action = null)
+        public static List<List<int>> ToRows2(this int[,] array, Action<List<List<int>>, List<int>, int> action = null)
         {
-            return ToRows(array, t => {
+            return ToRows0(array, t => {
                 for (var i = 0; i < t.Count(); i++) {
                     action?.Invoke(t, t[i], i);
                 }
             });
         }
 
-        public static List<List<int>> ToCols(this int[,] array, Action<List<List<int>>, List<int>, int> action = null)
+        public static List<List<int>> ToCols2(this int[,] array, Action<List<List<int>>, List<int>, int> action = null)
         {
-            return ToCols(array, t => {
+            return ToCols0(array, t => {
                 for (var i = 0; i < t.Count(); i++) {
                     action?.Invoke(t, t[i], i);
                 }
@@ -136,7 +136,7 @@ namespace Runtime
 
         public static List<List<int>> ToCols(this int[,] array, Action<List<List<int>>, List<int>> action = null)
         {
-            return ToCols(array, t => { t.ForEach(ta => { action?.Invoke(t, ta); }); });
+            return ToCols0(array, t => { t.ForEach(ta => { action?.Invoke(t, ta); }); });
         }
 
         // public static int xForEach<T>(this IEnumerable<T> list, Action<int, T> action)

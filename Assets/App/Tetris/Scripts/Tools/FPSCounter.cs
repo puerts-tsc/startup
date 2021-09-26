@@ -4,7 +4,7 @@ using UnityEngine.UI;
 namespace Tetris.Tools
 {
     [RequireComponent(typeof (Text))]
-    public class FPSCounter : MonoBehaviour
+    public class FPSCounter : Tetris<FPSCounter>
     {
         public bool showFps = true;
         const float fpsMeasurePeriod = 0.5f;    //FPS测量间隔

@@ -58,10 +58,10 @@ var global = global || (function () {
     var console = {}
     
     function toString(args, fn) {
-        let rule = /((Packages|Assets)\/.+?)(:(\d+)(:\d+)?)?(?=[^\.\w\/\-]*)/g;
-        let value = " <a href=\"$1\" line=\"$3\"><color=yellow>$1:$4</color></a> ";
-        let error = new Error("");
         let path = puerts.loadType('UnityEngine.Application').dataPath.replace("/Assets", "")
+        let rule = /((Assets|Packages)[\w\-\/\.\~]+)(\:(\d+)(\:\d+)?)?/gi;
+        let value = " <a href=\"" + path + "/$1\" line=\"$4\"><color=yellow>$1:$4</color></a> ";
+        let error = new Error("");
         //UnityEngine_Debug.Log(path);
         error = error.stack.replace(error.message, '').replace(/\\/g, '/');
         error = error.replace(new RegExp(path + "/", "g"), '');
@@ -82,13 +82,13 @@ var global = global || (function () {
         // })
         const reg = /\n(\n)*( )*(\n)*\n/g;
         fn = fn || (s => s);
-        return fn(Array.prototype.map.call(args, x => {
+        return (fn(Array.prototype.map.call(args, x => {
             try {
                 return x + '';
             } catch (err) {
                 return err;
             }
-        }).join(', ')).replace(rule, value) + error.join("\n").replace(reg, "\n");
+        }).join(', '))).replace(rule, value) + error.join("\n").replace(reg, "\n");
     }
     
     console.log = function () {

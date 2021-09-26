@@ -73,18 +73,18 @@ namespace Runtime
         public static float Z(this Component component, bool withParent = false, float z = 0f) =>
             component.transform.localPosition.z + (withParent ? component.transform.parent.localPosition.z + z : 0);
 
-        public static int X(this Component component, bool withParent = false, int x = 0)
+        public static int IntX(this Component component, bool withParent = false, int x = 0)
         {
             Transform transform;
             return Vector3Int.RoundToInt(component.transform.localPosition).x +
                 (withParent ? Vector3Int.RoundToInt(component.transform.parent.localPosition).x + x : 0);
         }
 
-        public static int Y(this Component component, bool withParent = false, int y = 0) =>
+        public static int IntY(this Component component, bool withParent = false, int y = 0) =>
             Vector3Int.RoundToInt(component.transform.localPosition).y +
             (withParent ? Vector3Int.RoundToInt(component.transform.parent.localPosition).y + y : 0);
 
-        public static int Z(this Component component, bool withParent = false, int z = 0) =>
+        public static int IntZ(this Component component, bool withParent = false, int z = 0) =>
             Vector3Int.RoundToInt(component.transform.localPosition).z +
             (withParent ? Vector3Int.RoundToInt(component.transform.parent.localPosition).z + z : 0);
 
@@ -99,13 +99,13 @@ namespace Runtime
 
         public static Vector2Int XY(this Component component, bool withParent = false, int x = 0, int y = 0)
         {
-            return new Vector2Int(component.X(withParent, 0) + x, component.Y(withParent, 0) + y);
+            return new Vector2Int(component.IntX(withParent, 0) + x, component.IntY(withParent, 0) + y);
         }
 
         public static Vector2Int XZ(this Component component, bool withParent = false, int x = 0, int z = 0)
         {
             Vector3 localPosition;
-            return new Vector2Int(component.X(withParent, 0) + x, component.Z(withParent, 0) + z);
+            return new Vector2Int(component.IntX(withParent, 0) + x, component.IntZ(withParent, 0) + z);
         }
 
         // public static Vector2Int setIntXY(this Component component,int x = 0, int y = 0, bool withParent = false)
@@ -124,8 +124,8 @@ namespace Runtime
             int z = 0)
         {
             Vector3 localPosition;
-            return new Vector3Int(component.X(withParent, 0) + x, component.Y(withParent, 0) + y,
-                component.Z(withParent, 0) + z);
+            return new Vector3Int(component.IntX(withParent, 0) + x, component.IntY(withParent, 0) + y,
+                component.IntZ(withParent, 0) + z);
         }
 
         public static Vector3 addVector3(this Component component, float x, float y, float z) =>

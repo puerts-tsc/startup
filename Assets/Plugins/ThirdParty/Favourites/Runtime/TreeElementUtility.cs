@@ -1,11 +1,12 @@
 using System;
 using System.Collections.Generic;
-
+using Runtime;
 
 namespace FavouritesEd
 {
 	public static class TreeElementUtility
 	{
+        [PuertsIgnore]
 		public static void TreeToList<T>(T root, IList<T> result) where T : TreeElement
 		{
 			if (result == null)

@@ -3,7 +3,6 @@
         "target": "esnext",
         "module": "commonjs",
         "jsx": "react",
-        "moduleResolution": "Node",
         "allowSyntheticDefaultImports": true,
         "emitDecoratorMetadata": true,
         "esModuleInterop": true,
@@ -46,7 +45,7 @@
             "Gen/Typing",
             "../node_modules/@types"
         ],
-        "outDir": "Scripts/tsc/dist~"
+        "outDir": "Scripts/dist~"
     },
     "include": [
         "Examples/src/**/*",

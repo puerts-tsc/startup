@@ -22,7 +22,7 @@ namespace Runtime
         // ?? ( m_Instance = FindAsset() ?? ScriptableObject.CreateInstance<TsConfig>() );
 
         public static bool hasInstance => m_Instance != null;
-        public string outputPath => rootPath + "/dist~";
+        public string outputPath => "Assets/Scripts/dist~";
         public bool isRunQuickStart;
 
 //        [Header( "ts项目目录" ), SerializeField]
@@ -84,6 +84,7 @@ namespace Runtime
                 Debug.Log( $"TsConfig Loaded.output path: {this.outputPath}" );
                 OnLoad?.Invoke();
             }
+            
         }
 
         void OnDisable()

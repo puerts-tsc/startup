@@ -1,0 +1,1 @@
+{"version":3,"file":"ExtensionDecl.js","sourceRoot":"","sources":["../../../../Examples/src/ExtensionDecl.ts"],"names":[],"mappings":"AAAA,mCAAmC;AACnC,sCAAsC;AACtC,yCAAyC;AACzC,EAAE;AACF,kCAAkC;AAClC,mEAAmE;AACnE,EAAE"}
