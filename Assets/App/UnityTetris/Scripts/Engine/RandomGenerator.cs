@@ -1,5 +1,6 @@
 ﻿using System;
-namespace TetrisEngine
+
+namespace UnityTetris
 {
     public static class RandomGenerator
     {

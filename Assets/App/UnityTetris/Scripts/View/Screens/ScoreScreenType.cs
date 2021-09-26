@@ -1,15 +1,19 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 
-public abstract class ScoreScreenType<T> : BaseScreen<T> where T : Component
+namespace UnityTetris
 {
-	[SerializeField]
-    protected Text scoreText;
-
-	protected string mScorePrefix = "SCORE\n";
-
-	protected void SetScoreText(int value)
+    public abstract class ScoreScreenType<T> : BaseScreen<T> where T : Component
     {
-        scoreText.text = mScorePrefix + value;
+        [SerializeField]
+        protected TMP_Text scoreText;
+
+        protected string mScorePrefix = "SCORE\n";
+
+        protected void SetScoreText(int value)
+        {
+            scoreText.text = mScorePrefix + value;
+        }
     }
 }

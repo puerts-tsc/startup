@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.AddressableAssets;
+using UnityEngine.Events;
 
 namespace UnityRoyale
 {
@@ -77,10 +78,13 @@ namespace UnityRoyale
 				StartMatch();
         }
 
+        public UnityEvent OnStartGame;
+
 		//called by the intro cutscene
 		public void StartMatch()
-		{
-			CPUOpponent.StartActing();
+        {
+            OnStartGame.Invoke();
+            CPUOpponent.StartActing();
 		}
 
         //the Update loop pings all the ThinkingPlaceables in the scene, and makes them act

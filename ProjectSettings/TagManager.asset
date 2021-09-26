@@ -26,10 +26,10 @@ TagManager:
   - RedUnits
   - BlueUnits
   - 
+  - GameUI
   - 
-  - 
-  - 
-  - 
+  - Block
+  - CubeBlock
   - 
   - 
   - 
@@ -46,4 +46,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: CubeBlock
+    uniqueID: 883204785
     locked: 0

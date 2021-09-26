@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace TetrisEngine.TetriminosPiece
+namespace UnityTetris
 {
 	//Class that represents a Tetrimino in the engine
     //It requires a TetriminoSpecs as constructor parameter to fill it's properties

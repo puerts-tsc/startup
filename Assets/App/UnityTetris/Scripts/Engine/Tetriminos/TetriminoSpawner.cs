@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace TetrisEngine.TetriminosPiece
+namespace UnityTetris
 {
 	//Class responsable for generating random pieces
 	//if mControledRandom is true, it makes sure no piece is choosen twice befere all other types are choosen

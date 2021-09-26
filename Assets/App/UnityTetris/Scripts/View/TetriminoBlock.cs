@@ -1,37 +1,36 @@
-﻿using pooling;
-using UnityEngine;
+﻿using UnityEngine;
 
 //Single block from pieces in view
-public class TetriminoBlock : PoolingObject
+namespace UnityTetris
 {
-	public override string objectName
-	{
-		get
-		{
-			return "TetriminoBlock";
-		}      
-	}
+    public class TetriminoBlock : PoolingObject
+    {
+        public override string objectName => "TetriminoBlock";
+        void OnBecameVisible() { }
+        public Vector2Int position { get; private set; }
 
-	public Vector2Int position { get; private set; }
-    
-	private SpriteRenderer mSpriteRenderer;
-       
-    //Gets references to the components
-	public void Awake()
-	{
-	    mSpriteRenderer = GetComponent<SpriteRenderer>();
-	}
+        RectTransform rect;
 
-    //Sets the color of the block
-    public void SetColor(Color c)
-	{
-	    mSpriteRenderer.color = c;
-	}
+        private MeshRenderer msRenderer;
 
-    //Positioning the block
-    public void MoveTo(int x, int y)
-	{
-		position = new Vector2Int(x, y);
-	    transform.localPosition = new Vector3(x, -y, 0);
-	}
+        //Gets references to the components
+        public void Awake()
+        {
+            rect = GetComponent<RectTransform>();
+            msRenderer = GetComponent<MeshRenderer>();
+        }
+
+        //Sets the color of the block
+        public void SetColor(Color c)
+        {
+            msRenderer.material.color = c;
+        }
+
+        //Positioning the block
+        public void MoveTo(int x, int y)
+        {
+            position = new Vector2Int(x, y);
+            rect.anchoredPosition3D = new Vector3(x, 0, -y);
+        }
+    }
 }

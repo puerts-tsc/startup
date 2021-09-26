@@ -1,8 +1,8 @@
-﻿using UnityEngine;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using UnityEngine;
 
-namespace TetrisEngine.TetriminosPiece
+namespace UnityTetris
 {
 	//Struct to hold informationa about the tetrimino
 	[Serializable]

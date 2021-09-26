@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace pooling
+namespace UnityTetris
 {
 	//Abstract class to be inherited to be able to use Pooling.cs
 	public abstract class PoolingObject : MonoBehaviour, IPooling

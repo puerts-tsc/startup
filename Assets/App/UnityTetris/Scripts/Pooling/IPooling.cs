@@ -1,4 +1,4 @@
-﻿namespace pooling
+﻿namespace UnityTetris
 {
     public interface IPooling
     {

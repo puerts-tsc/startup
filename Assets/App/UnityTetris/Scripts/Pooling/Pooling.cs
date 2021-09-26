@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-namespace pooling
+namespace UnityTetris
 {
 	//Class responsable for pooling Monobehaviours
 	//No GameObject is destroyed, is Released (each class that inherits PoolingObject may implement this method and others if need)

@@ -1,6 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-const csharp_1 = require("csharp");
-var Vector3 = csharp_1.UnityEngine.Vector3;
-Vector3;
+exports.FindRun = void 0;
+global.abc = function () {
+};
+const FindRun = function (fn) {
+    return global[fn];
+};
+exports.FindRun = FindRun;
 //# sourceMappingURL=sandbox.js.map
